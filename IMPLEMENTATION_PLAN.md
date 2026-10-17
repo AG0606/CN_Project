@@ -1,6 +1,6 @@
 # Implementation plan for GÉANT predictive carbon aware routing
 
-Updated 8 October 2026. This is the current implementation plan. No project code, datasets, software installations, or trained models have been produced during planning.
+Planning baseline: 8 October 2026. Implementation status updated 17 October 2026: the agreed native Windows simulation is built, real inputs are cached, the GNN and GRU are trained, and a 495-run comparison has been executed. Start with [README.md](README.md) and [DEMO.html](DEMO.html). The dates below record the original schedule; October 14 is now past. Optional Mininet remains unimplemented.
 
 ## Agreed direction and deadlines
 
@@ -330,4 +330,4 @@ The user-supplied title/abstract, research attachment, and bottleneck notes are 
 - [Mininet repository](https://github.com/mininet/mininet) and [installation guidance](https://mininet.org/download/): optional packet-emulation architecture and setup.
 - [Ryu repository](https://github.com/faucetsdn/ryu) and [OS-Ken release notes](https://docs.openstack.org/releasenotes/os-ken/2026.1.html): controller compatibility considerations for optional validation.
 
-Source pages were checked during planning. Dataset parsers, native Python dependencies, forecasts, simulation outputs, and any controller stack still require implementation and verification. Store actual source files, attribution, usage terms, retrieval dates, and hashes when preparing inputs; avoid redistributing source data without checking its stated terms.
+Source pages and input files were checked during implementation. Parsers, native CPU dependencies, trained forecasts, causal replay, reporting and result auditing are implemented. See the generated manifests and docs/METHODOLOGY.md for actual settings and evidence limits. Luxembourg coverage requires later carbon periods; the implemented pairings use 2022, 2023 and 2024. Original third-party datasets are excluded from Git and the transfer ZIP. No controller stack or packet emulation has been validated.
