@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+inputs/raw/
+inputs/processed/
+artifacts/
+results/
+dist/
+.scratch/
+*.log
