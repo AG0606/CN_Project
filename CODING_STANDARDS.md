@@ -5,6 +5,6 @@
 - Never expose future demand or future carbon to a predictor/planner. Fit transforms and pair selection on training only; calibrate margins on validation only.
 - All policies must use the same workload, graph, allocator, candidate set and declared observation timing. Preserve unfavorable results.
 - Do not silently replace missing/corrupt data, mismatched checkpoints, absent countries or failed runs with synthetic success.
-- New dependencies must be free, documented and pinned for reproduction. Raw source downloads and generated artifacts stay outside Git.
+- New dependencies must be free, documented and pinned for reproduction. Keep raw source downloads, prepared inputs, environments and scratch outputs outside Git. Commit only intentionally frozen, validated reference checkpoints and campaigns.
 - Typecheck Python with mypy and lint with Ruff. Test externally observable behavior and independently calculated invariants; avoid tests that merely restate implementation.
 - Results are simulation outputs. Do not label them packet measurements, proven physical carbon savings or OpenFlow validation.

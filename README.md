@@ -4,6 +4,8 @@ A working, free, native Windows research simulation with real historical inputs,
 
 **Start here: double-click `DEMO.html`.** The saved demo works without Python or internet. `results/paper/index.html` shows the larger comparison. This is aggregate trace-driven simulation; Mininet and OpenFlow actuation are not part of the completed build.
 
+For a new teammate or coding agent, read [docs/HANDOFF.md](docs/HANDOFF.md) for the current state, file map, results, verification commands and next work. This repository includes the validated reference checkpoints and saved campaigns. The original third-party datasets and local Python environment are deliberately excluded.
+
 ## What is implemented
 
 - Exact eight-node, eleven-link GÉANT subgraph; 22 directed capacity constraints.
@@ -41,12 +43,12 @@ The first measured pilot took about 1.3 seconds and the 495-run campaign about 4
 
 ## Set up another Windows laptop
 
-1. Copy the project source or the ZIP produced by `python -m carbonroute bundle`. Extract it first. The ZIP includes trained models and both saved campaigns, so **the friend can immediately open `DEMO.html` and `results/paper/index.html`**.
-2. For reproduction, install free **64-bit Python 3.12** from [python.org](https://www.python.org/downloads/windows/). Then run `SETUP.ps1`. Alternatively pass `-PythonExe 'C:\path\to\python.exe'`.
+1. Clone this repository or extract the ZIP produced by `python -m carbonroute bundle`. Both include trained models and both saved campaigns, so **the friend can immediately open `DEMO.html` and `results/paper/index.html`**.
+2. For reproduction, install free **64-bit Python 3.12** from [python.org](https://www.python.org/downloads/windows/). Then run `SETUP.ps1` to install dependencies. Alternatively pass `-PythonExe 'C:\path\to\python.exe'`.
 3. Run `RUN_DEMO.ps1 -Rebuild`. With a new source checkout, this downloads and prepares inputs, trains if checkpoints are absent, runs comparisons, and creates the report. With the transfer ZIP, the supplied checkpoint is reused after input preparation verifies compatibility.
 4. Run `RUN_PAPER.ps1` for the larger campaign. Internet is required only for installing dependencies and the first input download.
 
-Do not copy `.venv` between computers. Original third-party datasets are excluded from the bundle and Git; each reproducing machine downloads them from their sources. A copied **HTML report alone** is already a portable offline presentation, including the animation and its data.
+Do not copy `.venv` between computers. Original third-party datasets are excluded from the bundle and Git; `RUN_DEMO.ps1 -Rebuild` downloads and verifies them when absent. A copied **HTML report alone** is already a portable offline presentation, including the animation and its data.
 
 Manual setup, also usable on Linux/macOS (use `python` from a Python 3.12 venv):
 

@@ -1,13 +1,49 @@
+# Local Python environments, caches, and build outputs
 .venv/
+venv/
 __pycache__/
+*.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 *.egg-info/
-inputs/raw/
-inputs/processed/
-artifacts/
-results/
-dist/
-.scratch/
+build/
+.coverage
+htmlcov/
+
+# Local machine configuration and editor files
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
 *.log
+
+# Third-party downloads and machine-specific preparation. Recreate with `prepare`.
+/inputs/raw/
+/inputs/processed/
+
+# Only the checked-in reference checkpoints and experiment campaigns are shared.
+/artifacts/*
+!/artifacts/gnn.pt
+!/artifacts/gnn.json
+!/artifacts/gnn_test_forecasts.npz
+!/artifacts/gru.pt
+!/artifacts/gru.json
+!/artifacts/gru_test_forecasts.npz
+!/artifacts/persistence.json
+!/artifacts/training_summary.json
+!/artifacts/training.csv
+!/artifacts/forecast_metrics.csv
+
+/results/*
+!/results/demo/
+!/results/demo/**
+!/results/paper/
+!/results/paper/**
+
+# Transfer bundles, local integrity experiments, and temporary work
+/dist/
+/.scratch/

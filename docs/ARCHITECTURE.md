@@ -33,10 +33,10 @@ ECON daily CSV -> country/date pairing -> experiments.campaign
 | `replay(...)` | Frozen scenario and predictor | `ReplayResult` containing per-bin records and aggregate metrics |
 | `report(root, result_dir)` | Completed campaign with checked frozen evidence, including each run and carbon date mapping | Standalone offline HTML, findings, PNG/PDF figures |
 
-No network service or cross-process API is needed. JSON is used for public metadata; numeric arrays use NPZ without pickle. Checkpoints contain only PyTorch state dictionaries and load with `weights_only=True`. Raw source files, models, environments and generated results are ignored by Git; the explicit bundle command packages the appropriate outputs.
+No network service or cross-process API is needed. JSON is used for public metadata; numeric arrays use NPZ without pickle. Checkpoints contain only PyTorch state dictionaries and load with `weights_only=True`. Raw third-party files, prepared inputs, environments and scratch outputs are ignored by Git. The validated reference checkpoints and demo/paper campaigns are committed. `.gitattributes` preserves their exact bytes so manifest hashes survive a checkout.
 
 Keep neural prediction independent of routing policy: it predicts offered OD demand, never policy-dependent link utilization. Keep the replay driver as the only component that can reveal the target demand. Do not pass full scenario arrays into `predict` or `decide`.
 
 The small dense graph avoids PyTorch Geometric/CUDA dependencies. The no-graph GRU uses identity adjacency with the same architecture/parameter count; only the neighbor information is removed.
 
-For handoff, share source/configuration through Git and a generated bundle for the demo. Do not merge someone else's `.venv`, temporary inputs or source data into Git. Reprepare/retrain after configuration changes. A cached checkpoint mismatch is an error, not permission to silently use the wrong model.
+For handoff, clone the repository or use a generated transfer bundle; see `docs/HANDOFF.md`. Do not merge someone else's `.venv`, temporary inputs or source data into Git. Reprepare/retrain after configuration changes. A cached checkpoint mismatch is an error, not permission to silently use the wrong model.
