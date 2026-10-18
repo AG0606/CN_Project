@@ -12,7 +12,7 @@ A working, free, native Windows research simulation with real historical inputs,
 - A 7,672-parameter GCN–GRU and a matched GRU, trained on CPU; persistence comparison and validation-calibrated forecast margins.
 - Causal routing, shared reservations, propagation guards, hysteresis, deterministic max-min service, and explicit carbon attribution.
 - Four main policies and three component comparisons. Five test days × three carbon years × three workloads × (seven delayed policies + four immediate policies) = **495 runs**.
-- Self-contained HTML replay, CSV/JSON results, PNG/PDF figures, source/config/model hashes, tests, and a portable source/demo bundle command.
+- Self-contained HTML replay, CSV/JSON results, PNG/PDF figures, source/config/model hashes, tests, a paper draft, and a portable source/demo bundle command.
 
 ## Run on this laptop
 
@@ -41,7 +41,7 @@ The first measured pilot took about 1.3 seconds and the 495-run campaign about 4
 
 ## Set up another Windows laptop
 
-1. Copy the project source or the ZIP produced by `python -m carbonroute bundle`. Extract it first. The ZIP includes trained models and the saved pilot, so **the friend can immediately open `DEMO.html`**.
+1. Copy the project source or the ZIP produced by `python -m carbonroute bundle`. Extract it first. The ZIP includes trained models and both saved campaigns, so **the friend can immediately open `DEMO.html` and `results/paper/index.html`**.
 2. For reproduction, install free **64-bit Python 3.12** from [python.org](https://www.python.org/downloads/windows/). Then run `SETUP.ps1`. Alternatively pass `-PythonExe 'C:\path\to\python.exe'`.
 3. Run `RUN_DEMO.ps1 -Rebuild`. With a new source checkout, this downloads and prepares inputs, trains if checkpoints are absent, runs comparisons, and creates the report. With the transfer ZIP, the supplied checkpoint is reused after input preparation verifies compatibility.
 4. Run `RUN_PAPER.ps1` for the larger campaign. Internet is required only for installing dependencies and the first input download.
@@ -78,7 +78,7 @@ The exact lock was tested on Windows x64 / Python 3.12. Other operating systems 
 
 Existing campaigns require `--overwrite` or a different output path. Use a new folder for research runs. Changing configuration deliberately invalidates prepared data/checkpoints: run `prepare` and `train` again before comparing. `--root` and `--config` are global options and precede the command.
 
-Each result folder contains `FINDINGS.md`, `summary.csv`, `paired_differences.csv`, `manifest.json`, daily alignment files, per-bin `runs/*.json`, forecast evidence, `index.html`, and four figure sets. The paper viewer embeds detailed traces for the first test day and first carbon year; its comparison table covers every run. All other traces remain in `runs/`.
+Each result folder contains `FINDINGS.md`, `summary.csv`, `paired_differences.csv`, `manifest.json`, daily alignment files, per-bin `runs/*.json`, forecast evidence, `index.html`, and four figure sets. Every run log and date alignment has a recorded SHA-256 hash, verified again before report generation. The paper viewer embeds detailed traces for the first test day and first carbon year; its comparison table covers every run. All other traces remain in `runs/`.
 
 ## Current result, without cherry-picking
 
@@ -110,4 +110,4 @@ python -m ruff check src tests scripts
 python scripts/verify_results.py results/paper
 ```
 
-Tests use small independent examples and require no downloads. Actual-result auditing requires a completed campaign. See `docs/METHODOLOGY.md` for equations and assumptions, `docs/DATA_SOURCES.md` for provenance, and `docs/DEMO_GUIDE.md` for presentation.
+Tests use small independent examples and require no downloads. Actual-result auditing requires a completed campaign. See `docs/METHODOLOGY.md` for equations and assumptions, `docs/DATA_SOURCES.md` for provenance, `docs/DEMO_GUIDE.md` for presentation, `docs/PAPER_DRAFT.md` for the current manuscript, and `docs/REVIEW.md` for the independent code review.

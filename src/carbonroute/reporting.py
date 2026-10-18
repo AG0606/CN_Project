@@ -95,6 +95,33 @@ def report(root: Path, output: Path) -> Path:
         if sha256(output / name) != manifest[name.split(".")[0]+"_sha256"]:
             raise ValueError(f"Campaign evidence changed: {name}")
     frame = pd.read_csv(output / "summary.csv")
+    if manifest.get("schema_version") != 2 or len(manifest["runs"]) != len(frame):
+        raise ValueError("Campaign manifest is incomplete or uses an unsupported schema")
+    rows = frame.set_index("run_id", verify_integrity=True)
+    if set(rows.index) != {entry["run_id"] for entry in manifest["runs"]}:
+        raise ValueError("Campaign run list differs from the summary")
+    for year, expected in manifest["alignment_sha256"].items():
+        path = output / f"alignment_{year}.json"
+        if sha256(path) != expected:
+            raise ValueError(f"Carbon alignment changed: {path}")
+    run_folder = (output / "runs").resolve()
+    for entry in manifest["runs"]:
+        path = (output / entry["file"]).resolve()
+        if not path.is_relative_to(run_folder) or sha256(path) != entry["sha256"]:
+            raise ValueError(f"Run log changed or path escaped the run folder: {entry['run_id']}")
+        recorded = load_json(path)["summary"]
+        row = rows.loc[entry["run_id"]]
+        for key, expected in recorded.items():
+            if key == "run_id":
+                if expected != entry["run_id"]:
+                    raise ValueError(f"Run log identity differs from manifest: {entry['run_id']}")
+                continue
+            observed = row[key]
+            if isinstance(expected, (int, float)) and not isinstance(expected, bool):
+                if not np.isclose(observed, expected, rtol=1e-9, atol=1e-9):
+                    raise ValueError(f"Run log summary differs from aggregate table: {entry['run_id']} / {key}")
+            elif observed != expected:
+                raise ValueError(f"Run log summary differs from aggregate table: {entry['run_id']} / {key}")
     errors = pd.read_csv(output / "forecast_metrics.csv")
     # Embed only the first workload day/year's traces; all run logs remain on disk.
     first_year = int(frame.carbon_year.min())

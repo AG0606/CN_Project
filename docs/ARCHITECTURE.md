@@ -31,7 +31,7 @@ ECON daily CSV -> country/date pairing -> experiments.campaign
 | `Planner.decide(forecast, current_carbon, step)` | Conservative forecast, eight current CI values | Immutable `Decision`: ordered routes, changes, infeasibility, reasons |
 | `progressive_fill(demand, incidence, capacities)` | Flow Mbps, link-by-flow binary matrix, directed capacities | Offered-bounded, capacity-feasible served Mbps |
 | `replay(...)` | Frozen scenario and predictor | `ReplayResult` containing per-bin records and aggregate metrics |
-| `report(root, result_dir)` | Completed campaign with checked frozen evidence | Standalone offline HTML, findings, PNG/PDF figures |
+| `report(root, result_dir)` | Completed campaign with checked frozen evidence, including each run and carbon date mapping | Standalone offline HTML, findings, PNG/PDF figures |
 
 No network service or cross-process API is needed. JSON is used for public metadata; numeric arrays use NPZ without pickle. Checkpoints contain only PyTorch state dictionaries and load with `weights_only=True`. Raw source files, models, environments and generated results are ignored by Git; the explicit bundle command packages the appropriate outputs.
 

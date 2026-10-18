@@ -112,6 +112,7 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
     except (OSError, subprocess.CalledProcessError):
         revision = "unavailable"
     manifest: dict[str, Any] = {
+        "schema_version": 2,
         "created_utc": datetime.now(timezone.utc).isoformat(), "mode": "paper" if paper else "pilot",
         "status": "running",
         "config": cfg, "config_hash": fingerprint(cfg), "source_revision": revision,
@@ -121,6 +122,7 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
         "traffic_manifest": data.manifest, "checkpoint_sha256": sha256(root / "artifacts/gnn.pt"),
         "carbon_sha256": carbon.source_hash, "python": platform.python_version(),
         "platform": platform.platform(), "runs": [], "failed_runs": [],
+        "alignment_sha256": {},
         "interpretation": "Constructed scenario: 2005 traffic and later daily country carbon; aggregate service, no packet or physical energy measurements",
         "power_sensitivity": {"idle_only": {"idle_w": 50, "beta_w_per_mbps": 0},
                               "idle_dominated": {"idle_w": 50, "beta_w_per_mbps": .1},
@@ -137,7 +139,9 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
     for year in years:
         ci, alignment = carbon.pair(data.times[lo:hi], year)
         carbon_cache[year] = ci
-        save_json(output / f"alignment_{year}.json", alignment)
+        alignment_path = output / f"alignment_{year}.json"
+        save_json(alignment_path, alignment)
+        manifest["alignment_sha256"][str(year)] = sha256(alignment_path)
     summaries = []
     started = time.perf_counter()
     for window_id, (start, stop) in enumerate(windows):
@@ -158,10 +162,11 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
                             predictor = persistence if policy == "persistence_carbon" else gnn
                             result = replay(data, cfg, rates, ci, start, stop, policy, predictor, delay)
                             summary = {**fields, **result.summary}
-                            save_json(run_folder / f"{run_id}.json", {"summary": summary, "records": result.records})
+                            run_path = run_folder / f"{run_id}.json"
+                            save_json(run_path, {"summary": summary, "records": result.records})
                             summaries.append(summary)
                             manifest["runs"].append({**fields, "policy": policy, "observation_delay_bins": delay,
-                                                     "file": f"runs/{run_id}.json"})
+                                                     "file": f"runs/{run_id}.json", "sha256": sha256(run_path)})
                         except Exception as exc:
                             manifest["status"] = "failed"
                             manifest["failed_runs"].append({**fields, "error": repr(exc)})

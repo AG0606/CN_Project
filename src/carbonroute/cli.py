@@ -15,10 +15,10 @@ from .common import ROOT, config
 
 
 def bundle(root: Path) -> Path:
-    """Small source+demo archive. Original input files are downloaded on the next laptop."""
+    """Source, trained models and completed reports; no original third-party files."""
     destination = root / "dist" / f"geant-project-{datetime.now():%Y%m%d-%H%M%S}.zip"
     destination.parent.mkdir(exist_ok=True)
-    folders = ("src", "configs", "docs", "tests", "scripts", "artifacts", "results/demo")
+    folders = ("src", "configs", "docs", "tests", "scripts", "artifacts", "results/demo", "results/paper")
     root_files = ("README.md", "IMPLEMENTATION_PLAN.md", "pyproject.toml", "requirements-lock.txt",
                   "requirements-torch.txt", "SETUP.ps1", "RUN_DEMO.ps1", "RUN_PAPER.ps1", "DEMO.html", ".gitignore")
     with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED) as archive:
@@ -29,7 +29,7 @@ def bundle(root: Path) -> Path:
         for name in root_files:
             if (root / name).is_file():
                 archive.write(root / name, name)
-    print(f"Portable source + trained models + offline demo: {destination}")
+    print(f"Portable source + trained models + offline demo and paper results: {destination}")
     print("Original source data and the Python environment are not redistributed. Run prepare after setup to reproduce.")
     return destination
 

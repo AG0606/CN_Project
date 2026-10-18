@@ -13,6 +13,9 @@ from carbonroute.common import ROOT, load_json, sha256
 def verify(output: Path) -> None:
     manifest = load_json(output / "manifest.json")
     assert manifest["status"] == "complete" and not manifest["failed_runs"]
+    assert manifest["schema_version"] == 2
+    for year, expected_hash in manifest["alignment_sha256"].items():
+        assert sha256(output / f"alignment_{year}.json") == expected_hash
     frame = pd.read_csv(output / "summary.csv")
     assert sha256(output / "summary.csv") == manifest["summary_sha256"]
     assert set(frame.run_id) == {r["run_id"] for r in manifest["runs"]}
@@ -27,6 +30,7 @@ def verify(output: Path) -> None:
         assert group.idle_only_g.max()-group.idle_only_g.min() < 1e-7
     steps = 0
     for run in manifest["runs"]:
+        assert sha256(output / run["file"]) == run["sha256"]
         payload = load_json(output / run["file"])
         records = payload["records"]
         offered_mb = served_mb = carbon_numerator = 0.
