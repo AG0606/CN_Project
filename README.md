@@ -93,6 +93,8 @@ The first full run produced **mixed evidence**, not a blanket GNN win:
 
 These numbers are provisional, from one training seed and five adjacent test days. The carbon score is **not grams saved** and is not a physical electricity measurement. Before writing a strong paper claim, expand held-out periods/seeds and examine the paired differences and sensitivity results. Do not tune on these test days and then call them unseen evaluation.
 
+For the 20 October Review 1 explanation and a source-backed, validation-first improvement program, see [docs/REVIEW1_RESEARCH.md](docs/REVIEW1_RESEARCH.md). Its proposed changes are research hypotheses, not results of this campaign.
+
 ## Team ownership
 
 | Team member | Main modules | What to understand for the viva |

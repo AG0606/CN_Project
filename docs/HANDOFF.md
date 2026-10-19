@@ -47,7 +47,7 @@ The last command audits the *frozen reference* and is meaningful only while its 
 
 1. On the teammate's Windows presentation laptop, clone, open `DEMO.html`, run setup and `RUN_DEMO.ps1 -Rebuild`, then record environment and timing. The current transfer test was only on a second local folder.
 2. For a stronger paper, repeat with predeclared extra held-out periods and training seeds, retain negative results, and report paired uncertainty. The existing five adjacent test days and one seed limit generalization. Do not choose periods after seeing policy outcomes and then call them unseen tests.
-3. Improve the research claim through a defensible joint congestion/carbon analysis and related-work comparison; avoid a generic “first predictive carbon routing” claim. The manuscript is a draft, not a submitted paper.
+3. Improve the research claim through a defensible joint congestion/carbon analysis and related-work comparison; start with the dated [Review 1 research note](REVIEW1_RESEARCH.md). Avoid a generic “first predictive carbon routing” claim. The manuscript is a draft, not a submitted paper.
 4. Add Mininet/OpenFlow only as a separately labeled extension if a faculty requirement makes packet-level demonstration necessary. No current result should be relabeled as Mininet output.
 
 ## Suggested skills for a coding agent
