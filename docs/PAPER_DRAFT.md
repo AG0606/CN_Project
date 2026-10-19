@@ -159,6 +159,24 @@ To suppress route flapping while maintaining responsiveness to impending overloa
   $$\underbrace{\left( U_{p_k^{\text{curr}}}^{\max} > U_{\text{limit}} \right)}_{\text{Emergency Capacity Override}} \;\lor\; \left[ \underbrace{\left( t - t_{\text{last}}(k) \ge H \right)}_{\text{Hold Time Guard}} \;\land\; \underbrace{\left( \frac{\mathcal{C}(p_k^{\text{curr}}) - \mathcal{C}(p^*)}{\max(\mathcal{C}(p_k^{\text{curr}}), 10^{-9})} \ge \tau \right)}_{\text{Relative Improvement Guard}} \right]$$
 - If rerouted, set $t_{\text{last}}(k) \leftarrow t$. Update projected link load: $L(e, h) \leftarrow L_0(e, h) + \hat{d}_k^{(t+h)} \cdot \mathbf{1}_{e \in p^*}$.
 
+### 5.4 Joint Carbon-Budgeted Combinatorial Routing (`BudgetPlanner`)
+While Section 5.2 defines a greedy sequential path allocator prioritizing overload elimination via conservative reservations, we additionally formulate a joint multi-commodity combinatorial selector. Because each of the $|\mathcal{K}| = 6$ active OD pairs has 2 candidate paths within the $1.5\times$ propagation delay stretch bound, the complete network routing space consists of $|\prod_{k \in \mathcal{K}} P_k| = 2^6 = 64$ simultaneous global route assignments $\mathbf{p} = (p_1, \dots, p_6)$.
+
+At decision bin $t$, the joint selector evaluates all 64 assignments simultaneously:
+1. **Predicted Peak Link Utilization:**
+   $$U_{\max}(\mathbf{p}) = \max_{e \in \mathcal{E}, h \in \{1, 2, 3\}} \frac{\sum_{k \in \mathcal{K}} \mathbf{1}_{e \in p_k} \hat{d}_k^{(t+h)}}{C_e}$$
+2. **Predicted Offered Carbon Cost:**
+   $$\Phi(\mathbf{p}) = \sum_{k \in \mathcal{K}} \left( \frac{1}{3} \sum_{h=1}^3 \hat{d}_k^{(t+h)} \right) \cdot \sum_{v \in p_k \setminus \{\text{dst}(k)\}} I_v(t)$$
+3. **Reactive Reference Carbon Budget:**
+   Using the same multi-horizon demand forecast $\mathbf{\hat{d}}$, compute the predicted carbon cost of the contemporaneous reactive routing assignment $\mathbf{p}_{\text{reactive}}$. The carbon budget is:
+   $$\mathcal{B} = \Phi(\mathbf{p}_{\text{reactive}}) \times (1 + \beta)$$
+   where $\beta \ge 0$ is the permitted budget excess fraction (default $\beta = 0.0$, strictly disallowing any predicted excess over reactive routing).
+4. **Combinatorial Selection:**
+   The selector filters for carbon-budgeted assignments $\mathcal{F}_{\text{joint}} = \{ \mathbf{p} : \Phi(\mathbf{p}) \le \mathcal{B} \}$ and minimizes predicted peak utilization:
+   $$\mathbf{p}^* = \arg\min_{\mathbf{p} \in \mathcal{F}_{\text{joint}}} \left( U_{\max}(\mathbf{p}), \Phi(\mathbf{p}), \sum_{k \in \mathcal{K}} \mathbf{1}_{p_k \neq p_k^{\text{curr}}}, \sum_{k} \sum_{e \in p_k} D_e \right)$$
+5. **Emergency Overrides:**
+   The elective hold-time $H = 2$ bins and relative threshold $\tau = 0.05$ are immediately overridden if the current assignment has $U_{\max}(\mathbf{p}^{\text{curr}}) > 0.80$ or breaches the carbon budget ($\Phi(\mathbf{p}^{\text{curr}}) > \mathcal{B}$), ensuring rapid recovery when reactive conditions improve.
+
 ---
 
 ## 6. Service & Environmental Attribution
@@ -316,6 +334,31 @@ Table 3 evaluates policy robustness across three operating workloads under telem
 | | Persistence + Safeguards | $331.60 \pm 0.71$ | $91.92 \pm 1.25\%$ | $141.0 \pm 14.7$ | $30.12 \pm 2.52$ | $-12.6 \pm 16.4$ ($p = 3.32 \times 10^{-8}$) |
 
 Under normal loads, link capacities are rarely saturated; overload duration is identical ($72.0\text{ min/day}$) across all policies, and the carbon penalty of safety reservations is minimal ($+5.16\text{ g CO}_2/\text{kWh}$). Under severe bursts, both predictive policies maintain superior service fractions ($91.85\%$ and $91.92\%$ vs. $91.66\%$ for reactive carbon), confirming that conservative capacity reservations provide essential resilience against unanticipated demand spikes.
+
+### 9.5 Combinatorial Joint Budgeted Routing vs. Sequential Greedy TE
+To contrast global optimization against greedy sequential reservations, Table 4 evaluates the joint carbon-budgeted routing paradigm (`joint_gnn`, `joint_gru`, `joint_persistence`) against the reactive baseline and our primary greedy reservation policy (`predictive_carbon`) across 7 validation days (630 paired runs) and 5 held-out test days (450 paired runs) under $\delta = 1$ bin telemetry delay.
+
+#### Table 4a: Joint Carbon-Budgeted Routing vs. Greedy TE ($\delta = 1$ bin, Congested Traffic)
+
+| Evaluation Split | Policy | Forwarding Carbon Score ($\text{g CO}_2/\text{kWh}$) | Overload Duration (min/day) | Served Demand (%) | Route Changes (/day) | Budget Breaches |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Validation (7 Days)** | Reactive Carbon | 300.22 | 62.14 | 98.30% | 14.10 | [Reference] |
+| | **Joint GNN ($\beta=0$)** | **284.39** | 62.14 | 98.30% | 19.40 | **0** |
+| | Joint GRU ($\beta=0$) | 284.72 | 62.14 | 98.30% | 19.40 | **0** |
+| | Joint Persistence ($\beta=0$) | 284.75 | 62.14 | 98.30% | 19.40 | **0** |
+| | Greedy GCN–GRU Carbon | 312.45 | **51.43** | **98.45%** | **14.80** | — |
+| **Test (5 Days)** | Reactive Carbon | 323.83 | 126.0 | 91.89% | 19.40 | [Reference] |
+| | **Joint GNN ($\beta=0$)** | **303.45** | 126.0 | 91.89% | 22.80 | **0** |
+| | Joint GRU ($\beta=0$) | 303.78 | 126.0 | 91.89% | 22.80 | **0** |
+| | Joint Persistence ($\beta=0$) | 303.82 | 126.0 | 91.89% | 22.80 | **0** |
+| | Greedy GCN–GRU Carbon | 334.75 | **114.0** | **91.92%** | **18.68** | — |
+
+#### Comparative Architectural Insights:
+1. **Divergent Operational Priorities on the Pareto Surface:**
+   - **Joint Budgeted Routing** achieves substantial carbon reductions below reactive carbon ($-15.83\text{ g CO}_2/\text{kWh}$ on validation, $-20.38\text{ g CO}_2/\text{kWh}$ on test) with zero budget violations across all 60,480 simulated intervals. However, because it strictly enforces the carbon budget constraint $\Phi(\mathbf{p}) \le \mathcal{B}$, it cannot detour traffic to longer or higher-carbon links to relieve congestion when doing so would violate the budget. Consequently, its overload duration matches reactive routing ($126.0\text{ min/day}$).
+   - **Greedy Conservative Routing (`predictive_carbon`)**, in contrast, prioritizes congestion relief: it actively reserves capacity buffers to eliminate $12.0\text{ min/day}$ of link overload ($114.0$ vs. $126.0\text{ min/day}$) while keeping route churn low ($18.68$ vs. $22.80$ changes/day), at the expense of a modest carbon insurance premium.
+2. **Predictor Invariance Across Both Paradigms:**
+   In both combinatorial joint selection and sequential greedy routing, the GNN, GRU, and Persistence variants achieve nearly identical primary metrics. This confirms that on an 8-node WAN core, the architectural constraint formulation and objective weighting dominate over the specific neural network family used for traffic forecasting.
 
 ---
 
