@@ -38,7 +38,8 @@ function refresh(){
  $('m-score').textContent=fmt(s.forwarding_score);$('m-served').textContent=pct(s.served_fraction);$('m-overload').textContent=fmt(s.overload_minutes,0);$('m-changes').textContent=s.route_changes;
  $('run-tag').textContent='DAY 1 · CARBON '+s.carbon_year;
  $('status').textContent=D.summary.length+' completed runs · '+D.manifest.mode;
- $('table-note').textContent=`${rows.length} paired runs across ${new Set(rows.map(r=>r.window)).size} ${D.manifest.evaluation_split==='validation'?'development validation':'held-out'} day(s) and ${new Set(rows.map(r=>r.carbon_year)).size} carbon year(s). Replay above shows day 1 and the earliest carbon year.`;
+ const evidenceLabel=D.manifest.evaluation_split==='validation'?'development validation':D.manifest.include_joint?'previously inspected test':'held-out test';
+ $('table-note').textContent=`${rows.length} paired runs across ${new Set(rows.map(r=>r.window)).size} ${evidenceLabel} day(s) and ${new Set(rows.map(r=>r.carbon_year)).size} carbon year(s). Replay above shows day 1 and the earliest carbon year.`;
  $('comparison').replaceChildren();
  Object.entries(D.labels).forEach(([p,label])=>{const group=rows.filter(r=>r.policy===p);if(!group.length)return;const tr=document.createElement('tr');if(p===policy)tr.className='selected';[label,fmt(mean(group,'forwarding_score')),pct(mean(group,'served_fraction')),fmt(mean(group,'overload_minutes')),pct(mean(group,'p95_utilization')),fmt(mean(group,'route_changes')),fmt(mean(group,'decision_ms_mean'),2)+' ms'].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});$('comparison').append(tr);});
  render();

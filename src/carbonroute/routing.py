@@ -162,14 +162,12 @@ class BudgetPlanner:
                     and not risk[f] and not budget_risk):
                 eligible &= self.choices[:, f] == self.choices[self.current, f]
         within_budget = eligible & (carbon_costs <= budget + 1e-9)
-        pool = np.flatnonzero(within_budget if within_budget.any() else eligible)
-        if within_budget.any():
-            chosen = int(min(pool, key=lambda i: (peaks[i], carbon_costs[i],
-                                                   np.count_nonzero(self.choices[i] != self.choices[self.current]),
-                                                   self.delay[i], i)))
-        else:
-            # A hold can restrict the candidate set; preserve the least-cost route.
-            chosen = int(min(pool, key=lambda i: (carbon_costs[i], peaks[i], self.delay[i], i)))
+        if not within_budget.any():
+            raise AssertionError("Reactive assignment must remain available within the carbon budget")
+        pool = np.flatnonzero(within_budget)
+        chosen = int(min(pool, key=lambda i: (peaks[i], carbon_costs[i],
+                                               np.count_nonzero(self.choices[i] != self.choices[self.current]),
+                                               self.delay[i], i)))
         reasons = ["kept"] * len(self.pairs)
         budget_rescue = budget_risk and carbon_costs[chosen] <= budget + 1e-9
         if chosen != self.current and not risk.any() and not budget_rescue:
@@ -188,8 +186,6 @@ class BudgetPlanner:
             reasons[f] = ("joint-capacity-risk" if risk[f] else
                           "joint-carbon-budget-risk" if budget_rescue else
                           "joint-objective-improvement")
-        if not within_budget.any():
-            reasons = [reason + ";budget-unavailable" for reason in reasons]
         self.current = int(chosen)
         infeasible = sum(bool(utilization[chosen, :, self.incidence[chosen, :, f] > 0].max() >
                               self.cfg["utilization_limit"] + 1e-9)

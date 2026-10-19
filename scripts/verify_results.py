@@ -14,6 +14,12 @@ def verify(output: Path) -> None:
     manifest = load_json(output / "manifest.json")
     assert manifest["status"] == "complete" and not manifest["failed_runs"]
     assert manifest["schema_version"] == 2
+    if manifest.get("include_joint"):
+        model_hashes = manifest["checkpoint_sha256_by_model"]
+        training = load_json(output / "training_summary.json")
+        for name in ("gnn", "gru"):
+            assert model_hashes[name] == training["models"][name]["checkpoint_sha256"]
+        assert len(model_hashes["persistence"]) == 64
     for year, expected_hash in manifest["alignment_sha256"].items():
         assert sha256(output / f"alignment_{year}.json") == expected_hash
     frame = pd.read_csv(output / "summary.csv")

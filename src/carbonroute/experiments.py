@@ -35,7 +35,7 @@ def evaluation_windows(data: Prepared, cfg: dict[str, Any], count: int,
         if np.all(np.diff(data.times[start-cfg["lookback"]:start+96]) == np.timedelta64(15, "m")):
             candidates.append((start, start+96))
     if len(candidates) < count:
-        raise ValueError(f"Need {count} complete held-out days, found {len(candidates)}")
+        raise ValueError(f"Need {count} complete {split} days, found {len(candidates)}")
     return candidates[:count]
 
 
@@ -120,7 +120,8 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
     manifest: dict[str, Any] = {
         "schema_version": 2,
         "created_utc": datetime.now(timezone.utc).isoformat(),
-        "mode": ("joint-development" if split == "validation" else "joint-paper") if include_joint
+        "mode": ("joint-development" if split == "validation" else
+                 "joint-test-exploratory" if paper else "joint-test-pilot") if include_joint
                 else ("paper" if paper else "pilot"),
         "evaluation_split": split, "include_joint": include_joint,
         "carbon_budget_fraction": carbon_budget_fraction,
@@ -130,6 +131,11 @@ def campaign(root: Path, cfg: dict[str, Any], output: Path, paper: bool = False,
                          for p in sorted((root / "src/carbonroute").glob("*")) if p.is_file()},
         "graph": data.network.metadata(), "graph_hash": data.network.graph_hash,
         "traffic_manifest": data.manifest, "checkpoint_sha256": sha256(root / "artifacts/gnn.pt"),
+        "checkpoint_sha256_by_model": {
+            "gnn": sha256(root / "artifacts/gnn.pt"),
+            "gru": sha256(root / "artifacts/gru.pt"),
+            "persistence": sha256(root / "artifacts/persistence.json"),
+        } if include_joint else {},
         "carbon_sha256": carbon.source_hash, "python": platform.python_version(),
         "platform": platform.platform(), "runs": [], "failed_runs": [],
         "alignment_sha256": {},

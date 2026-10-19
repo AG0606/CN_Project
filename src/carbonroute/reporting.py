@@ -34,7 +34,7 @@ def plot_results(root: Path, output: Path, frame: pd.DataFrame, runs: dict[str, 
     fig, ax = plt.subplots(figsize=(7, 4))
     for name, group in errors[errors.split == split].groupby("model"):
         ax.plot(group.horizon_bins*15, group.mae_mbps, "o-", label=name.upper())
-    ax.set(xlabel="Forecast horizon (minutes)", ylabel="Held-out MAE (Mbps)",
+    ax.set(xlabel="Forecast horizon (minutes)", ylabel="MAE (Mbps)",
            title=f"{split.title()} demand prediction on active OD pairs")
     ax.set_xticks([15, 30, 45])
     ax.legend()
@@ -153,7 +153,8 @@ def report(root: Path, output: Path) -> Path:
 def write_findings(root: Path, output: Path, frame: pd.DataFrame, errors: pd.DataFrame,
                    manifest: dict[str, Any], split: str) -> None:
     mean_errors = errors[errors.split == split].groupby("model").mae_mbps.mean()
-    description = "development validation" if split == "validation" else "held-out"
+    description = ("development validation" if split == "validation" else
+                   "previously inspected test" if manifest.get("include_joint") else "held-out test")
     rows = ["# Measured results and interpretation", "",
             f"Generated from {len(frame)} successful paired runs; {len(manifest['failed_runs'])} failures.", "",
             "## Forecast accuracy", "", f"Mean {description} MAE over the three horizons, active pairs only:", ""]
@@ -161,7 +162,7 @@ def write_findings(root: Path, output: Path, frame: pd.DataFrame, errors: pd.Dat
     if mean_errors.gnn >= mean_errors.persistence:
         rows += ["", f"The GNN does **not** beat persistence on mean {description} MAE in this run. Do not claim otherwise."]
     if mean_errors.gnn >= mean_errors.gru:
-        rows += ["", "The no-graph GRU has lower mean held-out MAE; this run does not establish a benefit from graph aggregation."]
+        rows += ["", f"The no-graph GRU has lower mean {description} MAE; this run does not establish a benefit from graph aggregation."]
     rows += ["", "## Routing (arithmetic mean across paired day/carbon realizations)", "",
              "| Scenario / lag | Policy | Forwarding score | Served | Overload min/day | Changes/day |",
              "|---|---|---:|---:|---:|---:|"]
@@ -173,6 +174,9 @@ def write_findings(root: Path, output: Path, frame: pd.DataFrame, errors: pd.Dat
         rows += ["", "**Development result only.** This validation period was used to select the existing neural "
                  "checkpoints and calibrate their margins. It is not independent confirmation of a new policy. "
                  "Do not tune here and call the existing viewed test days unseen."]
+    elif manifest.get("include_joint"):
+        rows += ["", "**Exploratory replay only.** These test days were previously inspected before the joint "
+                 "policy was designed. This is not a fresh independent evaluation of the joint policy."]
     rows += ["", "## What these results establish", "",
              "The implementation runs an actual GCN–GRU and compares causal routing policies on identical trace-derived workloads. "
              "The marginal value of the model and each safeguard must be judged from paired_differences.csv and the component rows. "
@@ -183,7 +187,8 @@ def write_findings(root: Path, output: Path, frame: pd.DataFrame, errors: pd.Dat
              "- Eight nodes and six training-selected directed OD pairs; configured capacities/delays, one model seed.",
              "- Aggregate max-min service, not TCP goodput, packet loss or RTT. One-bin lag means 15 scenario minutes.",
              "- Forwarding score sums sender CI over hops, weighted by served bytes. Hypothetical idle/beta models are sensitivity examples only.",
-             "- The paper campaign uses five adjacent held-out days. Window-clustered bootstrap intervals are descriptive and adjacent days may still correlate.",
+             f"- This campaign uses {frame.window.nunique()} adjacent {description} day(s). "
+             "Window-clustered bootstrap intervals are descriptive and adjacent days may still correlate.",
              "- No Mininet/OpenFlow actuation was run. Publication novelty and generalization are not established by this implementation.", "",
              "## Reproduction", "", "See manifest.json, alignment_*.json, runs/*.json, summary.csv and figures/. "
              "The manifest records input/model/config/source hashes. Repeated deterministic runs do not create additional independent evidence.", ""]
