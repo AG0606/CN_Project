@@ -2,13 +2,10 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
-import pytest
-
-import sys
 
 from carbonroute.common import ROOT, config, load_json, sha256
 

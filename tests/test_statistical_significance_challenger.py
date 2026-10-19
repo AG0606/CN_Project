@@ -15,20 +15,19 @@ Independently verifies:
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
-import sys
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT / "src") not in sys.path:
     sys.path.insert(0, str(ROOT / "src"))
 
-from carbonroute.common import ROOT
 import numpy as np
 import pandas as pd
-import pytest
 from scipy import stats
 
+from carbonroute.common import ROOT
 
 
 def test_independent_verification_all_runs_vs_csv_and_json():
@@ -76,22 +75,29 @@ def test_independent_verification_all_runs_vs_csv_and_json():
             assert len(merged) == 75, f"Expected 75 paired runs for {scen} delay={delay} {comp}, found {len(merged)}"
 
             for metric in metrics:
-                tgt_vals = merged[f"{metric}_tgt"].to_numpy(dtype=float)
-                base_vals = merged[f"{metric}_base"].to_numpy(dtype=float)
-                diff = tgt_vals - base_vals
-                n = len(diff)
-                mean_diff = float(np.mean(diff))
-                std_diff = float(np.std(diff, ddof=1)) if n > 1 else 0.0
+                # Aggregate across repeated realizations of the same traffic window (day)
+                # to avoid pseudoreplication across identical traffic demand inputs.
+                if "window" in merged.columns and merged["window"].nunique() > 1:
+                    day_tgt = merged.groupby("window")[f"{metric}_tgt"].mean()
+                    day_base = merged.groupby("window")[f"{metric}_base"].mean()
+                    diff = (day_tgt - day_base).to_numpy(dtype=float)
+                else:
+                    diff = (merged[f"{metric}_tgt"] - merged[f"{metric}_base"]).to_numpy(dtype=float)
 
-                if np.allclose(diff, 0.0) or (n > 1 and np.isclose(std_diff, 0.0)):
+                n = len(merged)
+                n_days = len(diff)
+                mean_diff = float(np.mean(diff))
+                std_diff = float(np.std(diff, ddof=1)) if n_days > 1 else 0.0
+
+                if np.allclose(diff, 0.0) or (n_days > 1 and np.isclose(std_diff, 0.0)):
                     t_stat, p_t = 0.0, 1.0
                     w_stat, p_w = 0.0, 1.0
                 else:
-                    t_res = stats.ttest_rel(tgt_vals, base_vals)
+                    t_res = stats.ttest_1samp(diff, 0.0)
                     t_stat = float(t_res.statistic)
                     p_t = float(t_res.pvalue)
 
-                    w_res = stats.wilcoxon(tgt_vals, base_vals, alternative="two-sided")
+                    w_res = stats.wilcoxon(diff, alternative="two-sided")
                     w_stat = float(w_res.statistic)
                     p_w = float(w_res.pvalue)
 
@@ -109,6 +115,7 @@ def test_independent_verification_all_runs_vs_csv_and_json():
                     "wilcoxon_stat": w_stat,
                     "p_value_wilcoxon": p_w,
                     "n_pairs": int(n),
+                    "n_days": int(n_days),
                 }
                 computed_records.append(record)
 
@@ -120,6 +127,7 @@ def test_independent_verification_all_runs_vs_csv_and_json():
                     "wilcoxon_stat": w_stat,
                     "p_value_wilcoxon": p_w,
                     "n_pairs": int(n),
+                    "n_days": int(n_days),
                 }
                 scen_lag = f"{scen}_lag{delay}"
                 if scen_lag == "congested_lag1":
@@ -144,7 +152,7 @@ def test_independent_verification_all_runs_vs_csv_and_json():
         ]
         assert len(row) == 1, f"Missing or duplicate row in CSV for {comp_rec}"
         r = row.iloc[0]
-        for field in ["mean_diff", "std_diff", "t_statistic", "p_value_ttest", "wilcoxon_stat", "p_value_wilcoxon", "n_pairs"]:
+        for field in ["mean_diff", "std_diff", "t_statistic", "p_value_ttest", "wilcoxon_stat", "p_value_wilcoxon", "n_pairs", "n_days"]:
             delta = abs(comp_rec[field] - r[field])
             if delta > max_csv_diff:
                 max_csv_diff = delta
@@ -154,11 +162,11 @@ def test_independent_verification_all_runs_vs_csv_and_json():
 
     # 3. Check maximum discrepancy vs statistical_significance.json
     max_json_diff = 0.0
-    assert set(stat_json.keys()) == set(computed_json.keys()), f"JSON keys mismatch"
+    assert set(stat_json.keys()) == set(computed_json.keys()), "JSON keys mismatch"
     for k in stat_json:
         assert set(stat_json[k].keys()) == set(computed_json[k].keys()), f"Metrics mismatch in {k}"
         for m in stat_json[k]:
-            for field in ["mean_diff", "std_diff", "t_statistic", "p_value_ttest", "wilcoxon_stat", "p_value_wilcoxon", "n_pairs"]:
+            for field in ["mean_diff", "std_diff", "t_statistic", "p_value_ttest", "wilcoxon_stat", "p_value_wilcoxon", "n_pairs", "n_days"]:
                 val_json = stat_json[k][m][field]
                 val_comp = computed_json[k][m][field]
                 delta = abs(val_json - val_comp)
@@ -202,16 +210,14 @@ def test_adversarial_stress_edge_cases():
         assert row["wilcoxon_stat"] == 0.0
         assert row["p_value_wilcoxon"] == 1.0
 
-    # Case 2: One-sided negative differences with substantial zeros (tied overload)
-    # 30 runs have 0 difference, 45 runs have -15 min overload difference
+    # Case 2: One-sided negative differences across calendar days
+    # Windows 0, 1 have 0 diff, Windows 2, 3, 4 have -15 min overload diff (mean = -9.0)
     tied_rows = []
-    idx = 0
     for s in [42, 43, 44, 45, 46]:
         for w in range(5):
             for y in [2022, 2023, 2024]:
                 base_ov = 120.0
-                tgt_ov = base_ov if idx < 30 else base_ov - 15.0
-                idx += 1
+                tgt_ov = base_ov if w < 2 else base_ov - 15.0
                 for pol, ov in [("predictive_carbon", tgt_ov), ("reactive_carbon", base_ov)]:
                     tied_rows.append({
                         "model_seed": s,
@@ -228,11 +234,11 @@ def test_adversarial_stress_edge_cases():
     tied_df = pd.DataFrame(tied_rows)
     sig_tied = compute_paired_significance(tied_df)
     ov_row = sig_tied[(sig_tied.comparison == "vs_reactive") & (sig_tied.metric == "overload_minutes")].iloc[0]
-    assert ov_row["mean_diff"] == -9.0  # 45 * (-15) / 75 = -9.0
-    assert ov_row["t_statistic"] < -10.0
-    assert ov_row["p_value_ttest"] < 1e-15
+    assert ov_row["mean_diff"] == -9.0  # 3 * (-15) / 5 = -9.0
+    assert ov_row["t_statistic"] < -2.0
+    assert 0.0 < ov_row["p_value_ttest"] < 0.10
     assert ov_row["wilcoxon_stat"] == 0.0  # All non-zero ranks have negative signs -> W+ = 0
-    assert ov_row["p_value_wilcoxon"] < 1e-8
+    assert ov_row["p_value_wilcoxon"] <= 0.25
 
 
 def test_empirical_zero_delay_and_overload_mechanisms():

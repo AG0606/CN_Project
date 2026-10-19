@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import copy
 import hashlib
-import json
 import platform
 import subprocess
 import time
@@ -28,7 +27,6 @@ from .common import ROOT, config, fingerprint, load_json, save_json, sha256
 from .data import CarbonTable, Prepared, load_prepared
 from .experiments import evaluation_windows, workload
 from .prediction import TrainedPredictor, batch_prediction, calibrate_margin, make_windows
-from .routing import POLICIES
 from .simulation import replay
 
 DEFAULT_ALPHAS = [0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.99]
@@ -178,7 +176,7 @@ def plot_sensitivity_alpha(
 
     # Combine legends
     lines = line1 + (line2 if not c0.empty else []) + line3 + (line4 if not c0.empty else [])
-    labels = [l.get_label() for l in lines]
+    labels = [ln.get_label() for ln in lines]
     ax1.legend(lines, labels, loc="upper center", bbox_to_anchor=(0.5, 1.18), ncol=2, frameon=True, fontsize=9)
 
     plt.title(r"Parameter Sensitivity: Safety Margin Quantile ($\alpha$)", fontsize=12, pad=25, fontweight="bold")
@@ -242,7 +240,7 @@ def plot_sensitivity_tau(
     ax2.tick_params(axis="y", labelcolor=color_carb)
 
     lines = line1 + (line2 if not c0.empty else []) + line3 + (line4 if not c0.empty else [])
-    labels = [l.get_label() for l in lines]
+    labels = [ln.get_label() for ln in lines]
     ax1.legend(lines, labels, loc="upper center", bbox_to_anchor=(0.5, 1.18), ncol=2, frameon=True, fontsize=9)
 
     plt.title(r"Parameter Sensitivity: Route Flap Hysteresis Threshold ($\tau$)", fontsize=12, pad=25, fontweight="bold")
@@ -462,13 +460,9 @@ def run_sensitivity_sweep(
     shared_fig_dir = root / "figures"
     shared_fig_dir.mkdir(parents=True, exist_ok=True)
 
-    # Locate trained model checkpoint
+    # Locate trained model checkpoint: default to reference artifacts/ directory
     if artifact_dir is None:
-        seed_art = root / "artifacts" / "seeds" / f"seed_{seed}"
-        if seed_art.exists() and (seed_art / "gnn.pt").exists():
-            art_dir = seed_art
-        else:
-            art_dir = root / "artifacts"
+        art_dir = root / "artifacts"
     else:
         art_dir = Path(artifact_dir)
 

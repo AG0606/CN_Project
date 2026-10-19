@@ -13,7 +13,6 @@ import os
 import re
 import subprocess
 import sys
-from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -25,12 +24,11 @@ from scipy.stats import ttest_rel, wilcoxon
 from carbonroute.common import ROOT, load_json, sha256
 from carbonroute.data import load_prepared
 from carbonroute.prediction import calibrate_margin
-from carbonroute.routing import POLICIES, Planner
+from carbonroute.routing import Planner
 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.verify_results import verify as auditor_verify
-
 
 # ==============================================================================
 # Helper & Schema Validator Functions (Authoritative Interface Contracts)

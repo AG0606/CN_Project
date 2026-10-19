@@ -80,25 +80,29 @@ class TrainedPredictor:
         else:
             folder = Path(folder)
 
-        if cfg is not None:
-            cfg = copy.deepcopy(cfg)
-            if seed is not None:
-                cfg["seed"] = seed
+        if prepared is None:
+            raise ValueError("TrainedPredictor requires prepared dataset for checksum and graph verification")
+        if cfg is None:
+            raise ValueError("TrainedPredictor requires configuration dict")
+
+        cfg = copy.deepcopy(cfg)
+        if seed is not None:
+            cfg["seed"] = seed
 
         meta = load_json(folder / f"{kind}.json")
-        if meta["config_hash"] != fingerprint(cfg) or (prepared is not None and meta["traffic_sha256"] != prepared.manifest["traffic_sha256"]):
+        if meta["config_hash"] != fingerprint(cfg) or meta["traffic_sha256"] != prepared.manifest["traffic_sha256"]:
             raise ValueError("Checkpoint configuration or training data mismatch; retrain")
-        if prepared is not None and meta["graph_hash"] != prepared.network.graph_hash:
+        if meta["graph_hash"] != prepared.network.graph_hash:
             raise ValueError("Checkpoint graph mismatch")
         if sha256(folder / f"{kind}.pt") != meta["checkpoint_sha256"]:
             raise ValueError("Checkpoint checksum mismatch")
         torch.set_num_threads(cfg["cpu_threads"])
-        adjacency = prepared.network.adjacency() if (prepared is not None and kind == "gnn") else np.eye(8, dtype=np.float32)
-        mask = prepared.mask if prepared is not None else np.ones((8, 8), dtype=np.float32)
+        adjacency = prepared.network.adjacency() if kind == "gnn" else np.eye(8, dtype=np.float32)
+        mask = prepared.mask
         self.model = DemandNet(adjacency, mask, cfg["hidden_size"], cfg["horizon"])
         self.model.load_state_dict(torch.load(folder / f"{kind}.pt", map_location="cpu", weights_only=True))
         self.model.eval()
-        self.scale = prepared.scale if prepared is not None else np.ones((8, 8), dtype=np.float32)
+        self.scale = prepared.scale
         self.lookback = cfg["lookback"]
         self.margin = np.array(meta["margin_mbps"], dtype=np.float32)
 

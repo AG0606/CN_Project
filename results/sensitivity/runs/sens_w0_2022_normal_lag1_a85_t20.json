@@ -27,8 +27,8 @@
     "excess_mbit": 479.4139623641968,
     "route_changes": 9,
     "infeasible_pair_bins": 1,
-    "decision_ms_mean": 0.970089580732747,
-    "decision_ms_p95": 1.2605999800143763,
+    "decision_ms_mean": 0.578931247825191,
+    "decision_ms_p95": 0.8203250326914713,
     "idle_only_g": 2312.150899871999,
     "idle_dominated_g": 2323.4082566937996,
     "load_sensitive_g": 343.7886582052059
@@ -131,7 +131,7 @@
         "objective-improvement"
       ],
       "projected_max_utilization": 0.6173941373825074,
-      "decision_ms": 1.0707000037655234,
+      "decision_ms": 1.0200999677181244,
       "served_mb": 1257.6764546334743,
       "carbon_weighted_mb": 502280.9584288408,
       "forwarding_score": 399.3721569473295,
@@ -239,7 +239,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.606901478767395,
-      "decision_ms": 0.8409000001847744,
+      "decision_ms": 0.567799957934767,
       "served_mb": 1086.095778644085,
       "carbon_weighted_mb": 510745.0721399771,
       "forwarding_score": 470.2578558749274,
@@ -347,7 +347,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4563254714012146,
-      "decision_ms": 1.1045000283047557,
+      "decision_ms": 0.6739000091329217,
       "served_mb": 1258.9602872729301,
       "carbon_weighted_mb": 570288.8773385849,
       "forwarding_score": 452.98400839466024,
@@ -455,7 +455,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5166861653327942,
-      "decision_ms": 0.8453999762423337,
+      "decision_ms": 0.5345999961718917,
       "served_mb": 1137.5396691262722,
       "carbon_weighted_mb": 485265.20917696867,
       "forwarding_score": 426.59190035077535,
@@ -563,7 +563,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4745002031326294,
-      "decision_ms": 0.7766999769955873,
+      "decision_ms": 0.5312999710440636,
       "served_mb": 1014.9926036596298,
       "carbon_weighted_mb": 409986.1007093434,
       "forwarding_score": 403.93013627006604,
@@ -671,7 +671,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4582158327102661,
-      "decision_ms": 0.8799000061117113,
+      "decision_ms": 0.5023000412620604,
       "served_mb": 751.0189537424594,
       "carbon_weighted_mb": 302407.4383520301,
       "forwarding_score": 402.66285803451524,
@@ -779,7 +779,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.37481496334075926,
-      "decision_ms": 1.0655999649316072,
+      "decision_ms": 0.534099992364645,
       "served_mb": 672.0054293051362,
       "carbon_weighted_mb": 280122.36489183054,
       "forwarding_score": 416.84538945091754,
@@ -887,7 +887,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.3182540416717529,
-      "decision_ms": 1.081200025510043,
+      "decision_ms": 0.5267999949865043,
       "served_mb": 695.4712813720107,
       "carbon_weighted_mb": 366708.68172739254,
       "forwarding_score": 527.2808404165268,
@@ -995,7 +995,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.2683108329772949,
-      "decision_ms": 1.0694999946281314,
+      "decision_ms": 0.5154000245966017,
       "served_mb": 686.3417459651828,
       "carbon_weighted_mb": 336872.9443662531,
       "forwarding_score": 490.8239173074316,
@@ -1103,7 +1103,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.28807892799377444,
-      "decision_ms": 1.075600041076541,
+      "decision_ms": 0.5088000325486064,
       "served_mb": 469.65957283973694,
       "carbon_weighted_mb": 235349.8782571777,
       "forwarding_score": 501.10738046744063,
@@ -1211,7 +1211,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.24230332374572755,
-      "decision_ms": 1.0623999987728894,
+      "decision_ms": 0.5042999982833862,
       "served_mb": 380.3166238591075,
       "carbon_weighted_mb": 206059.1158280823,
       "forwarding_score": 541.8093843418718,
@@ -1319,7 +1319,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.18733018040657043,
-      "decision_ms": 1.1501000262796879,
+      "decision_ms": 0.6508000078611076,
       "served_mb": 511.6906011477113,
       "carbon_weighted_mb": 242238.15963202037,
       "forwarding_score": 473.40748313274713,
@@ -1427,7 +1427,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.23107476234436036,
-      "decision_ms": 1.1946000158786774,
+      "decision_ms": 0.5333999870344996,
       "served_mb": 429.27211336791515,
       "carbon_weighted_mb": 249402.39642615482,
       "forwarding_score": 580.9890478778904,
@@ -1535,7 +1535,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.18074941635131836,
-      "decision_ms": 0.992499990388751,
+      "decision_ms": 0.5308000254444778,
       "served_mb": 437.2622027993202,
       "carbon_weighted_mb": 242044.6272306615,
       "forwarding_score": 553.545734529785,
@@ -1643,7 +1643,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.19279226660728455,
-      "decision_ms": 1.1393000022508204,
+      "decision_ms": 0.5150000215508044,
       "served_mb": 351.33830420672894,
       "carbon_weighted_mb": 201407.6778307057,
       "forwarding_score": 573.2585243884953,
@@ -1751,7 +1751,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.17267470359802245,
-      "decision_ms": 1.2508999789133668,
+      "decision_ms": 0.5251999828033149,
       "served_mb": 359.3634195160121,
       "carbon_weighted_mb": 218851.18775166062,
       "forwarding_score": 608.9968423786921,
@@ -1859,7 +1859,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.1461297869682312,
-      "decision_ms": 1.1679999879561365,
+      "decision_ms": 0.6482999888248742,
       "served_mb": 394.7538737207651,
       "carbon_weighted_mb": 239836.57662272113,
       "forwarding_score": 607.5597798753281,
@@ -1967,7 +1967,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.13992708921432495,
-      "decision_ms": 1.2175999581813812,
+      "decision_ms": 0.5525999586097896,
       "served_mb": 447.652705013752,
       "carbon_weighted_mb": 254197.4135634305,
       "forwarding_score": 567.8451413705219,
@@ -2075,7 +2075,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.15459544062614441,
-      "decision_ms": 1.1512000346556306,
+      "decision_ms": 0.525799987372011,
       "served_mb": 344.14496349636465,
       "carbon_weighted_mb": 189145.58198773008,
       "forwarding_score": 549.6101993360368,
@@ -2183,7 +2183,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.15873827934265136,
-      "decision_ms": 1.1383999953977764,
+      "decision_ms": 0.5161999724805355,
       "served_mb": 276.31359442602843,
       "carbon_weighted_mb": 149514.65994643618,
       "forwarding_score": 541.1049726200227,
@@ -2291,7 +2291,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.1486553430557251,
-      "decision_ms": 1.07409997144714,
+      "decision_ms": 0.5118999979458749,
       "served_mb": 395.2219187747687,
       "carbon_weighted_mb": 241656.26206789142,
       "forwarding_score": 611.4444836891951,
@@ -2399,7 +2399,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.1575366497039795,
-      "decision_ms": 1.0560000082477927,
+      "decision_ms": 1.7064999556168914,
       "served_mb": 469.6826892904937,
       "carbon_weighted_mb": 307207.53881560644,
       "forwarding_score": 654.0746461822481,
@@ -2507,7 +2507,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.19113677740097046,
-      "decision_ms": 1.0786000057123601,
+      "decision_ms": 0.5994999664835632,
       "served_mb": 290.90749891474843,
       "carbon_weighted_mb": 166794.11637082117,
       "forwarding_score": 573.3579127147245,
@@ -2615,7 +2615,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.15747151374816895,
-      "decision_ms": 1.066999975591898,
+      "decision_ms": 0.5223000189289451,
       "served_mb": 416.57525673508644,
       "carbon_weighted_mb": 219871.57697143315,
       "forwarding_score": 527.8075771822822,
@@ -2723,7 +2723,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.21216514110565185,
-      "decision_ms": 1.1263000196777284,
+      "decision_ms": 0.513700011651963,
       "served_mb": 358.4989010123536,
       "carbon_weighted_mb": 191958.20603834788,
       "forwarding_score": 535.4499148987159,
@@ -2831,7 +2831,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.19322123527526855,
-      "decision_ms": 1.2333000195212662,
+      "decision_ms": 0.5149999633431435,
       "served_mb": 267.8839502390474,
       "carbon_weighted_mb": 139936.91069309425,
       "forwarding_score": 522.3788531124054,
@@ -2939,7 +2939,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.1718477725982666,
-      "decision_ms": 1.031799998600036,
+      "decision_ms": 0.6320999818854034,
       "served_mb": 269.0797246992588,
       "carbon_weighted_mb": 146314.66667410603,
       "forwarding_score": 543.75953757808,
@@ -3047,7 +3047,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.1549460768699646,
-      "decision_ms": 1.2178999604657292,
+      "decision_ms": 0.546799972653389,
       "served_mb": 529.6340187080204,
       "carbon_weighted_mb": 283390.7647894051,
       "forwarding_score": 535.0690378248424,
@@ -3155,7 +3155,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.17000980377197267,
-      "decision_ms": 1.094200008083135,
+      "decision_ms": 0.5365000106394291,
       "served_mb": 503.14983325079083,
       "carbon_weighted_mb": 241552.51239484604,
       "forwarding_score": 480.0806766330502,
@@ -3263,7 +3263,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.20110832452774047,
-      "decision_ms": 1.0857000015676022,
+      "decision_ms": 0.5389000289142132,
       "served_mb": 590.9797330386937,
       "carbon_weighted_mb": 277268.90572373156,
       "forwarding_score": 469.16821376948593,
@@ -3371,7 +3371,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.22831750512123108,
-      "decision_ms": 1.05339998845011,
+      "decision_ms": 0.5292000132612884,
       "served_mb": 706.205210275948,
       "carbon_weighted_mb": 348457.0315779309,
       "forwarding_score": 493.4217795444643,
@@ -3479,7 +3479,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.24949525594711303,
-      "decision_ms": 1.04750000173226,
+      "decision_ms": 0.5157000268809497,
       "served_mb": 851.7889441922307,
       "carbon_weighted_mb": 452188.85393586254,
       "forwarding_score": 530.8695974736826,
@@ -3587,7 +3587,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.29043045043945315,
-      "decision_ms": 1.164899964351207,
+      "decision_ms": 0.5182999884709716,
       "served_mb": 934.0862807817757,
       "carbon_weighted_mb": 505363.19646995526,
       "forwarding_score": 541.0241075877871,
@@ -3695,7 +3695,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.35768837928771974,
-      "decision_ms": 1.1053000343963504,
+      "decision_ms": 0.5633000400848687,
       "served_mb": 1562.433905247599,
       "carbon_weighted_mb": 643938.5508981654,
       "forwarding_score": 412.1381062811233,
@@ -3803,7 +3803,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.590698754787445,
-      "decision_ms": 1.0668999748304486,
+      "decision_ms": 0.6873000529594719,
       "served_mb": 1981.839632615447,
       "carbon_weighted_mb": 714366.4069263737,
       "forwarding_score": 360.4562120819128,
@@ -3913,7 +3913,7 @@
         "capacity-risk;no-feasible-candidate"
       ],
       "projected_max_utilization": 0.9116487503051758,
-      "decision_ms": 1.1418000212870538,
+      "decision_ms": 1.0047000250779092,
       "served_mb": 1988.8568378984928,
       "carbon_weighted_mb": 1072573.3466831038,
       "forwarding_score": 539.2913789694529,
@@ -4023,7 +4023,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7591745853424072,
-      "decision_ms": 0.8835999760776758,
+      "decision_ms": 0.6110999966040254,
       "served_mb": 1189.413433894515,
       "carbon_weighted_mb": 687841.9785044399,
       "forwarding_score": 578.3035224784944,
@@ -4133,7 +4133,7 @@
         "objective-improvement"
       ],
       "projected_max_utilization": 0.4594643712043762,
-      "decision_ms": 0.7450999692082405,
+      "decision_ms": 0.534099992364645,
       "served_mb": 1446.2370484136045,
       "carbon_weighted_mb": 648319.6191352268,
       "forwarding_score": 448.2803284885951,
@@ -4243,7 +4243,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5945126414299011,
-      "decision_ms": 0.8879000088199973,
+      "decision_ms": 0.6301000248640776,
       "served_mb": 1665.2767047286034,
       "carbon_weighted_mb": 739904.7778211883,
       "forwarding_score": 444.31341393307576,
@@ -4353,7 +4353,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.737820053100586,
-      "decision_ms": 0.7666000165045261,
+      "decision_ms": 0.6403999868780375,
       "served_mb": 1549.9331876635551,
       "carbon_weighted_mb": 688257.0017663677,
       "forwarding_score": 444.0559162449317,
@@ -4463,7 +4463,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7037464320659638,
-      "decision_ms": 0.7243999862112105,
+      "decision_ms": 0.5280999466776848,
       "served_mb": 1709.7626147791743,
       "carbon_weighted_mb": 835049.7772408716,
       "forwarding_score": 488.4010037549704,
@@ -4573,7 +4573,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6665114283561706,
-      "decision_ms": 0.699699972756207,
+      "decision_ms": 0.5090999766252935,
       "served_mb": 1671.7714508995414,
       "carbon_weighted_mb": 778651.273307554,
       "forwarding_score": 465.7641885728936,
@@ -4683,7 +4683,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7009398579597473,
-      "decision_ms": 0.7594000198878348,
+      "decision_ms": 0.5083999712951481,
       "served_mb": 1612.5432014465332,
       "carbon_weighted_mb": 797752.6223945225,
       "forwarding_score": 494.71705420288765,
@@ -4793,7 +4793,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6412465810775757,
-      "decision_ms": 0.7232999778352678,
+      "decision_ms": 0.505700008943677,
       "served_mb": 1712.9166059195995,
       "carbon_weighted_mb": 796484.9994586626,
       "forwarding_score": 464.9876104336441,
@@ -4903,7 +4903,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7033947885036469,
-      "decision_ms": 0.7052000146359205,
+      "decision_ms": 0.5112999933771789,
       "served_mb": 1515.1126546785235,
       "carbon_weighted_mb": 718316.001686913,
       "forwarding_score": 474.10072080701167,
@@ -5013,7 +5013,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.615633636713028,
-      "decision_ms": 0.6852000369690359,
+      "decision_ms": 0.5230000242590904,
       "served_mb": 1633.3874071016908,
       "carbon_weighted_mb": 747056.2795226821,
       "forwarding_score": 457.36625388111133,
@@ -5123,7 +5123,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6764125108718873,
-      "decision_ms": 0.6759999669156969,
+      "decision_ms": 0.5995999672450125,
       "served_mb": 1716.7650260031223,
       "carbon_weighted_mb": 803796.3047218773,
       "forwarding_score": 468.2040305732646,
@@ -5233,7 +5233,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6629718720912934,
-      "decision_ms": 0.6864000461064279,
+      "decision_ms": 0.7647000020369887,
       "served_mb": 1554.1442289948463,
       "carbon_weighted_mb": 696303.1709578127,
       "forwarding_score": 448.0299562725601,
@@ -5343,7 +5343,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7086756348609924,
-      "decision_ms": 0.6765999714843929,
+      "decision_ms": 0.5665000062435865,
       "served_mb": 1447.7885998785496,
       "carbon_weighted_mb": 658142.6883597672,
       "forwarding_score": 454.5847980948163,
@@ -5453,7 +5453,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6561841249465943,
-      "decision_ms": 0.6824999582022429,
+      "decision_ms": 0.6019999855197966,
       "served_mb": 1695.8697460591793,
       "carbon_weighted_mb": 788908.5941801739,
       "forwarding_score": 465.19409642952854,
@@ -5563,7 +5563,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7226174354553223,
-      "decision_ms": 0.6769999745301902,
+      "decision_ms": 0.6030999938957393,
       "served_mb": 1862.7921625971794,
       "carbon_weighted_mb": 897199.773730666,
       "forwarding_score": 481.6424460793061,
@@ -5673,7 +5673,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.741086459159851,
-      "decision_ms": 0.8438000222668052,
+      "decision_ms": 0.5497999954968691,
       "served_mb": 1782.318053394556,
       "carbon_weighted_mb": 856231.2502717541,
       "forwarding_score": 480.403174192731,
@@ -5783,7 +5783,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6986436486244202,
-      "decision_ms": 1.1886999709531665,
+      "decision_ms": 0.5369000136852264,
       "served_mb": 1866.3299091160297,
       "carbon_weighted_mb": 857516.1318942154,
       "forwarding_score": 459.46653252766555,
@@ -5893,7 +5893,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.786397111415863,
-      "decision_ms": 1.0920999920926988,
+      "decision_ms": 0.5219000158831477,
       "served_mb": 1863.6035241186619,
       "carbon_weighted_mb": 905099.1758312222,
       "forwarding_score": 485.67153051465874,
@@ -6003,7 +6003,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7604702353477478,
-      "decision_ms": 1.0285000316798687,
+      "decision_ms": 0.5171999800950289,
       "served_mb": 1798.3364269137383,
       "carbon_weighted_mb": 847641.9666989361,
       "forwarding_score": 471.3478268099361,
@@ -6113,7 +6113,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7765031099319458,
-      "decision_ms": 1.0822000331245363,
+      "decision_ms": 0.5188999930396676,
       "served_mb": 1710.4140982031822,
       "carbon_weighted_mb": 813767.0620545489,
       "forwarding_score": 475.77195657439,
@@ -6223,7 +6223,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.740557336807251,
-      "decision_ms": 1.0575000196695328,
+      "decision_ms": 0.526099989656359,
       "served_mb": 1922.3069541156292,
       "carbon_weighted_mb": 1001188.6125663521,
       "forwarding_score": 520.82660910258,
@@ -6333,7 +6333,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6770384550094605,
-      "decision_ms": 1.0422999621368945,
+      "decision_ms": 0.513100007083267,
       "served_mb": 1832.035405933857,
       "carbon_weighted_mb": 968691.6601696945,
       "forwarding_score": 528.7516043806567,
@@ -6443,7 +6443,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.668200671672821,
-      "decision_ms": 1.0908999829553068,
+      "decision_ms": 0.8345000096596777,
       "served_mb": 1842.4607433378696,
       "carbon_weighted_mb": 989122.4919975167,
       "forwarding_score": 536.8486116049268,
@@ -6553,7 +6553,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6902395844459533,
-      "decision_ms": 1.3738999841734767,
+      "decision_ms": 0.8156000403687358,
       "served_mb": 1543.0449295789003,
       "carbon_weighted_mb": 764659.9930703131,
       "forwarding_score": 495.55264296742814,
@@ -6663,7 +6663,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6726661324501038,
-      "decision_ms": 1.0859999456442893,
+      "decision_ms": 0.6281000096350908,
       "served_mb": 1758.3272377029061,
       "carbon_weighted_mb": 909498.4464994858,
       "forwarding_score": 517.2520944893411,
@@ -6773,7 +6773,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6776350140571594,
-      "decision_ms": 1.0457999887876213,
+      "decision_ms": 0.533499987795949,
       "served_mb": 1761.4652898162603,
       "carbon_weighted_mb": 831013.9639499828,
       "forwarding_score": 471.7742488338595,
@@ -6883,7 +6883,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.736793828010559,
-      "decision_ms": 1.0708000045269728,
+      "decision_ms": 0.5342000513337553,
       "served_mb": 1236.4169642329216,
       "carbon_weighted_mb": 640354.3129578427,
       "forwarding_score": 517.9112964978779,
@@ -6993,7 +6993,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5361419558525086,
-      "decision_ms": 1.0195000213570893,
+      "decision_ms": 0.5171999800950289,
       "served_mb": 1346.970009058714,
       "carbon_weighted_mb": 700157.3989726466,
       "forwarding_score": 519.801773063922,
@@ -7103,7 +7103,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5178064644336701,
-      "decision_ms": 1.3079000054858625,
+      "decision_ms": 0.5106999888084829,
       "served_mb": 1502.5253176689148,
       "carbon_weighted_mb": 734205.9870321129,
       "forwarding_score": 488.64799707414784,
@@ -7213,7 +7213,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5795536994934082,
-      "decision_ms": 0.8789999992586672,
+      "decision_ms": 0.5019999807700515,
       "served_mb": 1421.7325318604708,
       "carbon_weighted_mb": 677737.5046242378,
       "forwarding_score": 476.6983166217309,
@@ -7323,7 +7323,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6056857347488404,
-      "decision_ms": 0.737300026230514,
+      "decision_ms": 0.49789994955062866,
       "served_mb": 1545.7372203469276,
       "carbon_weighted_mb": 690652.2528605062,
       "forwarding_score": 446.81090923429736,
@@ -7433,7 +7433,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7084040403366089,
-      "decision_ms": 0.9601999772712588,
+      "decision_ms": 0.5032999906688929,
       "served_mb": 1663.2005341351032,
       "carbon_weighted_mb": 704912.1144488414,
       "forwarding_score": 423.82869652901445,
@@ -7543,7 +7543,7 @@
         "capacity-risk"
       ],
       "projected_max_utilization": 0.6045544624328614,
-      "decision_ms": 1.0366999777033925,
+      "decision_ms": 0.5007999716326594,
       "served_mb": 1811.160296201706,
       "carbon_weighted_mb": 970920.4765615783,
       "forwarding_score": 536.0765022277457,
@@ -7653,7 +7653,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.7051466941833496,
-      "decision_ms": 0.8879000088199973,
+      "decision_ms": 0.5070999613963068,
       "served_mb": 1429.9508068710566,
       "carbon_weighted_mb": 764200.2091478049,
       "forwarding_score": 534.4241252746224,
@@ -7763,7 +7763,7 @@
         "objective-improvement"
       ],
       "projected_max_utilization": 0.7845948576927185,
-      "decision_ms": 1.125900016631931,
+      "decision_ms": 0.528500007931143,
       "served_mb": 1669.6629345417023,
       "carbon_weighted_mb": 701038.3325761536,
       "forwarding_score": 419.86817702734606,
@@ -7873,7 +7873,7 @@
         "capacity-risk"
       ],
       "projected_max_utilization": 0.6417477607727051,
-      "decision_ms": 0.8427000138908625,
+      "decision_ms": 0.8996999822556973,
       "served_mb": 1647.971983999014,
       "carbon_weighted_mb": 898862.9159792203,
       "forwarding_score": 545.435799095331,
@@ -7983,7 +7983,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5551088333129883,
-      "decision_ms": 0.8585000177845359,
+      "decision_ms": 0.5724999937228858,
       "served_mb": 1300.4554169252515,
       "carbon_weighted_mb": 707811.8487901629,
       "forwarding_score": 544.2799803654069,
@@ -8093,7 +8093,7 @@
         "objective-improvement"
       ],
       "projected_max_utilization": 0.6714269876480102,
-      "decision_ms": 1.1758999899029732,
+      "decision_ms": 0.5316000315360725,
       "served_mb": 1196.3478796184063,
       "carbon_weighted_mb": 529445.6730149239,
       "forwarding_score": 442.55160395636665,
@@ -8203,7 +8203,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6335704684257507,
-      "decision_ms": 1.0816999711096287,
+      "decision_ms": 0.5186000489629805,
       "served_mb": 1048.773728683591,
       "carbon_weighted_mb": 500776.74271137017,
       "forwarding_score": 477.48787847683747,
@@ -8313,7 +8313,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5570389211177826,
-      "decision_ms": 1.450000039767474,
+      "decision_ms": 0.5174000398255885,
       "served_mb": 1201.0297492146492,
       "carbon_weighted_mb": 530924.1442326908,
       "forwarding_score": 442.0574466035175,
@@ -8423,7 +8423,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.6041875004768371,
-      "decision_ms": 1.289699983317405,
+      "decision_ms": 0.5793999880552292,
       "served_mb": 920.932824164629,
       "carbon_weighted_mb": 427006.55359875987,
       "forwarding_score": 463.6674276281706,
@@ -8533,7 +8533,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5287657618522644,
-      "decision_ms": 1.211599970702082,
+      "decision_ms": 0.7128000142984092,
       "served_mb": 1063.324997574091,
       "carbon_weighted_mb": 488403.651166033,
       "forwarding_score": 459.3173792399268,
@@ -8643,7 +8643,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5396981060504913,
-      "decision_ms": 1.3937000185251236,
+      "decision_ms": 0.6926999776624143,
       "served_mb": 991.3413640111685,
       "carbon_weighted_mb": 461788.6019717675,
       "forwarding_score": 465.82198497526326,
@@ -8753,7 +8753,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.47874688506126406,
-      "decision_ms": 0.7127000135369599,
+      "decision_ms": 0.589400005992502,
       "served_mb": 1017.5029518082738,
       "carbon_weighted_mb": 451053.42157320713,
       "forwarding_score": 443.2944600029016,
@@ -8863,7 +8863,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4834969937801361,
-      "decision_ms": 1.1092000058852136,
+      "decision_ms": 0.5382999661378562,
       "served_mb": 1062.2051677666605,
       "carbon_weighted_mb": 438184.3072781633,
       "forwarding_score": 412.52323051625496,
@@ -8973,7 +8973,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5292864918708802,
-      "decision_ms": 0.9804999572224915,
+      "decision_ms": 0.5035999929532409,
       "served_mb": 1066.803252696991,
       "carbon_weighted_mb": 465571.1459872392,
       "forwarding_score": 436.4170664180357,
@@ -9083,7 +9083,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.5137254357337951,
-      "decision_ms": 0.7214000215753913,
+      "decision_ms": 0.6547999801114202,
       "served_mb": 960.6176789849997,
       "carbon_weighted_mb": 417788.4143600497,
       "forwarding_score": 434.9164329366601,
@@ -9193,7 +9193,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4812420606613159,
-      "decision_ms": 0.7220000261440873,
+      "decision_ms": 0.5579999997280538,
       "served_mb": 923.8158501684666,
       "carbon_weighted_mb": 412341.5624140132,
       "forwarding_score": 446.34605732172577,
@@ -9303,7 +9303,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4477838635444641,
-      "decision_ms": 0.6908999639563262,
+      "decision_ms": 0.5154999671503901,
       "served_mb": 781.5190896391869,
       "carbon_weighted_mb": 374158.7234095609,
       "forwarding_score": 478.75826498659575,
@@ -9413,7 +9413,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.3955285489559174,
-      "decision_ms": 0.6966000073589385,
+      "decision_ms": 0.5180999869480729,
       "served_mb": 1079.3179160915315,
       "carbon_weighted_mb": 596110.6417212663,
       "forwarding_score": 552.3031099862825,
@@ -9523,7 +9523,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.40885806679725645,
-      "decision_ms": 0.6812000065110624,
+      "decision_ms": 0.5237999721430242,
       "served_mb": 842.5762418657541,
       "carbon_weighted_mb": 387656.25345827045,
       "forwarding_score": 460.0844816130419,
@@ -9633,7 +9633,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.41662359833717344,
-      "decision_ms": 0.7178999949246645,
+      "decision_ms": 0.4952999879606068,
       "served_mb": 831.7630033940077,
       "carbon_weighted_mb": 352779.90154490294,
       "forwarding_score": 424.1351203472444,
@@ -9743,7 +9743,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.45163466930389407,
-      "decision_ms": 0.8393999887630343,
+      "decision_ms": 0.5049000028520823,
       "served_mb": 699.937482085079,
       "carbon_weighted_mb": 300253.31043247855,
       "forwarding_score": 428.9716126332296,
@@ -9853,7 +9853,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4183274507522583,
-      "decision_ms": 0.8818999631330371,
+      "decision_ms": 0.5385999684222043,
       "served_mb": 623.5794045031071,
       "carbon_weighted_mb": 243125.93814161624,
       "forwarding_score": 389.8876973580432,
@@ -9963,7 +9963,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.43652170300483706,
-      "decision_ms": 0.7419000030495226,
+      "decision_ms": 0.5068000173196197,
       "served_mb": 655.7900810614228,
       "carbon_weighted_mb": 249335.8336542331,
       "forwarding_score": 380.2067778315173,
@@ -10073,7 +10073,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4145331621170044,
-      "decision_ms": 0.6941999890841544,
+      "decision_ms": 0.5089000333100557,
       "served_mb": 864.00683876127,
       "carbon_weighted_mb": 357453.7370689561,
       "forwarding_score": 413.71632842795424,
@@ -10183,7 +10183,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.45085575580596926,
-      "decision_ms": 0.7046000100672245,
+      "decision_ms": 0.5009000306017697,
       "served_mb": 772.031590808183,
       "carbon_weighted_mb": 312208.4138989524,
       "forwarding_score": 404.3984956264865,
@@ -10293,7 +10293,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.42220638394355775,
-      "decision_ms": 0.686099985614419,
+      "decision_ms": 0.4952000454068184,
       "served_mb": 813.9065153896809,
       "carbon_weighted_mb": 327052.28042762436,
       "forwarding_score": 401.830276872816,
@@ -10403,7 +10403,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.436916196346283,
-      "decision_ms": 0.7038000039756298,
+      "decision_ms": 0.5119999987073243,
       "served_mb": 787.7051688730717,
       "carbon_weighted_mb": 315901.7730978671,
       "forwarding_score": 401.04062481881533,
@@ -10513,7 +10513,7 @@
         "kept"
       ],
       "projected_max_utilization": 0.4475191950798035,
-      "decision_ms": 0.6849999772384763,
+      "decision_ms": 0.49489998491480947,
       "served_mb": 808.3815420046449,
       "carbon_weighted_mb": 355951.931956173,
       "forwarding_score": 440.3266446107545,

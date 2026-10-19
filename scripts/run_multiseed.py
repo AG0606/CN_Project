@@ -14,8 +14,8 @@ if str(ROOT_DIR / "src") not in sys.path:
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from carbonroute.common import ROOT, config, load_json
-from carbonroute.experiments import compute_paired_significance, compute_statistical_tests, run_multiseed
+from carbonroute.common import ROOT, config
+from carbonroute.experiments import run_multiseed
 from scripts.verify_results import verify as auditor_verify
 
 
@@ -56,13 +56,13 @@ def main() -> None:
 
     cfg = config()
     print("=" * 70)
-    print(f"CarbonRoute Multi-Seed Campaign Runner")
+    print("CarbonRoute Multi-Seed Campaign Runner")
     print(f"Seeds: {args.seeds}")
     print(f"Paper Mode: {args.paper}")
     print(f"Root: {ROOT}")
     print("=" * 70)
 
-    result = run_multiseed(
+    run_multiseed(
         seeds=args.seeds,
         root=ROOT,
         base_cfg=cfg,

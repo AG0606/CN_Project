@@ -15,7 +15,7 @@ if str(SRC_DIR) not in sys.path:
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from carbonroute.common import ROOT, config
+from carbonroute.common import config
 from carbonroute.sensitivity import (
     DEFAULT_ALPHAS,
     DEFAULT_DELAYS,

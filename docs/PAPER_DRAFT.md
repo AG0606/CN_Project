@@ -10,7 +10,7 @@ October 2026
 
 Carbon-aware traffic engineering (TE) steers network flows toward geographic paths powered by low-carbon energy grids. However, naive carbon routing can inadvertently shift high-volume demand onto shared bottlenecks, precipitating link overload and route flap instability. This paper investigates whether short-horizon demand forecasting combined with uncertainty-calibrated capacity reservations and route-change hysteresis can balance environmental efficiency and network reliability under realistic telemetry delays. We implement a trace-driven, centralized software-defined networking (SDN) traffic engineering architecture on an eight-node GÉANT WAN core subgraph, driven by 15-minute historical traffic matrices paired with contemporary country-level electricity carbon intensity data from ECON-PowerCI. A spatial-temporal Graph Convolutional Network and Gated Recurrent Unit (GCN–GRU) architecture predicts multi-horizon origin–destination (OD) demand matrices for 15, 30, and 45 minutes ahead. Forecasts enter a conservative routing engine featuring: (i) an empirical $\alpha$-quantile validation residual safety margin $m_h(\alpha)$, (ii) shared reservation tracking across all horizons, and (iii) a relative improvement and hold-time hysteresis guard $(\tau, H)$ with emergency capacity overrides.
 
-We evaluate CarbonRoute across an extensive multi-seed campaign covering 5 distinct neural initializations (2,475 simulation runs across 5 held-out calendar days and 3 carbon calendar years). Under congested traffic with a 15-minute telemetry observation delay ($\delta = 1$ bin), the proposed GCN–GRU carbon policy significantly reduces mean link overload duration from $126.0 \pm 0.0$ to $114.0 \pm 0.0$ minutes/day relative to reactive carbon routing (a reduction of $12.0$ min/day, paired $t$-test $p = 7.09 \times 10^{-14}$, Wilcoxon signed-rank $p = 1.12 \times 10^{-9}$), while slightly increasing the byte-weighted forwarding carbon score from $323.83 \pm 0.00$ to $334.75 \pm 0.94\text{ g CO}_2/\text{kWh}$ (Wilcoxon $p = 6.72 \times 10^{-14}$) as the cost of conservative detouring. Furthermore, against a persistence forecasting baseline with identical safeguards, GCN–GRU carbon delivers identical overload mitigation ($114.0$ min/day) while achieving statistically significantly lower carbon forwarding intensity ($-3.83\text{ g CO}_2/\text{kWh}$, Wilcoxon $p = 3.81 \times 10^{-12}$) and substantially superior route stability ($18.68 \pm 0.95$ vs. $23.00 \pm 0.00$ route changes/day, Wilcoxon $p = 1.66 \times 10^{-12}$). A comprehensive sensitivity campaign across $\alpha \in [0.70, 0.99]$ and $\tau \in [0.00, 0.20]$ maps the empirical Pareto frontier, showing that hysteresis suppresses route changes by up to 70% with negligible carbon degradation. Finally, we provide an analytical assessment of simulation fidelity (fluid progressive filling vs. packet queuing) and a structured four-axis analysis of threats to validity.
+We evaluate CarbonRoute across an extensive multi-seed campaign covering 5 distinct neural initializations (2,475 simulation runs across 5 calendar days and 3 carbon calendar years). Under congested traffic with a 15-minute telemetry observation delay ($\delta = 1$ bin), the proposed GCN–GRU carbon policy reduces mean link overload duration from $126.0 \pm 0.0$ to $114.0 \pm 0.0$ minutes/day relative to reactive carbon routing (a mean reduction of $12.0$ min/day). To prevent pseudoreplication across repeated seed and carbon-year evaluations on the 5 calendar days, hypothesis testing is clustered at the day level ($N_{\text{days}} = 5$, day differences: $-15, 0, -15, -30, 0$ min/day; paired $t$-test $t = -2.14, p = 0.099$; Wilcoxon signed-rank $p = 0.25$), transparently establishing directional consistency while recognizing the sample size limits of 5 contiguous days. Concurrently, the byte-weighted forwarding carbon score increases from $323.83 \pm 0.00$ to $334.75 \pm 0.94\text{ g CO}_2/\text{kWh}$ (day-clustered $p = 0.037$) as the necessary cost of conservative detouring. Against a persistence forecasting baseline with identical safeguards, GCN–GRU carbon achieves identical overload mitigation ($114.0$ min/day) with lower carbon forwarding intensity ($-3.83\text{ g CO}_2/\text{kWh}$, day-clustered $p = 0.071$) and improved route stability ($18.68 \pm 0.95$ vs. $23.00 \pm 0.00$ route changes/day, day-clustered $p = 0.030$). An exploratory parameter sensitivity sweep on a representative test day across $\alpha \in [0.70, 0.99]$ and $\tau \in [0.00, 0.20]$ characterizes the empirical Pareto frontier, demonstrating that hysteresis dampens route changes by 35% at $\alpha=0.80$ and up to 70% under maximum dampening ($\alpha=0.99, \tau=0.20$). Finally, we provide an analytical assessment of simulation fidelity (fluid progressive filling vs. packet queuing) and a structured four-axis analysis of threats to validity.
 
 **Keywords:** Software-Defined Networking, Carbon-Aware Routing, Graph Neural Networks, Demand Forecasting, Traffic Engineering, Route Flap Damping, Multi-Seed Evaluation, Pareto Frontier.
 
@@ -244,7 +244,8 @@ We structure the limitations of this study across four classical validity dimens
 - **Temporal Counterfactual Pairing:** Because 2005 traffic pre-dates modern carbon accounting, pairing 2005 matrices with 2022–2024 grid data creates a synthetic counterfactual scenario. It evaluates how a carbon-aware TE controller would behave under realistic traffic variability and real grid carbon variations, but does not reconstruct historical emissions.
 
 ### 8.4 Conclusion Validity
-- **Statistical Power & Model Multi-Seeding:** Initial pilot runs evaluated a single neural seed (seed 42). To ensure valid statistical conclusions, all reported metrics, confidence intervals, and hypothesis tests ($p$-values) are aggregated across five independent training seeds ($S = [42, 43, 44, 45, 46]$) spanning 2,475 simulation runs, confirming that reported trade-offs are robust to stochastic weight initialization.
+- **Statistical Power & Model Multi-Seeding:** Initial pilot runs evaluated a single neural seed (seed 42). To ensure valid statistical conclusions, all reported metrics, confidence intervals, and hypothesis tests are aggregated across five independent training seeds ($S = [42, 43, 44, 45, 46]$) spanning 2,475 simulation runs, confirming that reported trade-offs are robust to stochastic weight initialization.
+- **Statistical Unit & Degrees of Freedom:** While our campaign runs 2,475 simulations (75 evaluations per policy condition across 5 model seeds, 3 carbon years, and 5 traffic windows), the underlying traffic inputs originate from 5 calendar test days. Treating all 75 seed-year realizations as independent observations would commit pseudoreplication, artificially deflating standard errors and generating deceptively tiny p-values ($p < 10^{-9}$). To maintain statistical integrity, all hypothesis tests cluster by calendar day ($N_{\text{days}} = 5$). We explicitly emphasize that while the observed overload reduction (mean $-12.0$ min/day) is directionally consistent across every seed and year, 5 contiguous evaluation days provide only 4 degrees of freedom ($t = -2.14, p = 0.099$, Wilcoxon $p = 0.25$). Thus, this paper demonstrates an empirical improvement in replay rather than an asymptotic statistical proof, establishing the necessity for multi-month live testbed evaluations.
 
 ---
 
@@ -270,15 +271,15 @@ We evaluate routing performance under the primary operational challenge: congest
 First, Table 2 reports the comprehensive multi-seed performance aggregated across all 5 random seeds (75 paired evaluation days per policy).
 
 #### Table 2: Multi-Seed Routing Performance Under Telemetry Lag ($\delta = 1$ bin, Congested Workload, 5 Seeds, 75 Paired Runs)
-*Aggregated across 5 random seeds ($S = [42, 43, 44, 45, 46]$). Values reported as Mean $\pm$ Standard Deviation with paired Wilcoxon signed-rank $p$-values.*
+*Aggregated across 5 random seeds ($S = [42, 43, 44, 45, 46]$). Values reported as Mean $\pm$ Standard Deviation with day-clustered significance tests ($N_{\text{days}}=5$).*
 
-| Policy | Forwarding Carbon Score ($\text{g CO}_2/\text{kWh}$) | Served Demand (%) | Overload Duration (min/day) | Route Changes (/day) | Wilcoxon $p$-val vs. Reactive | Wilcoxon $p$-val vs. Persistence |
+| Policy | Forwarding Carbon Score ($\text{g CO}_2/\text{kWh}$) | Served Demand (%) | Overload Duration (min/day) | Route Changes (/day) | Day-Clustered $p$-val vs. Reactive ($N_{\text{days}}=5$) | Day-Clustered $p$-val vs. Persistence ($N_{\text{days}}=5$) |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Shortest Path** | $419.36 \pm 0.00$ | $91.22 \pm 0.00\%$ | $165.0 \pm 0.0$ | $0.00 \pm 0.00$ | $p < 10^{-12}$ | — |
+| **Shortest Path** | $419.36 \pm 0.00$ | $91.22 \pm 0.00\%$ | $165.0 \pm 0.0$ | $0.00 \pm 0.00$ | $p = 0.045$ | — |
 | **Reactive Carbon** | $323.83 \pm 0.00$ | $91.89 \pm 0.00\%$ | $126.0 \pm 0.0$ | $19.40 \pm 0.00$ | [Baseline] | — |
-| **Predictive TE** | $343.59 \pm 1.95$ | $92.21 \pm 0.03\%$ | $108.0 \pm 0.0$ | $8.16 \pm 0.88$ | $p < 10^{-12}$ | — |
-| **Proposed GCN–GRU Carbon** | $334.75 \pm 0.94$ | $91.92 \pm 0.00\%$ | $114.0 \pm 0.0$ | $18.68 \pm 0.95$ | $p = 1.12 \times 10^{-9}$ (Ovld)<br>$p = 6.72 \times 10^{-14}$ (Carb) | $p = 3.81 \times 10^{-12}$ (Carb)<br>$p = 1.66 \times 10^{-12}$ (Chg) |
-| **Persistence + Safeguards** | $338.58 \pm 0.00$ | $91.98 \pm 0.00\%$ | $114.0 \pm 0.0$ | $23.00 \pm 0.00$ | $p = 1.12 \times 10^{-9}$ (Ovld) | [Baseline] |
+| **Predictive TE** | $343.59 \pm 1.95$ | $92.21 \pm 0.03\%$ | $108.0 \pm 0.0$ | $8.16 \pm 0.88$ | $p = 0.099$ | — |
+| **Proposed GCN–GRU Carbon** | $334.75 \pm 0.94$ | $91.92 \pm 0.00\%$ | $114.0 \pm 0.0$ | $18.68 \pm 0.95$ | $p = 0.099$ (Ovld, $t=-2.14$)<br>$p = 0.037$ (Carb, $t=3.09$) | $p = 0.071$ (Carb, $t=-2.44$)<br>$p = 0.030$ (Chg, $t=-3.31$) |
+| **Persistence + Safeguards** | $338.58 \pm 0.00$ | $91.98 \pm 0.00\%$ | $114.0 \pm 0.0$ | $23.00 \pm 0.00$ | $p = 0.099$ (Ovld) | [Baseline] |
 | **GCN Carbon w/o Margin** | $320.25 \pm 0.84$ | $91.88 \pm 0.00\%$ | $129.0 \pm 0.0$ | $16.20 \pm 0.40$ | — | — |
 | **GCN Carbon w/o Hysteresis**| $333.62 \pm 0.85$ | $91.92 \pm 0.00\%$ | $114.0 \pm 0.0$ | $19.32 \pm 1.25$ | — | — |
 
@@ -300,20 +301,20 @@ For auditability and backward compatibility with single-seed baseline verificati
 ### 9.3 Detailed Analysis of Research Questions
 
 #### RQ1: Overload Mitigation under Telemetry Lag
-In congested traffic under 15-minute telemetry lag ($\delta = 1$ bin), the proposed GCN–GRU carbon policy reduces link overload duration from $126.0\text{ min/day}$ to $114.0\text{ min/day}$—a statistically significant reduction of $12.0\text{ min/day}$ (paired $t$-test $t = -9.20, p = 7.09 \times 10^{-14}$; Wilcoxon $p = 1.12 \times 10^{-9}$). Reactive carbon routing suffers severe overload because it makes path assignments using traffic demands that are already 15 minutes stale. By proactively accounting for multi-horizon forecast demands and reserving capacity ahead of time, CarbonRoute averts impending bottleneck collisions. When immediate telemetry is available ($\delta = 0$), both reactive and proposed policies achieve $108.0\text{ min/day}$ overload, confirming that predictive TE's primary benefit is mitigating telemetry latency.
+In congested traffic under 15-minute telemetry lag ($\delta = 1$ bin), the proposed GCN–GRU carbon policy reduces link overload duration from $126.0\text{ min/day}$ to $114.0\text{ min/day}$—a mean reduction of $12.0\text{ min/day}$. When evaluating across the 5 distinct calendar days ($N_{\text{days}} = 5$, day-level differences: $-15, 0, -15, -30, 0$ min/day), the day-clustered paired $t$-test yields $t = -2.14, p = 0.099$ and the Wilcoxon signed-rank test yields $p = 0.25$. While directionally consistent across all 5 seeds and 3 carbon calendar years, 5 contiguous evaluation days provide only 4 degrees of freedom, indicating that the observed reduction is an empirical improvement in this replay rather than an asymptotic statistical proof. Reactive carbon routing suffers severe overload because it makes path assignments using traffic demands that are already 15 minutes stale. By proactively accounting for multi-horizon forecast demands and reserving capacity ahead of time, CarbonRoute averts impending bottleneck collisions. When immediate telemetry is available ($\delta = 0$), both reactive and proposed policies achieve $108.0\text{ min/day}$ overload, confirming that predictive TE's primary benefit is mitigating telemetry latency.
 
 #### RQ2: Conservatism Cost of Safety Margins
 Comparing the Proposed GCN–GRU Carbon policy ($334.75\text{ g CO}_2/\text{kWh}$, $114.0\text{ min/day}$ overload) against the ablation without safety margins ($320.25\text{ g CO}_2/\text{kWh}$, $129.0\text{ min/day}$ overload) reveals the fundamental cost of conservatism:
 - Removing the margin yields a lower carbon score ($320.25$ vs. $334.75\text{ g CO}_2/\text{kWh}$) because the planner aggressively routes traffic through the lowest-carbon paths without reserving headroom for forecast errors.
 - However, this causes link overload to increase by $15.0\text{ min/day}$ (from $114.0$ to $129.0\text{ min/day}$).
-- The $+10.93\text{ g CO}_2/\text{kWh}$ carbon premium relative to reactive carbon represents the deliberate environmental insurance premium required to ensure capacity headroom on shared links.
+- The $+10.93\text{ g CO}_2/\text{kWh}$ carbon premium relative to reactive carbon ($t = 3.09, p = 0.037$) represents the deliberate environmental insurance premium required to ensure capacity headroom on shared links.
 
 #### RQ3: GNN vs. Persistence and Matched Baselines
 Comparing Proposed GCN–GRU Carbon against Persistence with Safeguards reveals a critical, nuanced insight:
 - Both policies achieve identical overload duration ($114.0 \pm 0.0\text{ min/day}$, $p = 1.0$), demonstrating that the conservative capacity margin and shared reservation tracking—rather than the neural architecture alone—drive overload mitigation.
-- However, Proposed GCN–GRU Carbon achieves a **statistically significantly lower carbon forwarding score** ($334.75 \pm 0.94$ vs. $338.58 \pm 0.00\text{ g CO}_2/\text{kWh}$, difference $-3.83\text{ g CO}_2/\text{kWh}$, $t = -8.96, p = 1.96 \times 10^{-13}$, Wilcoxon $p = 3.81 \times 10^{-12}$).
-- Furthermore, GCN–GRU Carbon exhibits **vastly superior route stability**, reducing route flap churn from $23.00 \pm 0.00$ to $18.68 \pm 0.95$ changes/day (a reduction of $4.32$ changes/day, $t = -12.49, p = 6.78 \times 10^{-20}$, Wilcoxon $p = 1.66 \times 10^{-12}$).
-- Because persistence updates predictions abruptly with high high-frequency jitter, it triggers frequent unnecessary route shifts. The neural model provides smoother temporal trajectories that stabilize route decisions without compromising carbon gains.
+- However, Proposed GCN–GRU Carbon achieves a lower carbon forwarding score ($334.75 \pm 0.94$ vs. $338.58 \pm 0.00\text{ g CO}_2/\text{kWh}$, day-level difference $-3.83\text{ g CO}_2/\text{kWh}$, $t = -2.44, p = 0.071$, Wilcoxon $p = 0.063$).
+- Furthermore, GCN–GRU Carbon exhibits superior route stability, reducing route flap churn from $23.00 \pm 0.00$ to $18.68 \pm 0.95$ changes/day (a reduction of $4.32$ changes/day, $t = -3.31, p = 0.030$, Wilcoxon $p = 0.063$).
+- Because persistence updates predictions abruptly with high frequency jitter, it triggers frequent unnecessary route shifts. The neural model provides smoother temporal trajectories that stabilize route decisions without compromising carbon gains.
 
 ### 9.4 Cross-Workload Robustness Comparison
 Table 3 evaluates policy robustness across three operating workloads under telemetry lag ($\delta = 1$ bin): Normal, Congested ($1.6\times$ load), and Bursty ($2.5\times$ seeded bursts).
@@ -327,16 +328,16 @@ Table 3 evaluates policy robustness across three operating workloads under telem
 | | Proposed GCN–GRU | $308.09 \pm 0.74$ | $94.93 \pm 0.02\%$ | $72.0 \pm 0.0$ | $14.68 \pm 0.18$ | $0.0 \pm 0.0$ ($p = 1.0$) |
 | | Persistence + Safeguards | $311.25 \pm 0.00$ | $94.94 \pm 0.00\%$ | $72.0 \pm 0.0$ | $16.20 \pm 0.00$ | $0.0 \pm 0.0$ ($p = 1.0$) |
 | **Congested** | Reactive Carbon | $323.83 \pm 0.00$ | $91.89 \pm 0.00\%$ | $126.0 \pm 0.0$ | $19.40 \pm 0.00$ | [Baseline] |
-| | Proposed GCN–GRU | $334.75 \pm 0.94$ | $91.92 \pm 0.00\%$ | $114.0 \pm 0.0$ | $18.68 \pm 0.95$ | $-12.0 \pm 11.3$ ($p = 1.12 \times 10^{-9}$) |
-| | Persistence + Safeguards | $338.58 \pm 0.00$ | $91.98 \pm 0.00\%$ | $114.0 \pm 0.0$ | $23.00 \pm 0.00$ | $-12.0 \pm 11.3$ ($p = 1.12 \times 10^{-9}$) |
+| | Proposed GCN–GRU | $334.75 \pm 0.94$ | $91.92 \pm 0.00\%$ | $114.0 \pm 0.0$ | $18.68 \pm 0.95$ | $-12.0 \pm 12.5$ ($p = 0.099$) |
+| | Persistence + Safeguards | $338.58 \pm 0.00$ | $91.98 \pm 0.00\%$ | $114.0 \pm 0.0$ | $23.00 \pm 0.00$ | $-12.0 \pm 12.5$ ($p = 0.099$) |
 | **Bursty** | Reactive Carbon | $317.97 \pm 1.23$ | $91.66 \pm 1.33\%$ | $153.6 \pm 15.9$ | $24.04 \pm 1.19$ | [Baseline] |
-| | Proposed GCN–GRU | $329.40 \pm 0.87$ | $91.85 \pm 1.25\%$ | $146.4 \pm 12.6$ | $26.52 \pm 3.34$ | $-7.2 \pm 12.9$ ($p = 1.82 \times 10^{-5}$) |
-| | Persistence + Safeguards | $331.60 \pm 0.71$ | $91.92 \pm 1.25\%$ | $141.0 \pm 14.7$ | $30.12 \pm 2.52$ | $-12.6 \pm 16.4$ ($p = 3.32 \times 10^{-8}$) |
+| | Proposed GCN–GRU | $329.40 \pm 0.87$ | $91.85 \pm 1.25\%$ | $146.4 \pm 12.6$ | $26.52 \pm 3.34$ | $-7.2 \pm 12.9$ ($p = 0.28$) |
+| | Persistence + Safeguards | $331.60 \pm 0.71$ | $91.92 \pm 1.25\%$ | $141.0 \pm 14.7$ | $30.12 \pm 2.52$ | $-12.6 \pm 16.4$ ($p = 0.17$) |
 
 Under normal loads, link capacities are rarely saturated; overload duration is identical ($72.0\text{ min/day}$) across all policies, and the carbon penalty of safety reservations is minimal ($+5.16\text{ g CO}_2/\text{kWh}$). Under severe bursts, both predictive policies maintain superior service fractions ($91.85\%$ and $91.92\%$ vs. $91.66\%$ for reactive carbon), confirming that conservative capacity reservations provide essential resilience against unanticipated demand spikes.
 
 ### 9.5 Combinatorial Joint Budgeted Routing vs. Sequential Greedy TE
-To contrast global optimization against greedy sequential reservations, Table 4 evaluates the joint carbon-budgeted routing paradigm (`joint_gnn`, `joint_gru`, `joint_persistence`) against the reactive baseline and our primary greedy reservation policy (`predictive_carbon`) across 7 validation days (630 paired runs) and 5 held-out test days (450 paired runs) under $\delta = 1$ bin telemetry delay.
+To contrast global optimization against greedy sequential reservations, Table 4a evaluates the joint carbon-budgeted routing paradigm (`joint_gnn`, `joint_gru`, `joint_persistence`) against the reactive baseline and our primary greedy reservation policy (`predictive_carbon`) across 7 development validation days (630 paired runs) and an exploratory replay across the 5 previously inspected test days (450 paired runs, as detailed in `docs/JOINT_SELECTOR.md`) under $\delta = 1$ bin telemetry delay.
 
 #### Table 4a: Joint Carbon-Budgeted Routing vs. Greedy TE ($\delta = 1$ bin, Congested Traffic)
 
@@ -347,7 +348,7 @@ To contrast global optimization against greedy sequential reservations, Table 4 
 | | Joint GRU ($\beta=0$) | 284.72 | 62.14 | 98.30% | 19.40 | **0** |
 | | Joint Persistence ($\beta=0$) | 284.75 | 62.14 | 98.30% | 19.40 | **0** |
 | | Greedy GCN–GRU Carbon | 312.45 | **51.43** | **98.45%** | **14.80** | — |
-| **Test (5 Days)** | Reactive Carbon | 323.83 | 126.0 | 91.89% | 19.40 | [Reference] |
+| **Exploratory Test Replay (5 Days)** | Reactive Carbon | 323.83 | 126.0 | 91.89% | 19.40 | [Reference] |
 | | **Joint GNN ($\beta=0$)** | **303.45** | 126.0 | 91.89% | 22.80 | **0** |
 | | Joint GRU ($\beta=0$) | 303.78 | 126.0 | 91.89% | 22.80 | **0** |
 | | Joint Persistence ($\beta=0$) | 303.82 | 126.0 | 91.89% | 22.80 | **0** |
@@ -364,7 +365,9 @@ To contrast global optimization against greedy sequential reservations, Table 4 
 
 ## 10. Parameter Sensitivity & Empirical Pareto Frontier
 
-To resolve **RQ4**, we perform an exhaustive grid sweep across safety margin quantiles $\alpha \in \{0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.99\}$ and route flap hysteresis thresholds $\tau \in \{0.00, 0.01, 0.02, 0.05, 0.10, 0.15, 0.20\}$ under both delayed ($\delta = 1$) and immediate ($\delta = 0$) telemetry (196 total simulation runs, 18,816 fifteen-minute intervals).
+To resolve **RQ4**, we perform an exploratory grid sweep across safety margin quantiles $\alpha \in \{0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 0.99\}$ and route flap hysteresis thresholds $\tau \in \{0.00, 0.01, 0.02, 0.05, 0.10, 0.15, 0.20\}$ under both delayed ($\delta = 1$) and immediate ($\delta = 0$) telemetry (196 total simulation runs, 18,816 fifteen-minute intervals).
+
+*Note: This sensitivity sweep serves as an exploratory characterization conducted on a representative test day (Window 0, carbon year 2022, model seed 42) to map the morphology of the tri-objective trade-off surface. Formal parameter selection must be executed on developmental validation data and subsequently verified on an untouched evaluation period.*
 
 ```
                       Pareto Trade-off Topology
@@ -392,9 +395,10 @@ As illustrated in `results/sensitivity/figures/sensitivity_alpha_curves.pdf` (an
 
 ### 10.2 Hysteresis Threshold Sensitivity ($\tau$)
 As shown in `results/sensitivity/figures/sensitivity_tau_curves.pdf` (and `figures/sensitivity_tau_curves.pdf`):
-- Setting $\tau = 0.00$ (no hysteresis) results in $20.0$ route changes/day.
-- Increasing $\tau$ to $0.05$ suppresses route changes to $17.0$/day, while $\tau = 0.20$ aggressively suppresses changes to $6.0$–$13.0$/day (up to a 70% reduction in route flapping).
-- Crucially, the emergency capacity override ($U_p^{\max} > 0.80$) guarantees that increasing $\tau$ never increases link overload: overload duration remains invariant at $60.0\text{ min/day}$ regardless of $\tau$, because impending congestion immediately bypasses elective hysteresis dampening.
+- At baseline ($\tau = 0.00$), route changes occur at $20.0$ changes/day across all $\alpha$.
+- At $\alpha=0.80$, increasing $\tau$ from $0.00$ to $0.05$ produces no flap reduction on this replay day (remaining at $20.0$ changes/day), while increasing to $\tau = 0.20$ dampens route changes to $13.0$ changes/day (a 35% reduction).
+- Achieving greater dampening requires higher conservatism: at $\alpha=0.95, \tau=0.15$, route changes drop to $10.0$/day (50% reduction), and at $\alpha=0.99, \tau=0.20$, changes drop to $6.0$/day (a 70% reduction).
+- The emergency capacity override ($U_p^{\max} > 0.80$) acts as an empirical safeguard against anticipated link saturation: on this representative replay day, overload duration remains invariant at $60.0\text{ min/day}$ across all evaluated $\tau \in [0.00, 0.20]$, because impending predicted congestion bypasses elective hysteresis dampening. However, because this safeguard operates on predicted demand rather than actual future arrivals, it acts as a heuristic defense against unforecasted demand surges rather than a formal physical guarantee.
 
 ### 10.3 Empirical Tri-Objective Pareto Frontier
 We perform non-dominated sorting across the tri-objective minimization space:
@@ -413,17 +417,17 @@ From the 49 parameter configurations under congested delayed telemetry, exactly 
 | **$\alpha=0.95, \tau=0.15$** | 539.73 | 10.0 | **60.0** | **99.44%** | **15,219.77** | High-Headroom Conservative: 50% flap reduction, robust margins |
 | **$\alpha=0.99, \tau=0.20$** | 543.79 | **6.0** | **60.0** | **99.44%** | **15,219.77** | Maximum Route Stability: 70% flap reduction, minimal control plane churn |
 
-This empirical frontier provides concrete operational guidance for network operators: setting $(\alpha=0.80, \tau=0.05\text{--}0.20)$ achieves an optimal operating point, capturing 100% of available overload reduction while eliminating over 35%–70% of route flaps at an energy carbon cost of less than $1.5\%$.
+On this representative replay day, setting $(\alpha=0.80, \tau=0.20)$ provides a balanced operating point, capturing the available 15 min overload reduction while reducing route changes by 35% at an energy carbon cost of under 1.5%. Operators seeking maximum stability can select $(\alpha=0.99, \tau=0.20)$ to achieve a 70% flap reduction at a higher carbon premium (+27.36 g CO2/kWh). These observations illustrate trade-off morphology; formal operational threshold selection should be calibrated on development data and verified across multi-week prospective deployments.
 
 ---
 
 ## 11. Conclusion & Future Directions
 
 This paper investigated the interplay between demand forecasting, congestion safeguards, and carbon-aware traffic engineering in software-defined WANs. Through an extensive multi-seed empirical campaign comprising 2,475 simulation runs across 5 distinct neural initializations, we demonstrated that:
-1. Under delayed telemetry ($\delta = 1$ bin), conservative multi-horizon traffic forecasting reduces link overload duration by $12.0\text{ min/day}$ ($p < 10^{-9}$), proving that predictive capacity reservations successfully neutralize telemetry lag.
-2. The environmental cost of conservatism is modest: validation-derived safety margins impose a $+10.93\text{ g CO}_2/\text{kWh}$ carbon premium over aggressive reactive routing, which is necessary to prevent severe link saturation.
-3. While spatial graph convolutions do not improve raw demand forecasting MAE on sparse WAN graphs, the proposed GCN–GRU carbon policy delivers statistically significantly lower carbon emissions ($-3.83\text{ g CO}_2/\text{kWh}, p < 10^{-11}$) and substantially superior route stability ($-4.32$ changes/day, $p < 10^{-11}$) compared to persistence forecasting with identical safeguards.
-4. Parameter sensitivity sweeps across $\alpha \in [0.70, 0.99]$ and $\tau \in [0.00, 0.20]$ established a well-behaved Pareto frontier, proving that hysteresis thresholds suppress up to 70% of route flaps without increasing link overload due to emergency capacity overrides.
+1. Under delayed telemetry ($\delta = 1$ bin), conservative multi-horizon traffic forecasting reduces mean link overload duration by $12.0\text{ min/day}$ across all seeds and carbon years (day-clustered paired $t$-test $p = 0.099$, Wilcoxon $p = 0.25$ over $N_{\text{days}}=5$), demonstrating consistent empirical overload relief while underscoring the need for multi-week testbeds to expand degrees of freedom.
+2. The environmental cost of conservatism is modest: validation-derived safety margins impose a $+10.93\text{ g CO}_2/\text{kWh}$ carbon premium over aggressive reactive routing ($p = 0.037$), which is necessary to prevent severe link saturation.
+3. While spatial graph convolutions do not improve raw demand forecasting MAE on sparse WAN graphs, the proposed GCN–GRU carbon policy delivers lower carbon emissions ($-3.83\text{ g CO}_2/\text{kWh}, p = 0.071$) and improved route stability ($-4.32$ changes/day, $p = 0.030$) compared to persistence forecasting with identical safeguards.
+4. Exploratory parameter sensitivity sweeps on a representative test day across $\alpha \in [0.70, 0.99]$ and $\tau \in [0.00, 0.20]$ established a well-behaved Pareto frontier, showing that hysteresis thresholds suppress route flaps by 35% at $\alpha=0.80$ and up to 70% under maximum dampening, while emergency capacity overrides empirically safeguard against bottleneck saturation.
 
 ### Future Work
 Future extensions will evaluate CarbonRoute within physical SDN testbeds (e.g., Mininet with OpenFlow software switches or P4 programmable pipelines) to measure the impact of route flaps on TCP Cubic/BBR congestion window dynamics, queue depth oscillations, and OpenFlow controller rule installation latencies. Additionally, we plan to integrate locational marginal emission rates with sub-hourly temporal granularity to evaluate carbon routing across continental-scale multi-cloud backbones.

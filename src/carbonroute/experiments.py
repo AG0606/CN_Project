@@ -242,7 +242,7 @@ def compute_paired_significance(frame: pd.DataFrame) -> pd.DataFrame:
     metrics = ["overload_minutes", "forwarding_score", "served_fraction", "route_changes"]
     results: list[dict[str, Any]] = []
 
-    # Pairing keys across realizations
+    # Pairing keys across realizations: strictly enforce model_seed if present
     merge_keys = ["window", "carbon_year"]
     if "model_seed" in frame.columns:
         merge_keys.append("model_seed")
@@ -258,24 +258,31 @@ def compute_paired_significance(frame: pd.DataFrame) -> pd.DataFrame:
 
             merged = tgt_df.merge(base_df, on=merge_keys, suffixes=("_tgt", "_base"))
             if merged.empty:
-                merged = tgt_df.merge(base_df, on=["window", "carbon_year"], suffixes=("_tgt", "_base"))
-            if merged.empty:
                 continue
 
             for m in metrics:
                 if f"{m}_tgt" not in merged.columns or f"{m}_base" not in merged.columns:
                     continue
-                diff = merged[f"{m}_tgt"] - merged[f"{m}_base"]
-                n = len(diff)
-                mean_diff = float(diff.mean())
-                std_diff = float(diff.std(ddof=1)) if n > 1 else 0.0
 
-                if np.allclose(diff, 0.0) or (n > 1 and np.isclose(std_diff, 0.0)):
+                # Aggregate across repeated realizations of the same traffic window (day)
+                # to avoid pseudoreplication across identical traffic demand inputs.
+                if "window" in merged.columns and merged["window"].nunique() > 1:
+                    day_tgt = merged.groupby("window")[f"{m}_tgt"].mean()
+                    day_base = merged.groupby("window")[f"{m}_base"].mean()
+                    diff = (day_tgt - day_base).to_numpy(dtype=float)
+                else:
+                    diff = (merged[f"{m}_tgt"] - merged[f"{m}_base"]).to_numpy(dtype=float)
+
+                n_obs = len(diff)
+                mean_diff = float(np.mean(diff))
+                std_diff = float(np.std(diff, ddof=1)) if n_obs > 1 else 0.0
+
+                if np.allclose(diff, 0.0) or (n_obs > 1 and np.isclose(std_diff, 0.0)):
                     t_stat, p_t = 0.0, 1.0
                     w_stat, p_w = 0.0, 1.0
                 else:
                     try:
-                        t_res = stats.ttest_rel(merged[f"{m}_tgt"], merged[f"{m}_base"])
+                        t_res = stats.ttest_1samp(diff, 0.0)
                         t_stat = float(t_res.statistic)
                         p_t = float(t_res.pvalue)
                         if np.isnan(p_t):
@@ -284,7 +291,7 @@ def compute_paired_significance(frame: pd.DataFrame) -> pd.DataFrame:
                         t_stat, p_t = 0.0, 1.0
 
                     try:
-                        w_res = stats.wilcoxon(merged[f"{m}_tgt"], merged[f"{m}_base"], alternative="two-sided")
+                        w_res = stats.wilcoxon(diff, alternative="two-sided")
                         w_stat = float(w_res.statistic)
                         p_w = float(w_res.pvalue)
                         if np.isnan(p_w):
@@ -305,7 +312,8 @@ def compute_paired_significance(frame: pd.DataFrame) -> pd.DataFrame:
                     "p_value_ttest": p_t,
                     "wilcoxon_stat": w_stat,
                     "p_value_wilcoxon": p_w,
-                    "n_pairs": int(n),
+                    "n_pairs": int(len(merged)),
+                    "n_days": int(n_obs),
                 })
 
     return pd.DataFrame(results)
@@ -332,6 +340,7 @@ def compute_statistical_tests(frame: pd.DataFrame) -> dict[str, Any]:
             "wilcoxon_stat": row["wilcoxon_stat"],
             "p_value_wilcoxon": row["p_value_wilcoxon"],
             "n_pairs": row["n_pairs"],
+            "n_days": row.get("n_days", row["n_pairs"]),
         }
 
         # Top-level direct mapping for primary paper condition (congested_lag1)
@@ -380,9 +389,9 @@ def run_multiseed(
     forecast_summaries: list[pd.DataFrame] = []
 
     for s in seeds:
-        print(f"\n==========================================", flush=True)
+        print("\n==========================================", flush=True)
         print(f"  Starting Multi-Seed Pipeline for Seed {s}", flush=True)
-        print(f"==========================================", flush=True)
+        print("==========================================", flush=True)
 
         out_dir_s = seeds_results_dir / f"seed_{s}"
         art_dir_s = seeds_artifacts_dir / f"seed_{s}"

@@ -13,15 +13,14 @@ from __future__ import annotations
 
 import hashlib
 import itertools
+import sys
 from pathlib import Path
-from typing import Any
 
 import numpy as np
 import pytest
 import torch
 import torch.nn.functional as F
 
-import sys
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT / "src") not in sys.path:
     sys.path.insert(0, str(ROOT / "src"))
@@ -32,6 +31,16 @@ from carbonroute.prediction import TrainedPredictor
 
 SEEDS = [42, 43, 44, 45, 46]
 SEED_PAIRS = list(itertools.combinations(SEEDS, 2))
+
+
+@pytest.fixture(autouse=True)
+def require_seed_checkpoints():
+    """Skips tests gracefully on clean clone if multi-seed checkpoints are not present."""
+    for s in SEEDS:
+        if not (ROOT / f"artifacts/seeds/seed_{s}/gnn.pt").is_file():
+            pytest.skip(
+                f"Multi-seed checkpoint seed_{s} not present locally; run scripts/run_multiseed.py to generate"
+            )
 
 
 def test_checkpoints_exist_and_have_unique_sha256():
