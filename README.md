@@ -94,7 +94,7 @@ The first full run produced **mixed evidence**, not a blanket GNN win:
 
 These numbers are provisional, from one training seed and five adjacent test days. The carbon score is **not grams saved** and is not a physical electricity measurement. Before writing a strong paper claim, expand held-out periods/seeds and examine the paired differences and sensitivity results. Do not tune on these test days and then call them unseen evaluation.
 
-For the 20 October Review 1 explanation and source-backed improvement program, see [docs/REVIEW1_RESEARCH.md](docs/REVIEW1_RESEARCH.md). Its first proposed experiment, the joint carbon-budgeted selector, is now implemented; [docs/JOINT_SELECTOR.md](docs/JOINT_SELECTOR.md) gives the decision rule, validation results, honest limits, and commands. The frozen `results/paper/` reference above is unchanged.
+For the 20 October Review 1 explanation and source-backed improvement program, see [docs/REVIEW1_RESEARCH.md](docs/REVIEW1_RESEARCH.md). Its first proposed experiment, the joint carbon-budgeted selector, is now implemented; [docs/JOINT_SELECTOR.md](docs/JOINT_SELECTOR.md) gives the decision rule, validation results, honest limits, and commands. The [offline joint validation viewer](docs/reports/joint-validation.html) opens directly from a clone, while full audit logs are generated locally. The frozen `results/paper/` reference above is unchanged.
 
 ## Team ownership
 

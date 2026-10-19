@@ -31,6 +31,8 @@ From the repository root after `SETUP.ps1` and `python -m carbonroute prepare` (
 
 `--paper` runs seven complete validation days × three carbon years × three workloads × ten policies = 630 paired runs (60,480 intervals). Without `--paper`, the command runs a one-day, one-year pilot. The default `--carbon-budget-fraction 0` permits no predicted excess over the reactive assignment. A positive fraction, such as `0.05`, permits 5% predicted excess and must be reported as a separate, predeclared experiment. Outputs include the offline `index.html`, full `runs/*.json`, `summary.csv`, `paired_differences.csv`, and source/input/GNN/GRU/persistence hashes in `manifest.json`. New `results/joint-*` folders are local and ignored by Git; the frozen `results/paper` reference is untouched.
 
+For a presentation on another laptop, open [the standalone validation viewer](reports/joint-validation.html) or [the exploratory test viewer](reports/joint-test-exploratory.html) from a clone of this repository. They embed aggregate results and first-day replays. The full per-bin audit logs remain in the local `results/joint-*` folders and can be regenerated with the commands above.
+
 ## Development validation result (19 October 2026)
 
 On seven validation days, the zero-budget `joint_gnn` policy had zero predicted-budget violations across 2,016 scenario/carbon intervals per workload. The independent audit passed all 630 runs and 60,480 intervals.
