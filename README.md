@@ -1,6 +1,6 @@
 # GÉANT predictive carbon-aware routing
 
-A working, free, native Windows research simulation with real historical inputs, a trained GCN–GRU, seven routing policies, and an offline replay viewer.
+A working, free, native Windows research simulation with real historical inputs, a trained GCN–GRU, seven reference policies, three experimental joint selectors, and an offline replay viewer.
 
 **Start here: double-click `DEMO.html`.** The saved demo works without Python or internet. `results/paper/index.html` shows the larger comparison. This is aggregate trace-driven simulation; Mininet and OpenFlow actuation are not part of the completed build.
 
@@ -74,6 +74,7 @@ The exact lock was tested on Windows x64 / Python 3.12. Other operating systems 
 | `python -m carbonroute train` | Trains GNN and GRU; saves checkpoints, validation margins and forecast metrics in `artifacts/` |
 | `python -m carbonroute demo --overwrite` | Runs 14 paired pilot cases and generates `results/demo/index.html` |
 | `python -m carbonroute run --paper --output results/new-run` | Runs 495 cases and generates the full report |
+| `python -m carbonroute run --joint --split validation --paper --output results/joint-new` | Runs the 630-case carbon-budgeted development experiment using saved checkpoints |
 | `python -m carbonroute report --output results/new-run` | Rebuilds presentation from that campaign's frozen evidence |
 | `python -m carbonroute bundle` | Writes a source + checkpoint + pilot ZIP under `dist/` |
 | `python scripts/verify_results.py results/paper` | Independently audits saved routing, capacity, timing and carbon accounting |
@@ -92,6 +93,8 @@ The first full run produced **mixed evidence**, not a blanket GNN win:
 - Immediate observations change the comparison; see the paper report. All original results, including unfavorable ones, are retained in the generated findings.
 
 These numbers are provisional, from one training seed and five adjacent test days. The carbon score is **not grams saved** and is not a physical electricity measurement. Before writing a strong paper claim, expand held-out periods/seeds and examine the paired differences and sensitivity results. Do not tune on these test days and then call them unseen evaluation.
+
+For the 20 October Review 1 explanation and source-backed improvement program, see [docs/REVIEW1_RESEARCH.md](docs/REVIEW1_RESEARCH.md). Its first proposed experiment, the joint carbon-budgeted selector, is now implemented; [docs/JOINT_SELECTOR.md](docs/JOINT_SELECTOR.md) gives the decision rule, validation results, honest limits, and commands. The [offline joint validation viewer](docs/reports/joint-validation.html) opens directly from a clone, while full audit logs are generated locally. The frozen `results/paper/` reference above is unchanged.
 
 ## Team ownership
 

@@ -18,14 +18,17 @@ import pandas as pd
 from .common import fingerprint, load_json, save_json, sha256
 from .data import CarbonTable, Prepared, load_prepared
 from .prediction import Persistence, TrainedPredictor
-from .routing import POLICIES
+from .routing import JOINT_POLICIES, POLICIES
 from .simulation import replay
 
 MAIN_POLICIES = POLICIES[:4]
 
 
-def evaluation_windows(data: Prepared, cfg: dict[str, Any], count: int) -> list[tuple[int, int]]:
-    lo, hi = data.manifest["splits"]["test"]
+def evaluation_windows(data: Prepared, cfg: dict[str, Any], count: int,
+                       split: str = "test") -> list[tuple[int, int]]:
+    if split not in ("validation", "test"):
+        raise ValueError("Evaluation split must be validation or test")
+    lo, hi = data.manifest["splits"][split]
     candidates = []
     for start in range(lo+cfg["lookback"], hi-96+1):
         if data.times[start] != data.times[start].astype("datetime64[D]"):
@@ -33,7 +36,7 @@ def evaluation_windows(data: Prepared, cfg: dict[str, Any], count: int) -> list[
         if np.all(np.diff(data.times[start-cfg["lookback"]:start+96]) == np.timedelta64(15, "m")):
             candidates.append((start, start+96))
     if len(candidates) < count:
-        raise ValueError(f"Need {count} complete held-out days, found {len(candidates)}")
+        raise ValueError(f"Need {count} complete {split} days, found {len(candidates)}")
     return candidates[:count]
 
 
@@ -93,6 +96,9 @@ def campaign(
     output: Path,
     paper: bool = False,
     overwrite: bool = False,
+    split: str = "test",
+    include_joint: bool = False,
+    carbon_budget_fraction: float = 0.0,
     artifact_dir: Path | None = None,
     seed: int | None = None,
 ) -> Path:
@@ -114,14 +120,16 @@ def campaign(
     if carbon.source_hash != expected_carbon:
         raise ValueError("Carbon input changed after preparation")
     gnn = TrainedPredictor(art_dir, data, cfg, seed=cfg["seed"])
+    gru = TrainedPredictor(art_dir, data, cfg, "gru", seed=cfg["seed"]) if include_joint else None
     persist_meta = load_json(art_dir / "persistence.json")
     if persist_meta["config_hash"] != fingerprint(cfg) or persist_meta["traffic_sha256"] != data.manifest["traffic_sha256"]:
         raise ValueError("Persistence margin does not match this data/configuration")
     persistence = Persistence(cfg["horizon"], data.mask, np.array(persist_meta["margin_mbps"]))
-    windows = evaluation_windows(data, cfg, 5 if paper else 1)
+    day_count = (7 if split == "validation" else 5) if paper else 1
+    windows = evaluation_windows(data, cfg, day_count, split)
     years = cfg["carbon_years"] if paper else cfg["carbon_years"][:1]
     scenarios = ("normal", "congested", "bursty") if paper else ("normal", "congested")
-    delays = (1, 0) if paper else (1,)
+    delays = (1, 0) if paper and not include_joint else (1,)
     output.mkdir(parents=True, exist_ok=True)
     run_folder = output / "runs"
     run_folder.mkdir(exist_ok=True)
@@ -131,13 +139,24 @@ def campaign(
         revision = "unavailable"
     manifest: dict[str, Any] = {
         "schema_version": 2,
-        "created_utc": datetime.now(timezone.utc).isoformat(), "mode": "paper" if paper else "pilot",
+        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "mode": ("joint-development" if split == "validation" else
+                 "joint-test-exploratory" if paper else "joint-test-pilot") if include_joint
+                else ("paper" if paper else "pilot"),
+        "evaluation_split": split, "include_joint": include_joint,
+        "carbon_budget_fraction": carbon_budget_fraction,
         "status": "running",
         "config": cfg, "config_hash": fingerprint(cfg), "source_revision": revision,
         "source_files": {str(p.relative_to(root)).replace("\\", "/"): sha256(p)
                          for p in sorted((root / "src/carbonroute").glob("*")) if p.is_file()},
         "graph": data.network.metadata(), "graph_hash": data.network.graph_hash,
-        "traffic_manifest": data.manifest, "checkpoint_sha256": sha256(art_dir / "gnn.pt"),
+        "traffic_manifest": data.manifest,
+        "checkpoint_sha256": sha256(art_dir / "gnn.pt"),
+        "checkpoint_sha256_by_model": {
+            "gnn": sha256(art_dir / "gnn.pt"),
+            "gru": sha256(art_dir / "gru.pt"),
+            "persistence": sha256(art_dir / "persistence.json"),
+        } if include_joint else {},
         "carbon_sha256": carbon.source_hash, "python": platform.python_version(),
         "platform": platform.platform(), "runs": [], "failed_runs": [],
         "alignment_sha256": {},
@@ -152,7 +171,7 @@ def campaign(
     manifest["forecast_metrics_sha256"] = sha256(output / "forecast_metrics.csv")
     manifest["training_summary_sha256"] = sha256(output / "training_summary.json")
     save_json(output / "manifest.json", manifest)
-    lo, hi = data.manifest["splits"]["test"]
+    lo, hi = data.manifest["splits"][split]
     carbon_cache = {}
     for year in years:
         ci, alignment = carbon.pair(data.times[lo:hi], year)
@@ -170,15 +189,18 @@ def campaign(
             for year in years:
                 ci = carbon_cache[year][start-lo:stop-lo]
                 for delay in delays:
-                    policies = POLICIES if delay == 1 else MAIN_POLICIES
+                    policies = (POLICIES + JOINT_POLICIES if include_joint else POLICIES) if delay == 1 else MAIN_POLICIES
                     for policy in policies:
                         run_id = f"w{window_id}_{year}_{scenario}_lag{delay}_{policy}"
                         fields = {"run_id": run_id, "window": window_id, "scenario": scenario,
                                   "carbon_year": year, "seed": seed, "start": start, "stop": stop,
                                   "traffic_start": str(data.times[start]), "traffic_sha256": traffic_hash}
                         try:
-                            predictor = persistence if policy == "persistence_carbon" else gnn
-                            result = replay(data, cfg, rates, ci, start, stop, policy, predictor, delay)
+                            predictor = (persistence if policy in ("persistence_carbon", "joint_persistence")
+                                         else gru if policy == "joint_gru" else gnn)
+                            assert predictor is not None
+                            result = replay(data, cfg, rates, ci, start, stop, policy, predictor, delay,
+                                            carbon_budget_fraction)
                             summary = {**fields, **result.summary}
                             run_path = run_folder / f"{run_id}.json"
                             save_json(run_path, {"summary": summary, "records": result.records})
