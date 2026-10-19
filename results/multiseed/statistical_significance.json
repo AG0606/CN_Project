@@ -1,0 +1,420 @@
+{
+  "vs_reactive": {
+    "overload_minutes": {
+      "mean_diff": -12.0,
+      "std_diff": 11.30056205251326,
+      "t_statistic": -9.19627253681776,
+      "p_value_ttest": 7.09154705551985e-14,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.1174477452374059e-09,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 10.925700844790002,
+      "std_diff": 7.446757198971178,
+      "t_statistic": 12.706113859928825,
+      "p_value_ttest": 2.7980019063740714e-20,
+      "wilcoxon_stat": 6.0,
+      "p_value_wilcoxon": 6.720019611019397e-14,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0003108552852576496,
+      "std_diff": 0.00033955851818432905,
+      "t_statistic": 7.9281938021546905,
+      "p_value_ttest": 1.7705362915757178e-11,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 3.198799164073372e-09,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -0.72,
+      "std_diff": 1.6970562748477143,
+      "t_statistic": -3.6742346141747664,
+      "p_value_ttest": 0.0004485819300383619,
+      "wilcoxon_stat": 138.0,
+      "p_value_wilcoxon": 0.0012042118408463055,
+      "n_pairs": 75
+    }
+  },
+  "vs_persistence": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": -3.8256328015399506,
+      "std_diff": 3.696929989757667,
+      "t_statistic": -8.961747181752289,
+      "p_value_ttest": 1.9644298534671818e-13,
+      "wilcoxon_stat": 110.0,
+      "p_value_wilcoxon": 3.810394997890552e-12,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": -0.0006180247786292892,
+      "std_diff": 0.0012443732173480632,
+      "t_statistic": -4.301162633521313,
+      "p_value_ttest": 5.119051691240306e-05,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 0.00010751117672950055,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -4.32,
+      "std_diff": 2.996213827031926,
+      "t_statistic": -12.486524528374092,
+      "p_value_ttest": 6.779968712800028e-20,
+      "wilcoxon_stat": 42.0,
+      "p_value_wilcoxon": 1.6604881186541388e-12,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_bursty_lag0": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 10.719624394989976,
+      "std_diff": 7.649920508599393,
+      "t_statistic": 12.13537713843304,
+      "p_value_ttest": 2.8253085060324255e-19,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 5.2803729173201584e-14,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": 2.88,
+      "std_diff": 4.340133264861432,
+      "t_statistic": 5.746720228828767,
+      "p_value_ttest": 1.9047343704115644e-07,
+      "wilcoxon_stat": 394.5,
+      "p_value_wilcoxon": 8.756818892989872e-07,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_bursty_lag1": {
+    "overload_minutes": {
+      "mean_diff": -7.2,
+      "std_diff": 12.898774297520614,
+      "t_statistic": -4.834089475033698,
+      "p_value_ttest": 7.0681244386549505e-06,
+      "wilcoxon_stat": 33.0,
+      "p_value_wilcoxon": 1.8172590894360715e-05,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 11.429467503185261,
+      "std_diff": 7.7722820177686325,
+      "t_statistic": 12.735267694685172,
+      "p_value_ttest": 2.4888899160017105e-20,
+      "wilcoxon_stat": 6.0,
+      "p_value_wilcoxon": 6.726042464760495e-14,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0019448445609443477,
+      "std_diff": 0.0025645808071503248,
+      "t_statistic": 6.567485771919654,
+      "p_value_ttest": 6.22406684212213e-09,
+      "wilcoxon_stat": 96.0,
+      "p_value_wilcoxon": 4.2330194589333454e-10,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": 2.48,
+      "std_diff": 4.347599524061712,
+      "t_statistic": 4.940066327403806,
+      "p_value_ttest": 4.707492837934696e-06,
+      "wilcoxon_stat": 435.0,
+      "p_value_wilcoxon": 1.5472588569533917e-05,
+      "n_pairs": 75
+    }
+  },
+  "vs_persistence_bursty_lag1": {
+    "overload_minutes": {
+      "mean_diff": 5.4,
+      "std_diff": 11.203281372594082,
+      "t_statistic": 4.174256652944469,
+      "p_value_ttest": 8.062354915184813e-05,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 0.00011314267676026672,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": -2.1980041661615064,
+      "std_diff": 3.33262190678063,
+      "t_statistic": -5.711801394712481,
+      "p_value_ttest": 2.1964275441023535e-07,
+      "wilcoxon_stat": 331.0,
+      "p_value_wilcoxon": 3.462215159209104e-08,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": -0.0006200273523882238,
+      "std_diff": 0.0019026049500758659,
+      "t_statistic": -2.822232950608043,
+      "p_value_ttest": 0.006121073586659969,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 5.451083259025106e-06,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -3.6,
+      "std_diff": 4.026936331284146,
+      "t_statistic": -7.742092740338364,
+      "p_value_ttest": 3.976952265314331e-11,
+      "wilcoxon_stat": 133.5,
+      "p_value_wilcoxon": 1.4486035831395472e-09,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_congested_lag0": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 10.617097781370495,
+      "std_diff": 5.633332383772492,
+      "t_statistic": 16.321913508275575,
+      "p_value_ttest": 3.127815588819598e-26,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 5.261326076202966e-14,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -0.08,
+      "std_diff": 1.8436157188847462,
+      "t_statistic": -0.37579432412664443,
+      "p_value_ttest": 0.708144956597572,
+      "wilcoxon_stat": 228.0,
+      "p_value_wilcoxon": 0.9213114530413429,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_congested_lag1": {
+    "overload_minutes": {
+      "mean_diff": -12.0,
+      "std_diff": 11.30056205251326,
+      "t_statistic": -9.19627253681776,
+      "p_value_ttest": 7.09154705551985e-14,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.1174477452374059e-09,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 10.925700844790002,
+      "std_diff": 7.446757198971178,
+      "t_statistic": 12.706113859928825,
+      "p_value_ttest": 2.7980019063740714e-20,
+      "wilcoxon_stat": 6.0,
+      "p_value_wilcoxon": 6.720019611019397e-14,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0003108552852576496,
+      "std_diff": 0.00033955851818432905,
+      "t_statistic": 7.9281938021546905,
+      "p_value_ttest": 1.7705362915757178e-11,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 3.198799164073372e-09,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -0.72,
+      "std_diff": 1.6970562748477143,
+      "t_statistic": -3.6742346141747664,
+      "p_value_ttest": 0.0004485819300383619,
+      "wilcoxon_stat": 138.0,
+      "p_value_wilcoxon": 0.0012042118408463055,
+      "n_pairs": 75
+    }
+  },
+  "vs_persistence_congested_lag1": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": -3.8256328015399506,
+      "std_diff": 3.696929989757667,
+      "t_statistic": -8.961747181752289,
+      "p_value_ttest": 1.9644298534671818e-13,
+      "wilcoxon_stat": 110.0,
+      "p_value_wilcoxon": 3.810394997890552e-12,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": -0.0006180247786292892,
+      "std_diff": 0.0012443732173480632,
+      "t_statistic": -4.301162633521313,
+      "p_value_ttest": 5.119051691240306e-05,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 0.00010751117672950055,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -4.32,
+      "std_diff": 2.996213827031926,
+      "t_statistic": -12.486524528374092,
+      "p_value_ttest": 6.779968712800028e-20,
+      "wilcoxon_stat": 42.0,
+      "p_value_wilcoxon": 1.6604881186541388e-12,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_normal_lag0": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 4.358438862420208,
+      "std_diff": 2.871471521462914,
+      "t_statistic": 13.144893645938946,
+      "p_value_ttest": 4.857543999890691e-21,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.6366674807491907e-13,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": 3.76,
+      "std_diff": 3.9994594229315132,
+      "t_statistic": 8.141739104938155,
+      "p_value_ttest": 6.9872698748724356e-12,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 3.7160966961280736e-09,
+      "n_pairs": 75
+    }
+  },
+  "vs_reactive_normal_lag1": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": 5.1616808781940255,
+      "std_diff": 3.3958465960029773,
+      "t_statistic": 13.163570969330316,
+      "p_value_ttest": 4.511036661797269e-21,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.6484834348478418e-13,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": 0.0001925066526309438,
+      "std_diff": 0.0004850519374423394,
+      "t_statistic": 3.4370680479082125,
+      "p_value_ttest": 0.0009682650835327596,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 3.419862542591861e-05,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": 4.08,
+      "std_diff": 4.355052983200835,
+      "t_statistic": 8.11329658001905,
+      "p_value_ttest": 7.908842086449918e-12,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 4.3732652611273245e-09,
+      "n_pairs": 75
+    }
+  },
+  "vs_persistence_normal_lag1": {
+    "overload_minutes": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "t_statistic": 0.0,
+      "p_value_ttest": 1.0,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.0,
+      "n_pairs": 75
+    },
+    "forwarding_score": {
+      "mean_diff": -3.1548989924966775,
+      "std_diff": 1.891498608528193,
+      "t_statistic": -14.444751170089637,
+      "p_value_ttest": 3.1266648647670355e-23,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 1.631400115513982e-12,
+      "n_pairs": 75
+    },
+    "served_fraction": {
+      "mean_diff": -0.00012286494595504572,
+      "std_diff": 0.00040759643249161027,
+      "t_statistic": -2.6105273733930896,
+      "p_value_ttest": 0.010937118921942646,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 0.005749708623335459,
+      "n_pairs": 75
+    },
+    "route_changes": {
+      "mean_diff": -1.52,
+      "std_diff": 1.427149871862362,
+      "t_statistic": -9.223688693847983,
+      "p_value_ttest": 6.296124053785951e-14,
+      "wilcoxon_stat": 0.0,
+      "p_value_wilcoxon": 7.423464026253681e-10,
+      "n_pairs": 75
+    }
+  }
+}
