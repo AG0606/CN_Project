@@ -1,0 +1,169 @@
+{
+  "created_utc": "2026-10-26T18:28:03.126634+00:00",
+  "purpose": "Local presentation index. Original files remain in inputs/raw for the code.",
+  "files": [
+    {
+      "path": "originals/geant/geant.txt",
+      "source_cache": "inputs/raw/geant.txt",
+      "bytes": 28744,
+      "sha256": "ff316c23220ff4485deafcb8701d49c353db0c80072152df3ed9023ed4b4f4ff",
+      "local_method": "existing verified",
+      "source_url": "https://sndlib.put.poznan.pl/download/sndlib-networks-native/geant.txt"
+    },
+    {
+      "path": "originals/geant/geant-traffic.tgz",
+      "source_cache": "inputs/raw/geant-traffic.tgz",
+      "bytes": 39570674,
+      "sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+      "local_method": "existing verified",
+      "source_url": "https://sndlib.put.poznan.pl/download/directed-geant-uhlig-15min-over-4months-ALL-native.tgz"
+    },
+    {
+      "path": "originals/european-carbon/ECON-PowerCI_2015_2024.csv",
+      "source_cache": "inputs/raw/carbon.csv",
+      "bytes": 4693603,
+      "sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "local_method": "existing verified",
+      "source_url": "https://zenodo.org/records/15987717/files/ECON-PowerCI_2015_2024.csv?download=1"
+    },
+    {
+      "path": "originals/abilene/Abilene-A.txt",
+      "source_cache": "inputs/raw/Abilene-A.txt",
+      "bytes": 22033,
+      "sha256": "228e49b6ce34457f283aca179174fae2443573a2a3672d0413383c58aed989d3",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/A"
+    },
+    {
+      "path": "originals/abilene/Abilene-readme.txt",
+      "source_cache": "inputs/raw/Abilene-readme.txt",
+      "bytes": 2671,
+      "sha256": "caa200883f4f29938c063ea01a188f01494ed1d1a43c854a375a3e11bfe473c9",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/readme.txt"
+    },
+    {
+      "path": "originals/abilene/Abilene.graphml",
+      "source_cache": "inputs/raw/Abilene.graphml",
+      "bytes": 9210,
+      "sha256": "8cd694280d98b336bb9b51fc3b2129a514f1b1b1ac80f2022aca02a57ef1e371",
+      "local_method": "existing verified",
+      "source_url": "https://raw.githubusercontent.com/mroughan/InternetTopologyZoo/main/graphml/Abilene.graphml"
+    },
+    {
+      "path": "originals/abilene/X01.gz",
+      "source_cache": "inputs/raw/abilene/X01.gz",
+      "bytes": 7320862,
+      "sha256": "d996a9115d2815eec158d5055452deb389f5546a96e0dfcbfae5c22a40372558",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X01.gz"
+    },
+    {
+      "path": "originals/abilene/X02.gz",
+      "source_cache": "inputs/raw/abilene/X02.gz",
+      "bytes": 7269940,
+      "sha256": "e4646c3020e5904b3e4f3388899c15940b8156ade9fdaf9dd96b06a83f8066a5",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X02.gz"
+    },
+    {
+      "path": "originals/abilene/X03.gz",
+      "source_cache": "inputs/raw/abilene/X03.gz",
+      "bytes": 7168222,
+      "sha256": "b90f058def353a78db4e5d65d329de867659add90b7ef4d918acb7ba88a8f040",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X03.gz"
+    },
+    {
+      "path": "originals/abilene/X04.gz",
+      "source_cache": "inputs/raw/abilene/X04.gz",
+      "bytes": 7193511,
+      "sha256": "3aab7fe56b84f2469888a142c2af313c865d4c3d41c955cdc199ccea4c66cce0",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X04.gz"
+    },
+    {
+      "path": "originals/abilene/AbileneTM-all.tar",
+      "source_cache": "inputs/raw/AbileneTM-all.tar",
+      "bytes": 177886208,
+      "sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/AbileneTM-all.tar"
+    },
+    {
+      "path": "originals/epa/egrid_historical_files_1996-2016.zip",
+      "source_cache": "inputs/raw/egrid_historical_files_1996-2016.zip",
+      "bytes": 157286946,
+      "sha256": "14503dcdf10c3d61a819a82be358e1c118991a6cf7f1901be291990104b74857",
+      "local_method": "existing verified",
+      "source_url": "https://www.epa.gov/system/files/other-files/2023-01/egrid_historical_files_1996-2016.zip"
+    },
+    {
+      "path": "originals/epa/eGRID2004_aggregation.xls",
+      "source_cache": "inputs/raw/eGRID2004_aggregation.xls",
+      "bytes": 5186048,
+      "sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "local_method": "existing verified",
+      "source_url": "https://www.epa.gov/system/files/other-files/2023-01/egrid_historical_files_1996-2016.zip#egrid_historical_files_1996-2016/eGRID2004_aggregation.xls"
+    },
+    {
+      "path": "originals/epa/eGRID2004_TechnicalSupportDocument.pdf",
+      "source_cache": "inputs/raw/eGRID2004_TechnicalSupportDocument.pdf",
+      "bytes": 3144777,
+      "sha256": "7d4e2d556ab1a6ef09166328b3cabd5e976b9d70f8cd2a5c6d6088f0dc0ab1ae",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/geant/traffic.npz",
+      "source_cache": "inputs/processed/traffic.npz",
+      "bytes": 924932,
+      "sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/geant/manifest.json",
+      "source_cache": "inputs/processed/manifest.json",
+      "bytes": 6800,
+      "sha256": "2e3dd3cdb0b0249ce091e5aa296e6c0573f227c1195817dc81a1f63c517c7dad",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/abilene/traffic.npz",
+      "source_cache": "inputs/processed/abilene/traffic.npz",
+      "bytes": 4235762,
+      "sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/abilene/manifest.json",
+      "source_cache": "inputs/processed/abilene/manifest.json",
+      "bytes": 10051,
+      "sha256": "ad099ec1b72808ff2404db259d0de7080bbee278fc1cdf9beec3976b3860ce62",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "previews/abilene_traffic_first_day_selected_OD.csv",
+      "bytes": 21686,
+      "sha256": "baf35c2104774eb778104fcf7c44c0f232989e973b7b91724d12f9e471717cca",
+      "kind": "readable preview, not a separate source"
+    },
+    {
+      "path": "previews/epa2004_router_region_rates.csv",
+      "bytes": 646,
+      "sha256": "151b64cd551fe366ce52f5ccd24ce8f0403e334332901e23097e072f2a5fde28",
+      "kind": "readable preview, not a separate source"
+    },
+    {
+      "path": "previews/european_carbon_2022_sample.csv",
+      "bytes": 2129,
+      "sha256": "04d518d4cb31d92e6b83c4680169b69f4f865f3950c525c7b310bec39acd6e49",
+      "kind": "readable preview, not a separate source"
+    },
+    {
+      "path": "previews/geant_traffic_first_day_selected_OD.csv",
+      "bytes": 7369,
+      "sha256": "16872e19755d0e6904e55f68f183367a77272db705013769c9a75aab277e3649",
+      "kind": "readable preview, not a separate source"
+    }
+  ]
+}

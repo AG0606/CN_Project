@@ -42,7 +42,8 @@ class Planner:
 
     def decide(self, forecast: np.ndarray, current_carbon: np.ndarray, step: int) -> Decision:
         """Receives predicted demand and current carbon ONLY; no actual future rows."""
-        if forecast.shape != (self.cfg["horizon"], 8, 8) or current_carbon.shape != (8,):
+        n = self.network.node_count
+        if forecast.shape != (self.cfg["horizon"], n, n) or current_carbon.shape != (n,):
             raise ValueError("Forecast/carbon shape mismatch")
         finite_nonnegative(forecast, "forecast")
         finite_nonnegative(current_carbon, "carbon")
@@ -120,7 +121,7 @@ class BudgetPlanner:
                                  for choice in self.choices)
         self.lookup = {routes: i for i, routes in enumerate(self.assignments)}
         self.incidence = np.stack([network.incidence(list(routes)) for routes in self.assignments])
-        self.sender_counts = np.zeros((count, len(pairs), 8))
+        self.sender_counts = np.zeros((count, len(pairs), network.node_count))
         self.delay = np.zeros(count)
         for a, routes in enumerate(self.assignments):
             for f, route in enumerate(routes):
@@ -134,8 +135,9 @@ class BudgetPlanner:
     def decide(self, forecast: np.ndarray, current_carbon: np.ndarray, step: int,
                reactive_forecast: np.ndarray) -> Decision:
         horizon = self.cfg["horizon"]
-        if (forecast.shape != (horizon, 8, 8) or reactive_forecast.shape != forecast.shape
-                or current_carbon.shape != (8,)):
+        n = self.network.node_count
+        if (forecast.shape != (horizon, n, n) or reactive_forecast.shape != forecast.shape
+                or current_carbon.shape != (n,)):
             raise ValueError("Joint forecast/carbon shape mismatch")
         finite_nonnegative(forecast, "joint forecast")
         finite_nonnegative(reactive_forecast, "reactive forecast")

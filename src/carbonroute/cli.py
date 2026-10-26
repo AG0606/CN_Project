@@ -18,7 +18,8 @@ def bundle(root: Path) -> Path:
     """Source, trained models and completed reports; no original third-party files."""
     destination = root / "dist" / f"geant-project-{datetime.now():%Y%m%d-%H%M%S}.zip"
     destination.parent.mkdir(exist_ok=True)
-    folders = ("src", "configs", "docs", "tests", "scripts", "artifacts", "results/demo", "results/paper")
+    folders = ("src", "configs", "docs", "tests", "scripts", "assets/fonts", "artifacts",
+               "results/demo", "results/paper", "results/abilene", "output/presentations")
     root_files = ("README.md", "IMPLEMENTATION_PLAN.md", "pyproject.toml", "requirements-lock.txt",
                   "requirements-torch.txt", "SETUP.ps1", "RUN_DEMO.ps1", "RUN_PAPER.ps1", "DEMO.html", ".gitignore")
     with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED) as archive:

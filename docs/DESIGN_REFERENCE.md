@@ -1,0 +1,11 @@
+# Dashboard and presentation design reference
+
+The [FFCS-inator repository](https://github.com/CodeChefVIT/ffcs) by CodeChef-VIT is the visual reference requested for this project's dashboard and review deck. A shallow clone of its `prod` branch is at `.scratch/ffcs-reference/` in this local workspace, pinned during this design pass to commit `b2bafadec44c8cdbf55a7b61292c779ef9b521fc`. `.scratch/` is intentionally ignored by Git; recreate the clone with `git clone --depth 1 --branch prod https://github.com/CodeChefVIT/ffcs.git .scratch/ffcs-reference` if needed.
+
+The design cues come from `src/app/layout.tsx`, `src/app/landing/landing.tsx`, `src/components/ui/Buttons.tsx`, and other FFCS components: pale cyan page background (`#CEE4E5`), black outlines and offset shadows, rounded controls, pastel yellow (`#FFEA79`), blue (`#90BDFF`), green (`#C1FF83`), and Poppins/Pangolin type. The routing project does **not** include FFCS logos, illustrations, or application code. Its experiment data, labels, claims, and navigation remain specific to CarbonRoute.
+
+The self-contained two-tab dashboard is generated from [`src/carbonroute/combined_dashboard.html`](../src/carbonroute/combined_dashboard.html) by [`src/carbonroute/dashboard.py`](../src/carbonroute/dashboard.py). Font files under [`assets/fonts/`](../assets/fonts/) are embedded as data URLs so [`results/demo/index.html`](../results/demo/index.html) works offline. Pangolin and Poppins are open fonts; their OFL licenses are included beside the font files. Regenerate the dashboard after a template change with `python -m carbonroute.abilene report` in the configured virtual environment.
+
+The 16-slide editable review deck is [`output/presentations/CarbonRoute_FFCS_Style_2026-10-27.pptx`](../output/presentations/CarbonRoute_FFCS_Style_2026-10-27.pptx). It follows the FFCS visual language, updates the demo path to the single dashboard, and adds the Abilene pilot with its actual comparison and annual-carbon limitation. Pangolin and Poppins TTF files are included under `assets/fonts/`; install them on a presentation laptop if PowerPoint substitutes another font. The earlier review deck remains untouched.
+
+The offline dashboard and the PPT are presentation surfaces for the saved studies. Styling does not change the routing methods or their measured outcomes.

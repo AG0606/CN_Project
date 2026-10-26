@@ -19,11 +19,18 @@ htmlcov/
 .idea/
 .DS_Store
 Thumbs.db
+~$*.pptx
 *.log
 
 # Third-party downloads and machine-specific preparation. Recreate with `prepare`.
 /inputs/raw/
 /inputs/processed/
+
+# Local presentation copies of third-party data and derived previews.
+# README.md and MANIFEST.json under datasets/ remain shareable.
+/datasets/originals/
+/datasets/processed/
+/datasets/previews/
 
 # Only the checked-in reference checkpoints and experiment campaigns are shared.
 /artifacts/*
@@ -37,13 +44,26 @@ Thumbs.db
 !/artifacts/training_summary.json
 !/artifacts/training.csv
 !/artifacts/forecast_metrics.csv
+!/artifacts/abilene/
+!/artifacts/abilene/**
 
 /results/*
 !/results/demo/
 !/results/demo/**
 !/results/paper/
 !/results/paper/**
+!/results/abilene/
+!/results/abilene/summary.csv
+!/results/abilene/paired_differences.csv
+!/results/abilene/forecast_metrics.csv
+!/results/abilene/training_summary.json
+!/results/abilene/manifest.json
+/results/abilene/runs/
 
 # Transfer bundles, local integrity experiments, and temporary work
 /dist/
 /.scratch/
+/.presentation-build/
+
+# Locally downloaded third-party papers; retain links and citation notes in Git.
+/docs/references/papers/

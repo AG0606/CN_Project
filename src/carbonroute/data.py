@@ -79,10 +79,11 @@ def parse_demand(text: str) -> tuple[np.datetime64, np.ndarray, int]:
     return stamp, result, 56 - len(seen)
 
 
-def window_indices(times: np.ndarray, start: int, stop: int, lookback: int, horizon: int) -> np.ndarray:
+def window_indices(times: np.ndarray, start: int, stop: int, lookback: int, horizon: int,
+                   bin_seconds: int = 900) -> np.ndarray:
     """Target starts whose history AND labels stay in one contiguous split."""
     valid = [k for k in range(start + lookback, stop - horizon + 1)
-             if np.all(np.diff(times[k-lookback:k+horizon]) == np.timedelta64(15, "m"))]
+             if np.all(np.diff(times[k-lookback:k+horizon]) == np.timedelta64(bin_seconds, "s"))]
     return np.array(valid, dtype=np.int64)
 
 
@@ -122,7 +123,8 @@ def choose_pairs(train: np.ndarray, network: Network, cfg: dict[str, Any]) -> li
     All ranking statistics come from training only; countries/carbon/test are not used.
     """
     means = train.mean(axis=0)
-    eligible = [(a, b) for a in range(8) for b in range(8) if a != b and means[a, b] > 0]
+    eligible = [(a, b) for a in range(network.node_count)
+                for b in range(network.node_count) if a != b and means[a, b] > 0]
     options = network.candidates(eligible, cfg["candidate_paths"], cfg["delay_stretch"])
     paths = {pair: routes for pair, routes in zip(eligible, options) if len(routes) >= 2}
     if len(paths) < cfg["active_pairs"]:

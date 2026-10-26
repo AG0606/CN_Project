@@ -2,9 +2,13 @@
 
 A working, free, native Windows research simulation with real historical inputs, a trained GCN–GRU, seven reference policies, three experimental joint selectors, and an offline replay viewer.
 
+**Secondary US evaluation:** [Abilene + EPA eGRID2004 methods and findings](docs/ABILENE_SECONDARY_EXPERIMENT.md) uses 2004 NetFlow-derived traffic and spatially varying **annual** EPA carbon rates. The [single offline dashboard](results/demo/index.html) has GÉANT and Abilene tabs. The GÉANT experiment remains the main result. The Abilene GNN does not beat reactive carbon on its two-day pilot; see the documented limitations before presenting it.
+
 **Start here: double-click `DEMO.html`.** The saved demo works without Python or internet. `results/paper/index.html` shows the larger comparison. This is aggregate trace-driven simulation; Mininet and OpenFlow actuation are not part of the completed build.
 
-For a new teammate or coding agent, read [docs/HANDOFF.md](docs/HANDOFF.md) for the current state, file map, results, verification commands and next work. This repository includes the validated reference checkpoints and saved campaigns. The original third-party datasets and local Python environment are deliberately excluded.
+The [review presentation](output/presentations/CarbonRoute_FFCS_Style_2026-10-27.pptx) and the two-tab dashboard share an FFCS-inator-inspired visual style. See [design reference and font notes](docs/DESIGN_REFERENCE.md) before editing either artifact.
+
+For a new teammate or coding agent, read [docs/HANDOFF.md](docs/HANDOFF.md) for the current state, file map, results, verification commands and next work. To show the professor the input files and readable samples, open [datasets/README.md](datasets/README.md). This repository includes the validated reference checkpoints and saved campaigns. Original third-party bytes and the local Python environment are deliberately excluded from Git; the local `datasets/` folder contains them for inspection.
 
 ## What is implemented
 
@@ -72,16 +76,17 @@ The exact lock was tested on Windows x64 / Python 3.12. Other operating systems 
 |---|---|
 | `python -m carbonroute prepare` | Checks/downloads original inputs; writes `inputs/processed/traffic.npz` and manifest |
 | `python -m carbonroute train` | Trains GNN and GRU; saves checkpoints, validation margins and forecast metrics in `artifacts/` |
-| `python -m carbonroute demo --overwrite` | Runs 14 paired pilot cases and generates `results/demo/index.html` |
+| `python -m carbonroute demo --overwrite` | Runs the 14-case GÉANT pilot and refreshes the two-tab `results/demo/index.html`; first generate the Abilene run logs as documented below |
 | `python -m carbonroute run --paper --output results/new-run` | Runs 495 cases and generates the full report |
 | `python -m carbonroute run --joint --split validation --paper --output results/joint-new` | Runs the 630-case carbon-budgeted development experiment using saved checkpoints |
 | `python -m carbonroute report --output results/new-run` | Rebuilds presentation from that campaign's frozen evidence |
 | `python -m carbonroute bundle` | Writes a source + checkpoint + pilot ZIP under `dist/` |
 | `python scripts/verify_results.py results/paper` | Independently audits saved routing, capacity, timing and carbon accounting |
+| `python -m carbonroute.abilene prepare`, then `train`, `run`, `report` | Downloads free US inputs, trains separate models, runs the Abilene campaign, and refreshes the same two-tab dashboard |
 
 Existing campaigns require `--overwrite` or a different output path. Use a new folder for research runs. Changing configuration deliberately invalidates prepared data/checkpoints: run `prepare` and `train` again before comparing. `--root` and `--config` are global options and precede the command.
 
-Each result folder contains `FINDINGS.md`, `summary.csv`, `paired_differences.csv`, `manifest.json`, daily alignment files, per-bin `runs/*.json`, forecast evidence, `index.html`, and four figure sets. Every run log and date alignment has a recorded SHA-256 hash, verified again before report generation. The paper viewer embeds detailed traces for the first test day and first carbon year; its comparison table covers every run. All other traces remain in `runs/`.
+Each GÉANT result folder contains `FINDINGS.md`, `summary.csv`, `paired_differences.csv`, `manifest.json`, daily alignment files, per-bin `runs/*.json`, forecast evidence, `index.html`, and four figure sets. The Abilene result folder holds its own CSV/JSON evidence; both studies appear in the single `results/demo/index.html` dashboard. Every run log and date alignment has a recorded SHA-256 hash, verified again before report generation. The paper viewer embeds detailed traces for the first test day and first carbon year; its comparison table covers every run. All other traces remain in `runs/`.
 
 ## Current result, without cherry-picking
 

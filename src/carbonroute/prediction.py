@@ -32,12 +32,15 @@ class DemandNet(nn.Module):
     def __init__(self, adjacency: np.ndarray, mask: np.ndarray, hidden: int, horizon: int):
         super().__init__()
         self.horizon = horizon
+        self.node_count = mask.shape[0]
+        if mask.shape != adjacency.shape or mask.ndim != 2:
+            raise ValueError("Mask and adjacency must be square and have matching dimensions")
         self.register_buffer("adjacency", torch.tensor(adjacency, dtype=torch.float32))
         self.register_buffer("mask", torch.tensor(mask, dtype=torch.float32))
         # Preserve local OD information alongside neighbor-aggregated information.
-        self.spatial = nn.Linear(16, hidden)
+        self.spatial = nn.Linear(2 * self.node_count, hidden)
         self.temporal = nn.GRU(hidden, hidden, batch_first=True)
-        self.head = nn.Linear(hidden, horizon * 8)
+        self.head = nn.Linear(hidden, horizon * self.node_count)
         nn.init.zeros_(self.head.weight)
         nn.init.zeros_(self.head.bias)
 
@@ -47,7 +50,8 @@ class DemandNet(nn.Module):
         embedded = torch.relu(self.spatial(torch.cat((x, neighbors), dim=-1)))
         sequence = embedded.permute(0, 2, 1, 3).reshape(batch * nodes, steps, -1)
         _, hidden = self.temporal(sequence)
-        correction = self.head(hidden[-1]).reshape(batch, nodes, self.horizon, 8).permute(0, 2, 1, 3)
+        correction = self.head(hidden[-1]).reshape(
+            batch, nodes, self.horizon, self.node_count).permute(0, 2, 1, 3)
         # Residual forecast starts from persistence; learned corrections can go either way.
         return torch.clamp(x[:, -1:, :, :] + correction, min=0) * self.mask
 
@@ -55,7 +59,7 @@ class DemandNet(nn.Module):
 class Persistence:
     def __init__(self, horizon: int, mask: np.ndarray, margin: np.ndarray | None = None):
         self.horizon, self.mask = horizon, mask
-        self.margin = np.zeros((horizon, 8, 8)) if margin is None else margin
+        self.margin = np.zeros((horizon, *mask.shape)) if margin is None else margin
 
     def predict(self, history: np.ndarray) -> np.ndarray:
         if len(history) == 0:
@@ -73,16 +77,18 @@ class TrainedPredictor:
         if sha256(folder / f"{kind}.pt") != meta["checkpoint_sha256"]:
             raise ValueError("Checkpoint checksum mismatch")
         torch.set_num_threads(cfg["cpu_threads"])
-        adjacency = prepared.network.adjacency() if kind == "gnn" else np.eye(8, dtype=np.float32)
+        n = prepared.network.node_count
+        adjacency = prepared.network.adjacency() if kind == "gnn" else np.eye(n, dtype=np.float32)
         self.model = DemandNet(adjacency, prepared.mask, cfg["hidden_size"], cfg["horizon"])
         self.model.load_state_dict(torch.load(folder / f"{kind}.pt", map_location="cpu", weights_only=True))
         self.model.eval()
         self.scale = prepared.scale
         self.lookback = cfg["lookback"]
+        self.node_count = n
         self.margin = np.array(meta["margin_mbps"], dtype=np.float32)
 
     def predict(self, history: np.ndarray) -> np.ndarray:
-        if history.shape != (self.lookback, 8, 8):
+        if history.shape != (self.lookback, self.node_count, self.node_count):
             raise ValueError(f"Expected exactly {self.lookback} historical matrices")
         with torch.inference_mode():
             x = torch.tensor(history[None] / self.scale, dtype=torch.float32)
@@ -91,7 +97,8 @@ class TrainedPredictor:
 
 def make_windows(data: Prepared, cfg: dict[str, Any], split: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     lo, hi = data.manifest["splits"][split]
-    indices = window_indices(data.times, lo, hi, cfg["lookback"], cfg["horizon"])
+    indices = window_indices(data.times, lo, hi, cfg["lookback"], cfg["horizon"],
+                             cfg["bin_seconds"])
     x = np.stack([data.rates[k-cfg["lookback"]:k] for k in indices])
     y = np.stack([data.rates[k:k+cfg["horizon"]] for k in indices])
     return x, y, indices
@@ -130,9 +137,10 @@ def forecast_metrics(actual: np.ndarray, predicted: np.ndarray, margin: np.ndarr
     return rows
 
 
-def train(root: Path, cfg: dict[str, Any]) -> dict[str, Any]:
-    data = load_prepared(root, cfg)
-    folder = root / "artifacts"
+def train(root: Path, cfg: dict[str, Any], prepared: Prepared | None = None,
+          artifact_dir: Path | None = None) -> dict[str, Any]:
+    data = prepared if prepared is not None else load_prepared(root, cfg)
+    folder = artifact_dir or root / "artifacts"
     folder.mkdir(exist_ok=True)
     torch.set_num_threads(cfg["cpu_threads"])
     torch.use_deterministic_algorithms(True)
@@ -147,7 +155,8 @@ def train(root: Path, cfg: dict[str, Any]) -> dict[str, Any]:
         random.seed(cfg["seed"])
         np.random.seed(cfg["seed"])
         torch.manual_seed(cfg["seed"])
-        adjacency = data.network.adjacency() if kind == "gnn" else np.eye(8, dtype=np.float32)
+        adjacency = (data.network.adjacency() if kind == "gnn" else
+                     np.eye(data.network.node_count, dtype=np.float32))
         model = DemandNet(adjacency, data.mask, cfg["hidden_size"], cfg["horizon"])
         optimizer = torch.optim.Adam(model.parameters(), lr=cfg["learning_rate"])
         loader = DataLoader(TensorDataset(torch.tensor(xtrain / data.scale, dtype=torch.float32),

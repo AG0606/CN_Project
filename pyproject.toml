@@ -7,7 +7,7 @@ name = "geant-carbon-routing"
 version = "0.1.0"
 description = "Reproducible GNN-driven carbon-aware routing on a GEANT subgraph"
 requires-python = ">=3.11,<3.14"
-dependencies = ["numpy>=1.26", "pandas>=2.2", "networkx>=3.3", "matplotlib>=3.9", "torch>=2.5"]
+dependencies = ["numpy>=1.26", "pandas>=2.2", "networkx>=3.3", "matplotlib>=3.9", "torch>=2.5", "xlrd>=2.0"]
 
 [project.scripts]
 carbon-route = "carbonroute.cli:main"
@@ -16,7 +16,7 @@ carbon-route = "carbonroute.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-carbonroute = ["report.html"]
+carbonroute = ["report.html", "combined_dashboard.html"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

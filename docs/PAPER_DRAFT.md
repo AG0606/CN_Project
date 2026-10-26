@@ -74,6 +74,14 @@ The subgraph is small and demand selection removes many real OD pairs. Capacitie
 
 Before making a broader paper claim, rerun on more disjoint held-out windows and independent training seeds, assess several documented capacity and observation-delay settings without choosing favorable test cases, and validate packet behavior in a separately verified Mininet/OpenFlow experiment if feasible. Follow the SNDlib citation request and confirm all bibliography metadata. The current result is a completed reproducible simulation and a preliminary analysis, not evidence of operational carbon savings.
 
+## Supplementary intra-country evaluation: Abilene + EPA eGRID2004
+
+A separate, preliminary US experiment uses four 2004 weeks of the [Abilene collector's NetFlow-derived OD estimates](https://www.cs.utexas.edu/~yzhang/research/AbileneTM/readme.txt) and the [EPA eGRID2004](https://www.epa.gov/egrid/historical-egrid-data) subregional annual CO₂ generation output rates. The trace's 12-router, 15-link routing matrix defines the graph; the later Topology Zoo Abilene snapshot supplies city coordinates only. Six active OD pairs are selected on training data, capacities and delays are assumed, and traffic is scaled by a training-only factor. X01–X02 are training, X03 validation, and X04 test. Two complete held-out days from X04, each under three demand scenarios, yield 42 paired policy runs.
+
+EPA rates differ by region but are **2004 annual averages fixed at every five-minute step**. This same-year pairing answers a geographic intra-country question, not an hourly grid-response question. The assigned eGRID subregion approximates each city; it does not verify the electricity supplying a router. The forwarding carbon score is an attribution proxy, not measured power consumption or physical emissions. Full implementation, mapping, dashboard, and integrity checks are described in [ABILENE_SECONDARY_EXPERIMENT.md](ABILENE_SECONDARY_EXPERIMENT.md).
+
+In this small pilot, reactive carbon reduces the mean forwarding score from 1605.45 (shortest path) to 1566.07, while the safeguarded GNN yields 1567.68. Thus the GNN **does not beat the reactive-carbon baseline** on this metric. Predictive traffic engineering lowers p95 utilization but has a substantially higher score; removing hysteresis lowers the score further but produces more route changes. Two held-out days and constructed capacity pressure do not support a statistical or operational savings claim. Any final paper should enlarge the held-out evaluation and explicitly preserve the distinction between annual eGRID rates and time-varying electricity carbon intensity.
+
 ## References to complete before submission
 
 1. [SNDlib GÉANT instance and dynamic matrices](https://sndlib.put.poznan.pl/dynamicmatrices.overview.action), Poznan University of Technology. Dynamic archive metadata attributes the demand trace to Steve Uhlig. Retrieve the two full references requested by the SNDlib catalog.

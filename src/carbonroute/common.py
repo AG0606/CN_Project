@@ -38,8 +38,8 @@ def config(path: Path | None = None) -> dict[str, Any]:
     for key in ("capacity_mbps", "bin_seconds", "lookback", "horizon", "epochs"):
         if cfg[key] <= 0:
             raise ValueError(f"{key} must be positive")
-    if cfg["bin_seconds"] != 900:
-        raise ValueError("Source traffic resolution is 900 seconds; do not relabel it")
+    if cfg["bin_seconds"] not in (300, 900):
+        raise ValueError("Supported source traffic resolutions are 300 and 900 seconds")
     if not 0 < cfg["margin_quantile"] < 1 or not 0 < cfg["utilization_limit"] <= 1:
         raise ValueError("Invalid margin quantile or utilization limit")
     return cfg

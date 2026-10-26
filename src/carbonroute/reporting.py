@@ -139,11 +139,16 @@ def report(root: Path, output: Path) -> Path:
                "labels": LABELS, "training": load_json(output / "training_summary.json"),
                "alignments": {str(year): load_json(output / f"alignment_{year}.json")
                               for year in frame.carbon_year.unique()}}
-    template = Path(__file__).with_name("report.html").read_text(encoding="utf-8")
-    # Prevent any source field from breaking out of the embedded JSON script.
-    embedded = json.dumps(payload, separators=(",", ":"), allow_nan=False).replace("<", "\\u003c")
-    path = output / "index.html"
-    path.write_text(template.replace("__DATA__", embedded), encoding="utf-8")
+    if output.resolve() == (root / "results/demo").resolve():
+        from .dashboard import build_dashboard
+
+        path = build_dashboard(root)
+    else:
+        template = Path(__file__).with_name("report.html").read_text(encoding="utf-8")
+        # Prevent any source field from breaking out of the embedded JSON script.
+        embedded = json.dumps(payload, separators=(",", ":"), allow_nan=False).replace("<", "\\u003c")
+        path = output / "index.html"
+        path.write_text(template.replace("__DATA__", embedded), encoding="utf-8")
     plot_results(root, output, frame, runs, split)
     write_findings(root, output, frame, errors, manifest, split)
     print(f"Offline report: {path}", flush=True)

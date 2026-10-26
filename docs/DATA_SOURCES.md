@@ -2,6 +2,8 @@
 
 Input access is free and requires no account or API key. Runtime uses cached files only. All URLs/checksums are recorded in `inputs/raw/sources.json` and the processed/campaign manifests.
 
+For faculty inspection on this laptop, [`datasets/`](../datasets/README.md) gathers the original GÉANT, ECON-PowerCI, Abilene, and EPA files, prepared matrices, readable CSV previews, and a SHA-256 inventory. It is a local presentation copy; runtime still reads `inputs/raw` and `inputs/processed`.
+
 | Source | File / role | Verified checksum (MD5) |
 |---|---|---|
 | [SNDlib topology](https://sndlib.put.poznan.pl/download/sndlib-networks-native/geant.txt) | Full 22-node / 36-link native instance; only its nodes and links are used | `11b943a4330105aaa368dae1a8e6a335` |

@@ -45,13 +45,17 @@ class Network:
     capacity_mbps: float
     fiber_stretch: float
     router_delay_ms: float
+    node_ids: tuple[str, ...] = NODE_IDS
+    countries: tuple[str, ...] = COUNTRIES
 
     def __post_init__(self) -> None:
+        if len(self.coordinates) != len(self.node_ids) or len(self.countries) != len(self.node_ids):
+            raise ValueError("Network locations and labels must have the same length")
         self.arcs = sorted([arc for a, b in self.physical_edges for arc in [(a, b), (b, a)]])
         self.arc_index = {arc: i for i, arc in enumerate(self.arcs)}
         self.capacities = np.full(len(self.arcs), self.capacity_mbps)
         self.graph = nx.DiGraph()
-        self.graph.add_nodes_from(range(len(NODE_IDS)))
+        self.graph.add_nodes_from(range(len(self.node_ids)))
         for a, b in self.arcs:
             delay = distance_km(self.coordinates[a], self.coordinates[b]) * self.fiber_stretch / 200
             self.graph.add_edge(a, b, delay_ms=delay + self.router_delay_ms)
@@ -75,7 +79,7 @@ class Network:
                    cfg["capacity_mbps"], cfg["fiber_stretch"], cfg["router_delay_ms"])
 
     def metadata(self) -> dict[str, Any]:
-        return {"node_ids": list(NODE_IDS), "countries": list(COUNTRIES),
+        return {"node_ids": list(self.node_ids), "countries": list(self.countries),
                 "coordinates": self.coordinates, "physical_edges": self.physical_edges,
                 "source_link_ids": self.source_link_ids, "capacity_mbps": self.capacity_mbps,
                 "fiber_stretch": self.fiber_stretch, "router_delay_ms": self.router_delay_ms,
@@ -84,6 +88,10 @@ class Network:
     @property
     def graph_hash(self) -> str:
         return fingerprint(self.metadata())
+
+    @property
+    def node_count(self) -> int:
+        return len(self.node_ids)
 
     def delay(self, route: Route) -> float:
         return sum(self.graph[a][b]["delay_ms"] for a, b in zip(route, route[1:]))
@@ -105,6 +113,6 @@ class Network:
         return matrix
 
     def adjacency(self) -> np.ndarray:
-        a = nx.to_numpy_array(self.graph, nodelist=range(8)) + np.eye(8)
+        a = nx.to_numpy_array(self.graph, nodelist=range(self.node_count)) + np.eye(self.node_count)
         degree = np.sqrt(a.sum(axis=1))
         return (a / degree[:, None] / degree[None, :]).astype(np.float32)

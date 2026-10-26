@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carbon-aware routing · GÉANT and Abilene</title>
+<style>
+@font-face{font-family:Pangolin;src:url(data:font/woff2;base64,__PANGOLIN_FONT__) format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:Poppins;src:url(data:font/woff2;base64,__POPPINS_REGULAR_FONT__) format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:Poppins;src:url(data:font/woff2;base64,__POPPINS_BOLD_FONT__) format('woff2');font-style:normal;font-weight:700;font-display:swap}
+:root{--ink:#171b1c;--muted:#46575a;--paper:#cee4e5;--card:#fff;--line:#171b1c;--cyan:#75e5ea;--blue:#90bdff;--green:#c1ff83;--yellow:#ffea79;--peach:#ffad93}
+*{box-sizing:border-box}body{margin:0;background-color:var(--paper);background-image:radial-gradient(#171b1c18 1px,transparent 1px);background-size:26px 26px;color:var(--ink);font:15px/1.5 Poppins,Inter,Segoe UI,sans-serif}
+header{background:#a7d5d7;color:var(--ink);padding:30px max(28px,calc((100vw - 1360px)/2));border-bottom:3px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.10em;text-transform:uppercase;font-weight:700;color:#254347}h1{font:normal clamp(33px,4vw,54px)/1.1 Pangolin,Poppins,Segoe UI,sans-serif;letter-spacing:-.025em;margin:8px 0 10px}header p{color:#293d40;margin:8px 0 0;max-width:850px;font-size:15px}
+main{max-width:1416px;margin:auto;padding:25px 28px 50px}h2{font:normal 25px/1.2 Pangolin,Poppins,Segoe UI,sans-serif;margin:0 0 7px}h3{font-size:14px;margin:0}.meta{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}.tab{border:3px solid var(--line);border-radius:13px;background:#fff;padding:11px 22px;color:var(--ink);font-weight:700;box-shadow:4px 4px 0 #171b1c}.tab[aria-selected=true]{background:var(--yellow)}.tab:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #171b1c}
+.toolbar{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:22px}label{display:flex;flex-direction:column;gap:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#263a3c;font-weight:700}select,button{font:inherit;border:2px solid var(--line);border-radius:11px;padding:9px 12px;background:white;color:var(--ink)}select{min-width:150px;font-size:14px}button{cursor:pointer}button:hover{background:#eaf9f9}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #2476c6;outline-offset:3px}
+.badge{display:inline-block;border:2px solid var(--line);border-radius:9px;padding:5px 10px;background:var(--green);color:var(--ink);font-size:11px;font-weight:700}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:22px}.metric,.panel{background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 #171b1c}.metric{padding:17px 20px;min-height:140px}.metric:nth-child(1){background:#c9e5e6}.metric:nth-child(2){background:#e5ffde}.metric:nth-child(3){background:#fff8d1}.metric:nth-child(4){background:#e4e9fc}.metric .value{font-size:31px;letter-spacing:-.035em;font-weight:750;margin:7px 0 3px;font-variant-numeric:tabular-nums}.metric .name{font-size:11px;text-transform:uppercase;letter-spacing:.055em;color:#263a3c;font-weight:700}
+.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);gap:20px}.panel{padding:22px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:12px}.network{width:100%;display:block;height:auto;min-height:320px;background:#f8fdfd;border:2px solid #9fbdc0;border-radius:15px;margin:16px 0 12px}.controls{display:flex;align-items:center;gap:12px;border-top:2px solid #c9dbdc;padding-top:14px}#play{background:var(--blue);color:var(--ink);min-width:78px;font-weight:700;box-shadow:3px 3px 0 #171b1c}input[type=range]{flex:1;accent-color:#16617b;min-width:90px}.time{font-variant-numeric:tabular-nums;font-size:13px;white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:15px;font-size:11px;color:var(--muted);margin:4px 0 15px}.dot{display:inline-block;width:10px;height:10px;border:1px solid var(--line);border-radius:50%;margin-right:5px}.details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.details strong{display:block;font-size:18px}.route{background:#e4e9fc;padding:13px;border:2px solid var(--line);border-radius:11px;margin:12px 0}.callout{background:#fff8d1;border:2px solid #171b1c;padding:12px 15px;border-radius:12px;font-size:12px;color:#302713;margin-top:16px}
+.section{margin-top:24px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}th{text-align:right;color:#243a3d;font-weight:700;border-bottom:2px solid var(--line);padding:12px 9px}th:first-child,td:first-child{text-align:left}td{padding:11px 9px;text-align:right;border-bottom:1px solid #c9d7d8}tr.selected{background:#e5ffde;font-weight:700}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}.notes{padding-left:18px;font-size:13px;color:#344b4f}.notes li{margin:7px 0}footer{margin-top:28px;border-top:3px solid var(--line);padding:17px 4px;font-size:12px;color:#344b4f}a{color:#155a73;font-weight:700}.timeline{width:100%;height:auto;margin-top:16px}.tag{font:11px Poppins,Segoe UI,sans-serif;fill:var(--muted)}#status{font-size:12px;color:#344b4f}#footnote{margin-top:16px;max-width:1050px}
+@media(max-width:950px){.layout,.two-col{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}main{padding:18px 14px}.panel{padding:17px}}@media(max-width:550px){.metrics{grid-template-columns:1fr}.tabs{gap:8px}.tab{padding:9px 12px}.metric{min-height:auto}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Computer Networks · Trace-driven research demo</div><h1>Cleaner routes. Tested trade-offs.</h1><p>Explore two network case studies with the same routing methods: a European GÉANT subgraph and the US Abilene backbone.</p></header>
+<main>
+<nav class="tabs" role="tablist" aria-label="Network case study"><button class="tab" type="button" role="tab" id="tab-geant" aria-selected="true" aria-controls="dashboard" data-tab="geant">GÉANT · Europe</button><button class="tab" type="button" role="tab" id="tab-abilene" aria-selected="false" aria-controls="dashboard" data-tab="abilene">Abilene · US</button></nav>
+<div id="dashboard" role="tabpanel" aria-labelledby="tab-geant">
+<div class="toolbar"><label>Workload<select id="scenario"></select></label><label>Observation lag<select id="lag"></select></label><label>Routing policy<select id="policy"></select></label><span class="badge">OFFLINE · HISTORICAL INPUTS</span><span id="status"></span></div>
+<div class="metrics"><div class="metric"><div class="name">Forwarding carbon score</div><div class="value" id="m-score"></div><div class="meta">Sum of hop CI, weighted by served bytes</div></div><div class="metric"><div class="name">Served demand</div><div class="value" id="m-served"></div><div class="meta">Aggregate max-min service model</div></div><div class="metric"><div class="name">Overload duration</div><div class="value" id="m-overload"></div><div class="meta">Minutes / 24-hour scenario</div></div><div class="metric"><div class="name">Route changes</div><div class="value" id="m-changes"></div><div class="meta">Per selected day; all active flows</div></div></div>
+<div class="layout"><section class="panel"><div class="panel-head"><div><h2>Routing replay</h2><div class="meta" id="graph-note"></div></div><span class="badge" id="run-tag"></span></div><svg class="network" viewBox="0 0 960 540" role="img" aria-label="Network showing offered link utilization and selected flow route" id="network"></svg><div class="legend"><span><i class="dot" style="background:#9bacad"></i>Within guard</span><span><i class="dot" style="background:#d1a253"></i>Above 80% guard</span><span><i class="dot" style="background:#d6584b"></i>Over capacity</span><span><i class="dot" style="background:#087aaf"></i>Selected flow</span><span>Link label = worse direction; hover for both.</span></div><div class="controls"><button id="play" type="button">Play</button><input id="step" type="range" min="0" max="95" value="0" aria-label="Replay interval"><span class="time" id="clock"></span></div><p class="meta" id="date-pair"></p></section>
+<section class="panel"><h2>Inside this decision</h2><div class="meta">Only observed history enters the routing decision.</div><label style="margin-top:16px">Inspect a flow<select id="flow"></select></label><div class="route"><strong id="route-text"></strong><div class="meta" id="reason"></div></div><div class="details"><div><span class="meta">Offered rate</span><strong id="offered"></strong></div><div><span class="meta">Served rate</span><strong id="served"></strong></div><div><span class="meta">Predicted peak utilization</span><strong id="predicted"></strong></div><div><span class="meta">Actual peak utilization</span><strong id="actual"></strong></div></div><div class="meta" id="observed"></div><svg id="timeline" class="timeline" viewBox="0 0 440 170" role="img" aria-label="Actual maximum link utilization over the selected day"></svg><div class="meta">Maximum offered link utilization · dashed line = capacity</div><div class="callout">This calculates aggregate rates. It does not measure packet RTT, TCP goodput, physical electricity use, or OpenFlow rule installation.</div></section></div>
+<section class="panel section"><h2>Same inputs. Different decisions.</h2><div class="meta" id="table-note"></div><div class="scroll"><table><thead><tr><th>Policy</th><th>Carbon score ↓</th><th>Served ↑</th><th>Overload min ↓</th><th>p95 link utilization</th><th>Route changes</th><th>Decision time</th></tr></thead><tbody id="comparison"></tbody></table></div><p class="meta">Arithmetic means across runs in the selected workload and lag. Carbon is forwarding attribution, not measured emissions. Read it alongside service.</p></section>
+<div class="two-col section"><section class="panel"><h2>Does the GNN predict better?</h2><div class="meta">Held-out active-pair MAE · lower is better · Mbps</div><div class="scroll"><table><thead><tr><th>Predictor</th><th id="h1"></th><th id="h2"></th><th id="h3"></th></tr></thead><tbody id="forecast"></tbody></table></div><p id="forecast-verdict" class="callout"></p><p class="meta">A 90th-percentile positive validation residual supplies the margin. This is an empirical safeguard, not a formal guarantee.</p></section><section class="panel"><h2>What this experiment can say</h2><ul class="notes" id="notes"></ul></section></div>
+</div>
+<footer><strong>Ashutosh Gupta · Tanay Mohta · Avaneesh Chavan</strong><br><span id="provenance"></span><br><span id="sources"></span><p id="footnote"></p></footer>
+</main>
+<script id="experiment-data" type="application/json">__DATA__</script>
+<script>
+'use strict';
+const ALL=JSON.parse(document.getElementById('experiment-data').textContent), $=id=>document.getElementById(id);
+const fmt=(v,n=1)=>v==null?'—':Number(v).toFixed(n), pct=(v,n=1)=>fmt(100*v,n)+'%', mean=(rows,key)=>rows.reduce((s,r)=>s+r[key],0)/rows.length;
+const positions={geant:[[150,275],[620,225],[330,115],[600,70],[310,425],[570,465],[825,370],[115,105]],abilene:[[690,355],[745,395],[655,170],[475,235],[620,435],[715,235],[575,290],[215,380],[855,155],[170,260],[175,95],[835,285]]};
+const shortNames=['ATL-M5','ATL','CHI','DEN','HOU','IND','KC','LA','NYC','SUN','SEA','WDC'];
+let active='geant',D=ALL.geant,selectedRun=null,timer=null;
+function options(el,items,value){el.replaceChildren(...items.map(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;return o;}));if(items.some(x=>x[0]===value))el.value=value;}
+function stop(){if(timer){clearInterval(timer);timer=null;$('play').textContent='Play';}}
+function subset(){return D.summary.filter(r=>r.scenario===$('scenario').value&&r.observation_delay_bins===Number($('lag').value));}
+function choose(){const rows=subset(),old=$('policy').value;options($('policy'),[...new Set(rows.map(r=>r.policy))].map(p=>[p,ALL.labels[p]||p]),old||'predictive_carbon');refresh();}
+function switchTab(kind){
+ stop();active=kind;D=ALL[kind];selectedRun=null;
+ document.querySelectorAll('[data-tab]').forEach(button=>{const selected=button.dataset.tab===kind;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;});
+ $('dashboard').setAttribute('aria-labelledby','tab-'+kind);
+ const bins=D.manifest.config.bin_seconds,labels=D.manifest.graph.node_ids,display=kind==='geant'?D.manifest.graph.countries:shortNames;
+ $('graph-note').textContent=(kind==='geant'?'GÉANT eight-node subgraph':'Abilene 12-router backbone')+' · schematic · '+fmt(D.manifest.graph.capacity_mbps,0)+' Mbps per direction';
+ options($('scenario'),[...new Set(D.summary.map(r=>r.scenario))].map(x=>[x,x==='bursty'?'Seeded bursts':x[0].toUpperCase()+x.slice(1)]),'congested');
+ options($('lag'),[...new Set(D.summary.map(r=>r.observation_delay_bins))].sort().reverse().map(x=>[String(x),x?'1 bin · '+bins/60+' minutes':'Immediate observation']),'1');
+ options($('flow'),D.manifest.traffic_manifest.pairs.map(([a,b],i)=>[String(i),display[a]+' → '+display[b]]),'0');
+ $('step').value=0;
+ for(let h=1;h<=3;h++)$('h'+h).textContent=h*bins/60+' min';
+ forecast();notes();choose();
+}
+function refresh(){
+ const rows=subset(),policy=$('policy').value;
+ selectedRun=Object.values(D.runs).find(run=>run.summary.policy===policy&&run.summary.scenario===$('scenario').value&&run.summary.observation_delay_bins===Number($('lag').value));
+ if(!selectedRun){$('status').textContent='Detailed replay unavailable for this selection';return;}
+ $('step').max=selectedRun.records.length-1;if(Number($('step').value)>=selectedRun.records.length)$('step').value=0;
+ const s=selectedRun.summary;
+ $('m-score').textContent=fmt(s.forwarding_score);$('m-served').textContent=pct(s.served_fraction,3);$('m-overload').textContent=fmt(s.overload_minutes,0);$('m-changes').textContent=s.route_changes;
+ $('run-tag').textContent='DAY 1 · CARBON '+s.carbon_year;
+ $('status').textContent=D.summary.length+' completed runs · '+(active==='geant'?'GÉANT':'Abilene');
+ $('table-note').textContent=`${rows.length} paired runs across ${new Set(rows.map(r=>r.window)).size} held-out day(s) and ${new Set(rows.map(r=>r.carbon_year)).size} carbon year(s). Replay above shows day 1.`;
+ $('comparison').replaceChildren();
+ Object.entries(ALL.labels).forEach(([p,label])=>{const group=rows.filter(r=>r.policy===p);if(!group.length)return;const tr=document.createElement('tr');if(p===policy)tr.className='selected';[label,fmt(mean(group,'forwarding_score')),pct(mean(group,'served_fraction'),3),fmt(mean(group,'overload_minutes')),pct(mean(group,'p95_utilization')),fmt(mean(group,'route_changes')),fmt(mean(group,'decision_ms_mean'),2)+' ms'].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});$('comparison').append(tr);});
+ render();
+}
+function render(){
+ if(!selectedRun)return;
+ const k=Number($('step').value),r=selectedRun.records[k],f=Number($('flow').value),route=r.routes[f],total=selectedRun.records.length,mins=D.manifest.config.bin_seconds/60;
+ const clockMin=k*mins;$('clock').textContent=String(Math.floor(clockMin/60)).padStart(2,'0')+':'+String(clockMin%60).padStart(2,'0')+' / 24h';
+ const year=selectedRun.summary.carbon_year,trafficDay=r.traffic_time.slice(0,10);
+ const day=D.alignments?.[year]?.find(item=>item.traffic_day===trafficDay);
+ $('date-pair').textContent='Traffic: '+r.traffic_time.replace('T',' ')+' · Carbon: '+(active==='geant'?(day?day.carbon_day:year+' seasonal pairing'):'EPA 2004 annual regional rates')+' · '+mins+' scenario minutes / frame';
+ const ids=D.manifest.graph.node_ids,display=active==='geant'?D.manifest.graph.countries:shortNames,coords=positions[active];
+ $('route-text').textContent=route.map(n=>ids[n]).join(' → ');$('reason').textContent=r.reasons[f].replaceAll('-',' ');
+ $('offered').textContent=fmt(r.offered_mbps[f],2)+' Mbps';$('served').textContent=fmt(r.served_mbps[f],2)+' Mbps';
+ $('predicted').textContent=pct(r.projected_max_utilization);$('actual').textContent=pct(Math.max(...r.link_utilization));
+ $('observed').textContent='Latest observation: '+r.observed_through.replace('T',' ')+' · Infeasible pairs: '+r.infeasible_pairs;
+ const arcLookup=new Map(D.manifest.graph.arcs.map(([a,b],i)=>[a+','+b,i]));
+ let svg='<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#087aaf"/></marker></defs>';
+ D.manifest.graph.physical_edges.forEach(([a,b])=>{const [x,y]=coords[a],[u,v]=coords[b],ab=r.link_utilization[arcLookup.get(a+','+b)],ba=r.link_utilization[arcLookup.get(b+','+a)],load=Math.max(ab,ba),color=load>1?'#d6584b':load>.8?'#d1a253':'#b3c2c1';svg+=`<g><title>${display[a]} → ${display[b]}: ${pct(ab)}; reverse: ${pct(ba)}</title><line x1="${x}" y1="${y}" x2="${u}" y2="${v}" stroke="${color}" stroke-width="${load>1?6:4}"/><rect x="${(x+u)/2-21}" y="${(y+v)/2-10}" width="42" height="20" rx="4" fill="white"/><text x="${(x+u)/2}" y="${(y+v)/2+4}" text-anchor="middle" font-size="11" fill="#50636a">${fmt(load*100,0)}%</text></g>`;});
+ route.slice(0,-1).forEach((a,i)=>{const b=route[i+1],[x,y]=coords[a],[u,v]=coords[b],len=Math.hypot(u-x,v-y),dx=(u-x)/len,dy=(v-y)/len;svg+=`<line x1="${x+dx*26}" y1="${y+dy*26}" x2="${u-dx*32}" y2="${v-dy*32}" stroke="#087aaf" stroke-width="3" marker-end="url(#arrow)"/>`;});
+ coords.forEach(([x,y],i)=>{const selected=route.includes(i);svg+=`<g><title>${ids[i]} · ${fmt(r.carbon[i])} g CO2/kWh</title><circle cx="${x}" cy="${y}" r="24" fill="${selected?'#dfeef6':'#eff5ef'}" stroke="${selected?'#087aaf':'#769e8e'}" stroke-width="2"/><text x="${x}" y="${y+4}" text-anchor="middle" fill="#15323d" font-size="${active==='geant'?14:11}" font-weight="700">${display[i]}</text><text x="${x}" y="${y+39}" text-anchor="middle" fill="#647c78" font-size="11">CI ${fmt(r.carbon[i],0)}</text></g>`;});
+ $('network').innerHTML=svg;
+ const values=selectedRun.records.map(row=>Math.max(...row.link_utilization)),top=Math.max(1.2,...values)*1.08;
+ const point=(v,i)=>`${30+i/(total-1)*395},${140-v/top*115}`;
+ $('timeline').innerHTML=`<line x1="30" y1="${140-115/top}" x2="425" y2="${140-115/top}" stroke="#b0765c" stroke-dasharray="4 4"/><polyline points="${values.map(point).join(' ')}" fill="none" stroke="#168a78" stroke-width="2"/><line x1="${30+k/(total-1)*395}" x2="${30+k/(total-1)*395}" y1="20" y2="140" stroke="#15323d"/><text x="4" y="${144-115/top}" class="tag">1×</text><text x="30" y="160" class="tag">00:00</text><text x="393" y="160" class="tag">24:00</text>`;
+}
+function forecast(){
+ $('forecast').replaceChildren();const split='test';
+ ['gnn','gru','persistence'].forEach(model=>{const rows=D.forecast.filter(r=>r.split===split&&r.model===model).sort((a,b)=>a.horizon_bins-b.horizon_bins);const tr=document.createElement('tr');[model.toUpperCase(),...rows.map(r=>fmt(r.mae_mbps,3))].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});$('forecast').append(tr);});
+ const errorFor=model=>mean(D.forecast.filter(r=>r.split===split&&r.model===model),'mae_mbps');
+ $('forecast-verdict').textContent=errorFor('gnn')>=errorFor('persistence')?'In this run, GNN mean MAE does not beat persistence. Routing safeguards and graph prediction must be evaluated separately.':'In this run, GNN mean MAE is lower than persistence. Check routing outcomes before claiming a network benefit.';
+}
+function notes(){
+ const items=active==='geant'?
+ ['2005 traffic is paired with later European carbon by country, weekday and season; the sources were not simultaneous.','Carbon is a daily country-level estimate, held constant within the day. There is no carbon predictor.','Capacities, propagation assumptions and six active demands define this experiment, not the full GÉANT backbone.','One-bin observation lag represents 15 scenario minutes. The contribution under test combines prediction, capacity reservations and route-change safeguards.']:
+ ['2004 Abilene OD estimates and 2004 EPA eGRID rates give a same-year US evaluation.','All 12 trace routers are retained; six OD pairs are selected using training data only.','The two held-out replay days are a pilot. The GNN carbon policy does not beat reactive carbon on mean forwarding score.'];
+ $('notes').replaceChildren(...items.map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
+ const rows=D.manifest.traffic_manifest,parameters=D.training.models.gnn.parameters;
+ $('provenance').textContent=`${active==='geant'?rows.rows.toLocaleString():'8,064'} traffic matrices · ${parameters.toLocaleString()} GNN parameters · graph ${D.manifest.graph_hash.slice(0,12)}`;
+ $('sources').innerHTML=active==='geant'?'Sources: <a href="https://sndlib.put.poznan.pl/dynamicmatrices.overview.action">SNDlib GÉANT</a> · <a href="https://zenodo.org/records/15987717">ECON-PowerCI</a>.':'Sources: <a href="https://www.cs.utexas.edu/~yzhang/research/AbileneTM/readme.txt">Abilene OD collector</a> · <a href="https://www.epa.gov/egrid/historical-egrid-data">EPA eGRID2004</a>.';
+ $('footnote').textContent=active==='abilene'?'* EPA eGRID2004 rates are annual generation averages: they differ by region but do not change by hour or replay step. Router-to-subregion assignments are approximate. Reactive-carbon route changes here respond to traffic and capacity, not changing EPA values. The forwarding score is a proxy, not measured electricity use or emissions; link capacities are assumed and traffic is scaled using training data.':'';
+}
+document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>switchTab(button.dataset.tab)));
+$('scenario').addEventListener('change',choose);$('lag').addEventListener('change',choose);$('policy').addEventListener('change',refresh);$('flow').addEventListener('change',render);$('step').addEventListener('input',render);
+$('play').addEventListener('click',()=>{if(timer)stop();else{$('play').textContent='Pause';timer=setInterval(()=>{$('step').value=(Number($('step').value)+1)%selectedRun.records.length;render();},400);}});
+switchTab(location.hash==='#abilene'?'abilene':'geant');
+</script>
+</body>
+</html>

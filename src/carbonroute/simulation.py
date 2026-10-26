@@ -34,13 +34,15 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
         raise ValueError("Supported observation delays are 0 and 1 bins")
     if start < lookback or stop > len(rates) or stop <= start:
         raise ValueError("Invalid replay interval/history")
-    if rates.shape != data.rates.shape or carbon.shape != (stop-start, 8):
+    n = data.network.node_count
+    if rates.shape != data.rates.shape or carbon.shape != (stop-start, n):
         raise ValueError("Replay shapes do not match prepared data")
     finite_nonnegative(rates, "replay rates")
     finite_nonnegative(carbon, "replay carbon")
     if np.any(rates[:, data.mask == 0] != 0):
         raise ValueError("Inactive demands must be masked")
-    if not np.all(np.diff(data.times[start-lookback:stop]) == np.timedelta64(15, "m")):
+    if not np.all(np.diff(data.times[start-lookback:stop]) ==
+                  np.timedelta64(cfg["bin_seconds"], "s")):
         raise ValueError("Replay must not cross missing timestamps")
     joint = policy in JOINT_POLICIES
     planner = (BudgetPlanner(data.network, data.pairs, cfg, carbon_budget_fraction) if joint
@@ -79,7 +81,7 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
         utilization = offered_links / data.network.capacities
         costs = incidence.T @ ci[source_nodes]
         accounting = forwarding_score(served, costs, cfg["bin_seconds"])
-        outgoing = np.bincount(source_nodes, weights=served_links, minlength=8)
+        outgoing = np.bincount(source_nodes, weights=served_links, minlength=n)
         budget_evidence = ({"predicted_carbon_cost": decision.predicted_carbon_cost,
                             "reactive_carbon_budget": decision.reactive_carbon_budget,
                             "carbon_budget_met": decision.carbon_budget_met,
