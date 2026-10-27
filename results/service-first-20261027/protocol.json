@@ -1,0 +1,16 @@
+{
+  "purpose": "Predeclared service-first evaluation on later source periods; no outcome-based selection",
+  "seed": 42,
+  "test_days": 7,
+  "geant_start": "2005-07-14",
+  "abilene_start": "2004-05-16",
+  "geant_source_range": ["2005-07-13", "2005-07-22"],
+  "abilene_weeks": [[8, "2004-05-15"], [9, "2004-05-22"]],
+  "geant_source_rule": "Require all native DEMANDS sections in each replay day and its lookback to be nonempty; missing sections are unknown and never imputed. Do not replace days on seeing outcomes.",
+  "workloads": ["normal", "congested", "bursty"],
+  "policies": ["shortest_path", "reactive_carbon", "predictive_te", "tradeoff_gnn", "tradeoff_persistence", "service_first_gnn", "service_first_persistence", "oracle_current_bin"],
+  "planner": {"service_tolerance_fraction_of_offered": 0.001, "observation_delay_bins": 1},
+  "transforms": "Original training-only pair selection, traffic scaling, normalization and assumed capacities; fixed for all methods",
+  "carbon": "GEANT daily 2022 seasonal pairing; Abilene EPA 2004 annual rates",
+  "interpretation": "One training seed; adjacent days; trace-driven simulated workload, assumed capacities and carbon proxy; replay is not packet-level or measured emissions"
+}

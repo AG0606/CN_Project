@@ -1,0 +1,136 @@
+{
+  "protocol_sha256": "af355b7f787ea1cc956cf70fe8a12251bae980f213c577841adcd3e897ed66d5",
+  "networks": {
+    "geant": {
+      "config": {
+        "seed": 42,
+        "traffic_days": 42,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 40,
+        "patience": 8,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 1.5,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 900,
+        "carbon_years": [
+          2022,
+          2023,
+          2024
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "days": [
+        "2005-07-14",
+        "2005-07-15",
+        "2005-07-16",
+        "2005-07-17",
+        "2005-07-18",
+        "2005-07-19",
+        "2005-07-20"
+      ],
+      "source": {
+        "traffic_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+        "empty_native_sections": [],
+        "availability_rule": "Require all native DEMANDS sections in each replay day and its lookback to be nonempty; missing sections are unknown and never imputed. Do not replace days on seeing outcomes."
+      },
+      "graph_hash": "458dc720a65c29da6b8cc35fca62bf5fc291fad72748b70e47a25c78b7878c8e",
+      "carbon_sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "prepared_rates_sha256": "1e11770115077c216755fd8e26ebb2db0ec46b322151086489b32ccef9964700",
+      "predictor_sha256": {
+        "gnn.pt": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+        "gnn.json": "0ad6c2f1616616da0521838aafe13ff5fcfd3c55701e6afcb9cb525f70026003",
+        "persistence.json": "06bc867fffb810acaf319556535f16ad537ede5e3c291bb916cebc561313743d"
+      }
+    },
+    "abilene": {
+      "config": {
+        "seed": 42,
+        "traffic_weeks": 4,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 25,
+        "patience": 6,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 2.0,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 300,
+        "carbon_years": [
+          2004
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "days": [
+        "2004-05-16",
+        "2004-05-17",
+        "2004-05-18",
+        "2004-05-19",
+        "2004-05-20",
+        "2004-05-21",
+        "2004-05-22"
+      ],
+      "source": {
+        "traffic_sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+        "members": {
+          "X08.gz": "5474cc2944c42cb826c6a0aa53da4d382e38bd7d07a5d21342bafcc85d6003b4",
+          "X09.gz": "005511d8b64c1fef598472026d23f7b454db19e5595955b3fbd9e0fe55a4dbbe"
+        }
+      },
+      "graph_hash": "1b352cd6adc3b343971f429a87a86f21ac4d67fa912a8a28eca5b78ec971e7bb",
+      "carbon_sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "prepared_rates_sha256": "7cb3d05a756da50dc19194ac829f208eaad6a582852a742a3ed9dc20334bbbe8",
+      "predictor_sha256": {
+        "gnn.pt": "2811bf80ba9899ce2a61143c0d0f499c56eebe3340e3f01b46a1f832d0d3c580",
+        "gnn.json": "0d41037716808326dc62a77d3c086a6e0c5d350a96791266dbc8a0b3a5c66e1d",
+        "persistence.json": "05651f646cf0851e49f316e857a2e9bc4e23a084f545e5d60e5e7d0ca43219f7"
+      }
+    }
+  },
+  "source_sha256": {
+    "service_first_experiment.py": "a4c3534adf959848c21dd27bae655bc63c31d1efbec02a87a61328983d168bbb",
+    "service_first.py": "ae6a6489e16aeaa95f4dced2d4b50d64d3ddf4dae59c604b7e51d550021d5ed1",
+    "service_first_simulation.py": "a24a23cfab82e90329aeef537c441781f9383b77af0e6f95447aeb7c003a8358",
+    "routing.py": "94d4cbb87500414d1710b4d92072f2617d80c0acec712c6f2652faded4d58551",
+    "simulation.py": "f3262d45eb77833947ef0765d11ba6f622d0853e4fb2744a01467b0b7e4f46d8",
+    "service.py": "11f02864ce9b3ffbe94dbd5ccb24599ef64da9a2a8cb20c855508fcf86322815",
+    "data.py": "998bb9275e7ef63e402599b7ec8f7240a46f357ac55cdea639fb120eb25d0396",
+    "prediction.py": "72f8eed232408a524f02d1a63b398e5ef5cdf11dc0d71c252befd67904cc6c32",
+    "network.py": "d45ff9f3d60533c5867742ce2b16d6364e6c678046d361c5d15540f776752098",
+    "common.py": "d7911dd9849058c2183c9ae83822f7a9b76f9b4f81cc0d01b327463051aee702",
+    "experiments.py": "e76dcb6255f29be1e1c27e626c0e1b15f68e72f9c9e70315d72e41e51b7df588",
+    "abilene.py": "571241d781bde2b2873d7cd22c0e29f0a551a8b527644e8dbf0e18ab8d1fdbef",
+    "tradeoff_experiment.py": "8921ae033245e43c818d4d7a198f13157e825ce08c0a12f0b9cd064ad8321c6b"
+  }
+}

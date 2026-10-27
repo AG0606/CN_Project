@@ -1,0 +1,15 @@
+{
+  "purpose": "Post-evaluation audit of native source availability; no input, model, period or outcome changed",
+  "source_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+  "source_availability_sha256": "d64b4528385b8935965ac9dd69738f9a2552b5b096e0a86725570b0771acaf67",
+  "zero_offered_policy_runs": 135,
+  "zero_offered_days": {
+    "geant": [
+      "2005-06-30",
+      "2005-07-01",
+      "2005-07-02"
+    ]
+  },
+  "interpretation": "An empty native DEMANDS section establishes no listed demands, not measured zero real-world traffic or a known outage. The fixed parser treats unlisted demands as zero. Keep all declared days and mark carbon scores undefined when no bytes are served.",
+  "interval_warning": "The frozen day_cluster_intervals.csv has undefined G\u00c9ANT carbon-score differences and intervals because empty-day NaNs propagated. Its count of seven includes empty days; only four routing days have defined carbon scores. No carbon-score confidence claim is supported by those G\u00c9ANT rows."
+}

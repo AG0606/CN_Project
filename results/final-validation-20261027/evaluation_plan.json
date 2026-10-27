@@ -1,0 +1,200 @@
+{
+  "protocol_sha256": "132f7e9c14e888fb41fedfdccb4116fd6e589826b39e9fcc1b63818c833b196a",
+  "networks": {
+    "geant": {
+      "config": {
+        "seed": 42,
+        "traffic_days": 42,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 40,
+        "patience": 8,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 1.5,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 900,
+        "carbon_years": [
+          2022,
+          2023,
+          2024
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "source": {
+        "traffic_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+        "empty_native_sections": [],
+        "availability_rule": "Reject empty native demand sections in replay, lookback and the complete following day (conservative coverage of the two-bin label tail), rather than replace dates after outcomes"
+      },
+      "models": {
+        "7": {
+          "gnn.pt": "39e241729fef88aebc9408e3455a03cd9269d3c9ae34c9801d66421a4122a940",
+          "gnn.json": "13d22571fe7ff5b7d8ec1bbd7dc22fce0718e3f49a5908e63d919fc24943d039",
+          "gru.pt": "e9a31946a8f849b731aebb585c269dea74eecde5685a1cef2ee2a7882f83c3a1",
+          "gru.json": "9c0898a6621a98474f2876714a86f460ded3e43ad3abdab4d5b7b68055e5751a",
+          "persistence.json": "32c8695c854bfa0b78ca55ba16259fb801b26e6f0bf237760710646cc7b90f76",
+          "training_summary.json": "bb26ee92e1e5efdde12f7b5eb89f9f7250b34ad51259541c49fdb6ebe04a81f3"
+        },
+        "42": {
+          "gnn.pt": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+          "gnn.json": "03de71b088017e45b5577fc1fc7f0d22007e1878768e5f016316de60897b33ab",
+          "gru.pt": "3b1569e39d2077100a1cd306f4e63f44e8d953c2370695e1a29133cf7fcaaa61",
+          "gru.json": "2ed55ce0db13d2afaa434d040846d64ec76809e786cb218a10ac2848294deb8c",
+          "persistence.json": "06bc867fffb810acaf319556535f16ad537ede5e3c291bb916cebc561313743d",
+          "training_summary.json": "e5c58eda8c9614806bdf6124dddf1ecb0129f372ce2748ff4f1c5b4e895c8b02"
+        },
+        "123": {
+          "gnn.pt": "6d9abe2f87cc0de25ab435c4358cccf290e74ab584e064ddc82818ecfffdbe2f",
+          "gnn.json": "a2ebf8db682d527391ffbc21ea7f2bfc2f9571921b2870270b38456b520b8252",
+          "gru.pt": "9ef825d45845a6846a9b90e1e0b96f40bda5288d5ce53a12a657d239133d358b",
+          "gru.json": "77e65e1d090e02c1f2934089b3e518d89728a7b4e9dfaeb56b2946df52a991b4",
+          "persistence.json": "9755a5c293f616726fea269f49173ea1047a3d3efbfc801dfe89339d6f41694a",
+          "training_summary.json": "5ef94d37726ef0ca607fb11c38edf7ed99b2c2ff977bda7441204c2e55581eec"
+        }
+      },
+      "reference_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+      "graph_hash": "458dc720a65c29da6b8cc35fca62bf5fc291fad72748b70e47a25c78b7878c8e",
+      "prepared_rates_sha256": "7e9e676a552b45ebe6884ac2ea163a65ea9978b1d192f013f0b9572bd61bbf3a",
+      "carbon_sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "days": [
+        "2005-08-03",
+        "2005-08-04",
+        "2005-08-05",
+        "2005-08-06",
+        "2005-08-07",
+        "2005-08-08",
+        "2005-08-09"
+      ],
+      "capacity_mbps": [
+        10.0,
+        20.0,
+        40.0
+      ]
+    },
+    "abilene": {
+      "config": {
+        "seed": 42,
+        "traffic_weeks": 4,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 25,
+        "patience": 6,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 2.0,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 300,
+        "carbon_years": [
+          2004
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "source": {
+        "traffic_sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+        "members": {
+          "X10.gz": "c3517f34552a42e809f233a6352f9f04b9128ea98fdc319ede3672774967ecda",
+          "X11.gz": "cb382563cd2df8c05ce90ca18abf425862eb4260c614a64d32ff232dccd446f1"
+        }
+      },
+      "models": {
+        "7": {
+          "gnn.pt": "7002e41ce3420b04cd904a05eba8651e08e598846bc80a23364520f082632a2f",
+          "gnn.json": "fc36a7dbd104ba734c7467ced9d3d52e4a5244db485987a8bb19c1982f5c615e",
+          "gru.pt": "c826bada949f216f4e8abfb0e74e9c9b2c76cd37ca3eaa6d5e9d9746574115b9",
+          "gru.json": "d9213809b9881b273e035a276b561c396b1c69fb90bfb36c4a38ab08fb48f9db",
+          "persistence.json": "92e741213d027a5625770a907eedb2f9c77bb7b842089cd7f30b2601c6926c69",
+          "training_summary.json": "58498cb955a9bc7cb2bc78060f2c41565953b0966f8cb389d618d9cab49d38cc"
+        },
+        "42": {
+          "gnn.pt": "2811bf80ba9899ce2a61143c0d0f499c56eebe3340e3f01b46a1f832d0d3c580",
+          "gnn.json": "8b50432022c43e5d16f110711e8e260a93cc16b2950cd0cb063cd46c13082889",
+          "gru.pt": "dffd47a7f4b0df18953e60e3f4736e9c77b907d8e24cfec7ae32c09c104da9c7",
+          "gru.json": "49d7fcc908282aa326178b3cfa0aa1cd031a2c011e0c75bed404fc8b25890070",
+          "persistence.json": "05651f646cf0851e49f316e857a2e9bc4e23a084f545e5d60e5e7d0ca43219f7",
+          "training_summary.json": "bc23881b914d2cf04d001eb1b046ad6a57de6eaa367984b802e77c47b4efee27"
+        },
+        "123": {
+          "gnn.pt": "b38c4367b62bc3c3a31163419a61632a4dd343634812b5cd3d11d70384bf3a8b",
+          "gnn.json": "adeba60dba0171aa3c8a43006b4c40efa2c0c9cbe4fe1738b5c3a8e5a5e3c031",
+          "gru.pt": "1407b62b4cc134ba1e056acf388e07528794e4a771ecbb9b8976d97c453a265b",
+          "gru.json": "eb2eb6b6eff6dad53eff91a14740572f311c9d5d1017af97b452e6c63439a9b0",
+          "persistence.json": "4a9859f917880146baa4a63116b9a65f231b3fa736a4d9976c772e87422cb185",
+          "training_summary.json": "42a7770beebe222c07a905215aa2d30dfd84fb2f83671bb1956c2b5416de90f7"
+        }
+      },
+      "reference_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+      "graph_hash": "1b352cd6adc3b343971f429a87a86f21ac4d67fa912a8a28eca5b78ec971e7bb",
+      "prepared_rates_sha256": "017d1495d88cae9d237326ed1517b6a5149d015aefcb88f511d4cc92ada6c15e",
+      "carbon_sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "days": [
+        "2004-06-01",
+        "2004-06-02",
+        "2004-06-03",
+        "2004-06-04",
+        "2004-06-05",
+        "2004-06-06",
+        "2004-06-07"
+      ],
+      "capacity_mbps": [
+        10.0,
+        20.0,
+        40.0
+      ]
+    }
+  },
+  "source_sha256": {
+    "final_validation.py": "f1b6dd9e1e5faba710046aab01c73d79ab67a8d3d9d1f11c85fc61fdbec70d6b",
+    "multipath.py": "c63b18c36956f3bdcff49484cf74e46a8fe5f6c61240efd54e50496229316a4e",
+    "multipath_simulation.py": "da98c0b8c87d409975e71aed485a8cc23a85d5f6f49751d1616021c49de26d2a",
+    "service_first_experiment.py": "a4c3534adf959848c21dd27bae655bc63c31d1efbec02a87a61328983d168bbb",
+    "service_first.py": "ae6a6489e16aeaa95f4dced2d4b50d64d3ddf4dae59c604b7e51d550021d5ed1",
+    "service_first_simulation.py": "a24a23cfab82e90329aeef537c441781f9383b77af0e6f95447aeb7c003a8358",
+    "routing.py": "94d4cbb87500414d1710b4d92072f2617d80c0acec712c6f2652faded4d58551",
+    "simulation.py": "f3262d45eb77833947ef0765d11ba6f622d0853e4fb2744a01467b0b7e4f46d8",
+    "service.py": "11f02864ce9b3ffbe94dbd5ccb24599ef64da9a2a8cb20c855508fcf86322815",
+    "data.py": "998bb9275e7ef63e402599b7ec8f7240a46f357ac55cdea639fb120eb25d0396",
+    "prediction.py": "72f8eed232408a524f02d1a63b398e5ef5cdf11dc0d71c252befd67904cc6c32",
+    "network.py": "d45ff9f3d60533c5867742ce2b16d6364e6c678046d361c5d15540f776752098",
+    "common.py": "d7911dd9849058c2183c9ae83822f7a9b76f9b4f81cc0d01b327463051aee702",
+    "experiments.py": "e76dcb6255f29be1e1c27e626c0e1b15f68e72f9c9e70315d72e41e51b7df588",
+    "abilene.py": "571241d781bde2b2873d7cd22c0e29f0a551a8b527644e8dbf0e18ab8d1fdbef",
+    "followup_data.py": "e75b392f75fbc215346c1426675d2a158a66f6f902b3a25fff6947c05791c75b"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "torch": "2.14.1+cpu",
+    "pandas": "3.0.6"
+  }
+}

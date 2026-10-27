@@ -1,0 +1,26 @@
+{
+  "purpose": "Version 2 after source-only preflight failure; no routing outcomes used for date or policy selection",
+  "seed": 42,
+  "test_days": 7,
+  "geant_start": "2005-07-26",
+  "abilene_start": "2004-05-24",
+  "geant_source_range": ["2005-07-25", "2005-08-03"],
+  "source_availability_selection": "First seven-consecutive-day period starting on/after 22 July with nonempty native sections and initial 3-hour lookback; selected 26 July before any routing outcomes. Failed first proposal and complete availability screen retained in results/multipath-20261027.",
+  "abilene_weeks": [[9, "2004-05-22"], [10, "2004-05-29"]],
+  "geant_source_rule": "Require nonempty native DEMANDS sections for every replay bin and initial lookback; reject rather than replace dates if this fails",
+  "workloads": ["normal", "congested", "bursty"],
+  "policies": ["shortest_path", "reactive_carbon", "tradeoff_gnn", "service_first_gnn", "service_first_persistence", "equal_split", "multipath_te_gnn", "multipath_carbon_gnn", "multipath_carbon_persistence", "multipath_carbon_reactive", "multipath_carbon_gnn_quantized"],
+  "planner": {
+    "forecast": "Original model forecast plus original validation margin; per-OD maximum over three horizons forms the planning envelope",
+    "lp_stage_1": "Minimize maximum offered link utilization, conserving 100% of each OD over candidate paths",
+    "carbon_stage_2": "Minimize mean forecast offered demand times path carbon, under peak <= max(0.8, minimum achievable envelope peak)",
+    "te_baseline": "Retain minimum achievable envelope peak without the 0.8 carbon slack; minimize changes",
+    "lp_last_stage": "Minimize L1 change in path fractions within fixed previous objectives, with numerical tolerances only",
+    "quantized_variant": "Largest-remainder rounding to 100 buckets per OD; post-rounding guard violations reported",
+    "realized_allocation": "Equal-rate max-min service across OD aggregates under the committed fractional link incidence; subpaths gain no extra fairness shares",
+    "observation_delay_bins": 1
+  },
+  "transforms": "Same reference training-only pair selection, scaling, normalizer, candidate paths and assumed capacities for all methods",
+  "carbon": "GEANT daily 2022 seasonal pairing; Abilene fixed annual EPA 2004 regional rates",
+  "interpretation": "Aggregate fractional simulation, no packet-ordering or switch deployment claim. One existing neural seed, seven adjacent days per network, modeled capacities and forwarding proxy. Previous study periods remain inspected; these dates have no recorded earlier routing outcomes."
+}

@@ -1,12 +1,26 @@
 # GÉANT predictive carbon-aware routing
 
+**Research paper:** Open [the editable IEEE two-column conference article](docs/paper/main.tex) in the `docs/paper/` project for its PDF preview, or read [the Markdown manuscript](docs/PAPER_DRAFT.md). The article uses `IEEEtran` conference mode and IEEE bibliography style, with five tables, three publication-width figures, formal equations and fourteen references. [Editing and regeneration instructions](docs/paper/README.md) explain the paper package. It is a full first draft; author affiliation, team review and any additional venue requirements remain before submission.
+
+**Final validation and paper draft (27 October 2026):** The three checks are complete: three training seeds, 10/20/40 Mbps capacity sensitivity, and matched perfect-demand diagnostics on later GÉANT/Abilene dates. All **2,058 runs / 395,136 intervals / 12 new checkpoints** pass the independent audit. Start with the [current manuscript](docs/PAPER_DRAFT.md), [validation methods](docs/FINAL_VALIDATION.md), [complete findings](results/final-validation-20261027/FINDINGS.md) and [bibliography](docs/REFERENCES.bib). Graph prediction has no consistent advantage; multipath gains depend on capacity. GÉANT at 40 Mbps improves substantially over reactive routing, while its 10 Mbps congested case regresses on service and carbon score. The existing two-tab dashboard presents earlier campaigns; the final paper checks are separate report/CSV/figure artifacts, not newly substituted dashboard replay data.
+
 A working, free, native Windows research simulation with real historical inputs, a trained GCN–GRU, seven reference policies, three experimental joint selectors, and an offline replay viewer.
+
+**Fractional multipath extension:** [methods and findings](docs/MULTIPATH_STUDY.md) describe a free HiGHS LP optimizer, common per-OD fairness, matched single-path/no-carbon/equal-split controls, and a 100-bucket variant. All 462 later-period paired runs pass the independent flow audit. Results are mixed: GÉANT normal service improves versus reactive routing, while congested Abilene loses some service. GNN superiority is not established. Open the multipath section in the two-tab dashboard to compare all methods; previous negative studies remain in the research record.
 
 **Secondary US evaluation:** [Abilene + EPA eGRID2004 methods and findings](docs/ABILENE_SECONDARY_EXPERIMENT.md) uses 2004 NetFlow-derived traffic and spatially varying **annual** EPA carbon rates. The [single offline dashboard](results/demo/index.html) has GÉANT and Abilene tabs. The GÉANT experiment remains the main result. The Abilene GNN does not beat reactive carbon on its two-day pilot; see the documented limitations before presenting it.
 
 **Start here: double-click `DEMO.html`.** The saved demo works without Python or internet. `results/paper/index.html` shows the larger comparison. This is aggregate trace-driven simulation; Mininet and OpenFlow actuation are not part of the completed build.
 
 The [review presentation](output/presentations/CarbonRoute_FFCS_Style_2026-10-27.pptx) and the two-tab dashboard share an FFCS-inator-inspired visual style. See [design reference and font notes](docs/DESIGN_REFERENCE.md) before editing either artifact.
+
+The dashboard also includes an [exploratory joint routing and oracle study](docs/TRADEOFF_STUDY.md) on already-inspected validation days. Its predicted guards do not guarantee actual service, and the current results do not establish a GNN advantage.
+
+The [later-period follow-up](docs/FOLLOWUP_STUDY.md) adds separate longer-training, expanded-history and link-load-loss checkpoints, with a locally frozen evaluation protocol and additional GÉANT/Abilene test periods. Run `python -m carbonroute.followup all` to reproduce its stages; its earlier training comparison is retained in the research record rather than the dashboard.
+
+The [service-first study](docs/SERVICE_FIRST_STUDY.md) compares an additional GNN and persistence planner against matched baselines on seven later days per network. Its Abilene congested results show a lower forwarding score than reactive carbon, with more route changes and mixed comparisons against the earlier joint planner. The GÉANT replay is severely saturated under assumed capacities. The two-tab dashboard includes this study.
+
+That follow-up completed 12 new neural trainings and 630 routing runs. Extra training did not consistently reduce forecast error. Its later GÉANT period contains three days with empty native demand sections and severe simulated saturation on populated days, so it is a limited stress test. See the [findings and source-quality disclosure](results/followup-study-20261027/FINDINGS.md); undefined carbon scores are excluded explicitly, and service pools actual offered/served bytes.
 
 For a new teammate or coding agent, read [docs/HANDOFF.md](docs/HANDOFF.md) for the current state, file map, results, verification commands and next work. To show the professor the input files and readable samples, open [datasets/README.md](datasets/README.md). This repository includes the validated reference checkpoints and saved campaigns. Original third-party bytes and the local Python environment are deliberately excluded from Git; the local `datasets/` folder contains them for inspection.
 

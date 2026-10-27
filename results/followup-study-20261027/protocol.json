@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "purpose": "Locally frozen follow-up, recorded before held-out outcome evaluation; not an external preregistration",
+  "seed": 42,
+  "test_days_per_network": 7,
+  "scenarios": ["normal", "congested", "bursty"],
+  "carbon_year_geant": 2022,
+  "geant": {
+    "training_end_exclusive": "2005-06-15",
+    "validation_end_exclusive": "2005-06-29",
+    "test_end_exclusive": "2005-07-13"
+  },
+  "abilene": {
+    "training_weeks": [1, 2, 3, 4],
+    "validation_weeks": [5],
+    "test_weeks": [6, 7],
+    "week_starts": ["2004-03-01", "2004-03-08", "2004-04-02", "2004-04-09", "2004-04-22", "2004-05-01", "2004-05-08"],
+    "archive_sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a"
+  },
+  "transforms": "Keep reference training-only selected pairs, scale and traffic factor unchanged for every comparison",
+  "training_variants": {
+    "longer": {"data": "original train/validation splits", "epochs": 100, "patience": 12, "routing_loss_alpha": 0.0},
+    "expanded": {"data": "expanded train and later validation", "epochs": 100, "patience": 12, "routing_loss_alpha": 0.0},
+    "link_loss": {"data": "same expanded train and validation", "epochs": 100, "patience": 12, "routing_loss_alpha": 0.25}
+  },
+  "selection": "Each checkpoint selected only by its declared validation loss; evaluate all declared variants, never select on final test",
+  "planner": {"carbon_budget_fraction": 0.0, "congestion_weight": 1.0, "change_penalty": 0.005, "observation_delay_bins": 1},
+  "held_out_rule": "First seven complete test days with lookback and three forecast labels inside the test split; do not bridge missing timestamps",
+  "interpretation": "One training seed; simulated capacities/workloads; carbon forwarding proxy; fresh only relative to recorded project experiments"
+}

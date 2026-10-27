@@ -117,7 +117,8 @@ def topology(a_text: str, zoo_path: Path, cfg: dict[str, Any]) -> Network:
             if set(link) - set(IDS):
                 raise ValueError("Unknown 2004 Abilene router in routing matrix")
             directed.add(tuple(link))
-    edges = sorted({tuple(sorted((IDS.index(a), IDS.index(b)))) for a, b in directed})
+    edges = sorted({(min(IDS.index(a), IDS.index(b)), max(IDS.index(a), IDS.index(b)))
+                    for a, b in directed})
     if len(edges) != 15 or len(directed) != 30:
         raise ValueError("Expected 15 bidirectional 2004 Abilene links")
     graph = nx.read_graphml(zoo_path)
@@ -194,7 +195,7 @@ def prepare(root: Path, cfg: dict[str, Any]) -> Prepared:
     rates *= factor
     scale = np.maximum(np.quantile(rates[:4032], .95, axis=0), .01).astype(np.float32)
     scale[mask == 0] = 1
-    counts = {split: len(window_indices(times, *bounds, cfg["lookback"], cfg["horizon"], 300))
+    counts = {split: len(window_indices(times, bounds[0], bounds[1], cfg["lookback"], cfg["horizon"], 300))
               for split, bounds in splits.items()}
     cache = root / "inputs/processed/abilene"
     cache.mkdir(parents=True, exist_ok=True)

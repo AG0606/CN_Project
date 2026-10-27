@@ -1,0 +1,6 @@
+{
+  "status": "source_preflight_failed_before_any_routing_outcomes",
+  "empty_native_sections": 132,
+  "source_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+  "action": "Preserve failed protocol; choose replacement period by chronological nonempty-source availability only, without routing or carbon outcomes"
+}

@@ -1,0 +1,3999 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "created_utc": "2026-10-27T03:11:57.579063+00:00",
+  "evaluation_plan_sha256": "d6b7640785e12f4542b375d89b9a4fb24d77b4f2c49d15262ed7de7dea7f03d0",
+  "source_sha256": {
+    "followup.py": "ebc0c344c49473ee689736944331b45c43491e8ead4b19a56c84e72489577c0e",
+    "followup_data.py": "e75b392f75fbc215346c1426675d2a158a66f6f902b3a25fff6947c05791c75b",
+    "prediction.py": "72f8eed232408a524f02d1a63b398e5ef5cdf11dc0d71c252befd67904cc6c32",
+    "routing.py": "94d4cbb87500414d1710b4d92072f2617d80c0acec712c6f2652faded4d58551",
+    "simulation.py": "f3262d45eb77833947ef0765d11ba6f622d0853e4fb2744a01467b0b7e4f46d8",
+    "data.py": "998bb9275e7ef63e402599b7ec8f7240a46f357ac55cdea639fb120eb25d0396",
+    "network.py": "d45ff9f3d60533c5867742ce2b16d6364e6c678046d361c5d15540f776752098",
+    "service.py": "11f02864ce9b3ffbe94dbd5ccb24599ef64da9a2a8cb20c855508fcf86322815",
+    "experiments.py": "e76dcb6255f29be1e1c27e626c0e1b15f68e72f9c9e70315d72e41e51b7df588",
+    "abilene.py": "571241d781bde2b2873d7cd22c0e29f0a551a8b527644e8dbf0e18ab8d1fdbef",
+    "common.py": "d7911dd9849058c2183c9ae83822f7a9b76f9b4f81cc0d01b327463051aee702"
+  },
+  "networks": {
+    "geant": {
+      "config": {
+        "seed": 42,
+        "traffic_days": 42,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 40,
+        "patience": 8,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 1.5,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 900,
+        "carbon_years": [
+          2022,
+          2023,
+          2024
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "traffic_sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+      "carbon_file": "inputs/raw/carbon.csv",
+      "carbon_sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "sources": {
+        "inputs\\raw\\geant-traffic.tgz": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df"
+      },
+      "graph_hash": "458dc720a65c29da6b8cc35fca62bf5fc291fad72748b70e47a25c78b7878c8e",
+      "split_dates": {
+        "train": [
+          "2005-05-04T15:00",
+          "2005-06-14T23:45"
+        ],
+        "validation": [
+          "2005-06-15T00:00",
+          "2005-06-28T23:45"
+        ],
+        "test": [
+          "2005-06-29T00:00",
+          "2005-07-12T23:45"
+        ]
+      },
+      "predictors": {
+        "reference_gnn": {
+          "checkpoint_sha256": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+          "metadata_sha256": "0ad6c2f1616616da0521838aafe13ff5fcfd3c55701e6afcb9cb525f70026003",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 40,
+            "patience": 8,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3
+          },
+          "training_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+          "best_epoch": 36,
+          "validation_mae_mbps": 0.3556581735610962,
+          "training_seconds": 15.440047299998696
+        },
+        "reference_gru": {
+          "checkpoint_sha256": "3b1569e39d2077100a1cd306f4e63f44e8d953c2370695e1a29133cf7fcaaa61",
+          "metadata_sha256": "ad908576af10cd54e95e70f4c1ee865f57f05ac6b4f5107b9dd3bf9e2714db20",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 40,
+            "patience": 8,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3
+          },
+          "training_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+          "best_epoch": 36,
+          "validation_mae_mbps": 0.35367199778556824,
+          "training_seconds": 14.834731599999941
+        },
+        "longer_gnn": {
+          "checkpoint_sha256": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+          "metadata_sha256": "b329c3c9b5b5136372b083468c34ff0cf7b7d2f1f58b33e4ec1b0f8220a027fe",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+          "best_epoch": 36,
+          "validation_mae_mbps": 0.3556581735610962,
+          "training_seconds": 22.60275520000141
+        },
+        "longer_gru": {
+          "checkpoint_sha256": "32b2feb967afff4357dc6da841e66db639c39d5f95be4471b392c423fe038ac5",
+          "metadata_sha256": "108b80b66ff9796e6504fe01800213477854c1cc7454d252f6208675c2ed063a",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+          "best_epoch": 56,
+          "validation_mae_mbps": 0.3528256118297577,
+          "training_seconds": 26.593538799999806
+        },
+        "expanded_gnn": {
+          "checkpoint_sha256": "563048d652f05f19bb787122d78242926d7ccba3855789c2b2758ae8876213fe",
+          "metadata_sha256": "306c2cd63345e9b0bdb71dea17fe85b40415be78a35a38010f7fb00b3687e5ac",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+          "best_epoch": 57,
+          "validation_mae_mbps": 2.1796536445617676,
+          "training_seconds": 44.234766699999454
+        },
+        "expanded_gru": {
+          "checkpoint_sha256": "d7ea5a82f093d73190fcdb5af6362b50f6cd7a8725aebece38d81828150d7b10",
+          "metadata_sha256": "55455c6a5a9e718a37517ef7bb0d33594608bab5d069f389bfa27a6310c07328",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+          "best_epoch": 40,
+          "validation_mae_mbps": 2.1794002056121826,
+          "training_seconds": 32.00343289999728
+        },
+        "link_loss_gnn": {
+          "checkpoint_sha256": "138cb717508031512c119c9a77d68571ccac451b1a82f59ed724b9e8f8bdd184",
+          "metadata_sha256": "b39c7a9d8f03ad122d23e4262b63736fe76ed53b9bf180f2daf696601836d453",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.25
+          },
+          "training_traffic_sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+          "best_epoch": 80,
+          "validation_mae_mbps": 2.177382469177246,
+          "training_seconds": 60.7747406999988
+        },
+        "link_loss_gru": {
+          "checkpoint_sha256": "7d1fa204e27abb4f516a0668333bba02b9a6b8177bb60d0a0241cef7020f656c",
+          "metadata_sha256": "0a6eb4f74b11a801f3c94808206a0354af0a232952119b67fe36dfc8122dd760",
+          "config": {
+            "seed": 42,
+            "traffic_days": 42,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 1.5,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 900,
+            "carbon_years": [
+              2022,
+              2023,
+              2024
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.25
+          },
+          "training_traffic_sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+          "best_epoch": 39,
+          "validation_mae_mbps": 2.1796185970306396,
+          "training_seconds": 48.227608299996064
+        },
+        "reference_persistence": {
+          "metadata_sha256": "06bc867fffb810acaf319556535f16ad537ede5e3c291bb916cebc561313743d"
+        },
+        "updated_persistence": {
+          "metadata_sha256": "461a2f7a04c57fc063f7efe0668e6985983ecacbc06c46871078fc1cba14ead6"
+        }
+      },
+      "days": [
+        "2005-06-30",
+        "2005-07-01",
+        "2005-07-02",
+        "2005-07-03",
+        "2005-07-04",
+        "2005-07-05",
+        "2005-07-06"
+      ]
+    },
+    "abilene": {
+      "config": {
+        "seed": 42,
+        "traffic_weeks": 4,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 25,
+        "patience": 6,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 2.0,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 300,
+        "carbon_years": [
+          2004
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "traffic_sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+      "carbon_file": "inputs/raw/eGRID2004_aggregation.xls",
+      "carbon_sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "sources": {
+        "inputs\\raw\\AbileneTM-all.tar": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+        "inputs\\raw\\abilene\\X01.gz": "d996a9115d2815eec158d5055452deb389f5546a96e0dfcbfae5c22a40372558",
+        "inputs\\raw\\abilene\\X02.gz": "e4646c3020e5904b3e4f3388899c15940b8156ade9fdaf9dd96b06a83f8066a5",
+        "inputs\\raw\\abilene\\X03.gz": "b90f058def353a78db4e5d65d329de867659add90b7ef4d918acb7ba88a8f040",
+        "inputs\\raw\\abilene\\X04.gz": "3aab7fe56b84f2469888a142c2af313c865d4c3d41c955cdc199ccea4c66cce0",
+        "inputs\\raw\\abilene\\X05.gz": "e1cf3f3a79345ffde4e03a77a9c8017fe72fbc9584cb86f8428023efe8203f24",
+        "inputs\\raw\\abilene\\X06.gz": "770a8b0cb3468e212128954fc56d1cad365f3675a9e34da1e15f4d1ace9b43ff",
+        "inputs\\raw\\abilene\\X07.gz": "4b8a88af6b358562f356472ff1ae76d1b482333d4cde91666da0237a5c5ae56d"
+      },
+      "graph_hash": "1b352cd6adc3b343971f429a87a86f21ac4d67fa912a8a28eca5b78ec971e7bb",
+      "split_dates": {
+        "train": [
+          "2004-03-01T00:00",
+          "2004-04-15T23:55"
+        ],
+        "validation": [
+          "2004-04-22T00:00",
+          "2004-04-28T23:55"
+        ],
+        "test": [
+          "2004-05-01T00:00",
+          "2004-05-14T23:55"
+        ]
+      },
+      "predictors": {
+        "reference_gnn": {
+          "checkpoint_sha256": "2811bf80ba9899ce2a61143c0d0f499c56eebe3340e3f01b46a1f832d0d3c580",
+          "metadata_sha256": "0d41037716808326dc62a77d3c086a6e0c5d350a96791266dbc8a0b3a5c66e1d",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 25,
+            "patience": 6,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3
+          },
+          "training_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+          "best_epoch": 1,
+          "validation_mae_mbps": 0.08777280896902084,
+          "training_seconds": 6.632568600000013
+        },
+        "reference_gru": {
+          "checkpoint_sha256": "dffd47a7f4b0df18953e60e3f4736e9c77b907d8e24cfec7ae32c09c104da9c7",
+          "metadata_sha256": "262222d5c60f7d684d3ab619a6bd91267e1a158e71cd59110e9525a0714f9241",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 25,
+            "patience": 6,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3
+          },
+          "training_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+          "best_epoch": 12,
+          "validation_mae_mbps": 0.08699198812246323,
+          "training_seconds": 17.79482410000037
+        },
+        "longer_gnn": {
+          "checkpoint_sha256": "05c1b169031b3769a671b10fb87ed3b02016a6b4f9c69cfb3ff8afc3cc314f09",
+          "metadata_sha256": "0665b19d6278775dba2e4a50291b1f0863b03b84e465192d24f38e4546bf763a",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+          "best_epoch": 25,
+          "validation_mae_mbps": 0.08572566509246826,
+          "training_seconds": 49.944605700002285
+        },
+        "longer_gru": {
+          "checkpoint_sha256": "dffd47a7f4b0df18953e60e3f4736e9c77b907d8e24cfec7ae32c09c104da9c7",
+          "metadata_sha256": "bab8e3e74364bc8b3fddd9bb5b8a3a7da9a63bc91503363c96ae31c24efcae9c",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+          "best_epoch": 12,
+          "validation_mae_mbps": 0.08699198812246323,
+          "training_seconds": 25.559186200000113
+        },
+        "expanded_gnn": {
+          "checkpoint_sha256": "0c5266ebae370c7db23b19ede03147d42f574b2e15594639c5db25b783ca3912",
+          "metadata_sha256": "26a68268f6b1049c9ab84184cc5367fbfcd7d73ee9e4dee4156615ddfe03459c",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+          "best_epoch": 22,
+          "validation_mae_mbps": 0.15163636207580566,
+          "training_seconds": 64.38996719999705
+        },
+        "expanded_gru": {
+          "checkpoint_sha256": "d398974f6b7114e45835d2a15d692601abfa3a581e7d992acd6883d1b07b21da",
+          "metadata_sha256": "7955a56d7f9c9720be1bbbfaf76c5dfa470ec46b4d33e8195496dd0669bc5c48",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.0
+          },
+          "training_traffic_sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+          "best_epoch": 52,
+          "validation_mae_mbps": 0.1488504409790039,
+          "training_seconds": 115.2869389999978
+        },
+        "link_loss_gnn": {
+          "checkpoint_sha256": "ae99185bfa8ccb9babe8930132ac0e819f3fe369d68ef40bc175a61b16abbd33",
+          "metadata_sha256": "242b0682d39d16933b76b527704db275aaefe765f5a3c7668f1b68133f3472bb",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.25
+          },
+          "training_traffic_sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+          "best_epoch": 28,
+          "validation_mae_mbps": 0.15087074041366577,
+          "training_seconds": 64.05175600000075
+        },
+        "link_loss_gru": {
+          "checkpoint_sha256": "548dce05f43b231742c211dd0d47b8ac2727d2c80c285a6cb50276e370bb01ef",
+          "metadata_sha256": "3b669d951dc752447d5158ccbe818b0f6b7b99c1440c7ed7fcfeafaa5505a5dd",
+          "config": {
+            "seed": 42,
+            "traffic_weeks": 4,
+            "active_pairs": 6,
+            "capacity_mbps": 10.0,
+            "fiber_stretch": 1.3,
+            "router_delay_ms": 0.15,
+            "train_utilization_p95": 0.7,
+            "lookback": 12,
+            "horizon": 3,
+            "hidden_size": 32,
+            "epochs": 100,
+            "patience": 12,
+            "batch_size": 128,
+            "learning_rate": 0.001,
+            "cpu_threads": 2,
+            "margin_quantile": 0.9,
+            "candidate_paths": 3,
+            "delay_stretch": 2.0,
+            "utilization_limit": 0.8,
+            "min_improvement": 0.05,
+            "hold_bins": 2,
+            "bin_seconds": 300,
+            "carbon_years": [
+              2004
+            ],
+            "normal_multiplier": 1.0,
+            "congested_multiplier": 1.6,
+            "burst_multiplier": 2.5,
+            "burst_probability": 0.08,
+            "burst_bins": 3,
+            "routing_loss_alpha": 0.25
+          },
+          "training_traffic_sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+          "best_epoch": 55,
+          "validation_mae_mbps": 0.1487949788570404,
+          "training_seconds": 102.23144669999601
+        },
+        "reference_persistence": {
+          "metadata_sha256": "05651f646cf0851e49f316e857a2e9bc4e23a084f545e5d60e5e7d0ca43219f7"
+        },
+        "updated_persistence": {
+          "metadata_sha256": "e497b7ce9808ebe2f89e7e3fdc896fa5bc8193f5d3deae2b58bf54556adb3d92"
+        }
+      },
+      "days": [
+        "2004-05-02",
+        "2004-05-03",
+        "2004-05-04",
+        "2004-05-05",
+        "2004-05-06",
+        "2004-05-07",
+        "2004-05-08"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "run_id": "geant_d0_normal_shortest_path",
+      "file": "runs/geant_d0_normal_shortest_path.json",
+      "sha256": "972951840e3d782f052f94e3e097fa0c35a8b3adbbbc6c0926b28ae2d42835ba"
+    },
+    {
+      "run_id": "geant_d0_normal_reactive_carbon",
+      "file": "runs/geant_d0_normal_reactive_carbon.json",
+      "sha256": "e4d7895358afe735d0c91bf6187fd341547629b46ce0ee6736084ab36e190414"
+    },
+    {
+      "run_id": "geant_d0_normal_predictive_carbon",
+      "file": "runs/geant_d0_normal_predictive_carbon.json",
+      "sha256": "0061da9b36bd5e4d60b7d7131a0fb5a30d4aa77ff68fdb94e787878f6c8c13b2"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_reactive",
+      "file": "runs/geant_d0_normal_tradeoff_reactive.json",
+      "sha256": "b647acf2b010751e07ee5b270712bc5e7482125d70a6a6150e46ea02349633a8"
+    },
+    {
+      "run_id": "geant_d0_normal_oracle_current_bin",
+      "file": "runs/geant_d0_normal_oracle_current_bin.json",
+      "sha256": "74e51a49669861dd335fdba1f12f752b937ffa47f95dede83de2a37fddb74baa"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_reference_gnn.json",
+      "sha256": "a71554e4b578ede04e22900ecf5779488ee4ee3f1315df98e34d35387f034002"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d0_normal_tradeoff_reference_gru.json",
+      "sha256": "2a650ad5b9eb1685febf5e972776cdd36a6f08a65f16c4d9c081d7b6582046fe"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_longer_gnn.json",
+      "sha256": "3251c30cca7b0bfc4e7c68eea0e409a2abecf76790a1a1c3778522a5fecc9763"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d0_normal_tradeoff_longer_gru.json",
+      "sha256": "b0bc8d0e3f8e60cb30ca09bd328747da8eeef4900c2abb91e7eeff88666177ea"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_expanded_gnn.json",
+      "sha256": "f1f5e59e81c8b6936f1d62e1bba714797457aa4d09fa9f1eee275028c7191d5f"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d0_normal_tradeoff_expanded_gru.json",
+      "sha256": "8e9871b502ee686001d554673d38ee905da3a4a6b0328e74c7077d4b7f3656a2"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "19ba2bca41a0486fcf4c20d622d8aa9ae57682abfdf425dcfba06679e79f1784"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d0_normal_tradeoff_link_loss_gru.json",
+      "sha256": "b8be577748a4e36d3d980441fff6b6b19703f13d7b3bc690dc040b96528ff329"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d0_normal_tradeoff_reference_persistence.json",
+      "sha256": "a3ae8391b5497ebd41c54f9fd938b16c4b186a2d5fb4256260f7e18aa77543a6"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d0_normal_tradeoff_updated_persistence.json",
+      "sha256": "672043399765f91d85f56e3c967b84cb665041837e858f401a039917d06266ce"
+    },
+    {
+      "run_id": "geant_d0_congested_shortest_path",
+      "file": "runs/geant_d0_congested_shortest_path.json",
+      "sha256": "866f8103fdf7e93389309900c50c49527b4e8c8fca221d5de8664ca8a59e6425"
+    },
+    {
+      "run_id": "geant_d0_congested_reactive_carbon",
+      "file": "runs/geant_d0_congested_reactive_carbon.json",
+      "sha256": "ff96107072afe23934a34c69bcb31a68d69800389589e0358c649885cd8fc233"
+    },
+    {
+      "run_id": "geant_d0_congested_predictive_carbon",
+      "file": "runs/geant_d0_congested_predictive_carbon.json",
+      "sha256": "959592ec56573a040d5116e8dac6651b379a59f476cbda751c8cc5d819c9ea83"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_reactive",
+      "file": "runs/geant_d0_congested_tradeoff_reactive.json",
+      "sha256": "45d77fbc27ed30f9cfa2c4a1808e4de429ce85dd0c050005dcc90671fda6a3e5"
+    },
+    {
+      "run_id": "geant_d0_congested_oracle_current_bin",
+      "file": "runs/geant_d0_congested_oracle_current_bin.json",
+      "sha256": "e83586944a9231107f35450e950fbeb5a40491ea2b4bcfcd8b32eead4ebc1b19"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_reference_gnn.json",
+      "sha256": "5e987ebf2d3ccd31fe1221e477bfd54eb6692a713bba89ce1c88ba65bf2b5a0d"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d0_congested_tradeoff_reference_gru.json",
+      "sha256": "064801bc744b4a2216c541bf9d2076d61ad2feebcad6ce8931f502f5d5e430c9"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_longer_gnn.json",
+      "sha256": "5ea9b40ee3e6d8242b8c6b2d8dadef8a864a092816ee5e0c1e3b8e241e251f05"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d0_congested_tradeoff_longer_gru.json",
+      "sha256": "411e39b45a5a7962d336f25378b633c1f304253102a3911613d31a844aa3d169"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_expanded_gnn.json",
+      "sha256": "f7c9fdf48335cc5ac906661ceee6a318a6dde97e987e25a82f7669aa3aa34eae"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d0_congested_tradeoff_expanded_gru.json",
+      "sha256": "dbe58cc7ba2fc26d59a1e4a6f59d6f1227514833900dcf87ef496206aa4478a5"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "b91408cb1588d97bee4fb1d4b50d110ae8066ff3366e4545ed65418fd4d590e6"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d0_congested_tradeoff_link_loss_gru.json",
+      "sha256": "bde77221ee495f1ad8c1b7267915168244edb258158744467e3b60686821d500"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d0_congested_tradeoff_reference_persistence.json",
+      "sha256": "dcd6a8cc30843d4eb03d8a65ed45bda0d74300674d50d4e4088f405069cd706f"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d0_congested_tradeoff_updated_persistence.json",
+      "sha256": "c5138aa2247ea551a7702f2148f1280a3b9deb6d867ff486f60e11de947e2510"
+    },
+    {
+      "run_id": "geant_d0_bursty_shortest_path",
+      "file": "runs/geant_d0_bursty_shortest_path.json",
+      "sha256": "84a98955613070a8535644ba7526315bd1158aceb51568215e5da8778eb514c5"
+    },
+    {
+      "run_id": "geant_d0_bursty_reactive_carbon",
+      "file": "runs/geant_d0_bursty_reactive_carbon.json",
+      "sha256": "a2b00e51d86da9a35d716f5ee1cbfc350bf3cbfc2334385936022bd729496888"
+    },
+    {
+      "run_id": "geant_d0_bursty_predictive_carbon",
+      "file": "runs/geant_d0_bursty_predictive_carbon.json",
+      "sha256": "028ab1de0c8526ad8988866373c7adc24700ba32bc09967f80a050955830f115"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_reactive",
+      "file": "runs/geant_d0_bursty_tradeoff_reactive.json",
+      "sha256": "5f46b7f20e14bb3a1f71b74ba4b7fe18ff6eaebce30fcc1809e8a68a533752e5"
+    },
+    {
+      "run_id": "geant_d0_bursty_oracle_current_bin",
+      "file": "runs/geant_d0_bursty_oracle_current_bin.json",
+      "sha256": "dbb0277d4a960af1bb3681dad8225700f035f417bae59467e292856405cee03f"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_reference_gnn.json",
+      "sha256": "c2012e5ad1787aca40688f220b63e7e14324492ef62704952f3db31559143185"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d0_bursty_tradeoff_reference_gru.json",
+      "sha256": "028af711fdcf880219419b17a5ccd765988404b966b05662787275bb46d33700"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_longer_gnn.json",
+      "sha256": "85aecc20bc43ff01fd8cfc1c22fc16bf95c08ab03d61669d0e59ef2247ee1131"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d0_bursty_tradeoff_longer_gru.json",
+      "sha256": "251ea215a85b14ababab48fb2c19798927b3e2fc185015e58aaf42e24eefd691"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "803d5f959db5a09c2d0720000f93a7eb8c90cf104459428c67062d008c8d484d"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d0_bursty_tradeoff_expanded_gru.json",
+      "sha256": "9ed6300d95ca4413a4e01bfde05e760b49922ddc442302e20e3246d3af4d0033"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "e45570d2c89c0ac67b35a3ed523ef560df65b8691a1c5d7b66fe63a1d056de7c"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d0_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "7deeb9236769aae1c591820eabc5dd39d4786ddb58ea85558509ba4fd9b9a0fc"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d0_bursty_tradeoff_reference_persistence.json",
+      "sha256": "d42e77ddf141a50ad4f771da3b7b97cd892736bf8945695102ffdb7f0feb32dc"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d0_bursty_tradeoff_updated_persistence.json",
+      "sha256": "6a92266c25b8b8cad88e3d31cbaeea57806f227bd5161a784519f54b99baaea1"
+    },
+    {
+      "run_id": "geant_d1_normal_shortest_path",
+      "file": "runs/geant_d1_normal_shortest_path.json",
+      "sha256": "95e30c394f2e202a8adf6e259ec6ba8ae5194c9b08f75e16f273dbf80d8834ab"
+    },
+    {
+      "run_id": "geant_d1_normal_reactive_carbon",
+      "file": "runs/geant_d1_normal_reactive_carbon.json",
+      "sha256": "c2c2dcbc9badc7e8faf093ea82ff6870af0e3c56e2631dcd0ed48dbe49656589"
+    },
+    {
+      "run_id": "geant_d1_normal_predictive_carbon",
+      "file": "runs/geant_d1_normal_predictive_carbon.json",
+      "sha256": "3badff8f398999709e3b19ab4bf4a96fdaf1b23ce43a7ab753be1542a1ed98d4"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_reactive",
+      "file": "runs/geant_d1_normal_tradeoff_reactive.json",
+      "sha256": "2221d7b863265e16950f581c2f52938a71ad6f16ffc5a4f8b0ecd78345f6e2b0"
+    },
+    {
+      "run_id": "geant_d1_normal_oracle_current_bin",
+      "file": "runs/geant_d1_normal_oracle_current_bin.json",
+      "sha256": "f15462771d7df58708577eaefe1d027ec80d0199b1a85c6ad924ccc61779259b"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_reference_gnn.json",
+      "sha256": "636307781e864a4c822dd8b85517ba09a348af2b37083e1c26a557586ef4496d"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d1_normal_tradeoff_reference_gru.json",
+      "sha256": "45276bf877bc03f71808a10414b05d79058a8cdad248e66be18d6e40ed5e0613"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_longer_gnn.json",
+      "sha256": "687437b0e2fb695f3d840b9dda6541c69a699aca99f21d0997b78b15efd1d618"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d1_normal_tradeoff_longer_gru.json",
+      "sha256": "cd2308f75b793bd565082db12b88445ac12bf2c425ee4e2ec9cac2855e6b85cf"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_expanded_gnn.json",
+      "sha256": "20c3d7c4d5eee2d6b3796e61922f05d87a5e575f3582f6f43bff839f2a6c831a"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d1_normal_tradeoff_expanded_gru.json",
+      "sha256": "499ac4878d959da64d5b6e9a979dab19fd092a89af0be34fb2a073d98ad2c6fc"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "dfe995b0f46bc28ab6cf0c665918e4e6fbb970ad62412a2cc687038daa38b2f6"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d1_normal_tradeoff_link_loss_gru.json",
+      "sha256": "93794cb8519923c256b74ff723c1be72fdfc75441ee4053420a0e058831c94a5"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d1_normal_tradeoff_reference_persistence.json",
+      "sha256": "0a4775e224f15e17ab26cccc0998b8f4dd5fe3a0ebd5387bebd87ca38ea85872"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d1_normal_tradeoff_updated_persistence.json",
+      "sha256": "edf69778d44ce18bb7704f2b37a3f94586886d7daef57183534657486b70000f"
+    },
+    {
+      "run_id": "geant_d1_congested_shortest_path",
+      "file": "runs/geant_d1_congested_shortest_path.json",
+      "sha256": "8797b7d9cedae96f4b6d67c74e1ef111180c045efdd8b8641209c57223e14e2d"
+    },
+    {
+      "run_id": "geant_d1_congested_reactive_carbon",
+      "file": "runs/geant_d1_congested_reactive_carbon.json",
+      "sha256": "7184387b397b8f7508bbe385be1809ad58d6a567d5cc93d2cf57de96f79d3b0e"
+    },
+    {
+      "run_id": "geant_d1_congested_predictive_carbon",
+      "file": "runs/geant_d1_congested_predictive_carbon.json",
+      "sha256": "513c7f9948fb4a37deb15cc8e7c5923eb7ee30f94b8b32aba79b08b50dea7d94"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_reactive",
+      "file": "runs/geant_d1_congested_tradeoff_reactive.json",
+      "sha256": "28b151fdfa3994facd0c3ab3b2e937f9a2300071fc30e28b64b09ecfcf70aac6"
+    },
+    {
+      "run_id": "geant_d1_congested_oracle_current_bin",
+      "file": "runs/geant_d1_congested_oracle_current_bin.json",
+      "sha256": "40f114e0e0ee550a3ae6cc1844bde04bf5dc3731129d07ac7f3ec8a443ccdefe"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_reference_gnn.json",
+      "sha256": "cdffdf6a41fd2038db9d40e0dcabdc14531454b13b5a755c2d2801838769a6d6"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d1_congested_tradeoff_reference_gru.json",
+      "sha256": "fdb7fea555cb1a5edf98435585a747eb4e0cd9e925a608a90bc513be1c2a58c8"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_longer_gnn.json",
+      "sha256": "71d22bceb0830f1c0fc0ca329b2b3abc4220bd3add9c4651a6d7e118fa8cf54a"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d1_congested_tradeoff_longer_gru.json",
+      "sha256": "bc3973632d43ddc7d384534b92a0e1fb3b8cf5f2638a17622775ae8c1ed17966"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_expanded_gnn.json",
+      "sha256": "35bfe386059339e2b7c125f54cccd66ae1ed7ffb391d0577142ff4a809528047"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d1_congested_tradeoff_expanded_gru.json",
+      "sha256": "e66eec3c212cfe8c468c8ff3f43e60beddf3a7abb6fef03a41eebc08cfc847f9"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "1e080bf0a7e5ab4b665a3540586b222afba7611ede1e536c9ea976400b5cfb8c"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d1_congested_tradeoff_link_loss_gru.json",
+      "sha256": "03b355de8b2262943bfb4d3e9a797c5ed5725ea04141e43fd75a4628a4bea3f0"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d1_congested_tradeoff_reference_persistence.json",
+      "sha256": "b0c2ba299caddde3d02e5c38b149e61111770e9e67b410dd41ca290dceb743bd"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d1_congested_tradeoff_updated_persistence.json",
+      "sha256": "0651d1c2cedee1b04c3d14fc9d78753736ebb881eb19e422011bb7d31de737bb"
+    },
+    {
+      "run_id": "geant_d1_bursty_shortest_path",
+      "file": "runs/geant_d1_bursty_shortest_path.json",
+      "sha256": "c1c727663e68dc0d97045af8229ccbee684ce867b1563a91e54384bc8d8bae07"
+    },
+    {
+      "run_id": "geant_d1_bursty_reactive_carbon",
+      "file": "runs/geant_d1_bursty_reactive_carbon.json",
+      "sha256": "d438821da9f688549534567efcbd7efd044f5b957cec6fb501c4ca807aeb1630"
+    },
+    {
+      "run_id": "geant_d1_bursty_predictive_carbon",
+      "file": "runs/geant_d1_bursty_predictive_carbon.json",
+      "sha256": "a535f1a89d3cda2acf608c777166ed50582d6330bf81cccfa2056414a25c9119"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_reactive",
+      "file": "runs/geant_d1_bursty_tradeoff_reactive.json",
+      "sha256": "9f3b529e749a5ae2b452cd8d6f86ecb0c343113e7e1512556a95fa6ea5e35dbf"
+    },
+    {
+      "run_id": "geant_d1_bursty_oracle_current_bin",
+      "file": "runs/geant_d1_bursty_oracle_current_bin.json",
+      "sha256": "c7721c43bedb4bdb56372b2a9f117164b1014f6890814083fd8a79021bd3af1a"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_reference_gnn.json",
+      "sha256": "baa6dfe7a69d8e071810e35e1d0cde7b11f16e14c7f790e49f9f498d14402d78"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d1_bursty_tradeoff_reference_gru.json",
+      "sha256": "089a6a9c0a4e3449fd0c5c5992325449d42f720edfe761278431acc78ab4be7e"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_longer_gnn.json",
+      "sha256": "f97278fe06087a5a297ecd01a5966c8168883aa5086ccceeced70ce93ebe684f"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d1_bursty_tradeoff_longer_gru.json",
+      "sha256": "9c34da29444e1dca0d03350cfde54caef85c21cc5491c6c7dc4b849a816e337b"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "960570ef24d8cd2a2060938959f1bf2879919be42263cc3eab95be026585c7ff"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d1_bursty_tradeoff_expanded_gru.json",
+      "sha256": "fc5bb09aa5f532f5b50565bdcfb39c5dbe4b915e67ab9ad2541101d86486b178"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "b213d4f52e15ad5a2ef788b30146f4d7d0cf44d09cfeef62716343f04c72290d"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d1_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "70f50599685ef5d3666bc957bb57c8a3f83b9e8527534ee5c62fd4cdef73c7b4"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d1_bursty_tradeoff_reference_persistence.json",
+      "sha256": "5013f487f3fa73d6e89651ac44942e07429e7abdf65377039602ea9139e246b3"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d1_bursty_tradeoff_updated_persistence.json",
+      "sha256": "66327251056fabc00282d1653ed8c7475f3b0b26b51aa0ec80299bcd061a518f"
+    },
+    {
+      "run_id": "geant_d2_normal_shortest_path",
+      "file": "runs/geant_d2_normal_shortest_path.json",
+      "sha256": "ac0b42837bf215b6bf17d30f8c71bc7e2e45828b2039f25bb1ddf582b2a36267"
+    },
+    {
+      "run_id": "geant_d2_normal_reactive_carbon",
+      "file": "runs/geant_d2_normal_reactive_carbon.json",
+      "sha256": "7118d9cef6d688a7f07336f680bef6fd898d398d9da2980c8f805d804947687d"
+    },
+    {
+      "run_id": "geant_d2_normal_predictive_carbon",
+      "file": "runs/geant_d2_normal_predictive_carbon.json",
+      "sha256": "fd714ec633b4fc1c5729b6e012783e4e69d2e332bec68f659bc784d56ab74539"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_reactive",
+      "file": "runs/geant_d2_normal_tradeoff_reactive.json",
+      "sha256": "7c4c52390380b67b27b7196042290b8d55ef95a49b388c1f43e9975ec99f950e"
+    },
+    {
+      "run_id": "geant_d2_normal_oracle_current_bin",
+      "file": "runs/geant_d2_normal_oracle_current_bin.json",
+      "sha256": "17f73bf5dd23d10cccf93b219b167e465f6739efcb1f4265dbeee8cc68f34cc8"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_reference_gnn.json",
+      "sha256": "798649f91da74dac73d80090074c596e75c288274d96cfd942e8a6d4c8b8b603"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d2_normal_tradeoff_reference_gru.json",
+      "sha256": "99fe8fc3e9c6d96afd63f37a015172749fb3942e6a4689510484f5d323f232f9"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_longer_gnn.json",
+      "sha256": "6445cfae67a46a21d31f85ca9aab9faaaa7144aaf80bb8a9636f3335b265ef4d"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d2_normal_tradeoff_longer_gru.json",
+      "sha256": "04c5889c500d9360c543538ee551c3057c9418ddaa405a6c955603829d2f2803"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_expanded_gnn.json",
+      "sha256": "f0e67826b79659ca9f44e854a3d7545514227f490bf798cc6a68bb4b5fba4b5d"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d2_normal_tradeoff_expanded_gru.json",
+      "sha256": "b260827dd4c99a428429d64959496534fc7ca3603fc7283e1f9bea3c151ee52d"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "812947081e124d5bd98d61e364fd1aa7f469c807c3e5bab2186eaca5b912cf7e"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d2_normal_tradeoff_link_loss_gru.json",
+      "sha256": "dde6f25ba9a3a905006e49fa82003b0528771d4f03e351462a896e4f95938d54"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d2_normal_tradeoff_reference_persistence.json",
+      "sha256": "dabcdbb0d1a63c9cc4eca558a8606ec768ddb26120e87eecdad7cf97db7c27ca"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d2_normal_tradeoff_updated_persistence.json",
+      "sha256": "8f5304307f17eb41c1f97c3e577acb67aa7219341fdd807aeeba50b516c4edfd"
+    },
+    {
+      "run_id": "geant_d2_congested_shortest_path",
+      "file": "runs/geant_d2_congested_shortest_path.json",
+      "sha256": "40358e92e0cee9a7b2a0a8f4cb8dbd4e5c76c04574e498743c3b5316418e0438"
+    },
+    {
+      "run_id": "geant_d2_congested_reactive_carbon",
+      "file": "runs/geant_d2_congested_reactive_carbon.json",
+      "sha256": "5678223f6e3b1839e53174bbbd82c16fe5831447e56073bf72b583c005694a88"
+    },
+    {
+      "run_id": "geant_d2_congested_predictive_carbon",
+      "file": "runs/geant_d2_congested_predictive_carbon.json",
+      "sha256": "b6d59a5fada4ed60988b4b084b1a02056c136f237988f800ef41ee37f9bc7dd5"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_reactive",
+      "file": "runs/geant_d2_congested_tradeoff_reactive.json",
+      "sha256": "9855f44d0fb0253715df9813cbcf7634bd9cc717323e1475c9f352cf247bd711"
+    },
+    {
+      "run_id": "geant_d2_congested_oracle_current_bin",
+      "file": "runs/geant_d2_congested_oracle_current_bin.json",
+      "sha256": "60e70df3f89dd492db39a19bef9f6259456dfbf3809a9f39a8667c073d55af9b"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_reference_gnn.json",
+      "sha256": "76f8e569cffa769b97fafbfdd8747b05d3735e9d37f147d74b49c68ff5dd3fec"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d2_congested_tradeoff_reference_gru.json",
+      "sha256": "8770eacbd0be4cfda82792739b7201422b634d1612f82414eb9b17b886c0901e"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_longer_gnn.json",
+      "sha256": "fe2ccf510847a17b0f86ed18079b5c720088ddef1370338ebd3cb5dac47be741"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d2_congested_tradeoff_longer_gru.json",
+      "sha256": "0e15060c1d27a2049a2f1d56f2e58b16e34a7128a8713553fff234990be64b58"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_expanded_gnn.json",
+      "sha256": "991b43b00e539847e6175ef3e5b50b22ec4b08ea3a7ee60989d6943c7a2c4ca9"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d2_congested_tradeoff_expanded_gru.json",
+      "sha256": "3a61c034e1a232353126dacebc6618182c72fae7c1648112291ff15ef986ba7c"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "6f1494cf411cc5afdbb7b368d8f61e971d1d25f340134e404e11c95f6e701546"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d2_congested_tradeoff_link_loss_gru.json",
+      "sha256": "cc7a8845df587cf5e2568866cae4c58ea74e466e04c1d3c3c9c9534d6aa37777"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d2_congested_tradeoff_reference_persistence.json",
+      "sha256": "9db43947eeaebb45fe1b511e0c977d4e90c93c1e8b44fa99c15237c092a63170"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d2_congested_tradeoff_updated_persistence.json",
+      "sha256": "260ca83ee3e7057b782b53aa623b8353517c93acb3885e9eb20579529c708e38"
+    },
+    {
+      "run_id": "geant_d2_bursty_shortest_path",
+      "file": "runs/geant_d2_bursty_shortest_path.json",
+      "sha256": "e580f7a1bbcc3b0c131e8ab8b51576e9199f3af60ae54b1629b6c380de7da7a1"
+    },
+    {
+      "run_id": "geant_d2_bursty_reactive_carbon",
+      "file": "runs/geant_d2_bursty_reactive_carbon.json",
+      "sha256": "25ba33286b930a4927b5d6fe7962eab8fad28add3a913c88e23e9bb0f76ce809"
+    },
+    {
+      "run_id": "geant_d2_bursty_predictive_carbon",
+      "file": "runs/geant_d2_bursty_predictive_carbon.json",
+      "sha256": "5926664cec2eaab9543357f5ca0ce21d66d1b2fd56f01490ee382bcd213b41a2"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_reactive",
+      "file": "runs/geant_d2_bursty_tradeoff_reactive.json",
+      "sha256": "425e77245f486d250b4ed949691d028c0db11799d94cdc5a147b6bfd3a4ffc49"
+    },
+    {
+      "run_id": "geant_d2_bursty_oracle_current_bin",
+      "file": "runs/geant_d2_bursty_oracle_current_bin.json",
+      "sha256": "1b3aed96f723818da5085b88af9bbec07be43f3eacc13bf2d87ad4c1d00be387"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_reference_gnn.json",
+      "sha256": "6e965060f435d0479e18318d490c9e184695c9a837d25bd63204c83ab1555267"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d2_bursty_tradeoff_reference_gru.json",
+      "sha256": "f7969945810bcfecba96571f65def0dddc795bc18efe46ae6cf4b156fe0632f0"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_longer_gnn.json",
+      "sha256": "462f70d74d88af35800da1dc4bae31d4f87e84045091c1539616ec264ee99357"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d2_bursty_tradeoff_longer_gru.json",
+      "sha256": "ef6e6c83b8c2ac9afe8deac777c55c69e9b8fb2e6bae98fe67d1e171851b1534"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "531e481e0d8087a64972c87aa98e42b895ef8cf924abcf28c047e9f27dc93a76"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d2_bursty_tradeoff_expanded_gru.json",
+      "sha256": "b4b16af94872ef48c2cd5dbc0346279ea8803196e069b00b17e88840cf3023e1"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "c324e7a64a60d86588c06760cbecfb1c5403512a3322b100b4b514b6de0c8d93"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d2_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "b74422e09782ac5f63ed0277654944864cb4a94c7d16bf0c094c4ecfd210d024"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d2_bursty_tradeoff_reference_persistence.json",
+      "sha256": "060037e1e35b5a65cbdfc267f56198316097624a07a39af311c180ec99a9e9d1"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d2_bursty_tradeoff_updated_persistence.json",
+      "sha256": "d502045cbc6cbca4e27fb221c4c283557a32fe502650e8255de410c183fea74f"
+    },
+    {
+      "run_id": "geant_d3_normal_shortest_path",
+      "file": "runs/geant_d3_normal_shortest_path.json",
+      "sha256": "89e9bfba6e0e74bc432d642175554e979adf4b9d97226f6e4fbd3cb0963c95ff"
+    },
+    {
+      "run_id": "geant_d3_normal_reactive_carbon",
+      "file": "runs/geant_d3_normal_reactive_carbon.json",
+      "sha256": "358b33b01626ee14bdf6d212bbf335735799c33fcb7d83efa9c811178dbfa08a"
+    },
+    {
+      "run_id": "geant_d3_normal_predictive_carbon",
+      "file": "runs/geant_d3_normal_predictive_carbon.json",
+      "sha256": "7b0928c230b9e881a931f771acad5f7f1b8f39039a70cb0b8a6296e8ab393f30"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_reactive",
+      "file": "runs/geant_d3_normal_tradeoff_reactive.json",
+      "sha256": "96adc24bde7d7856615d46051bfe3f06317581067e237067a5b4b010931db2af"
+    },
+    {
+      "run_id": "geant_d3_normal_oracle_current_bin",
+      "file": "runs/geant_d3_normal_oracle_current_bin.json",
+      "sha256": "2e00dce4820b15271ac2a2d6097468d2929421b5cf4f3fbadbfb6cefd38c531b"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_reference_gnn.json",
+      "sha256": "0ebf8dc913c1ce2d7c3ed93e9ba015cef58807f70a83f0696b2866cedaf3cd15"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d3_normal_tradeoff_reference_gru.json",
+      "sha256": "e7143837263ad8309e1743cd5f8cd796fba93ee3ac14f805c168d1564cc979a8"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_longer_gnn.json",
+      "sha256": "d67ee09e353766315c9eeaae30ea7788a1995a1bdbf43d9913e22caef6c79ec6"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d3_normal_tradeoff_longer_gru.json",
+      "sha256": "8d902b804f3a8d46bc0c4fb775234f2e81e5187035a5e7c75439692cc09d5e19"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_expanded_gnn.json",
+      "sha256": "65d714a67f65478f07b35b8ac80452ec4a1b3f04e2dc677d376b3c7c2abe661a"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d3_normal_tradeoff_expanded_gru.json",
+      "sha256": "6cc4fb53f56df668fc17c5a45617be9827db7c598bf3fe843e3559523894d38b"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "d7a613c7571b7b2e20b77084331829d85d3f8ed4bc5e4b1868c30a1511856559"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d3_normal_tradeoff_link_loss_gru.json",
+      "sha256": "e69ebcde50769076b8595dd2e749a667c11835df9d7a9357d264a59ddbef72b3"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d3_normal_tradeoff_reference_persistence.json",
+      "sha256": "dff584642597ed8b7d7811c73dbf993292cbbe1857d0377a76f8ff78e82a91da"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d3_normal_tradeoff_updated_persistence.json",
+      "sha256": "904cf1b028f3ec0a74dc0e26776e2565654308463e8337602ade9b418d5c2cf4"
+    },
+    {
+      "run_id": "geant_d3_congested_shortest_path",
+      "file": "runs/geant_d3_congested_shortest_path.json",
+      "sha256": "ac5ef3fb8157dc1862e7e8382c8891e5ae24eeda5c5eece700db0c68720d7379"
+    },
+    {
+      "run_id": "geant_d3_congested_reactive_carbon",
+      "file": "runs/geant_d3_congested_reactive_carbon.json",
+      "sha256": "b1b27d4b4e980d38d5e709843eafc4b0eb82f251aeda0318798adb56a325c311"
+    },
+    {
+      "run_id": "geant_d3_congested_predictive_carbon",
+      "file": "runs/geant_d3_congested_predictive_carbon.json",
+      "sha256": "731c6bd095781e4ad0ee54aa8ba13be049d2d3ff97cf01b0ef671d99944f8eef"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_reactive",
+      "file": "runs/geant_d3_congested_tradeoff_reactive.json",
+      "sha256": "c1dd42d8729ec2fd3aef605fbfc438fa0e0f3537aff14bc50a6eafe2b35471df"
+    },
+    {
+      "run_id": "geant_d3_congested_oracle_current_bin",
+      "file": "runs/geant_d3_congested_oracle_current_bin.json",
+      "sha256": "18b8220a6d23c9a50b8a69c16a5cab70a0c659e6a39af21a807894403e73d541"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_reference_gnn.json",
+      "sha256": "9ab6593a234751589a18d90811945b37e55fae2329811d3a58d073b37ebab008"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d3_congested_tradeoff_reference_gru.json",
+      "sha256": "885aa0f29300902f5844e3fd9ac45fce49e73b40e0bd0d5a2fe724ca13484408"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_longer_gnn.json",
+      "sha256": "25faffe0fa553f76fc8eb01e2f7302730961f3370bba5c2980b3b6883d376900"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d3_congested_tradeoff_longer_gru.json",
+      "sha256": "4b184961cd343c7a8f110da57de3b78015205439730fd60fcc224c777f6045b3"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_expanded_gnn.json",
+      "sha256": "210963f2e87d9056c2b5c79484ee28460f8a631445f3a9ed0f9a8978a508690b"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d3_congested_tradeoff_expanded_gru.json",
+      "sha256": "b466b84d87acf67cb33570d8bfab0bf1c14d6e04f538bed617c190ef98345ba8"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "0e76ec469a1187378d633fd6390feb9eccd1deaa1d2be5a0c631512490daf7f7"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d3_congested_tradeoff_link_loss_gru.json",
+      "sha256": "36c429e19b56e16688b026a7fe2387b502b267ad4889c9e0f4f70b264a172119"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d3_congested_tradeoff_reference_persistence.json",
+      "sha256": "c2eee89e67f31609d26587d56e0fd30948a623559c5de07fd28b7101f82537f7"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d3_congested_tradeoff_updated_persistence.json",
+      "sha256": "11a249d09aacb3f822f40f5faf923aa05b433028362211ac9558515a0196f1d2"
+    },
+    {
+      "run_id": "geant_d3_bursty_shortest_path",
+      "file": "runs/geant_d3_bursty_shortest_path.json",
+      "sha256": "32560e97685925e7e1d4303a92780f2cac64230c627102280462ecf21a794f52"
+    },
+    {
+      "run_id": "geant_d3_bursty_reactive_carbon",
+      "file": "runs/geant_d3_bursty_reactive_carbon.json",
+      "sha256": "a9494d378f8364a76587c921aac8a281325056d1fb38d6136e4b8129fa5690ab"
+    },
+    {
+      "run_id": "geant_d3_bursty_predictive_carbon",
+      "file": "runs/geant_d3_bursty_predictive_carbon.json",
+      "sha256": "e260e62919fe3c5ac1afeb2fc23db88b3578a70903f9110b02943be08fabff40"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_reactive",
+      "file": "runs/geant_d3_bursty_tradeoff_reactive.json",
+      "sha256": "bd63c3aa84d38c356c1f4d1770f22adbf5a3bf8cadc6e53cc5b2cabd72ade096"
+    },
+    {
+      "run_id": "geant_d3_bursty_oracle_current_bin",
+      "file": "runs/geant_d3_bursty_oracle_current_bin.json",
+      "sha256": "caf3c9c7473da212ee04dcc95a938714adde68bac4de32942499e56cd90900f6"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_reference_gnn.json",
+      "sha256": "23bf25be2ed5a060ae98875a79928ffa86a5e1fd784a29d8a9dda7c1085e9015"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d3_bursty_tradeoff_reference_gru.json",
+      "sha256": "162be64881a4e0efc5120f7a0d086602deedcb9beac3e30f8c9feacac1be9af4"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_longer_gnn.json",
+      "sha256": "8e2f97b4e452a7255425cf5c6e351e2eec83e16620403fc3899125abd0e61aa4"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d3_bursty_tradeoff_longer_gru.json",
+      "sha256": "717d7dd5073c2a516d389d828140e5e552fe48e0547734109183b6da28630685"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "2497f80fddc6ae270503c530bb640e524c55b7eeae54000788491a32ff7cf2cb"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d3_bursty_tradeoff_expanded_gru.json",
+      "sha256": "d8555c1e39fd77c3325f1bb2c453e2fd7e618011c6a01129d6b1037f396d7e3e"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "d6da275e830fed354a0f1af23c73f349f704637870bf220292f3f9cffb753a86"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d3_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "157055372c1acfaefce5cbcb0356625d42f6ec1ae86ca2ae2cfff9cc224642e2"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d3_bursty_tradeoff_reference_persistence.json",
+      "sha256": "82c3273724569fdeecee77f382c5a2bf61c433a6cb6e0632b049e26a8ef5260f"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d3_bursty_tradeoff_updated_persistence.json",
+      "sha256": "7c5e7d4082d75c698c417dc179e72b791b758012ad14fcb365f35902dc1bcc21"
+    },
+    {
+      "run_id": "geant_d4_normal_shortest_path",
+      "file": "runs/geant_d4_normal_shortest_path.json",
+      "sha256": "1ff24b71bb42bba01a810273724e1494a0b7ec38340b2f927b26c5c7b62316b0"
+    },
+    {
+      "run_id": "geant_d4_normal_reactive_carbon",
+      "file": "runs/geant_d4_normal_reactive_carbon.json",
+      "sha256": "255833b0e365b82f4dd833eba65eee059e57507079f4ef693986cf9b5d04e092"
+    },
+    {
+      "run_id": "geant_d4_normal_predictive_carbon",
+      "file": "runs/geant_d4_normal_predictive_carbon.json",
+      "sha256": "25410e32a5b7147951013a5df9a71250382e7cf7a4be1dd16334d28a48379948"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_reactive",
+      "file": "runs/geant_d4_normal_tradeoff_reactive.json",
+      "sha256": "32b8e9c64952f406eada5c53e56f2042f18245b9ccb92cec39bbcce2b6c4e7c6"
+    },
+    {
+      "run_id": "geant_d4_normal_oracle_current_bin",
+      "file": "runs/geant_d4_normal_oracle_current_bin.json",
+      "sha256": "174976088ab90888cf64929c65ed59c252abe9e271f78a4c982f3766a351c657"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_reference_gnn.json",
+      "sha256": "fb02e274afde14a5c9482422213ce94db72d3cd764c9a790f9e9eb88b00dffc3"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d4_normal_tradeoff_reference_gru.json",
+      "sha256": "68ef052d53ac3e6a81f81326d455db50c8c967206df877ef6e56a236c38fad10"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_longer_gnn.json",
+      "sha256": "80ecfd526687d79c4d8f44975c3bb69f564b5417690349ca2f5482645f0b61b5"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d4_normal_tradeoff_longer_gru.json",
+      "sha256": "493a961c7bf61bb695cee9e8a5586b6237f5260b1937e679d36b1cf974ffbaf1"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_expanded_gnn.json",
+      "sha256": "882c9f5bc29526fc1516a09f57202bbefcc07cb76a85e0cacd4f0959b08cfc7c"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d4_normal_tradeoff_expanded_gru.json",
+      "sha256": "8abc8314ed5910d6bb38535915cd460a5be4c36e2d6f71928f23872bb93e2479"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "08549747f533faad3d2b4dc3f88cf8a1986f466ecefde858c29772f9d545d4c9"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d4_normal_tradeoff_link_loss_gru.json",
+      "sha256": "c7634554c2a4d531f7fcaa80536f28dad169d312e044e8b6421d5bdae51a95f9"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d4_normal_tradeoff_reference_persistence.json",
+      "sha256": "498d4b0245f5e038eb3467fb77d56515aafb70387605db17a43ac9ac6cdae25f"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d4_normal_tradeoff_updated_persistence.json",
+      "sha256": "e4156300687c8bb9a14fbaa758c71ad0df8795b8f4162dedeb64c3b4977c63a6"
+    },
+    {
+      "run_id": "geant_d4_congested_shortest_path",
+      "file": "runs/geant_d4_congested_shortest_path.json",
+      "sha256": "93927c58d61df94312a52d1d277177bc43ebfa82b760655afde4bbc135295655"
+    },
+    {
+      "run_id": "geant_d4_congested_reactive_carbon",
+      "file": "runs/geant_d4_congested_reactive_carbon.json",
+      "sha256": "780e337035b46baa4e1e23d990ab5311e3889e5827d3a766c6db9313e9ca4666"
+    },
+    {
+      "run_id": "geant_d4_congested_predictive_carbon",
+      "file": "runs/geant_d4_congested_predictive_carbon.json",
+      "sha256": "12e50ac13c211d8addfcec4f6033b79f100966798053fb1e4506f68c583b7888"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_reactive",
+      "file": "runs/geant_d4_congested_tradeoff_reactive.json",
+      "sha256": "a86ceee474e3907ccbfeeaca88a501fed3e10b7540bcc2e0eaa89e20ed380797"
+    },
+    {
+      "run_id": "geant_d4_congested_oracle_current_bin",
+      "file": "runs/geant_d4_congested_oracle_current_bin.json",
+      "sha256": "e0994ed99f3e3d0244293f72636c51d181fe340cbff85ac6f89e7c264ef85fee"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_reference_gnn.json",
+      "sha256": "1474a5c9fdeaa6d86cbb12273d96476858f8cbb990eb34c088baa76c58b39338"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d4_congested_tradeoff_reference_gru.json",
+      "sha256": "7e46c3728e6264bc41b52b799b791663623d7438e63df277397c1ab089513bd1"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_longer_gnn.json",
+      "sha256": "bbefaca0c727b6c73b9cfcde6da9e2bf72969d64bdff475981c4eb4fb1834c82"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d4_congested_tradeoff_longer_gru.json",
+      "sha256": "702a2a2c896d953482a1095a0f9935010f1e1d2f4dc21c3da1971beae9182757"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_expanded_gnn.json",
+      "sha256": "f388065b0650666e44520eda80fddbafe4bc9f571db628c5eafbf3c812f4c0fd"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d4_congested_tradeoff_expanded_gru.json",
+      "sha256": "e9328af48b918daa34fc7e5175ad675479c5f77db5a5df7507184cba5f994bed"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "8f2300afad349d62cb3b3dbe8297169ea89bfe45a6efa01a2c4040603e66eb7f"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d4_congested_tradeoff_link_loss_gru.json",
+      "sha256": "809cf19a0706b3eee2d1918dc3f51ed444ad86f93299a33743b40a1753b9ebf4"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d4_congested_tradeoff_reference_persistence.json",
+      "sha256": "9cba538ff6d6acf706f678612b74f263231be9b316af748b78337553be212a53"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d4_congested_tradeoff_updated_persistence.json",
+      "sha256": "a79ff5ba0e8a5d4e28d04da2a2574b8b24e10461b64ae473c86ca1f244a68967"
+    },
+    {
+      "run_id": "geant_d4_bursty_shortest_path",
+      "file": "runs/geant_d4_bursty_shortest_path.json",
+      "sha256": "d1c04c2da855a3c626c900f6678c7f945410e34076c642a95ac3681ee819d172"
+    },
+    {
+      "run_id": "geant_d4_bursty_reactive_carbon",
+      "file": "runs/geant_d4_bursty_reactive_carbon.json",
+      "sha256": "61920e06fffd1071ed740465adef92c028ac10819d60f3a2e0daa65bb2947bd3"
+    },
+    {
+      "run_id": "geant_d4_bursty_predictive_carbon",
+      "file": "runs/geant_d4_bursty_predictive_carbon.json",
+      "sha256": "ebaee897d10a25b07bf56e90519b2d6c09c9e4d950ad01722faa47c8d2839354"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_reactive",
+      "file": "runs/geant_d4_bursty_tradeoff_reactive.json",
+      "sha256": "4072afaf84de82f6df5d6cf286f2fe10d2974cc93b603a2f468cba0563735344"
+    },
+    {
+      "run_id": "geant_d4_bursty_oracle_current_bin",
+      "file": "runs/geant_d4_bursty_oracle_current_bin.json",
+      "sha256": "2ec3b5502191f51b17a62243d2700b74f50eb5ade542404a4a08b76cfe104758"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_reference_gnn.json",
+      "sha256": "363514f8f6149a0b744e4059d17d67fdfe8d1862e40efbb5e24b1af5c0d2bd26"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d4_bursty_tradeoff_reference_gru.json",
+      "sha256": "b8ef3b7c7d1b35e674aeaa72adeacbdd32a5a7d8672e7074b83cccfb07d9bffb"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_longer_gnn.json",
+      "sha256": "cda419259398e50857518ba964f65d6cfe8a9ce48f52c52673e31546d64b8f23"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d4_bursty_tradeoff_longer_gru.json",
+      "sha256": "e74b263bfa8276c57de91f242394d40eeeec28551749add98fde89deed94bd05"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "fe51f06ad23148384cdcd608f4c7e1aa35e087a888f95eec3b9b538536925ba1"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d4_bursty_tradeoff_expanded_gru.json",
+      "sha256": "78bb914b1f649e3c14c32bd46e48762a3a80d4f9b58a730cd0818ce7906c700d"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "c1eab512f558b4fa2ff31606789937e5754d5bde6cac568d4ff0e54e2dfe8b80"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d4_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "5df8ca71390d2ee97af70f366027d6342bc56443436b7a7659770dc8b7796072"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d4_bursty_tradeoff_reference_persistence.json",
+      "sha256": "16c01df23bcadf6b8a473c465b555a2c49a1bf1915cc881fe61f0244414b4e54"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d4_bursty_tradeoff_updated_persistence.json",
+      "sha256": "0dac156da53c370af51716c1a9bd9cb8a669c091d9acf23d5568c2e94b8c97b6"
+    },
+    {
+      "run_id": "geant_d5_normal_shortest_path",
+      "file": "runs/geant_d5_normal_shortest_path.json",
+      "sha256": "9172481072f28541cf3257b13eba2008c642a495095f34a90be9739a3fafeaf0"
+    },
+    {
+      "run_id": "geant_d5_normal_reactive_carbon",
+      "file": "runs/geant_d5_normal_reactive_carbon.json",
+      "sha256": "90af39f83b81081bb28a96d0552087b4cd715e8004c099cb3ee02e08f3d15981"
+    },
+    {
+      "run_id": "geant_d5_normal_predictive_carbon",
+      "file": "runs/geant_d5_normal_predictive_carbon.json",
+      "sha256": "e684d7e88b39d3203129ffcabe2c32f52deb9b32b33f7ab1df4d94f27e74ba79"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_reactive",
+      "file": "runs/geant_d5_normal_tradeoff_reactive.json",
+      "sha256": "6daa248c0d79095e0d7a13b71d146a08e194c4bf8889b3b93ce16a46fa26c238"
+    },
+    {
+      "run_id": "geant_d5_normal_oracle_current_bin",
+      "file": "runs/geant_d5_normal_oracle_current_bin.json",
+      "sha256": "27ee799134524cdc2b1b66dfd7ea037c5a50e86ebc8a40542fa25031089eb07e"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_reference_gnn.json",
+      "sha256": "d4d83685da6f3c9237591064141374fefe9cca32fdbb240ced04b5ccb4c1b9ef"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d5_normal_tradeoff_reference_gru.json",
+      "sha256": "f420f6c4cee3055d68cf65ba46653e7b395b01b5f99fde95570ca0f89e811b86"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_longer_gnn.json",
+      "sha256": "7f6fc9d29123789f3d8dd8549826c03185025ad9d03ff86ee746b6cc584f1275"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d5_normal_tradeoff_longer_gru.json",
+      "sha256": "1badf21720233ab9fae33cc84da388e4d7ebea972725de353a31f8aa402213a5"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_expanded_gnn.json",
+      "sha256": "ec3a830acb5fe4e2d26034897cc8c85e0d0582658258bcb9298c41cfd56bd157"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d5_normal_tradeoff_expanded_gru.json",
+      "sha256": "8f2a53d31af5b70251a1158d170a999382eaf0db0bc2b25e0f308e1603e5d98b"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "354a68bc97eba29a1d020721f19f73a027bcbe6386782e3e527f84298ac18950"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d5_normal_tradeoff_link_loss_gru.json",
+      "sha256": "dcf4f151d32e24fd889db80835092c03c3301ce0b7c9abb7d094990e22f15e33"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d5_normal_tradeoff_reference_persistence.json",
+      "sha256": "1b7ed0ba31cebf9f60e800c59790f55966fe4f25ad459895aa153a5ac34daded"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d5_normal_tradeoff_updated_persistence.json",
+      "sha256": "8afec25d5ef26839f246167dc5d7adb32403a393b3723fa35b8d77a2e28bf50d"
+    },
+    {
+      "run_id": "geant_d5_congested_shortest_path",
+      "file": "runs/geant_d5_congested_shortest_path.json",
+      "sha256": "d13eaeb9cde35c7be157cace88ff000fcccd7cd78803519bedf8a3d4323fa4f4"
+    },
+    {
+      "run_id": "geant_d5_congested_reactive_carbon",
+      "file": "runs/geant_d5_congested_reactive_carbon.json",
+      "sha256": "546b0362b0ee2c9fe3009a8f444f6c80dd2e51af1605e6d854bb34550b5c5725"
+    },
+    {
+      "run_id": "geant_d5_congested_predictive_carbon",
+      "file": "runs/geant_d5_congested_predictive_carbon.json",
+      "sha256": "4e78800f0146635aba5ed4e7e88e5dd9b86f27070c227e665404e561ea941aaa"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_reactive",
+      "file": "runs/geant_d5_congested_tradeoff_reactive.json",
+      "sha256": "6a5cc860b8570465fb599b5f7f55faa87af5ab18d357712da0b7cd19c64fd376"
+    },
+    {
+      "run_id": "geant_d5_congested_oracle_current_bin",
+      "file": "runs/geant_d5_congested_oracle_current_bin.json",
+      "sha256": "9199378c2f74cfc4d8528a1198bda27037d6e06686d60ae2ddb3464f94515534"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_reference_gnn.json",
+      "sha256": "48ce8615b3c8c134642f7143602409168286a7f89dc9e3f88ad39f5de15427c6"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d5_congested_tradeoff_reference_gru.json",
+      "sha256": "4d17a9461de5ccc5ed88c0cf704161a553176224027edb82802fd412dc35904d"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_longer_gnn.json",
+      "sha256": "08f8f6c763cc5bbe2cc88a4327fabbac447a14044748b954fc4559932ce79729"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d5_congested_tradeoff_longer_gru.json",
+      "sha256": "72fdb01bb98a670947a7544880bd1347aa7a44c3249240bac8da80050e602a69"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_expanded_gnn.json",
+      "sha256": "e8afc132e62391ab0e35d5a7f05d5f8fb39f2d024fe9f1c943479c2d728a18b5"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d5_congested_tradeoff_expanded_gru.json",
+      "sha256": "71d87d9071192f9758573f97534f75cc0d18c93c38520ab42e842de7474ce5ad"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "7c34b7b5535f2838f74a9010f0926ed804bf842d835b25305f521d86a3414d9e"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d5_congested_tradeoff_link_loss_gru.json",
+      "sha256": "1f09709e464968f28507979e5019d3764d605fb60ed7445299ae366ffa8a18f3"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d5_congested_tradeoff_reference_persistence.json",
+      "sha256": "6d6c0e82c77d85a1d43aa1c44abf97ccbabf2981813cbebff89fd4f60860957c"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d5_congested_tradeoff_updated_persistence.json",
+      "sha256": "be356c6d834d2e8378e9965294762619fb89c8ff9d537900f0f61f5964bfb207"
+    },
+    {
+      "run_id": "geant_d5_bursty_shortest_path",
+      "file": "runs/geant_d5_bursty_shortest_path.json",
+      "sha256": "274e32e953d952680d47455fbe8c781a42d588d6892467a3e7c43f09ffa06b54"
+    },
+    {
+      "run_id": "geant_d5_bursty_reactive_carbon",
+      "file": "runs/geant_d5_bursty_reactive_carbon.json",
+      "sha256": "d49e248c966a9d25776c3db4226d3d626dce9c910ceddc0d3c248b4c5fd8b3f1"
+    },
+    {
+      "run_id": "geant_d5_bursty_predictive_carbon",
+      "file": "runs/geant_d5_bursty_predictive_carbon.json",
+      "sha256": "8e2fa43208d33caa74a00c4f30f4b39643c5c0720797b8d37463516a71835915"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_reactive",
+      "file": "runs/geant_d5_bursty_tradeoff_reactive.json",
+      "sha256": "7e8bb3e169dd70b4b74f444fc13a7fa39a32d3587be5d9b0bd331bdf78aa6775"
+    },
+    {
+      "run_id": "geant_d5_bursty_oracle_current_bin",
+      "file": "runs/geant_d5_bursty_oracle_current_bin.json",
+      "sha256": "b838b6cb1df10c6016caa2592d738aad88d0aa10d3d14bd7ac186a2adb94f243"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_reference_gnn.json",
+      "sha256": "f0a08d791ba876577931032248f1121e397de8eccad4a932c7b857510a791a42"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d5_bursty_tradeoff_reference_gru.json",
+      "sha256": "1e5a913b7a92a27bd52e16c0cad5af28344bf16f6436ef611d8938715917689e"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_longer_gnn.json",
+      "sha256": "ace100af6204f0a9e57cbfd9e3695578599ba558536e9ab2ff76aeb5ac945e8f"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d5_bursty_tradeoff_longer_gru.json",
+      "sha256": "85cb2f15a8830d7606df0fa4771bf8fb9ac90f600c618dfa417c3dbc3a2ce046"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "ebea93788bf612958b5569d2f463ea69ab8ad5db2991e7ff74296d2a02ccaca3"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d5_bursty_tradeoff_expanded_gru.json",
+      "sha256": "9274bfdf7f566f5a3c9c2b7f6d6e8e39d15c938678ef7278b769646b2504732c"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "c0bc9da60b9ea759e2d45cfabf6ba1053143a12a2516c87452919997813f4454"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d5_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "25197cdd8f1dd15d949162e1b111aa10e31d169ee58a8ed33a0314364a426f98"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d5_bursty_tradeoff_reference_persistence.json",
+      "sha256": "00c5844fbfb822992fefeec2265d3ee4bba6c713b685862c350ac329604209e5"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d5_bursty_tradeoff_updated_persistence.json",
+      "sha256": "1606bc30c1d52396b34861c26f23e4745fdff73884fe402c2fab49cac4c13145"
+    },
+    {
+      "run_id": "geant_d6_normal_shortest_path",
+      "file": "runs/geant_d6_normal_shortest_path.json",
+      "sha256": "68d1dfbaec7f0a128aa2693ec5198fdbeec5a824499167342df7d42f9a14e479"
+    },
+    {
+      "run_id": "geant_d6_normal_reactive_carbon",
+      "file": "runs/geant_d6_normal_reactive_carbon.json",
+      "sha256": "b81e37fe3d3f5c8156156f071d343de863c9fae6b449fcf34aed45d97a0be631"
+    },
+    {
+      "run_id": "geant_d6_normal_predictive_carbon",
+      "file": "runs/geant_d6_normal_predictive_carbon.json",
+      "sha256": "3156a94cf9efa1cf5be6f27556110106423fe0ea69cb03684b647a8c862ce248"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_reactive",
+      "file": "runs/geant_d6_normal_tradeoff_reactive.json",
+      "sha256": "2d2d1ec0c5a67d05152608bae4c9bfc0deec4eaba7d8b8ef4354d50bc48f3201"
+    },
+    {
+      "run_id": "geant_d6_normal_oracle_current_bin",
+      "file": "runs/geant_d6_normal_oracle_current_bin.json",
+      "sha256": "ebbddb1234c20358620e2ba02e1413d19eed95912bba5d06e3813be9b571703a"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_reference_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_reference_gnn.json",
+      "sha256": "4e293b898b8637b089fa28c15e59304e873847450bb612c5e38f1d60dfb316a5"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_reference_gru",
+      "file": "runs/geant_d6_normal_tradeoff_reference_gru.json",
+      "sha256": "9e3c0939c992c5278ffc22b11f4902fa27fb9f00d0b9470dab7113c89a8ed4ea"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_longer_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_longer_gnn.json",
+      "sha256": "a510ccfd92185b72b9c8409e9e46bbb0fba40041fa594b329bb6507315cd6929"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_longer_gru",
+      "file": "runs/geant_d6_normal_tradeoff_longer_gru.json",
+      "sha256": "52c5be37b3510c8bb845e5cbfd3b2296405a482bf946e3f52463ca5e62563e0d"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_expanded_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_expanded_gnn.json",
+      "sha256": "5cd8b8dd8e09b4f49fddffd841bf66f8c5e03b4dd0a369dcfbbc3c8ede90aeda"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_expanded_gru",
+      "file": "runs/geant_d6_normal_tradeoff_expanded_gru.json",
+      "sha256": "e3b51ae5d94f4ea226adec60fe83df1bcc273274fe2de6d6778f2a0ed3c03d93"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "51de644c1180c69055741d3334958df3fad5f43e3efc217d70e7101c731f1881"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_link_loss_gru",
+      "file": "runs/geant_d6_normal_tradeoff_link_loss_gru.json",
+      "sha256": "2acb20c0ae55b02a2a8a5910a48086d3e79d2c4909a1adcf649c6d3b2bc0365e"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_reference_persistence",
+      "file": "runs/geant_d6_normal_tradeoff_reference_persistence.json",
+      "sha256": "d440c53232fc8b9904997e9641fed26d730578c684344e066bc7424ee9050e70"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_updated_persistence",
+      "file": "runs/geant_d6_normal_tradeoff_updated_persistence.json",
+      "sha256": "8448ce64e0d1f0762951a53c58502740cbdb78217b7d7e1c85c3385164414e29"
+    },
+    {
+      "run_id": "geant_d6_congested_shortest_path",
+      "file": "runs/geant_d6_congested_shortest_path.json",
+      "sha256": "a204445af4a53642e2bd38c91a06f460c2116b4a4fdfa7197d38fd992ab8d9c7"
+    },
+    {
+      "run_id": "geant_d6_congested_reactive_carbon",
+      "file": "runs/geant_d6_congested_reactive_carbon.json",
+      "sha256": "c3d5ddff2501a202d4024da649ca6aef18559bae60a08fc79489a8529ddbc5f0"
+    },
+    {
+      "run_id": "geant_d6_congested_predictive_carbon",
+      "file": "runs/geant_d6_congested_predictive_carbon.json",
+      "sha256": "382600736ad6f097fef9d4837953a9b4146de954a23e7d2a7b5a55118d04c9c2"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_reactive",
+      "file": "runs/geant_d6_congested_tradeoff_reactive.json",
+      "sha256": "2c84ea274da0701b0261d2089c55f26edb5cddaad20e2a0f44d7085ac83a2369"
+    },
+    {
+      "run_id": "geant_d6_congested_oracle_current_bin",
+      "file": "runs/geant_d6_congested_oracle_current_bin.json",
+      "sha256": "10ea0b22bdbb238eefe65a6938b61cefb5e8a5c4f64f543bb825ddfbb4c9f145"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_reference_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_reference_gnn.json",
+      "sha256": "6386e6131a8e5a0d48fdf43aa2ec9effd6809a1d3797e94820e082bee208263b"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_reference_gru",
+      "file": "runs/geant_d6_congested_tradeoff_reference_gru.json",
+      "sha256": "4dba3c15784cf9a3132404d8c86e1ba74c986c46ad7db74235709fa8ae7533e4"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_longer_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_longer_gnn.json",
+      "sha256": "1620d95e2db7c50278312bfaec17eebe4a6ed4ae3a42566be4883a3f9d9c4c67"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_longer_gru",
+      "file": "runs/geant_d6_congested_tradeoff_longer_gru.json",
+      "sha256": "45739d321c5a12fa1b3992a283e381c178d5ba92fc81b34dd67b4a5e5956a71a"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_expanded_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_expanded_gnn.json",
+      "sha256": "79d02bce16e9ed508f2c1c77ba09d33b2d526e325cf9fe5af9620ed518e86e79"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_expanded_gru",
+      "file": "runs/geant_d6_congested_tradeoff_expanded_gru.json",
+      "sha256": "9917acdb8e4d22979192fdff7031e4ff6854d8211c4d3cb68d4e52318bac96b2"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "1ff6d576b5ed8c4ccc52fa914c7700bab442ab721f17ac6345430d71b52d3b37"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_link_loss_gru",
+      "file": "runs/geant_d6_congested_tradeoff_link_loss_gru.json",
+      "sha256": "ba9a206bbcde31b8671fa18bd97f2b1c2f6ea32240ca24103f1159e24e2a63fc"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_reference_persistence",
+      "file": "runs/geant_d6_congested_tradeoff_reference_persistence.json",
+      "sha256": "f0a050ce9f8916af2c96bf947520c5f1ab8213cc87447c6cf0f1477f825438cc"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_updated_persistence",
+      "file": "runs/geant_d6_congested_tradeoff_updated_persistence.json",
+      "sha256": "447b0dd81060ff2637cb8b74b73e0417229183629948c9968a6db717c02b79a1"
+    },
+    {
+      "run_id": "geant_d6_bursty_shortest_path",
+      "file": "runs/geant_d6_bursty_shortest_path.json",
+      "sha256": "6ea0e0b6dd914dc0adc0aaf3b879ae78eba1350f649dbebad7c257b3fda17b39"
+    },
+    {
+      "run_id": "geant_d6_bursty_reactive_carbon",
+      "file": "runs/geant_d6_bursty_reactive_carbon.json",
+      "sha256": "ca1bf0c762d6588a99948f73aa3a32eb39cca4cbed453e28a87c07f38c8d6370"
+    },
+    {
+      "run_id": "geant_d6_bursty_predictive_carbon",
+      "file": "runs/geant_d6_bursty_predictive_carbon.json",
+      "sha256": "27a7129bb46908b977976ba29299ffaa42466dd3a8809f0d92bfd6ce4a6f7871"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_reactive",
+      "file": "runs/geant_d6_bursty_tradeoff_reactive.json",
+      "sha256": "a4226b105e3e9c5257a02803bcdd4707a9922780a30d405758757957943518b7"
+    },
+    {
+      "run_id": "geant_d6_bursty_oracle_current_bin",
+      "file": "runs/geant_d6_bursty_oracle_current_bin.json",
+      "sha256": "d5e7d35aece5b4b87fbedcd2b23772f13df6be7b05fe19b827b0a4c375f3f09e"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_reference_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_reference_gnn.json",
+      "sha256": "0d9ebf8992c2f76f0ca05bf3cb9928ccab07ae5914ea87c65172d68290d9a052"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_reference_gru",
+      "file": "runs/geant_d6_bursty_tradeoff_reference_gru.json",
+      "sha256": "252b2e8e2b243fa2aea6c9b233a89d91140f8bc7e0d0a4efa3126c012720817b"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_longer_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_longer_gnn.json",
+      "sha256": "3a2205ecd11eefc083bf8d99d63da7c8dc0cc98edc8d6af351c1e0b7cacbac6b"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_longer_gru",
+      "file": "runs/geant_d6_bursty_tradeoff_longer_gru.json",
+      "sha256": "fe853cd3d3de51ff3c0314dbda7817cece4eeb5a51d3ea0cb3a67fb587014166"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_expanded_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "f9531d2d24dbb1ddaf9faaed8f2f3d8ed19311694ee4c2d4087d6e1cc951af09"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_expanded_gru",
+      "file": "runs/geant_d6_bursty_tradeoff_expanded_gru.json",
+      "sha256": "815820802e863147a0246507c86ebe15cb4fde985c78773c1128d0b35b18b37d"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "62c584050222d9488dfe6a05ed04d4c456112ce8798849f261f717fb2ec473c9"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_link_loss_gru",
+      "file": "runs/geant_d6_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "a67ae505868953ba1d2ce4510a0cef901f8e556636d597eb744efe5a3f7a3304"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_reference_persistence",
+      "file": "runs/geant_d6_bursty_tradeoff_reference_persistence.json",
+      "sha256": "c70e0f726a86175ebfedb5d774a362c49befb20a905ef26e7c05e7762cd8ca91"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_updated_persistence",
+      "file": "runs/geant_d6_bursty_tradeoff_updated_persistence.json",
+      "sha256": "8c1c3bf641ce8a61be0004a9ad8f5bdd6e2c1de95cada2e6d341ef6e6194539f"
+    },
+    {
+      "run_id": "abilene_d0_normal_shortest_path",
+      "file": "runs/abilene_d0_normal_shortest_path.json",
+      "sha256": "dcec22ba01fe52c39a37ddea9ff0028762e63c7a5fb8a1903e866b56fcbf9b4f"
+    },
+    {
+      "run_id": "abilene_d0_normal_reactive_carbon",
+      "file": "runs/abilene_d0_normal_reactive_carbon.json",
+      "sha256": "6b0338e2adbfff9ddfbb5106e6d0310575177fdad2e359490a06b8bea7e7511c"
+    },
+    {
+      "run_id": "abilene_d0_normal_predictive_carbon",
+      "file": "runs/abilene_d0_normal_predictive_carbon.json",
+      "sha256": "3720c6a29e790753751f9df53bb5c52be4f6faa8fd21fbaa31fe05b8dbaf89c7"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_reactive",
+      "file": "runs/abilene_d0_normal_tradeoff_reactive.json",
+      "sha256": "b5388e4c2b230636873b6affa826e08c3c2d88b38a6e870e67fcb875ccd5b7e9"
+    },
+    {
+      "run_id": "abilene_d0_normal_oracle_current_bin",
+      "file": "runs/abilene_d0_normal_oracle_current_bin.json",
+      "sha256": "6a60c8305dd2bd00c7c939a9e31db5b47d0e755e57ccda386cdc4b31d0cb8879"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_reference_gnn.json",
+      "sha256": "1426c04d8c5deeefda2b8404c9ffe080bceae7685a21afad205d9b1fa8465f17"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d0_normal_tradeoff_reference_gru.json",
+      "sha256": "c39a8f246e8ce044ed3a0e2b08804839567577223f1b0912266ea791d7b24bd6"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_longer_gnn.json",
+      "sha256": "b3873533f94133154fe0bb89a64b5a8970526e5a162493655b55be98d3d51302"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d0_normal_tradeoff_longer_gru.json",
+      "sha256": "2440873eba829580761587ed81f59c5fecd4bf0545118f43703a6d62d14031fa"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_expanded_gnn.json",
+      "sha256": "ed5bc270f5f3e8050b98d2f718716f3b04e22401e7c09347500e39f875a5343c"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d0_normal_tradeoff_expanded_gru.json",
+      "sha256": "f06bc71f0e6af6b6c14fdcbaff60d507cf3983dcb8963d14dfdbe89f8a48a3e4"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "2c122fd4b60b64d675ed0a5fe3331e6c36b6583e2eddb30b270625f7df5c6205"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d0_normal_tradeoff_link_loss_gru.json",
+      "sha256": "85dcc44b96169407cd5dd833d9a7e6a6e9984cd1251407f68a6a22beaf5c493b"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d0_normal_tradeoff_reference_persistence.json",
+      "sha256": "88aed9329b4ade32a8f83662a30d7089a293821c0dbf64b5c20d5b4b3af8700c"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d0_normal_tradeoff_updated_persistence.json",
+      "sha256": "6aa6d52480f443fe416c0b8820a1b732dbfa5f4fd3cdf1733a1351cb4412db2a"
+    },
+    {
+      "run_id": "abilene_d0_congested_shortest_path",
+      "file": "runs/abilene_d0_congested_shortest_path.json",
+      "sha256": "a8eb2ee2e3bba2537e2b414d1200e26efefdadbb20e00e262a4a8dc8e95ea04f"
+    },
+    {
+      "run_id": "abilene_d0_congested_reactive_carbon",
+      "file": "runs/abilene_d0_congested_reactive_carbon.json",
+      "sha256": "c5e844bdd900e1c3613b368a2ad6ada415e209a634eeb1582d028543a747662e"
+    },
+    {
+      "run_id": "abilene_d0_congested_predictive_carbon",
+      "file": "runs/abilene_d0_congested_predictive_carbon.json",
+      "sha256": "b52022c20c92a7352197c280648e1785fa83907d818ad9afe61bdf77b8b57aed"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_reactive",
+      "file": "runs/abilene_d0_congested_tradeoff_reactive.json",
+      "sha256": "8cb248ecd9e57609fbf3da98afe2c11a032f8a25e413038f4c680cca8eed1820"
+    },
+    {
+      "run_id": "abilene_d0_congested_oracle_current_bin",
+      "file": "runs/abilene_d0_congested_oracle_current_bin.json",
+      "sha256": "8d505bc33a40e4f102b145fafbb2217a4b9de32c560cb66c9eee1d5e6212255a"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_reference_gnn.json",
+      "sha256": "5f75e1123891e36f2254c58f181e21feb2598c50eb827ff7c3635d81757ac03c"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d0_congested_tradeoff_reference_gru.json",
+      "sha256": "8389d613f10c60f15c37650aaad234b4692a97b0cab3de2fe69396159116c0c5"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_longer_gnn.json",
+      "sha256": "98f47bbfbcca81fc2ee3064f8dae4e4bb55161c47e33762c21c96ccf26c4e33e"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d0_congested_tradeoff_longer_gru.json",
+      "sha256": "1bfc4c976d76a1b8942be6adc038c63ac097af9d63a8e7b0d012c4df27e8872e"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_expanded_gnn.json",
+      "sha256": "1a6b3e57652110d8bb2e2646dd9249915881a01d866f0a3545602fc5b8758ccb"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d0_congested_tradeoff_expanded_gru.json",
+      "sha256": "12e021e0fd0a70d0382668f18cd395bcf4a5b487a11de30db3a96bf83cfc62e7"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "9fe2392f50d065b2a84dc829b735fdf93d41d8e7a1e6c5b6e301a95b9a3906b0"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d0_congested_tradeoff_link_loss_gru.json",
+      "sha256": "ee8d5cf2d7d1c7316542e3937ab689c77fe9c83fa327c0a4fa2be3666103573f"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d0_congested_tradeoff_reference_persistence.json",
+      "sha256": "378e279ce266346e5eb50055d1e8d515bf06dad9896d9e81514d0fa9e401ca46"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d0_congested_tradeoff_updated_persistence.json",
+      "sha256": "07cd78ec1a50e8b5029b0bea9efdb0900682d8f93edee20a79443eeb189c08c1"
+    },
+    {
+      "run_id": "abilene_d0_bursty_shortest_path",
+      "file": "runs/abilene_d0_bursty_shortest_path.json",
+      "sha256": "64516b823c28b8e1bf371542c55e9a1d043303fa98d04d2f817ea4cb2f5910b7"
+    },
+    {
+      "run_id": "abilene_d0_bursty_reactive_carbon",
+      "file": "runs/abilene_d0_bursty_reactive_carbon.json",
+      "sha256": "f1282fbce82431b9f317ff6d51bc7578c8f9ed6092c42dc5dd5a40e8661003d8"
+    },
+    {
+      "run_id": "abilene_d0_bursty_predictive_carbon",
+      "file": "runs/abilene_d0_bursty_predictive_carbon.json",
+      "sha256": "e390d62c9fcc367e3647f9fc8a2042779b40e1a212783e2e650992e3449c294b"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d0_bursty_tradeoff_reactive.json",
+      "sha256": "53ec6dcb93febeb033ef8727c79f9ce5f02a3a4e45e07b6d10e384dd269f145a"
+    },
+    {
+      "run_id": "abilene_d0_bursty_oracle_current_bin",
+      "file": "runs/abilene_d0_bursty_oracle_current_bin.json",
+      "sha256": "fa95a529c92e71c78de1e35c90fab9f56d5c066f991a97a16f6f839316316e50"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_reference_gnn.json",
+      "sha256": "4c9107f00c044cd03187a22599fd9b153735d184021c1dbed5c3a1243df9a6db"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d0_bursty_tradeoff_reference_gru.json",
+      "sha256": "348db7089b297635be095e5332a3df1059281e2fce57038d219c9fb68ff90123"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_longer_gnn.json",
+      "sha256": "87e0caf54473a20c96d99cfa0f6c63489ffd08f8101c0611af05965a732bcefc"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d0_bursty_tradeoff_longer_gru.json",
+      "sha256": "47c774c3aa7a9039f73859e7e6a3540cf4e0f44287f1126174df8305164ca76a"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "46618b817dab28dfe6aebe143922584689c0766094856e6f3e1aea651f0abb07"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d0_bursty_tradeoff_expanded_gru.json",
+      "sha256": "361a9d7c58725179892f32f9c2f465e29ef19fa6d85f7dc8014135918ae71502"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "a55fe6b602eab24126b8890b7253d3552156ec1a4486ee39726777277e7a9ba7"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d0_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "43d756960c4813a10c2a6d71d9bb316105ea595476d08c4d1ca114827ca89866"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d0_bursty_tradeoff_reference_persistence.json",
+      "sha256": "44c77cc464005d4e06b713ae38b027b8113e6f51e307ff85e12df7692584252b"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d0_bursty_tradeoff_updated_persistence.json",
+      "sha256": "eac143738b860ab6cc12f2bc58100381ec89722a8fb4d5a82defb0db70dfa841"
+    },
+    {
+      "run_id": "abilene_d1_normal_shortest_path",
+      "file": "runs/abilene_d1_normal_shortest_path.json",
+      "sha256": "3e0ab3e8492de8e243a1de5a2542b993c01875856fed1ed37775bacefc2d4276"
+    },
+    {
+      "run_id": "abilene_d1_normal_reactive_carbon",
+      "file": "runs/abilene_d1_normal_reactive_carbon.json",
+      "sha256": "367513eb8ace731d760863d95a02f5a015ef49ef79b07ab5e645f1eda0e8c7e0"
+    },
+    {
+      "run_id": "abilene_d1_normal_predictive_carbon",
+      "file": "runs/abilene_d1_normal_predictive_carbon.json",
+      "sha256": "989eca1127e18686d256ee18ac7e0d16bd205fa725c8bb3148cb71c2edf12536"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_reactive",
+      "file": "runs/abilene_d1_normal_tradeoff_reactive.json",
+      "sha256": "30fd66761d2a5019d8bf7e4661f51cfbd879266d60db189351c4c542941204cb"
+    },
+    {
+      "run_id": "abilene_d1_normal_oracle_current_bin",
+      "file": "runs/abilene_d1_normal_oracle_current_bin.json",
+      "sha256": "987007f09f5d7bf63816caab243c08c4d02af1c0e2816afc50e4c6af74bec894"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_reference_gnn.json",
+      "sha256": "7723f2cdbd1641f94cbbd8c4b022971a5e0a403a55e252c832198c90d3415e42"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d1_normal_tradeoff_reference_gru.json",
+      "sha256": "10687efc0e7e25be7d4f06232360c5c6e0a3291912a8630cfec96165b95fecbd"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_longer_gnn.json",
+      "sha256": "b2d5b381b217da72275db863668c5ebfa34568cd15a12ad3b59e38fd85b51c0b"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d1_normal_tradeoff_longer_gru.json",
+      "sha256": "d2b590e3c76072ada4ab850e75a6feb7d26de4f25be21fceb79c3cdca0a3f374"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_expanded_gnn.json",
+      "sha256": "5537c5ea5f5bea06cdefc34994ec5fdfb6510ce1910bbf6fc0bbd33626422ab3"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d1_normal_tradeoff_expanded_gru.json",
+      "sha256": "4268516906cc10937c6577615376719cf8a003eb0872c5395cabe385ddf18fad"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "c08d995f213a215e94fee4fcda10b128b1245f2ad4fe8294034482d4e653f4ee"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d1_normal_tradeoff_link_loss_gru.json",
+      "sha256": "29ea8a2f2766def7c8f929a2507f2079a7ee56b9a2728f54dc49b55b90517c96"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d1_normal_tradeoff_reference_persistence.json",
+      "sha256": "95de808f5dee1ca95c27cb356ba44825d56c3376b0d6a3d6842b4ea73f52d1fc"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d1_normal_tradeoff_updated_persistence.json",
+      "sha256": "ec49c738dc56c94dae32437de532f26ce3683279383aba54f378eb4318ef20fe"
+    },
+    {
+      "run_id": "abilene_d1_congested_shortest_path",
+      "file": "runs/abilene_d1_congested_shortest_path.json",
+      "sha256": "c7c4e836cbfef21523514e672e227bc6a3c974900bd2ac0fce5cf0e98e4c74f2"
+    },
+    {
+      "run_id": "abilene_d1_congested_reactive_carbon",
+      "file": "runs/abilene_d1_congested_reactive_carbon.json",
+      "sha256": "05ef5e3965838a87986a9f28f59b1b61ac5b2867a22f91f04751dcd81eca4f12"
+    },
+    {
+      "run_id": "abilene_d1_congested_predictive_carbon",
+      "file": "runs/abilene_d1_congested_predictive_carbon.json",
+      "sha256": "b29b188afb758d47494f88171beb85021b200dc04fbfdc4918ba207a9c302dd1"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_reactive",
+      "file": "runs/abilene_d1_congested_tradeoff_reactive.json",
+      "sha256": "1cf5efd0fba5d7102660885782e63feef5989f6d8a06326e483f8d7a20b71734"
+    },
+    {
+      "run_id": "abilene_d1_congested_oracle_current_bin",
+      "file": "runs/abilene_d1_congested_oracle_current_bin.json",
+      "sha256": "c77e53fca9eb89762b01e2f14fddba4f8bddcc946f4843737857444aee7ed25f"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_reference_gnn.json",
+      "sha256": "36c306fe9bd99258c1fb9eb6764ab787ebe208f6bc12ef8d68686bbddde122dd"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d1_congested_tradeoff_reference_gru.json",
+      "sha256": "7dc4fc5045dcb1eaf49dda120ed1710a1b14cd3f8e7a299bad3e3a1d444b6f1a"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_longer_gnn.json",
+      "sha256": "86ed67bd24f782c6cfefbf8766fdc3ba82791676c49aabd7be2653af0c48d6c4"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d1_congested_tradeoff_longer_gru.json",
+      "sha256": "d0f8c06b24ca288e73285363b8f5754026cdfde9a32111856d4da16cefc4a546"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_expanded_gnn.json",
+      "sha256": "c9809d10a64ef87d7ead681bf71719216523cd1927e195a454ebe68db194d147"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d1_congested_tradeoff_expanded_gru.json",
+      "sha256": "38d0688756c8118badf50fd9e352e664296a1bb2e173ff7cb30db0f80634895d"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "72430e344a8dea2eeef1a4d5dd58810d4d267f45d741be1ee949835bae4f9051"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d1_congested_tradeoff_link_loss_gru.json",
+      "sha256": "c8341d13ee6a55e137336eb0b62461a7a3c161d3df73e1de89042523627fb368"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d1_congested_tradeoff_reference_persistence.json",
+      "sha256": "c4cff33cdf865f45bfb514d30028f5fd000f63d0271b30a5ef000703902885db"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d1_congested_tradeoff_updated_persistence.json",
+      "sha256": "2e67528ecfdb33470dee0462f8344c23d67751549dd3c5a96b0c844f248675f1"
+    },
+    {
+      "run_id": "abilene_d1_bursty_shortest_path",
+      "file": "runs/abilene_d1_bursty_shortest_path.json",
+      "sha256": "e7ad0376d996fd03b62d9319988524996b6ea4e9be9d64388e63e561b3396788"
+    },
+    {
+      "run_id": "abilene_d1_bursty_reactive_carbon",
+      "file": "runs/abilene_d1_bursty_reactive_carbon.json",
+      "sha256": "2652337f449a50d213ee6bfd0a05944c17cbdd9678d5f6e21c19e4c847533ece"
+    },
+    {
+      "run_id": "abilene_d1_bursty_predictive_carbon",
+      "file": "runs/abilene_d1_bursty_predictive_carbon.json",
+      "sha256": "b2877b134645e2bcda11011830bcbb33a501ff2ae7efa7dc14ac2ba71b6c1412"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d1_bursty_tradeoff_reactive.json",
+      "sha256": "9cbeb9e67e9941c1f6c09355096620c6969b57ae3f7827e8264a49df2b5a2771"
+    },
+    {
+      "run_id": "abilene_d1_bursty_oracle_current_bin",
+      "file": "runs/abilene_d1_bursty_oracle_current_bin.json",
+      "sha256": "d0b8750291d4b3429167bf55376148ff9d41ce33bf182c0f594fac266d4218c8"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_reference_gnn.json",
+      "sha256": "fc32a71b9f40af57ba5f3e34214aa5a53de08a26d4c8805a0d4fd381982fc76e"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d1_bursty_tradeoff_reference_gru.json",
+      "sha256": "ce555dd10e492257bb1a94b3f9bf8643048d4f75ff25a525949ebf8fe2de373e"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_longer_gnn.json",
+      "sha256": "765db72a3f9329000d427e85380920dd92f4e7ba69aa012e8378ab8eb833c2bb"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d1_bursty_tradeoff_longer_gru.json",
+      "sha256": "f2b998c4417cc506b34755bea7a50135c010391ecf55e14e6f4deef6726e6985"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "dfb82645885e7f2730350bdf8a097430669828d47b4d60fd743d192cbb1451b4"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d1_bursty_tradeoff_expanded_gru.json",
+      "sha256": "5d9fbf20c76edf747088ac373a0fe3c3ee76a4f10a0e88cc908c77e7ee8c124b"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "aed8f59a804ffa1f3f92b9834cab2ed4cad4d549c890040df393b949da9d7c86"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d1_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "0f0e00a6b26c1ac0b6b412e57f5598bd1a7cf9d5cd87c3769f678dbd819c28ba"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d1_bursty_tradeoff_reference_persistence.json",
+      "sha256": "cb0c44e623b251fd3c86b473fd0285e22be586e4509085e216594231a2eb4419"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d1_bursty_tradeoff_updated_persistence.json",
+      "sha256": "16908d0bb91bb8b4312e89e09642a4f6c53094b8ef744ff7c85ecbb66ae0b758"
+    },
+    {
+      "run_id": "abilene_d2_normal_shortest_path",
+      "file": "runs/abilene_d2_normal_shortest_path.json",
+      "sha256": "7ec4e61aef02e715a76c58233a1279758412a1eaaec9314e2899d4dc0ea71562"
+    },
+    {
+      "run_id": "abilene_d2_normal_reactive_carbon",
+      "file": "runs/abilene_d2_normal_reactive_carbon.json",
+      "sha256": "1137d4fd105d97389d2143d905278dc276f92bad7b01f40129b104739bade10e"
+    },
+    {
+      "run_id": "abilene_d2_normal_predictive_carbon",
+      "file": "runs/abilene_d2_normal_predictive_carbon.json",
+      "sha256": "9056dc928bb3a421c3f5812fd9dd8187477a8765e9e47dc648c4e4bf6b10865f"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_reactive",
+      "file": "runs/abilene_d2_normal_tradeoff_reactive.json",
+      "sha256": "8d0c9fa1f59ca8c7c057d516d69ed44da2689afd1e1f92e6ab19dca20495d945"
+    },
+    {
+      "run_id": "abilene_d2_normal_oracle_current_bin",
+      "file": "runs/abilene_d2_normal_oracle_current_bin.json",
+      "sha256": "7d61c78a2e72f7c3d133aacf6acc5044baf5fec494ebd254353ced6f621673fe"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_reference_gnn.json",
+      "sha256": "7a5f4675ccac4e9b4e3eed9f53f411e6a391411077b80e5a9d791271e5a0077e"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d2_normal_tradeoff_reference_gru.json",
+      "sha256": "1501abde6679cc851c16f3d1bef1814ec80534f1acfd61fcdc59b4ee9b6e4af7"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_longer_gnn.json",
+      "sha256": "0fd42e084223a7cefa2b071794658cbf21c7dcd14a9cdc97498dc21c66edf9a4"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d2_normal_tradeoff_longer_gru.json",
+      "sha256": "78f5c612ddaee7bdc0b69882b18317503a07a6776ef7ae3f824e7dd3cb92c371"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_expanded_gnn.json",
+      "sha256": "5383e97705d224bc8ab82b3e307c5d839e9af1cdf420d66522e56cff7c8d8607"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d2_normal_tradeoff_expanded_gru.json",
+      "sha256": "49f4f64cec91c2f234588bba93d51b2617d46c4c354c9e01cf0dc266d59dccf0"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "e5d499cc953dd721070d84a379d80bb87c38a7479009d593e58284034acc865d"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d2_normal_tradeoff_link_loss_gru.json",
+      "sha256": "3c21af1a125a4845bedddc06f476e365038bed315691aff5ac9603eb8409a450"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d2_normal_tradeoff_reference_persistence.json",
+      "sha256": "2489fe6ad5a77ab23e300236e7396ff621229e6c5c08cc193c06e32761579f77"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d2_normal_tradeoff_updated_persistence.json",
+      "sha256": "20100a78ec0cd01b72ad08ee9d6882bd9eb4509b836bc25c529405fde3675dda"
+    },
+    {
+      "run_id": "abilene_d2_congested_shortest_path",
+      "file": "runs/abilene_d2_congested_shortest_path.json",
+      "sha256": "3722e1f94a2f7564d99406108424c86a7b6c8a260ff53cfd9df540ccdd2f88b3"
+    },
+    {
+      "run_id": "abilene_d2_congested_reactive_carbon",
+      "file": "runs/abilene_d2_congested_reactive_carbon.json",
+      "sha256": "0cf44d51c6717e0a1bb23d7c6a6d46d7dc670ea1c534bcc04f489c53d5122e0b"
+    },
+    {
+      "run_id": "abilene_d2_congested_predictive_carbon",
+      "file": "runs/abilene_d2_congested_predictive_carbon.json",
+      "sha256": "bfc33a74dbe5761e21efc607bf5fb2bd1713cac05d199b420ee034198c3d6d24"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_reactive",
+      "file": "runs/abilene_d2_congested_tradeoff_reactive.json",
+      "sha256": "90e8f6523f0f57da826fdaf35389400cc5450f6c2c8681216c43ee50c49681c2"
+    },
+    {
+      "run_id": "abilene_d2_congested_oracle_current_bin",
+      "file": "runs/abilene_d2_congested_oracle_current_bin.json",
+      "sha256": "eb6416ddcaa9a8904e32da5cb501d2f96e06a3211a2ce72e3f93c3faec4843bf"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_reference_gnn.json",
+      "sha256": "48a05d7d5510296d0a3d07116250f743ef5da2a8e75dd8bb42ec568ae9774089"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d2_congested_tradeoff_reference_gru.json",
+      "sha256": "caa0bfcf565847a3d75b4eea0f8d85a21d85b236a5385260e80c91aa8add15f5"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_longer_gnn.json",
+      "sha256": "3ffee7941a26226f6e145499b734d2d0a1d03d83ea8f55fdd586e95af846d22f"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d2_congested_tradeoff_longer_gru.json",
+      "sha256": "d1d41ef2f5124db7ff59aea9e12200a1a82812362bec6d74e5e63b0424ff907a"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_expanded_gnn.json",
+      "sha256": "82a367467ffd7a832e2f82d0c97cc250003afb189183802a5ea56fc2f4875c4c"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d2_congested_tradeoff_expanded_gru.json",
+      "sha256": "23f01041cf36fafe28caea4e24db5037bf277edde0423725b9d7d603a1fb894f"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "6d5cf634eb7428c7fa193106069b43a25c1eb94f8cff8fb8b5bec1e18c6f6de4"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d2_congested_tradeoff_link_loss_gru.json",
+      "sha256": "d1ded03e50fb9737825766bea8f630313cda9da87718bdea84ef7d89139ccec5"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d2_congested_tradeoff_reference_persistence.json",
+      "sha256": "9b6e40c8c0f2a0ee3d1d005c82a7fbff616f6a57c9b1e64208ff3f2bb15af5b7"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d2_congested_tradeoff_updated_persistence.json",
+      "sha256": "a7a10032ca25e993231a2d5a23d7c3462cae208fd3181b8bf209b06c3099a3dc"
+    },
+    {
+      "run_id": "abilene_d2_bursty_shortest_path",
+      "file": "runs/abilene_d2_bursty_shortest_path.json",
+      "sha256": "ea8c998418b77761c25134cc45310dc6dc5023f6084b169ffc55a0ef421372d0"
+    },
+    {
+      "run_id": "abilene_d2_bursty_reactive_carbon",
+      "file": "runs/abilene_d2_bursty_reactive_carbon.json",
+      "sha256": "251929f3be719f689b2f073f7e4599ed4f52e03dbc7f82070229b5fbc78a4611"
+    },
+    {
+      "run_id": "abilene_d2_bursty_predictive_carbon",
+      "file": "runs/abilene_d2_bursty_predictive_carbon.json",
+      "sha256": "83f949aa0ca6c2388bec8cb460e348455689921eddfb844ef38c3b659bb2854e"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d2_bursty_tradeoff_reactive.json",
+      "sha256": "cdc2e394417d8924399ab051caf0eddcc13894841882dce2f68126c93a6436af"
+    },
+    {
+      "run_id": "abilene_d2_bursty_oracle_current_bin",
+      "file": "runs/abilene_d2_bursty_oracle_current_bin.json",
+      "sha256": "4b46c95e8468c64bf83ad44a0df13d0a54d1a2a511b513fc775fd4cbca88d19f"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_reference_gnn.json",
+      "sha256": "8432b26b7538d0c573237d23157328901f80586abcf8619589a3acd7bddfeeb8"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d2_bursty_tradeoff_reference_gru.json",
+      "sha256": "e0ea6480524ad5555f5e29c5f5e2e2a2d01630fa3047d89128f0b11822af1208"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_longer_gnn.json",
+      "sha256": "df390aba1739e84ad91156174375d277b6ffa4b4bb3ba74d5683e44f7ba8b1e5"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d2_bursty_tradeoff_longer_gru.json",
+      "sha256": "8b5e00d53b471b0942c7c7cbdda02f03240c9d87e9344ee27644f746234a1e32"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "f5db96cf8272908708fc90a06331574efdc54cbbcd648786916a9c4d89deb05b"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d2_bursty_tradeoff_expanded_gru.json",
+      "sha256": "89f5e83b396c4b3d78c2d88ecde7cb90d2de761c2fc43c48bd905f24ea8c9bc2"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "83359afe1167399644e28479a17eb34b15a40e55bcfeabc256ad3f5d83bb0c0b"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d2_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "f607b4f763753a4a02abbf52d6cbdaa69adbb2cd2f3189cdb17fb34109f48d6b"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d2_bursty_tradeoff_reference_persistence.json",
+      "sha256": "e31bd6ca5fb5dd932997d7a9f69225cf51e425190d18ee58a236aafa6e0cdaca"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d2_bursty_tradeoff_updated_persistence.json",
+      "sha256": "989df41d9e36e500359414e00f3fdc1f4bd135ce6d2bac3000da9181c2452fdb"
+    },
+    {
+      "run_id": "abilene_d3_normal_shortest_path",
+      "file": "runs/abilene_d3_normal_shortest_path.json",
+      "sha256": "138c19a60239075abb20af5ed5905e22bd618d0180a4016ec81269a9f9103a8f"
+    },
+    {
+      "run_id": "abilene_d3_normal_reactive_carbon",
+      "file": "runs/abilene_d3_normal_reactive_carbon.json",
+      "sha256": "a796cb9a02fec9c00448adc2645dabec099b62038e552232366d689ca3cc15a2"
+    },
+    {
+      "run_id": "abilene_d3_normal_predictive_carbon",
+      "file": "runs/abilene_d3_normal_predictive_carbon.json",
+      "sha256": "b6f193cc416d3da6e8a72c50ada55395786caa10b6da9098e685337e991487ca"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_reactive",
+      "file": "runs/abilene_d3_normal_tradeoff_reactive.json",
+      "sha256": "10bfa7dc8d720d1982abb3b1434427307fb50565bca2e6df3b994f2bc786a92f"
+    },
+    {
+      "run_id": "abilene_d3_normal_oracle_current_bin",
+      "file": "runs/abilene_d3_normal_oracle_current_bin.json",
+      "sha256": "03459c5e3b0a0b345f43e8e995c1475d9ce36a322d578ed92a62ff7214ee845b"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_reference_gnn.json",
+      "sha256": "45a103e94579b7040c8af80378e75238f4cc2c0db4fe4b3d93821081ccabdab5"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d3_normal_tradeoff_reference_gru.json",
+      "sha256": "8f63498a133703a70370e26a8f10529a9bb70fad94d1c44d0611804069915662"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_longer_gnn.json",
+      "sha256": "b87ab35b64560c95b1bd949b9b796afca2a1bda3ebfda25ddaa113a51e91ca92"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d3_normal_tradeoff_longer_gru.json",
+      "sha256": "348737cb70b79795167b27abeceea00225f465350037b5f77e32dd77a18f3b78"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_expanded_gnn.json",
+      "sha256": "86bc62cedf99824cb3f0d5ac9e04733cd653bad6ca3dcc6c4df8f62a74eb0aad"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d3_normal_tradeoff_expanded_gru.json",
+      "sha256": "bb1650cd8709066cba66da24613eb8514a1e1175071929be3c3afb94a87871ce"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "a2dfa12f8aa48cd05c6aec9adb08a61b38309b405f774bb9b9c3bca6efeb9a32"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d3_normal_tradeoff_link_loss_gru.json",
+      "sha256": "eb3e370b0df8e7d7ff732ad7af5f9e5b2a2ddbe6cde57baee93392b0dfa939d6"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d3_normal_tradeoff_reference_persistence.json",
+      "sha256": "15c7135b7c29a0a9eb661ee538140490288f3a019eeafd1144cae45b034fe85c"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d3_normal_tradeoff_updated_persistence.json",
+      "sha256": "3cf47c3d26e2cd191ca59866866bf6929894ecb85e3d45e2155dfa7bfdc82ad5"
+    },
+    {
+      "run_id": "abilene_d3_congested_shortest_path",
+      "file": "runs/abilene_d3_congested_shortest_path.json",
+      "sha256": "86d91645d4606d47c180e3a31592d23dd9c427141efec501f1614bb987b1fbd6"
+    },
+    {
+      "run_id": "abilene_d3_congested_reactive_carbon",
+      "file": "runs/abilene_d3_congested_reactive_carbon.json",
+      "sha256": "a96b2630d857e2e4bf5a0a916afee821ab01de0bec174ed736353cef6ff27b7e"
+    },
+    {
+      "run_id": "abilene_d3_congested_predictive_carbon",
+      "file": "runs/abilene_d3_congested_predictive_carbon.json",
+      "sha256": "5357e8905064f728ca7aab94d211d6c262f41da1f9ad25e3398dc85abd1fd5d7"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_reactive",
+      "file": "runs/abilene_d3_congested_tradeoff_reactive.json",
+      "sha256": "a671070f0a0635e95392b7a36e255a39238679d05cd05cd13c3d76e068941f98"
+    },
+    {
+      "run_id": "abilene_d3_congested_oracle_current_bin",
+      "file": "runs/abilene_d3_congested_oracle_current_bin.json",
+      "sha256": "850b7d1a74604fc62f00ea20d94d09f335d1c918bd2340a3a51bf98423a8930f"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_reference_gnn.json",
+      "sha256": "1489739e64033abe8785bbd98c0bea435c9b8e1e716a7f66f22dc359fae485b7"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d3_congested_tradeoff_reference_gru.json",
+      "sha256": "67ea8490f9cd1db5cc26b5c1d626045fbfb7f57d8385c46864c79ca864500a56"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_longer_gnn.json",
+      "sha256": "a78783ef31d93972ef80ace107b687cbbd35e1a99587649367dd88ba88900aaa"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d3_congested_tradeoff_longer_gru.json",
+      "sha256": "d0f0a72c3b24a86bdf010e85806dcd7d948e6745362a72b94736442c055cca72"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_expanded_gnn.json",
+      "sha256": "46f30463d54601d55807159e274162f0efa40be01411971aa79ad14605356a66"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d3_congested_tradeoff_expanded_gru.json",
+      "sha256": "46c11bf1937af881a85c0425bfdea15e0402d16ce466c9b5c6f6f1c806bca640"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "c68c2be3c5454f62199f8dc12e177ce9c6cce06d24116b39015a6969144021c4"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d3_congested_tradeoff_link_loss_gru.json",
+      "sha256": "20fb817732c35e40122d2da40ef9044c56def4d8f5bb0d73305f66df91797fe7"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d3_congested_tradeoff_reference_persistence.json",
+      "sha256": "e073eb5a0bc5ecb421b6e882351b5a083ade833140ea724625a44a734adddf30"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d3_congested_tradeoff_updated_persistence.json",
+      "sha256": "23f745772d41b91751c907c5ead949649df449fc444ea5c5f45847d022d41382"
+    },
+    {
+      "run_id": "abilene_d3_bursty_shortest_path",
+      "file": "runs/abilene_d3_bursty_shortest_path.json",
+      "sha256": "52d8a32ff0e2d618a5e7852060115f5ba7aa3b7925990bfc675ebce2e248d1bf"
+    },
+    {
+      "run_id": "abilene_d3_bursty_reactive_carbon",
+      "file": "runs/abilene_d3_bursty_reactive_carbon.json",
+      "sha256": "df6e8615cf3bb962ee698216bad4f98ac52dbc658b43362d44fc563c8cb1e828"
+    },
+    {
+      "run_id": "abilene_d3_bursty_predictive_carbon",
+      "file": "runs/abilene_d3_bursty_predictive_carbon.json",
+      "sha256": "a5181f5da2fd6fc6b76ed0153cabb8b40d09b8bd7e0e4f4f5f80fd9046a05bec"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d3_bursty_tradeoff_reactive.json",
+      "sha256": "ec7d96d0f72e38c20c9758f50200821b9e54b75795c543930d806f26abbe03f6"
+    },
+    {
+      "run_id": "abilene_d3_bursty_oracle_current_bin",
+      "file": "runs/abilene_d3_bursty_oracle_current_bin.json",
+      "sha256": "60e01c8c0fb1cb3a19ecb74f068162e46f3f9aa753ec90753c961aafe82072d4"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_reference_gnn.json",
+      "sha256": "b0d89ad5007c0e21ecd096666ab7ee09a99ed3fc7682ff60463b0a70a594b6f7"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d3_bursty_tradeoff_reference_gru.json",
+      "sha256": "8a7b1c6be09eb9afe5776cedda2ac9274b1621eb3748d8e52a1641816bf2cfda"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_longer_gnn.json",
+      "sha256": "509d344a7a2fa098c0376a525cc45b5c191b98e65b8bb0afb60826fbac36469f"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d3_bursty_tradeoff_longer_gru.json",
+      "sha256": "b0c6bb27710671289df192592fbd70806c19b90cb1f7762dbc87da43c741d51b"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "6d6333e6b756eba5708a81cf3473ec10be3058f78f3d3d7b09a63ea8957989a2"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d3_bursty_tradeoff_expanded_gru.json",
+      "sha256": "04eff07723df8bdd216e69e4c17601a67cb32527398490da13bc3b2d5b15631f"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "6c5148fa32cb98e6e1f5c6cd673699ea3085d720d81320ea9171574db6601f0a"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d3_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "98e6175ef476b5c99e76356b487643b1aa965c1d72db8d497bcad37b26b6b29f"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d3_bursty_tradeoff_reference_persistence.json",
+      "sha256": "65d06b7c4777bf2038d67f023d715165aa8d15fec9a5d1195b589b03b9b3bd81"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d3_bursty_tradeoff_updated_persistence.json",
+      "sha256": "42ed4c2c456fa2f8148c283833799db3cedc659092ce01e882522812d0f0b798"
+    },
+    {
+      "run_id": "abilene_d4_normal_shortest_path",
+      "file": "runs/abilene_d4_normal_shortest_path.json",
+      "sha256": "75ae1523e6a2dbdecc79f26a7d84483abe2b7840d90bed8cdbe5540964a81320"
+    },
+    {
+      "run_id": "abilene_d4_normal_reactive_carbon",
+      "file": "runs/abilene_d4_normal_reactive_carbon.json",
+      "sha256": "cef0ce339ddc1d8157f037f56c202dd077865a1affa239ed3bf0f8d82d47ff85"
+    },
+    {
+      "run_id": "abilene_d4_normal_predictive_carbon",
+      "file": "runs/abilene_d4_normal_predictive_carbon.json",
+      "sha256": "99d44a78de21c5d6d405770843095b9057a91b942912fe4db15c06c7fd0a0056"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_reactive",
+      "file": "runs/abilene_d4_normal_tradeoff_reactive.json",
+      "sha256": "6d5086e161cc1b8aa952e06fac69ae72a4a835eaa359f6126b21e46486737149"
+    },
+    {
+      "run_id": "abilene_d4_normal_oracle_current_bin",
+      "file": "runs/abilene_d4_normal_oracle_current_bin.json",
+      "sha256": "7238876f2795bc59275e46a52e96f11f24e0f5e66a5566a9fb400194404101b1"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_reference_gnn.json",
+      "sha256": "d90a6cc9fe25e362d0fefae3c71ae702265d7ba92b45bed826e58cc2ddcb8efd"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d4_normal_tradeoff_reference_gru.json",
+      "sha256": "131a2433c1491d26841aa74451ac989acddea30957477e242dfac252252f718d"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_longer_gnn.json",
+      "sha256": "a302747eb006dd5491692ff4112956ff2b7d93e82a1862a558e8054a84a3a8b3"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d4_normal_tradeoff_longer_gru.json",
+      "sha256": "7fb70f485ed17fe3a19421b0f09f5df92e24a5471b335c0e002e6ddf949b71c5"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_expanded_gnn.json",
+      "sha256": "3966690eed082bcaa272a8261a0f4ccfe9af65671666d81fc03eb042b75fced0"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d4_normal_tradeoff_expanded_gru.json",
+      "sha256": "3c1e163106b0d78440752daaf5e1f39358af22223b9b7c80e4e741e06edfda5a"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "aad085e89031ba17b97ae968cc34562333712178091324be3e4995e8e275857e"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d4_normal_tradeoff_link_loss_gru.json",
+      "sha256": "e735f1ed2715d7356f09fa6d94255258454da7ea6e39eba9107e5185bdf99da8"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d4_normal_tradeoff_reference_persistence.json",
+      "sha256": "40f83b9967b7bf6963243475945626537353ef351b406a748d48457ad8076fbf"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d4_normal_tradeoff_updated_persistence.json",
+      "sha256": "64196a631953d88dc60a66ced02b46d631bda35e65f475deaf2e5cb7a02ef6d4"
+    },
+    {
+      "run_id": "abilene_d4_congested_shortest_path",
+      "file": "runs/abilene_d4_congested_shortest_path.json",
+      "sha256": "534a55e24c519436c82f85948d8be0e8d329185a6fbc826662fa4f081828cd11"
+    },
+    {
+      "run_id": "abilene_d4_congested_reactive_carbon",
+      "file": "runs/abilene_d4_congested_reactive_carbon.json",
+      "sha256": "5479e920a1da10d01253bdfcd7c9b1ab154c951bbc102fbf6ed587fdc8e751d9"
+    },
+    {
+      "run_id": "abilene_d4_congested_predictive_carbon",
+      "file": "runs/abilene_d4_congested_predictive_carbon.json",
+      "sha256": "9a9dd68fb322dfbb1b05ee5ab94dd391da08170151f6b1825ef2e623a60c016f"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_reactive",
+      "file": "runs/abilene_d4_congested_tradeoff_reactive.json",
+      "sha256": "1c5b60bdac615743fc891a06e415ef9069bfd763688a03e83f3041f70e8a396d"
+    },
+    {
+      "run_id": "abilene_d4_congested_oracle_current_bin",
+      "file": "runs/abilene_d4_congested_oracle_current_bin.json",
+      "sha256": "bca68a5bd51758aa64bdaca22119025bc5a7810a2db8a130894383d13c2871e9"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_reference_gnn.json",
+      "sha256": "4a7f7a368f9dc9ce265dbc205f8185112e4e62f5dc196b3210215d07da2ba1ba"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d4_congested_tradeoff_reference_gru.json",
+      "sha256": "37e7f6e024f473d7cff8b1404fb3e97a1e6cde0eb1041171c7044aa9ed60fe3c"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_longer_gnn.json",
+      "sha256": "e6d8c9ad8d0d0823a1a8867573c3c5b9d372bc8d2e05861ea43ff8316bc5759d"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d4_congested_tradeoff_longer_gru.json",
+      "sha256": "aeaf02d8665c2d270a830edefb38258d232794f371d2097321ec32ff89e16ceb"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_expanded_gnn.json",
+      "sha256": "6a1f9004912752603a6f5bd5a535fa8c1c601b2dfbc8cd66226e400db8cbaaf6"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d4_congested_tradeoff_expanded_gru.json",
+      "sha256": "3aa7d5b2000154c3ac45a0b6c05e0ff179454e8376fff6c2f6a96963087eb9d2"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "9bc7d350cdb3855bbe48624f6f038b1812fd2c0ea3e7fa6e85dff0b1562ffe60"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d4_congested_tradeoff_link_loss_gru.json",
+      "sha256": "92815087880d0e2da3e3cf0ab554864316ae52dd0776dc2372ef22cb8154b258"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d4_congested_tradeoff_reference_persistence.json",
+      "sha256": "a298c3239cf50395fb5d99349f8941ad016f0bed0e075acc66df8396656b5f58"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d4_congested_tradeoff_updated_persistence.json",
+      "sha256": "529b3f66f05a62111dbc01e03e5baf5c49fda89cb5324af935489ee0770d7f4c"
+    },
+    {
+      "run_id": "abilene_d4_bursty_shortest_path",
+      "file": "runs/abilene_d4_bursty_shortest_path.json",
+      "sha256": "00503d12cb051314052e53a9d6fc9d9aa07db36d0e0ecc97a214ff34c37a57ed"
+    },
+    {
+      "run_id": "abilene_d4_bursty_reactive_carbon",
+      "file": "runs/abilene_d4_bursty_reactive_carbon.json",
+      "sha256": "eb1af8f1ee3375e4c7fa60f37b6e300b92fb7497e09e81bf38cfb7e8540df840"
+    },
+    {
+      "run_id": "abilene_d4_bursty_predictive_carbon",
+      "file": "runs/abilene_d4_bursty_predictive_carbon.json",
+      "sha256": "e0c6c3192fde098c8a6111f8598a93ce6662d40e0c865369a05ddbd00b6bbe43"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d4_bursty_tradeoff_reactive.json",
+      "sha256": "5bb908aa2863522c67fb8f1b47a7c520aead4ef7562211b0269a0ee16faf8f70"
+    },
+    {
+      "run_id": "abilene_d4_bursty_oracle_current_bin",
+      "file": "runs/abilene_d4_bursty_oracle_current_bin.json",
+      "sha256": "edec2f40a7f2aa4665cd0e0219372a6d8495c3b8aa63ac233c89c7f88ceb9e19"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_reference_gnn.json",
+      "sha256": "d8c82f94767a242611cd57f35a3d7c0f1a4bff40218b2fe615df0ac182a9900d"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d4_bursty_tradeoff_reference_gru.json",
+      "sha256": "023e8fdf11c710dd4a5cda4382c34b6a86e5cce9b6d1cd74f046bbfc7be1b5e7"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_longer_gnn.json",
+      "sha256": "7b052d6d106dda8429f16bae0cd627e65c60b74fc565f6bd7cf2999160a21891"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d4_bursty_tradeoff_longer_gru.json",
+      "sha256": "2344ee2d9f1903e85f2e4e8b5fdc53bda89a16ce5f501024da90a456e1980f2d"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "fe6f8236e7462fe7125d9667d6500ce82fc4669e88c0e45675cd537e9f9ba824"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d4_bursty_tradeoff_expanded_gru.json",
+      "sha256": "cd5603488ee0a1229c61ca9a58883e4bf4bab8576d0a2a2c235154209cb8f089"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "8567ad9021d69cdc759159d96e381b6abe57d49260e3018b022cd220c6fe65a9"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d4_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "4f86c0370d6d57c5c3d8a84a467a64eaef7041f7a34d2f766d0fee3c1fbb1fe3"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d4_bursty_tradeoff_reference_persistence.json",
+      "sha256": "75ad7881f896b093688f66526734fc1e5be7453603ce9a117d195ef7ab614cf9"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d4_bursty_tradeoff_updated_persistence.json",
+      "sha256": "8b7b6ae976312dfd1b238228bf0c8fa88692e26026340079b36f3aa03848b067"
+    },
+    {
+      "run_id": "abilene_d5_normal_shortest_path",
+      "file": "runs/abilene_d5_normal_shortest_path.json",
+      "sha256": "bef766e5783e5ccc9255c26581ab6720b3fb9a6bdd0c9770d304b278852e2292"
+    },
+    {
+      "run_id": "abilene_d5_normal_reactive_carbon",
+      "file": "runs/abilene_d5_normal_reactive_carbon.json",
+      "sha256": "a28dca73199a6a48b62c33ee6f5657dde6c7c62a44dcf20085d3ee5a55bee905"
+    },
+    {
+      "run_id": "abilene_d5_normal_predictive_carbon",
+      "file": "runs/abilene_d5_normal_predictive_carbon.json",
+      "sha256": "24f3ba52a6546853c4ad3d7b8996e3306447813fbff79d41057f299ebeca57e5"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_reactive",
+      "file": "runs/abilene_d5_normal_tradeoff_reactive.json",
+      "sha256": "589be7110620f552c0256db90f1b38d9d056f180e8e2ca2deb39581a4d7e974d"
+    },
+    {
+      "run_id": "abilene_d5_normal_oracle_current_bin",
+      "file": "runs/abilene_d5_normal_oracle_current_bin.json",
+      "sha256": "639c33699a7bb06f45c30b5db724e7f098b0db6714c66ae66cab03b5c9df61ff"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_reference_gnn.json",
+      "sha256": "8e6b95026f8df3cf6415610b29391fe3019b9929e329b3fc25e17d277553c084"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d5_normal_tradeoff_reference_gru.json",
+      "sha256": "36ca09076f1f6d99af74f96e3913672fe8a5f0f2af4ac5d0143dddcdb17e565d"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_longer_gnn.json",
+      "sha256": "86cf2a6403bb5b71aabb238f620f1aac563cbbcd38bb2f7f353cc0a27ae29bf9"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d5_normal_tradeoff_longer_gru.json",
+      "sha256": "2df6233ac07d2cb94b48aa0c5f468ef346f35ccd78e391099fa6e8c732460541"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_expanded_gnn.json",
+      "sha256": "6edea0429aa7f9c938836f44d004f244e42947230f90cc740ac7ec396bf36ebd"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d5_normal_tradeoff_expanded_gru.json",
+      "sha256": "67e31ae80836379a9ae3f21620aeb817716ad9ac87d4d5a4623812a6b3c4dce6"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "109192fc7b4359fcdd5ad9bd3ada7a7989fe857d667b908b376a40351d79d4ac"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d5_normal_tradeoff_link_loss_gru.json",
+      "sha256": "ed80c14c48125c18a82bff4b12ebaec02c30c4bc76d37961ab1684d5a368cb7d"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d5_normal_tradeoff_reference_persistence.json",
+      "sha256": "123d38335111488fe86dc409c9be72e4debda7fc48337036356bf21dac38d29f"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d5_normal_tradeoff_updated_persistence.json",
+      "sha256": "901ea66c39626f2de24d37d9d6f1d124ce4020f0f01bca352ef1dbc7195dad92"
+    },
+    {
+      "run_id": "abilene_d5_congested_shortest_path",
+      "file": "runs/abilene_d5_congested_shortest_path.json",
+      "sha256": "7d57e8b7bd09a330c1b30356c5b47b5f1112cacebe99245a9908b32490bb4292"
+    },
+    {
+      "run_id": "abilene_d5_congested_reactive_carbon",
+      "file": "runs/abilene_d5_congested_reactive_carbon.json",
+      "sha256": "f2dc10180058abf907371436dd1dfcb5332d4cd5481da3089604d4fb35b7ee23"
+    },
+    {
+      "run_id": "abilene_d5_congested_predictive_carbon",
+      "file": "runs/abilene_d5_congested_predictive_carbon.json",
+      "sha256": "97dd524bf678fa5b138c030d0f648a30ce4734f2130d30f2d0b3874b76cd13f5"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_reactive",
+      "file": "runs/abilene_d5_congested_tradeoff_reactive.json",
+      "sha256": "db66063785da25ecd78e999abd2e4edbbb2b7faf382dcb96674dbe131406f149"
+    },
+    {
+      "run_id": "abilene_d5_congested_oracle_current_bin",
+      "file": "runs/abilene_d5_congested_oracle_current_bin.json",
+      "sha256": "ac81c5fe47dc623a8c7774b822c6f3e77d1f5e99d3bb9bcefb3c26c8ec83b40b"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_reference_gnn.json",
+      "sha256": "2d7e09f75e595230542829b5d3773d97e4751a9fec856f838176faf2c95860f5"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d5_congested_tradeoff_reference_gru.json",
+      "sha256": "66ea5645f5f834e74a03c20b739c0a3c8ce55701b2dfd1a6ea1cd53226ae35f6"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_longer_gnn.json",
+      "sha256": "001d7bfd29e742b433c7e5c2cbaa82b517f0b29bde099b153554d7e52b021233"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d5_congested_tradeoff_longer_gru.json",
+      "sha256": "d1a07840cd15a6e77b4fbf840a217bdc4feee60d7ac73f50976ad19033bd555b"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_expanded_gnn.json",
+      "sha256": "557f071e12332c20cc722e0b4bfd7a50816361669cfc420eb6f798d70d432b02"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d5_congested_tradeoff_expanded_gru.json",
+      "sha256": "cc9801b6fd9cbd5ba235bc55a81d25323ad41fcce7fb00e3664061c77f191823"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "618660de8749271c062a20ffb0ea571c9b6d14352ce01f42ac7304ab88fe296c"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d5_congested_tradeoff_link_loss_gru.json",
+      "sha256": "a2a0e138e436b73314a0497d2050dc888571afd497e39f7d673f286f9d027915"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d5_congested_tradeoff_reference_persistence.json",
+      "sha256": "287c177a91b8ee6b3890bc8aa9a51131e3c5f855712ac7dc1e4fd015470c5972"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d5_congested_tradeoff_updated_persistence.json",
+      "sha256": "f5072532f1994e19f951f50ba30f44337b718fbd49c51fad458c9f7ca020a217"
+    },
+    {
+      "run_id": "abilene_d5_bursty_shortest_path",
+      "file": "runs/abilene_d5_bursty_shortest_path.json",
+      "sha256": "32305e083b40377c3c450a7a0f6103f51e0d482122c8e72053d7019680b80198"
+    },
+    {
+      "run_id": "abilene_d5_bursty_reactive_carbon",
+      "file": "runs/abilene_d5_bursty_reactive_carbon.json",
+      "sha256": "cec449767fd4c209873f72f352c35b16ff696d1c24b78904b213911b95167b91"
+    },
+    {
+      "run_id": "abilene_d5_bursty_predictive_carbon",
+      "file": "runs/abilene_d5_bursty_predictive_carbon.json",
+      "sha256": "9b4960bd6d7dcfa1b14ea206b39969f49a73543fb5043e786e7355e25db9f22e"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d5_bursty_tradeoff_reactive.json",
+      "sha256": "716efe36b59436478224ff740c54f33f7c7ca7488e3cac5740cccbde2fdd7841"
+    },
+    {
+      "run_id": "abilene_d5_bursty_oracle_current_bin",
+      "file": "runs/abilene_d5_bursty_oracle_current_bin.json",
+      "sha256": "59b666aa04d17c657b90ed845f238f45dff95020d905c149607f31827cc18cc6"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_reference_gnn.json",
+      "sha256": "a082cca121fec87f3251761a75b2ea664e94541ff8d9d551fa8f50dd9993d4e8"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d5_bursty_tradeoff_reference_gru.json",
+      "sha256": "8601373cfb062e1ad0fd6775e60e7be4d5d2e8067192a553631ba9e328833d82"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_longer_gnn.json",
+      "sha256": "29dec2c012cb48d19d01cd476ada5876382f54508cd6e1cf929ca6c236d59991"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d5_bursty_tradeoff_longer_gru.json",
+      "sha256": "c100cc7dd3724b23f7fccfd79b2560c9b14b49da1284a16f8d7c1a2f87305359"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "8782b2da841c9751f013e2e082c7f317f01063dcad306ef0ae5b90926293e11a"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d5_bursty_tradeoff_expanded_gru.json",
+      "sha256": "e7f5a710f27db89812bbab97aa9d57354543657a0a6ce615be1a97eb9ad66399"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "9865db0c20411d8c5d861a5468f37983a1b8ed9f8ad279c5ecd315112a5a42f9"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d5_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "f70483fd7762ea6ae982a235621d0df692abc7e64aee8aa32b4e6a961d06b9ba"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d5_bursty_tradeoff_reference_persistence.json",
+      "sha256": "cab22f3c4d5d3699cfa0b45594aab3c91384d96408de919bf0a0b8d4f70819fe"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d5_bursty_tradeoff_updated_persistence.json",
+      "sha256": "c85d6acbdc1279c4b65df516be126647eba45632adf6ba193608706a3b8f4bde"
+    },
+    {
+      "run_id": "abilene_d6_normal_shortest_path",
+      "file": "runs/abilene_d6_normal_shortest_path.json",
+      "sha256": "b7f59e7e974bb1622b21004f23b5ea5e4be1dd478c1244e17dd0ed9c9313664c"
+    },
+    {
+      "run_id": "abilene_d6_normal_reactive_carbon",
+      "file": "runs/abilene_d6_normal_reactive_carbon.json",
+      "sha256": "4f053f87c1a724043cba9294270a56b17951b733d3a8f26c4a7ce1543c724bd9"
+    },
+    {
+      "run_id": "abilene_d6_normal_predictive_carbon",
+      "file": "runs/abilene_d6_normal_predictive_carbon.json",
+      "sha256": "2f806d44a303110b28a0e558dd4e3d695379816507e9080e0be26aced5fdd078"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_reactive",
+      "file": "runs/abilene_d6_normal_tradeoff_reactive.json",
+      "sha256": "faf3bffb8ac7591a376794738f373a8209b3ed501fa11c349be0ce58e6d94d55"
+    },
+    {
+      "run_id": "abilene_d6_normal_oracle_current_bin",
+      "file": "runs/abilene_d6_normal_oracle_current_bin.json",
+      "sha256": "332b4ceb247d644656da9099b1c443b99d2c27d9c0d7f75a0e46a0c33ba62c61"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_reference_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_reference_gnn.json",
+      "sha256": "7ca5801189280df07dcb528264186afcda60e32bc615ac8a52d758d2b8c1a9c5"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_reference_gru",
+      "file": "runs/abilene_d6_normal_tradeoff_reference_gru.json",
+      "sha256": "c9ef8cf23fbee5a5713f96e920dd0ff7a33b10913ca48050d0d62bf37bb41328"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_longer_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_longer_gnn.json",
+      "sha256": "adeca418b2616f3e1468b6320d5ed3234be06f4fa376e176bd1cbedcb5bd949f"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_longer_gru",
+      "file": "runs/abilene_d6_normal_tradeoff_longer_gru.json",
+      "sha256": "a2ed9aaeeb2223d38589838a1b11c62dd06aefa8f3b33887b6c92f9f29b8e6fc"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_expanded_gnn.json",
+      "sha256": "b277ad130bafa960be52f0918ec1e8951ab5c66353905124862a6e6d9c2cacc1"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_expanded_gru",
+      "file": "runs/abilene_d6_normal_tradeoff_expanded_gru.json",
+      "sha256": "ab52eba41638af16f776e616bf608489b5ddeb611f226a3675bd632b6cab7b89"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_link_loss_gnn.json",
+      "sha256": "242fd5d6cfec0aad24d1847905643da7e5d2687ca662b5869ca62906525fdfc2"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d6_normal_tradeoff_link_loss_gru.json",
+      "sha256": "5a67ed968f995dc024617771ede2c9446e8ed35be75a04568f950a8e26623a20"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_reference_persistence",
+      "file": "runs/abilene_d6_normal_tradeoff_reference_persistence.json",
+      "sha256": "59f72edc5bdd0944938d37aa96be5377cdf9caf80bb766d1e17f5065f23cc47c"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_updated_persistence",
+      "file": "runs/abilene_d6_normal_tradeoff_updated_persistence.json",
+      "sha256": "88d1cd5f44f5e842f9691d0240cf9a12533d998606052bfe63bbbc11bcf0becb"
+    },
+    {
+      "run_id": "abilene_d6_congested_shortest_path",
+      "file": "runs/abilene_d6_congested_shortest_path.json",
+      "sha256": "bdbfe3b7bd2a650e359e0427fb92f298bce8763fa4b3375db741d88efb140236"
+    },
+    {
+      "run_id": "abilene_d6_congested_reactive_carbon",
+      "file": "runs/abilene_d6_congested_reactive_carbon.json",
+      "sha256": "d39851ba325e8a9057e02dba1ad5c0d209238b589cb4ea803dc0c0eac9d7c7d4"
+    },
+    {
+      "run_id": "abilene_d6_congested_predictive_carbon",
+      "file": "runs/abilene_d6_congested_predictive_carbon.json",
+      "sha256": "dcb9aef558ca2df3fb957faa19719bab722947746439a4ffc51b18464c5e1ede"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_reactive",
+      "file": "runs/abilene_d6_congested_tradeoff_reactive.json",
+      "sha256": "90a5ff1f4aa1d798c060d7867114ca80f281a8a696d99967f14bda937045ecd4"
+    },
+    {
+      "run_id": "abilene_d6_congested_oracle_current_bin",
+      "file": "runs/abilene_d6_congested_oracle_current_bin.json",
+      "sha256": "3ca4078591285e8c1274dd1f45738f610befdf0eda58c4a91d11d53396080333"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_reference_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_reference_gnn.json",
+      "sha256": "20632397312f33519a45999e49bae8cd342f2b841877333c7ac7dd485bb4ea73"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_reference_gru",
+      "file": "runs/abilene_d6_congested_tradeoff_reference_gru.json",
+      "sha256": "dbc8f860f5ab3811cff3db6d7b13cb2a49d15f181ffb9a6e1ccc7d7faa6db885"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_longer_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_longer_gnn.json",
+      "sha256": "ede7085f47e5ef1d04c9c8302c6a41f1e6c0039ae79fb11b91a4ec1afa8ec39a"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_longer_gru",
+      "file": "runs/abilene_d6_congested_tradeoff_longer_gru.json",
+      "sha256": "0f25f41b81271b9bf9bbb33d8b2edc26e41361992704230ea99c7c4f8f0a0254"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_expanded_gnn.json",
+      "sha256": "84faf2c1443e769fa49ce69edf5d1b0dceff64113deb48b2d5bce7fa26ade702"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_expanded_gru",
+      "file": "runs/abilene_d6_congested_tradeoff_expanded_gru.json",
+      "sha256": "89e2211e7d210a0abbdd780a4a8f305b4f35ce4542f54307941c60a1940fb8d1"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_link_loss_gnn.json",
+      "sha256": "cb128341cf51435a4f0a4d070603f1cae231646115852ee900c081bc251bfd6d"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d6_congested_tradeoff_link_loss_gru.json",
+      "sha256": "31bac4f0192f0c04ddedaec7957ebe8b664f97f8b3af80f03747e97ab7ef1fbf"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_reference_persistence",
+      "file": "runs/abilene_d6_congested_tradeoff_reference_persistence.json",
+      "sha256": "b7f5985d66b64e36d7f30c56d53fe7e2615db335fd8bf01af8d3299d6fe99bee"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_updated_persistence",
+      "file": "runs/abilene_d6_congested_tradeoff_updated_persistence.json",
+      "sha256": "ddf96ff47c5d3632cca2df1feb77b52aae903b0a116ea942471d9326f0b1b03d"
+    },
+    {
+      "run_id": "abilene_d6_bursty_shortest_path",
+      "file": "runs/abilene_d6_bursty_shortest_path.json",
+      "sha256": "d58272b168ad45298b3f6dcf09563d9014843b4a7f9fb6e939be72846bcf6919"
+    },
+    {
+      "run_id": "abilene_d6_bursty_reactive_carbon",
+      "file": "runs/abilene_d6_bursty_reactive_carbon.json",
+      "sha256": "c5b3f4c43cecf96ced75f531530be291c4c97000d87a0b221d2582dcc11d91be"
+    },
+    {
+      "run_id": "abilene_d6_bursty_predictive_carbon",
+      "file": "runs/abilene_d6_bursty_predictive_carbon.json",
+      "sha256": "b3150e3798346fca67bc57d5022d08dc0979629d4be9b7a5cc90cf8c513befb6"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_reactive",
+      "file": "runs/abilene_d6_bursty_tradeoff_reactive.json",
+      "sha256": "9ce511cc27c177218d778021ef353ff8645f341fe55b57143e0bdb5995c2a16c"
+    },
+    {
+      "run_id": "abilene_d6_bursty_oracle_current_bin",
+      "file": "runs/abilene_d6_bursty_oracle_current_bin.json",
+      "sha256": "90eff9bdceac8df162c9844a10cf98a28539c9ae3238cff4a6be6f552bcb4e4f"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_reference_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_reference_gnn.json",
+      "sha256": "49f5ccc7a13de4f1d6e0400a8d39d5226e08d915d50f1814b64572e12859066e"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_reference_gru",
+      "file": "runs/abilene_d6_bursty_tradeoff_reference_gru.json",
+      "sha256": "6964642699692441417f4fba7851e311226dd84f0a909de40cc8879e25377420"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_longer_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_longer_gnn.json",
+      "sha256": "359eaae66a9c4169e4d1d1168ec5840dcd22bd896a3ae394624a589ad1b5a468"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_longer_gru",
+      "file": "runs/abilene_d6_bursty_tradeoff_longer_gru.json",
+      "sha256": "ad7ebb46572736d67ac1af76fe548693055125fcbcfb141488441bf9d2caab25"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_expanded_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_expanded_gnn.json",
+      "sha256": "8972110433c77ae75b6c627a4f58061433b4b85c4172741611f426d9014acebc"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_expanded_gru",
+      "file": "runs/abilene_d6_bursty_tradeoff_expanded_gru.json",
+      "sha256": "663e4fb866d8b1fbc99b1e94febce1ca79e081d4d114089e820c8e5d0195890c"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_link_loss_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_link_loss_gnn.json",
+      "sha256": "4ae1f1f86519aef4590444bbc04db6f61a6bca4a7449e4a2f03a2acfb94bae77"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_link_loss_gru",
+      "file": "runs/abilene_d6_bursty_tradeoff_link_loss_gru.json",
+      "sha256": "62d8bdb0dc58718522f14ce79b7a57f60da3cdeee04b3e07a603b57437a5aee0"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_reference_persistence",
+      "file": "runs/abilene_d6_bursty_tradeoff_reference_persistence.json",
+      "sha256": "08b45e682404510b59070fd6b69abff27dc3304eeb09e5a7e29fcfc0dabd64a1"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_updated_persistence",
+      "file": "runs/abilene_d6_bursty_tradeoff_updated_persistence.json",
+      "sha256": "5651bdf07a9f67a4dfdc71148d0106fed21d4365311da0d175221912dbf5d4f2"
+    }
+  ],
+  "interpretation": "First outcome evaluation on these later periods in recorded project experiments; one seed, adjacent days, simulated workloads and carbon proxy",
+  "summary_sha256": "e721edf978c0b9eecb195e0f6a6862bff2a7ff449acc130fe8cd682e8219b206",
+  "forecast_metrics_sha256": "63bb5e50e23e44ff0dbc3c351f3cdcf4d9d8b7b0bf8a898db0a42ec84b6f39c1",
+  "paired_differences_sha256": "08d67fa4ba30d69a911235a7dfa920530ca68aa5d028289031f09ba91209119d",
+  "day_cluster_intervals_sha256": "c60192da9e6d1f45de17ca277f7751dcda0f5e3e54afb27aed28a74edef349d9"
+}

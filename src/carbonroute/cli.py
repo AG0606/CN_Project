@@ -19,12 +19,18 @@ def bundle(root: Path) -> Path:
     destination = root / "dist" / f"geant-project-{datetime.now():%Y%m%d-%H%M%S}.zip"
     destination.parent.mkdir(exist_ok=True)
     folders = ("src", "configs", "docs", "tests", "scripts", "assets/fonts", "artifacts",
-               "results/demo", "results/paper", "results/abilene", "output/presentations")
+               "results/demo", "results/paper", "results/abilene",
+               "results/tradeoff-study-20261027-v2", "results/followup-study-20261027", "results/service-first-20261027",
+               "results/multipath-20261027", "results/multipath-20261027-v2",
+               "results/final-validation-20261027",
+               "output/presentations")
     root_files = ("README.md", "IMPLEMENTATION_PLAN.md", "pyproject.toml", "requirements-lock.txt",
                   "requirements-torch.txt", "SETUP.ps1", "RUN_DEMO.ps1", "RUN_PAPER.ps1", "DEMO.html", ".gitignore")
     with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED) as archive:
         for folder in folders:
             for path in (root / folder).rglob("*"):
+                if folder in ("results/followup-study-20261027", "results/service-first-20261027", "results/multipath-20261027-v2", "results/final-validation-20261027") and "runs" in path.relative_to(root / folder).parts:
+                    continue  # Detailed follow-up logs are regenerated, not needed by the offline viewer.
                 if path.is_file() and "__pycache__" not in path.parts and ".egg-info" not in str(path):
                     archive.write(path, path.relative_to(root))
         for name in root_files:

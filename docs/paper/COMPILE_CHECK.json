@@ -1,0 +1,18 @@
+{
+  "compiler": "Codex desktop LaTeX compiler",
+  "status": "success",
+  "format": "IEEEtran conference, letter, two columns",
+  "bibliography_style": "IEEEtran",
+  "main_sha256": "163dfd67dc889f6382a7b4b7aca60510985850246868cb2b6bf9ff76ec80cc12",
+  "summary_sha256": "46a6494c475bf22aff19ec4d635abe50b52b8a26472591e97e8b7b3cd65b5336",
+  "checks": [
+    "IEEEtran conference class with no geometry override",
+    "IEEE author blocks and IEEEkeywords",
+    "Four full-width tables and one single-column table",
+    "Two full-width figures and one single-column figure",
+    "All fourteen cited bibliography keys resolve",
+    "Source and figure hashes match build manifest",
+    "Single-column forecast plot visually inspected"
+  ],
+  "pdf_delivery": "Built-in editor preview; no standalone PDF exported"
+}

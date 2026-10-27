@@ -1,0 +1,4 @@
+{
+  "rule": "First seven-consecutive-day period starting at or after 22 July with nonempty native sections in all replay bins and the initial 3-hour lookback; availability only, no numerical traffic/carbon/policy comparisons",
+  "selected_start": "2005-07-26"
+}

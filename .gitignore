@@ -46,6 +46,10 @@ Thumbs.db
 !/artifacts/forecast_metrics.csv
 !/artifacts/abilene/
 !/artifacts/abilene/**
+!/artifacts/followup/
+!/artifacts/followup/**
+!/artifacts/final-validation/
+!/artifacts/final-validation/**
 
 /results/*
 !/results/demo/
@@ -59,6 +63,37 @@ Thumbs.db
 !/results/abilene/training_summary.json
 !/results/abilene/manifest.json
 /results/abilene/runs/
+!/results/tradeoff-study-20261027-v2/
+!/results/tradeoff-study-20261027-v2/manifest.json
+!/results/tradeoff-study-20261027-v2/summary.csv
+!/results/tradeoff-study-20261027-v2/paired_differences.csv
+!/results/tradeoff-study-20261027-v2/geant_alignment.json
+/results/tradeoff-study-20261027-v2/runs/
+!/results/followup-study-20261027/
+!/results/followup-study-20261027/*.json
+!/results/followup-study-20261027/*.csv
+!/results/followup-study-20261027/FINDINGS.md
+/results/followup-study-20261027/runs/
+!/results/service-first-20261027/
+!/results/service-first-20261027/*.json
+!/results/service-first-20261027/*.csv
+!/results/service-first-20261027/FINDINGS.md
+/results/service-first-20261027/runs/
+!/results/multipath-20261027/
+!/results/multipath-20261027/*.json
+!/results/multipath-20261027/*.csv
+!/results/multipath-20261027-v2/
+!/results/multipath-20261027-v2/*.json
+!/results/multipath-20261027-v2/*.csv
+!/results/multipath-20261027-v2/FINDINGS.md
+/results/multipath-20261027-v2/runs/
+!/results/final-validation-20261027/
+!/results/final-validation-20261027/*.json
+!/results/final-validation-20261027/*.csv
+!/results/final-validation-20261027/FINDINGS.md
+!/results/final-validation-20261027/figures/
+!/results/final-validation-20261027/figures/**
+/results/final-validation-20261027/runs/
 
 # Transfer bundles, local integrity experiments, and temporary work
 /dist/
@@ -67,3 +102,13 @@ Thumbs.db
 
 # Locally downloaded third-party papers; retain links and citation notes in Git.
 /docs/references/papers/
+
+# Local LaTeX compilation products; preserve the manuscript and vector figures.
+/docs/paper/*.aux
+/docs/paper/*.bbl
+/docs/paper/*.blg
+/docs/paper/*.fdb_latexmk
+/docs/paper/*.fls
+/docs/paper/*.out
+/docs/paper/*.synctex.gz
+/docs/paper/*.toc

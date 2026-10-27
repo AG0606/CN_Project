@@ -1,0 +1,7 @@
+{
+  "runs": 462,
+  "bins": 88704,
+  "paired_cases": 42,
+  "checks": "Frozen sources/models, exact shared inputs, causal timing, path/OD conservation, full-offered overload, capacity, OD fairness certificates, carbon and summary accounting",
+  "summary_sha256": "32b49c27ecc718b788d59976b672848d232c939354f2ba3c709598c278ff57ee"
+}

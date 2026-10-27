@@ -1,0 +1,41 @@
+# Final validation: training seeds, capacity regimes and perfect-demand controls
+
+The final protocol is `configs/final_validation_protocol.json`; the results folder is `results/final-validation-20261027/`. This is a new evaluation after the inspected exploratory, training, service-first and multipath studies. Source archives had already been downloaded, so freshness refers to recorded prior routing outcomes, not never-opened files or external preregistration. Scientific methods are frozen for this study rather than tuned after reading outcomes.
+
+**Completed and audited:** 2,058 runs / 395,136 intervals / twelve new checkpoints, including 378 explicitly future-aware diagnostics and 1,680 causal controls. All seven declared days per network and every seed/condition are retained. The [complete findings](../results/final-validation-20261027/FINDINGS.md), [audit](../results/final-validation-20261027/AUDIT.json), [figures](../results/final-validation-20261027/figures/) and [rewritten paper draft](PAPER_DRAFT.md) are ready for team review. The existing dashboard shows earlier campaigns; these final checks are separate paper artifacts.
+
+## Findings from the three checks
+
+- **Seeds:** GÉANT GNN three-horizon MAE is 1.99965 ± 0.02174 Mbps, matched GRU 1.97566 ± 0.01296, persistence 1.97092. Abilene GNN is 0.42134 ± 0.00523, GRU 0.41650 ± 0.00371, persistence 0.42746. Spread is sample SD across three seeds. There is no consistent graph-prediction advantage.
+- **Capacity:** Congested GÉANT seed42 carbon multipath serves 80.412% versus reactive 58.672% at 40 Mbps, lowering score 448.18→371.35 and overload 825.00→587.14 min/day. Persistence is slightly better; equal splitting serves more with higher score. At 10 Mbps, the three-seed carbon-GNN average serves less and has higher score than reactive. Abilene service changes are small. Preserve all three capacities and all workloads rather than showing only the favorable 40 Mbps case.
+- **Perfect demand:** With identical zero-margin planners at 10 Mbps, replacing GNN forecasts with true future demand improves pooled service by only 0.185–0.675 percentage points on GÉANT and 0.036–0.184 on Abilene, often raising score. This diagnoses these planners, not a universal upper bound on better routing methods.
+
+The report supplies three publication-exportable PNG/PDF figures. The manuscript frames the contribution as an audited study of prediction limits and capacity-dependent routing trade-offs, without claiming physical emissions reductions or universal GNN superiority.
+
+## Three checks
+
+1. **Training seeds:** independently train GNN and matched GRU at seeds 7, 42 and 123 on the original per-network training/validation splits. Selection and margins use validation only; the training routine runs with `evaluate_test=False`. Keep every seed. GÉANT's original settings are 40 epochs/patience 8; Abilene's are 25 epochs/patience 6. The protocol's narrative phrase generalized 40/8 to both networks, while the implementation always read the correct original per-network configuration. `PROTOCOL_ERRATUM.json` records this wording correction; no training choices or outcomes were changed. All twelve new checkpoints are separate from the originals, under `artifacts/final-validation/{network}/{seed}/`.
+2. **Capacity/load sensitivity:** compare 10, 20 and 40 Mbps per direction with all of the same normal, 1.6× congested and seeded-burst workloads. These are declared assumptions, not historical capacities or guaranteed light/moderate/heavy conditions. Every method in a condition gets the same geometry, capacities, candidate paths, traffic, carbon and allocator. Seed42 is fixed for capacity comparisons; both primary neural planners also run all seeds at 10 Mbps. Data scaling, selected pairs, normalizer and forecast margins are not refit when capacity changes. Model inference uses the original adjacency; capacity changes only the planning/service scenario.
+3. **Perfect future-demand diagnostics:** feed the actual next three demand matrices into the *same* service-first, carbon-multipath and no-carbon-multipath planners, with zero margin and the same current carbon. Mark all such logs explicitly future-aware, with their observation timestamp advanced to the final future label. These are not deployable policies or formal bounds on realized metrics. At 10 Mbps, extra causal zero-margin GNN controls isolate forecast replacement from removing the margin. At 20/40 Mbps both forecast replacement and margin removal differ, so those diagnostic gaps do not isolate prediction accuracy alone.
+
+## Source dates and statistical units
+
+GÉANT source-labeled replay dates are 3–9 August 2005, with a conservative native-section availability check for the initial lookback, all replay bins and the entire following day covering future labels. Public GÉANT timestamps are anonymized according to its source paper; 2022 daily carbon pairing is a constructed counterfactual, not verified historical synchronization. Abilene replays 1–7 June 2004, with static annual EPA 2004 regional rates. Test windows do not cross timestamp gaps; the final two labels can extend past the last replay day.
+
+Forecast MAE is evaluated on the normal source-scaled demand at every replay-bin start, across all three horizons and seeds. Routing tests additionally apply the declared scaled and seeded-burst workloads. Bursts are generated through each day's extra two-bin label tail, ensuring the perfect-demand diagnostic receives actual generated future demand rather than an artificially truncated workload.
+
+The protocol yields 2,058 routing runs: 23 cases per day/workload at reference capacity (including extra seeds and no-margin controls), and 13 at each larger capacity, across seven days, three workloads and two networks. Days are the bootstrap clusters. Seeds are averaged within each day before intervals; no 21-independent-day claim is made from seven days and three seeds. Report mean and sample standard deviation of forecast error across seeds, rather than calling that spread a confidence interval over traffic populations.
+
+## Reproduce and inspect
+
+```powershell
+.\.venv\Scripts\python.exe -m carbonroute.final_validation
+.\.venv\Scripts\python.exe scripts/verify_final_validation.py results/final-validation-20261027
+.\.venv\Scripts\python.exe scripts/report_final_validation.py results/final-validation-20261027
+```
+
+Stages resume from hash-verified artifacts; final source/model/input changes are rejected once the evaluation plan exists. `summary.csv` retains every seed and condition; `forecast_metrics.csv` retains every horizon; `day_cluster_intervals.csv` averages seeds within day. The report adds `seed_forecast_summary.csv`, `perfect_forecast_comparisons.csv` and standalone PNG/PDF figures. `AUDIT.json` records independently checked model lineage, input pairing, causal/future-aware timing, conservation, capacity, max-min fairness and carbon accounting. Full logs and original data are local and ignored by Git; aggregate metadata, checkpoints and figures are shareable.
+
+`final_validation.py` uses a cached sequence predictor that checks each supplied historical window, avoiding repeated neural inference across otherwise identical capacity scenarios. Its ordinary predictions still depend only on historical inputs; the perfect sequence is a separately and explicitly labeled offline diagnostic. Final-validation decision times therefore exclude bulk neural forecast computation and must not be presented as end-to-end deployment latency. Seed42 retraining was independently checked to reproduce the original GNN and GRU tensors exactly in both networks. The common multipath replay and earlier frozen methods remain unchanged. The paper draft reports the final outcomes and retained negative findings.
+
+The initial audit compared native float32 offered-byte totals with a stricter float64 recomputation and rejected a 0.0056 MB difference in a 325,318 MB run (about 1.7×10⁻⁸ relative). The auditor now verifies the native-dtype sum per bin and independently bounds its float64 rounding difference using machine precision. Exact source-input equality, conservation and capacity checks remain in place; no scientific source or saved outcome changed. The complete corrected audit passed.

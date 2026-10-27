@@ -1,6 +1,12 @@
 # Project datasets — open this folder for the faculty review
 
+**Final-validation inputs:** Local originals now include Abilene **X11** alongside X01–X10. The final replay uses X10/X11 for 1–7 June 2004; GÉANT uses source-labeled 3–9 August 2005 from the existing archive. These are later evaluation periods, not added training data. The refreshed manifest indexes 33 verified local files. See [FINAL_VALIDATION.md](../docs/FINAL_VALIDATION.md) for the fixed transforms, carbon pairing and source-availability rules.
+
+The local originals also include Abilene X08–X10 for the service-first and multipath extensions. Their bytes are verified against the archived source and indexed in `MANIFEST.json`; these additional weeks are not part of the original reference training split. Multipath uses 24–30 May 2004. The GÉANT archive already contains its 26 July–1 August 2005 period. See [the multipath study](../docs/MULTIPATH_STUDY.md) for date selection and the retained failed source preflight.
+
 This folder gathers the **actual input data** for both routing experiments in one place. Start with the four CSVs in [`previews/`](previews/) if you want to show readable rows in Excel. The original downloads are in `originals/`, and the exact arrays consumed by the training/replay code are in `processed/`. [`MANIFEST.json`](MANIFEST.json) lists every file, source URL where available, size, and SHA-256 checksum.
+
+The later-period training follow-up also uses Abilene source weeks **X05–X07**, included under `originals/abilene/`, and the longer original GÉANT archive already listed below. Its separate arrays and chronological split manifests are under `processed/followup/geant/` and `processed/followup/abilene/`. These arrays hold `times`, scaled `rates`, the fixed demand `mask`, and the original training-only `scale`; they do not duplicate `full_mbps`. See `configs/followup_protocol.json` for the train/validation/test periods frozen before final evaluation. The original pilot arrays remain under `processed/geant/` and `processed/abilene/`.
 
 | Study | Network/topology | OD traffic | Electricity carbon data |
 | --- | --- | --- | --- |

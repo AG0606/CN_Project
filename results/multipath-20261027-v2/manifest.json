@@ -1,0 +1,2440 @@
+{
+  "status": "complete",
+  "evaluation_plan_sha256": "6571b39f7d12bbe36ffb89048f3f4eb33a6dd570455813669f236af668da07ab",
+  "networks": {
+    "geant": {
+      "config": {
+        "seed": 42,
+        "traffic_days": 42,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 40,
+        "patience": 8,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 1.5,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 900,
+        "carbon_years": [
+          2022,
+          2023,
+          2024
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "source": {
+        "traffic_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+        "empty_native_sections": [],
+        "availability_rule": "Require nonempty native DEMANDS sections for every replay bin and initial lookback; reject rather than replace dates if this fails"
+      },
+      "graph_hash": "458dc720a65c29da6b8cc35fca62bf5fc291fad72748b70e47a25c78b7878c8e",
+      "days": [
+        "2005-07-26",
+        "2005-07-27",
+        "2005-07-28",
+        "2005-07-29",
+        "2005-07-30",
+        "2005-07-31",
+        "2005-08-01"
+      ],
+      "carbon_sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "prepared_rates_sha256": "49c7e185d51a191cee2abd60287c4796d9208ba0ba8dfd4e09d99cdad6a44670",
+      "reference_traffic_sha256": "169915a09cd78a74b9a2a68a4f37aa2f8c3a21d395406854027096276a703322",
+      "predictor_sha256": {
+        "gnn.pt": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+        "gnn.json": "0ad6c2f1616616da0521838aafe13ff5fcfd3c55701e6afcb9cb525f70026003",
+        "persistence.json": "06bc867fffb810acaf319556535f16ad537ede5e3c291bb916cebc561313743d"
+      }
+    },
+    "abilene": {
+      "config": {
+        "seed": 42,
+        "traffic_weeks": 4,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 25,
+        "patience": 6,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 2.0,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 300,
+        "carbon_years": [
+          2004
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "source": {
+        "traffic_sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+        "members": {
+          "X09.gz": "005511d8b64c1fef598472026d23f7b454db19e5595955b3fbd9e0fe55a4dbbe",
+          "X10.gz": "c3517f34552a42e809f233a6352f9f04b9128ea98fdc319ede3672774967ecda"
+        }
+      },
+      "graph_hash": "1b352cd6adc3b343971f429a87a86f21ac4d67fa912a8a28eca5b78ec971e7bb",
+      "days": [
+        "2004-05-24",
+        "2004-05-25",
+        "2004-05-26",
+        "2004-05-27",
+        "2004-05-28",
+        "2004-05-29",
+        "2004-05-30"
+      ],
+      "carbon_sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "prepared_rates_sha256": "6034456e42572cb2b7bd5ce6a6c9e0a6645c51d83d342090b4c6ae8696840680",
+      "reference_traffic_sha256": "874b18332b1236ae700f3b6c6e64d4b2155d4cb8810e4d75ab58fe9e2a943d56",
+      "predictor_sha256": {
+        "gnn.pt": "2811bf80ba9899ce2a61143c0d0f499c56eebe3340e3f01b46a1f832d0d3c580",
+        "gnn.json": "0d41037716808326dc62a77d3c086a6e0c5d350a96791266dbc8a0b3a5c66e1d",
+        "persistence.json": "05651f646cf0851e49f316e857a2e9bc4e23a084f545e5d60e5e7d0ca43219f7"
+      }
+    }
+  },
+  "protocol_sha256": "2c62788e3a43ab8d7ee95d65050384d73e60210e5174ec8c0b59846821115ad2",
+  "runs": [
+    {
+      "run_id": "geant_d0_normal_shortest_path",
+      "file": "runs/geant_d0_normal_shortest_path.json",
+      "sha256": "8ebaaf678fb7845b10811d3117d0cfd9ee18fd2d1f5548b73421553a9b76fa45"
+    },
+    {
+      "run_id": "geant_d0_normal_reactive_carbon",
+      "file": "runs/geant_d0_normal_reactive_carbon.json",
+      "sha256": "3e3009395a9524aad3f24602d0a97c5f02c91e5cc2487599f69401ee56d04253"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_gnn.json",
+      "sha256": "27dcaab46870d5b090b317abb06af28b6b5fa6b118fc7a409ccb5406cd96cc79"
+    },
+    {
+      "run_id": "geant_d0_normal_service_first_gnn",
+      "file": "runs/geant_d0_normal_service_first_gnn.json",
+      "sha256": "68045bf8115e152f80e2c17afc218f9e85fa7caae4663cce308189064062763c"
+    },
+    {
+      "run_id": "geant_d0_normal_service_first_persistence",
+      "file": "runs/geant_d0_normal_service_first_persistence.json",
+      "sha256": "cd6c1f628345d990a95a88e7fb97d71c208e363d58f7579d58c0ad62f89d259c"
+    },
+    {
+      "run_id": "geant_d0_normal_equal_split",
+      "file": "runs/geant_d0_normal_equal_split.json",
+      "sha256": "3a4949291b313f041ac3913896a36b8d0e250ebd88777c625415bf4b25882831"
+    },
+    {
+      "run_id": "geant_d0_normal_multipath_te_gnn",
+      "file": "runs/geant_d0_normal_multipath_te_gnn.json",
+      "sha256": "b5f3c1706b63945fe4de34b5a32c0a64efe1541a0c23112e02a84240f3ae3b12"
+    },
+    {
+      "run_id": "geant_d0_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d0_normal_multipath_carbon_gnn.json",
+      "sha256": "1c8f83ae521e61c28e0fb2a8ee0f950b1b1ac88b8e861f5ad158ffd6d3472cfe"
+    },
+    {
+      "run_id": "geant_d0_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d0_normal_multipath_carbon_persistence.json",
+      "sha256": "c4c1b5fecafc5ffc7cb3c2abd7cf988feab206c5a4ff7b0e7644e4e10503b343"
+    },
+    {
+      "run_id": "geant_d0_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d0_normal_multipath_carbon_reactive.json",
+      "sha256": "6fe28fa37b7dd442593003b01c0cbd232a25f4da8513bb5cfd833b51957217c2"
+    },
+    {
+      "run_id": "geant_d0_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d0_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "b199a514a59e4017a78b5cb7d7d100cc03cc58907bbb99dec41b6429435dd3ac"
+    },
+    {
+      "run_id": "geant_d0_congested_shortest_path",
+      "file": "runs/geant_d0_congested_shortest_path.json",
+      "sha256": "2e59e8f88fd9c614ac5f0da898db867d9ad79ff17de15b4776093a3a090a6271"
+    },
+    {
+      "run_id": "geant_d0_congested_reactive_carbon",
+      "file": "runs/geant_d0_congested_reactive_carbon.json",
+      "sha256": "48739013b588f317247c701841e70209e9130b6f32d49d72394630c85a1b32d3"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_gnn.json",
+      "sha256": "214c7c8499f102730911071ab5a587b7fe97c18d420b20bcb7c79528ff37bfb3"
+    },
+    {
+      "run_id": "geant_d0_congested_service_first_gnn",
+      "file": "runs/geant_d0_congested_service_first_gnn.json",
+      "sha256": "403f79c4bfdbe9df14cd6fbad3327f77e68f99c14b6d91e9a5811652151cdc8e"
+    },
+    {
+      "run_id": "geant_d0_congested_service_first_persistence",
+      "file": "runs/geant_d0_congested_service_first_persistence.json",
+      "sha256": "dd6e22ccf2aeabbd411f82692ac91c1d218a3e9cd1635fee4bd297eb758e21e2"
+    },
+    {
+      "run_id": "geant_d0_congested_equal_split",
+      "file": "runs/geant_d0_congested_equal_split.json",
+      "sha256": "563cf79b990a49f53be842069d79edc00b53a5135ca76cd329f06b02ef0063f4"
+    },
+    {
+      "run_id": "geant_d0_congested_multipath_te_gnn",
+      "file": "runs/geant_d0_congested_multipath_te_gnn.json",
+      "sha256": "082e266143bca78ec2f75b83ea330e64fcd5590c2189fe69ef272c3825a59730"
+    },
+    {
+      "run_id": "geant_d0_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d0_congested_multipath_carbon_gnn.json",
+      "sha256": "5a7c4540c5a0d0cb9ba447663a3ce626799009a875b202ba2fcfc3fc04feaf32"
+    },
+    {
+      "run_id": "geant_d0_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d0_congested_multipath_carbon_persistence.json",
+      "sha256": "ef0dead635ef13d334b9dc1b900f6dfe1dd7bc0fe7f54148bd85091c6ba73749"
+    },
+    {
+      "run_id": "geant_d0_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d0_congested_multipath_carbon_reactive.json",
+      "sha256": "1ed401523388f1dcac97c96c1fea9b67a5b9de2b2c2027401d5f0dae0c6f037b"
+    },
+    {
+      "run_id": "geant_d0_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d0_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "619d9fb5d6085aca3bf6a3d52376ba420aefe6bf179184d80c0017cf178ce1a8"
+    },
+    {
+      "run_id": "geant_d0_bursty_shortest_path",
+      "file": "runs/geant_d0_bursty_shortest_path.json",
+      "sha256": "55840556628aa89219652efb4ed527097baa83ee4d606a653ab5baca0b2b8e48"
+    },
+    {
+      "run_id": "geant_d0_bursty_reactive_carbon",
+      "file": "runs/geant_d0_bursty_reactive_carbon.json",
+      "sha256": "da690927b0d0ce31702fc30722e76e5f3a7044aee8ac8d92cd60bc728579afbf"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_gnn.json",
+      "sha256": "33f57b8e0592fed076b28530bba0dd79750c679a93e1964d758af5e528e27bb3"
+    },
+    {
+      "run_id": "geant_d0_bursty_service_first_gnn",
+      "file": "runs/geant_d0_bursty_service_first_gnn.json",
+      "sha256": "c340770b5db9160b4458618c10e0edd122b0040581949a593e34e688a22186b9"
+    },
+    {
+      "run_id": "geant_d0_bursty_service_first_persistence",
+      "file": "runs/geant_d0_bursty_service_first_persistence.json",
+      "sha256": "5de6a04c3de42de89445ae5e4897bffa10de4d68ce6bb93f9a7958e09a1337cc"
+    },
+    {
+      "run_id": "geant_d0_bursty_equal_split",
+      "file": "runs/geant_d0_bursty_equal_split.json",
+      "sha256": "56baae9be552f67b71d04ff49d48c5bd75ad9a3bdc8fc81c8a3fc96216100317"
+    },
+    {
+      "run_id": "geant_d0_bursty_multipath_te_gnn",
+      "file": "runs/geant_d0_bursty_multipath_te_gnn.json",
+      "sha256": "d113919697436d3f7dd312003b940abe006497036b82ccb2fbcfa0aaf2f91864"
+    },
+    {
+      "run_id": "geant_d0_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d0_bursty_multipath_carbon_gnn.json",
+      "sha256": "45a797a3a62aa4936d7fe54107e91b3926b1150aa57356e227bbb73d2690b1aa"
+    },
+    {
+      "run_id": "geant_d0_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d0_bursty_multipath_carbon_persistence.json",
+      "sha256": "4409e2b4e9a96b49ec1db1158f7c3002a26de088e4f4bb1d9ef7b1116b2f9214"
+    },
+    {
+      "run_id": "geant_d0_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d0_bursty_multipath_carbon_reactive.json",
+      "sha256": "da3d14619d375ef52463a03d787034413763bd347e980c714e5cefd988d5cc91"
+    },
+    {
+      "run_id": "geant_d0_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d0_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "766e015a317a539e2ccf9b03814cf2d2aea8ebc0ba28f5ff940f5abd4b484168"
+    },
+    {
+      "run_id": "geant_d1_normal_shortest_path",
+      "file": "runs/geant_d1_normal_shortest_path.json",
+      "sha256": "4e37c7cc556680804a95ac54b65579183f234adc4dbd7458b5facaecc77af4cc"
+    },
+    {
+      "run_id": "geant_d1_normal_reactive_carbon",
+      "file": "runs/geant_d1_normal_reactive_carbon.json",
+      "sha256": "3311a910d1963321f76b7b4276c006d9e0f088fef26838c517061c722a3dd8d0"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_gnn.json",
+      "sha256": "1a680eb245b01c7d3bd36b5bec78a8aa65b0ac45bb7eb9233f97ae2e46e9a33b"
+    },
+    {
+      "run_id": "geant_d1_normal_service_first_gnn",
+      "file": "runs/geant_d1_normal_service_first_gnn.json",
+      "sha256": "60f4a273c73dab29507d3ee444c0c84f7e6ba395bb9510cf9625615364e52dff"
+    },
+    {
+      "run_id": "geant_d1_normal_service_first_persistence",
+      "file": "runs/geant_d1_normal_service_first_persistence.json",
+      "sha256": "183fb82a8786a2eb4669b23a328882ce083e9ffc9e6069cdcc083f0c72b77c07"
+    },
+    {
+      "run_id": "geant_d1_normal_equal_split",
+      "file": "runs/geant_d1_normal_equal_split.json",
+      "sha256": "f3e8557d73a8a3a1f0810d95b92120bcc08729d2743308701d7d39c48abc008e"
+    },
+    {
+      "run_id": "geant_d1_normal_multipath_te_gnn",
+      "file": "runs/geant_d1_normal_multipath_te_gnn.json",
+      "sha256": "7f8b0bf1705735d67a8c2cb5625f68b34848173c577857fcd629e0c64494679e"
+    },
+    {
+      "run_id": "geant_d1_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d1_normal_multipath_carbon_gnn.json",
+      "sha256": "e38785e7c37f41a6f42795ede5a01666cf0a6c8746a6ae6a0bb8be44dd9f5843"
+    },
+    {
+      "run_id": "geant_d1_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d1_normal_multipath_carbon_persistence.json",
+      "sha256": "3ad5aba515a9395c99fc612117f20334b557c5cad01e7b04dcdf4510837b4a29"
+    },
+    {
+      "run_id": "geant_d1_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d1_normal_multipath_carbon_reactive.json",
+      "sha256": "2eb48c68b7645c5db99f86da68574caf28840f7ad5c9b4bdfc7d5b09d7a4bddd"
+    },
+    {
+      "run_id": "geant_d1_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d1_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "060c0c60c3bb0b63d177321abd3bac8d11a77deb68d13ace60d7c1820cd59a56"
+    },
+    {
+      "run_id": "geant_d1_congested_shortest_path",
+      "file": "runs/geant_d1_congested_shortest_path.json",
+      "sha256": "bc946606399834581bfe6e281e9bcde251701cbb3a8d437946bb898b0471adac"
+    },
+    {
+      "run_id": "geant_d1_congested_reactive_carbon",
+      "file": "runs/geant_d1_congested_reactive_carbon.json",
+      "sha256": "9eee69cf2dc4ec7c8797f1a7fb0f6852b9c7ff25bea64efa7aaa68900cd79b84"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_gnn.json",
+      "sha256": "c9cebb3ef1a6fefc0de92a67a921c77153cdbf270000ae1aed857324378d0366"
+    },
+    {
+      "run_id": "geant_d1_congested_service_first_gnn",
+      "file": "runs/geant_d1_congested_service_first_gnn.json",
+      "sha256": "bd49783f362fddf657fbc3facd0fcd646fd80b3f4ba795151fc83b4344a7c6d3"
+    },
+    {
+      "run_id": "geant_d1_congested_service_first_persistence",
+      "file": "runs/geant_d1_congested_service_first_persistence.json",
+      "sha256": "35f5c8e70ffe56b08ffb112c2a6175bddcd038d5803e801cd78a69980b1cc670"
+    },
+    {
+      "run_id": "geant_d1_congested_equal_split",
+      "file": "runs/geant_d1_congested_equal_split.json",
+      "sha256": "665e5f41c1b4f48b050bbb0d312df39e988f718538cb14d1ad2b11e7a99a314e"
+    },
+    {
+      "run_id": "geant_d1_congested_multipath_te_gnn",
+      "file": "runs/geant_d1_congested_multipath_te_gnn.json",
+      "sha256": "35fe5629605791bb05aafb943358094f18dfbd5a63e09a76559ab8b2ff0e6b78"
+    },
+    {
+      "run_id": "geant_d1_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d1_congested_multipath_carbon_gnn.json",
+      "sha256": "638847fa82f6e39940deb3ce425076f32e610ef3fdf213568158cb64fd741317"
+    },
+    {
+      "run_id": "geant_d1_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d1_congested_multipath_carbon_persistence.json",
+      "sha256": "5bd9e81f9c31c463c78971983eee6cfc76bf5dc2bb6ea4ab5c7513dbba4890e1"
+    },
+    {
+      "run_id": "geant_d1_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d1_congested_multipath_carbon_reactive.json",
+      "sha256": "aa7fc3ce79e6091926cb92850cf4a93121fc0d30501f79a7b168bafadd509fc6"
+    },
+    {
+      "run_id": "geant_d1_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d1_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "212f65ef2d092a2e22a2d879ad74927398101435c3f9bf4fdff6892a87f7192e"
+    },
+    {
+      "run_id": "geant_d1_bursty_shortest_path",
+      "file": "runs/geant_d1_bursty_shortest_path.json",
+      "sha256": "e1aca7021e606c0876615cedd1b90ef74c7f86a5d2bb21737f1e1cd89e4c00bd"
+    },
+    {
+      "run_id": "geant_d1_bursty_reactive_carbon",
+      "file": "runs/geant_d1_bursty_reactive_carbon.json",
+      "sha256": "375f59ab62e66a57c569f01a9f6124ad75cb37d53fb61967822ea629a31c84d4"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_gnn.json",
+      "sha256": "d1e95ecbd8faa0d9ae5ec842f21f1684e2ee10049afcaaa0d65885274ee4dd88"
+    },
+    {
+      "run_id": "geant_d1_bursty_service_first_gnn",
+      "file": "runs/geant_d1_bursty_service_first_gnn.json",
+      "sha256": "c9b9256e36bdbda046341a6a1de263570eb15e715a715fd168700dd8f995c502"
+    },
+    {
+      "run_id": "geant_d1_bursty_service_first_persistence",
+      "file": "runs/geant_d1_bursty_service_first_persistence.json",
+      "sha256": "415df3f8e94379ce15cce4394de3c1361d3bd1b689bca6609719b37de0ad062b"
+    },
+    {
+      "run_id": "geant_d1_bursty_equal_split",
+      "file": "runs/geant_d1_bursty_equal_split.json",
+      "sha256": "961f5d44c03b39e08fae161ade9874c9ce4803c90055c65aa4cc43dfb96b570f"
+    },
+    {
+      "run_id": "geant_d1_bursty_multipath_te_gnn",
+      "file": "runs/geant_d1_bursty_multipath_te_gnn.json",
+      "sha256": "d404eae6478541711482c85bd0bac2e472382f7d759ed90891d96dd8af6274ed"
+    },
+    {
+      "run_id": "geant_d1_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d1_bursty_multipath_carbon_gnn.json",
+      "sha256": "09699b09d3fcdbcfe25f5d78052d5c22e475aed552b3a8fadcfb53f2e8fd8093"
+    },
+    {
+      "run_id": "geant_d1_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d1_bursty_multipath_carbon_persistence.json",
+      "sha256": "bcb0b2ac79f1c18688d3fcb6dff527879f13cde65a1f2475c0093430c3453071"
+    },
+    {
+      "run_id": "geant_d1_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d1_bursty_multipath_carbon_reactive.json",
+      "sha256": "a10169a13d96b34b9785385bd2ed15ede94e4e0a16f4a7e9ed33e1b175d1c4cc"
+    },
+    {
+      "run_id": "geant_d1_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d1_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "0039b0c62c09d30839e0b0203c27f56b2318dff08a8fae71b59e686cb68a2259"
+    },
+    {
+      "run_id": "geant_d2_normal_shortest_path",
+      "file": "runs/geant_d2_normal_shortest_path.json",
+      "sha256": "7fea7fb06f08983a671005379364bbe402c3ba787b02cf0710e1996fa1c78fc6"
+    },
+    {
+      "run_id": "geant_d2_normal_reactive_carbon",
+      "file": "runs/geant_d2_normal_reactive_carbon.json",
+      "sha256": "31e339053a037fba2f07015dd815178b676b34e37572dbce1cd4da196d6e7fa8"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_gnn.json",
+      "sha256": "f55885624231669e52d897d4dadf4fc82e0efe2e0b73c7bc33f0f15ab8abad03"
+    },
+    {
+      "run_id": "geant_d2_normal_service_first_gnn",
+      "file": "runs/geant_d2_normal_service_first_gnn.json",
+      "sha256": "8c166702ed02659544ad9dac73d30bf2db4c220809d2dd351e61cd0cefda1546"
+    },
+    {
+      "run_id": "geant_d2_normal_service_first_persistence",
+      "file": "runs/geant_d2_normal_service_first_persistence.json",
+      "sha256": "58a7d3c2e075b5c597cc151d16e14ebd0adbd237bb424b41d4f4e5c4dc738def"
+    },
+    {
+      "run_id": "geant_d2_normal_equal_split",
+      "file": "runs/geant_d2_normal_equal_split.json",
+      "sha256": "6ced3068d895faec58bd9f3cc50efcf985a7c26d4efcb0bc383559d8e3aa47ae"
+    },
+    {
+      "run_id": "geant_d2_normal_multipath_te_gnn",
+      "file": "runs/geant_d2_normal_multipath_te_gnn.json",
+      "sha256": "8944ff14feca8fe689c69d9302883701232746e858200ab3eb0ebb3971248000"
+    },
+    {
+      "run_id": "geant_d2_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d2_normal_multipath_carbon_gnn.json",
+      "sha256": "b152b411d99b1e37aae2816e5c8bc0225c9ce9be5a966cad78fc69d3d1205c4d"
+    },
+    {
+      "run_id": "geant_d2_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d2_normal_multipath_carbon_persistence.json",
+      "sha256": "cffcb30f8fcbcad620f9186debedaaa005493d2b4487c2a51533f9e9577bc608"
+    },
+    {
+      "run_id": "geant_d2_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d2_normal_multipath_carbon_reactive.json",
+      "sha256": "389f17e45830a2f1c457719da3fee0ffd418388f83249cacb10280e0ea75ce78"
+    },
+    {
+      "run_id": "geant_d2_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d2_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "774a5bc55475c40596e6c8a07a22fcf408737f6f4d71dec28050beb21391de43"
+    },
+    {
+      "run_id": "geant_d2_congested_shortest_path",
+      "file": "runs/geant_d2_congested_shortest_path.json",
+      "sha256": "e4dd27a856130ddc1890b8601157f7443d08dc1f96223c64d4d4ef5353033d17"
+    },
+    {
+      "run_id": "geant_d2_congested_reactive_carbon",
+      "file": "runs/geant_d2_congested_reactive_carbon.json",
+      "sha256": "47e31deaf583fbff02b6b7af2a6d75b850026e0482cbedf0ff3109b6f732004d"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_gnn.json",
+      "sha256": "6db8495b25645c1006ac70a6175a9a8a94785b1f3e23cd169a2f6ae268e8d5de"
+    },
+    {
+      "run_id": "geant_d2_congested_service_first_gnn",
+      "file": "runs/geant_d2_congested_service_first_gnn.json",
+      "sha256": "3b81df6839fb59346d83b5174636428f6bd9d0a1bd44f40b93316bb3f6d504df"
+    },
+    {
+      "run_id": "geant_d2_congested_service_first_persistence",
+      "file": "runs/geant_d2_congested_service_first_persistence.json",
+      "sha256": "329c900b5aff09e702bc9d0538417c5ee2ae64a32479c75616c7a7daf7d97727"
+    },
+    {
+      "run_id": "geant_d2_congested_equal_split",
+      "file": "runs/geant_d2_congested_equal_split.json",
+      "sha256": "62ef1ad12b86cc4578203904790404e455740408b28aa3d7df1385cc022729b9"
+    },
+    {
+      "run_id": "geant_d2_congested_multipath_te_gnn",
+      "file": "runs/geant_d2_congested_multipath_te_gnn.json",
+      "sha256": "1fe32ec5e28b65a2db152e5368b161cf020c632abb423ec2bc2192a06d741b20"
+    },
+    {
+      "run_id": "geant_d2_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d2_congested_multipath_carbon_gnn.json",
+      "sha256": "d7a42fec8d08710f9b4d24b66604ab820c1c7a2e51baae00ff625a0e9d6f4a49"
+    },
+    {
+      "run_id": "geant_d2_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d2_congested_multipath_carbon_persistence.json",
+      "sha256": "d9e4e4945ed9d98a50493252649d6090bc3f21ee72307e0544ce4251b4784cb5"
+    },
+    {
+      "run_id": "geant_d2_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d2_congested_multipath_carbon_reactive.json",
+      "sha256": "3187066abd87bc2ac5834e86cda5edb5a393aef3c4756fc46ac9ee2b4d7904ce"
+    },
+    {
+      "run_id": "geant_d2_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d2_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "1d7518544583b82a7f3d4de4a03c77ba4a4218a3e822b55b7077ae8b49104027"
+    },
+    {
+      "run_id": "geant_d2_bursty_shortest_path",
+      "file": "runs/geant_d2_bursty_shortest_path.json",
+      "sha256": "a39e397fca1457d3ff7b38d3598f94e013a645f0bdcb1737939dcbc033cab39b"
+    },
+    {
+      "run_id": "geant_d2_bursty_reactive_carbon",
+      "file": "runs/geant_d2_bursty_reactive_carbon.json",
+      "sha256": "04d2d9c3367f4b7597047d4c0475b6d576743fd13deb6730f1f40dc51b120f63"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_gnn.json",
+      "sha256": "bf9d5df85c57c18125897d26152abc09283d858fcb3772c1712e0709f932c64e"
+    },
+    {
+      "run_id": "geant_d2_bursty_service_first_gnn",
+      "file": "runs/geant_d2_bursty_service_first_gnn.json",
+      "sha256": "60cf6d70fde4ba08149e7d24a3faf19651cf500f224e7d13b4d3a84d4b208751"
+    },
+    {
+      "run_id": "geant_d2_bursty_service_first_persistence",
+      "file": "runs/geant_d2_bursty_service_first_persistence.json",
+      "sha256": "22793f361f3c9f0e9b6158e657da42dd75d625624b79024381744d8d70fcd3e6"
+    },
+    {
+      "run_id": "geant_d2_bursty_equal_split",
+      "file": "runs/geant_d2_bursty_equal_split.json",
+      "sha256": "46776d472e8433bca8173ff90d9c478411a43f3f23430b98bb3cc3730dcf0704"
+    },
+    {
+      "run_id": "geant_d2_bursty_multipath_te_gnn",
+      "file": "runs/geant_d2_bursty_multipath_te_gnn.json",
+      "sha256": "6b95e08367ee1e4fec858cd16be2981a2ea60d578c17299ede6930a357beaa04"
+    },
+    {
+      "run_id": "geant_d2_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d2_bursty_multipath_carbon_gnn.json",
+      "sha256": "e635b9ed09da04903b8a00323bc4b91d6bfea94859e59f35024b04de4c0f2228"
+    },
+    {
+      "run_id": "geant_d2_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d2_bursty_multipath_carbon_persistence.json",
+      "sha256": "0f4297b6a12aafabad123ab13c1a7739ef9a2ba5261bc81c2e931ff83b6298a9"
+    },
+    {
+      "run_id": "geant_d2_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d2_bursty_multipath_carbon_reactive.json",
+      "sha256": "a631bac03df38b189760d60e8f0256fb1830f613b3eca2695e06a3a73618d7fc"
+    },
+    {
+      "run_id": "geant_d2_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d2_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "bbd789b2212443a1fdc791acb264f1acc2c2a7fd11cf47a8c673233be2221ba5"
+    },
+    {
+      "run_id": "geant_d3_normal_shortest_path",
+      "file": "runs/geant_d3_normal_shortest_path.json",
+      "sha256": "1f57e037d772f1bd9fce5505679534dd32ccfc582b50c2f2adcd6a9a5d9ae6d0"
+    },
+    {
+      "run_id": "geant_d3_normal_reactive_carbon",
+      "file": "runs/geant_d3_normal_reactive_carbon.json",
+      "sha256": "fafa41433f1d8f77e1cf8ac57ab631b3d42569289c9478b9bcc269c8d68c93cf"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_gnn.json",
+      "sha256": "bf996fc3f2cb9d03c8ea073740f33098796ab0e18fadaaab50ad7e8ef0f5e611"
+    },
+    {
+      "run_id": "geant_d3_normal_service_first_gnn",
+      "file": "runs/geant_d3_normal_service_first_gnn.json",
+      "sha256": "2bc2cb5c6ccd8b488bbb5aed38b4fee9a8dfb0e13f9c01807b4bcf7e96043fc0"
+    },
+    {
+      "run_id": "geant_d3_normal_service_first_persistence",
+      "file": "runs/geant_d3_normal_service_first_persistence.json",
+      "sha256": "ae6bc10be9bd3aef8711f2d4689d586dc733162df98d035ed07aaaf4aa3b5dfc"
+    },
+    {
+      "run_id": "geant_d3_normal_equal_split",
+      "file": "runs/geant_d3_normal_equal_split.json",
+      "sha256": "102349245615ed14c2182efa410102f30876f9fb55fd120874dfb218d3bd4a0f"
+    },
+    {
+      "run_id": "geant_d3_normal_multipath_te_gnn",
+      "file": "runs/geant_d3_normal_multipath_te_gnn.json",
+      "sha256": "bce14782f7c31660ee8fa829367676818be71abd2fae37531e0a437bb872d02d"
+    },
+    {
+      "run_id": "geant_d3_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d3_normal_multipath_carbon_gnn.json",
+      "sha256": "1f48ec03540a8e2ea21acc2ab22bc6ecbe79c49f3229726abb67291135ec36a5"
+    },
+    {
+      "run_id": "geant_d3_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d3_normal_multipath_carbon_persistence.json",
+      "sha256": "ea1cb19d47c8c3c6357e974e762239c51b2d16f6eeedeadd02549ab140683647"
+    },
+    {
+      "run_id": "geant_d3_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d3_normal_multipath_carbon_reactive.json",
+      "sha256": "843590e572ea5bd396f37b8462e4442aedc328e7ceb1040237c6f0243104839c"
+    },
+    {
+      "run_id": "geant_d3_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d3_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "7b64cddd3b8037be1a24e896a960d0b75a342a770e6db85411a6f04f00d06a9f"
+    },
+    {
+      "run_id": "geant_d3_congested_shortest_path",
+      "file": "runs/geant_d3_congested_shortest_path.json",
+      "sha256": "d9798b566b448772f8e46d068aadf2d9eec2f7b90389e6721754ca53c1268a9c"
+    },
+    {
+      "run_id": "geant_d3_congested_reactive_carbon",
+      "file": "runs/geant_d3_congested_reactive_carbon.json",
+      "sha256": "70f5fcca3ed95fde780157f379d9c028231c994d9b3ec4e4385943a75270d10d"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_gnn.json",
+      "sha256": "716c556164a74bec281eea0c1b278f7b8924cee3f48ddd56bc55fe44560ad987"
+    },
+    {
+      "run_id": "geant_d3_congested_service_first_gnn",
+      "file": "runs/geant_d3_congested_service_first_gnn.json",
+      "sha256": "bace523c96ee1161a3747617d04f427e55c60573a070f0aabeb4bd7e7eb6e669"
+    },
+    {
+      "run_id": "geant_d3_congested_service_first_persistence",
+      "file": "runs/geant_d3_congested_service_first_persistence.json",
+      "sha256": "586c9eeb2cb630b9d60f0077ce63fe590765a22b3741e8d2ea2416aab769d4f6"
+    },
+    {
+      "run_id": "geant_d3_congested_equal_split",
+      "file": "runs/geant_d3_congested_equal_split.json",
+      "sha256": "7ed6cc32ad25ec32c8853e4fb4636bcef3f22963c044cfde74b09a3ea162d5eb"
+    },
+    {
+      "run_id": "geant_d3_congested_multipath_te_gnn",
+      "file": "runs/geant_d3_congested_multipath_te_gnn.json",
+      "sha256": "9b12d89255d088c2e4f86beecfe80562cefcba8111d5448d32c2c653cf11943c"
+    },
+    {
+      "run_id": "geant_d3_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d3_congested_multipath_carbon_gnn.json",
+      "sha256": "70bd78c38f6765453404abd5c4d41a0258c7d42cfa046d618739b7c1825708b1"
+    },
+    {
+      "run_id": "geant_d3_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d3_congested_multipath_carbon_persistence.json",
+      "sha256": "7582665510c5d94acd95b900dae2c5360d91436de616e2f5186ae8a67d371a79"
+    },
+    {
+      "run_id": "geant_d3_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d3_congested_multipath_carbon_reactive.json",
+      "sha256": "bd6b788b120934ea88a550a4856c68e70169a8e327df9066e22aee206c79fa40"
+    },
+    {
+      "run_id": "geant_d3_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d3_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "c5950dbb36f27b731726afc58b2dc64f0895f51912d1560ca7477f02059d4ed5"
+    },
+    {
+      "run_id": "geant_d3_bursty_shortest_path",
+      "file": "runs/geant_d3_bursty_shortest_path.json",
+      "sha256": "24f17337d9e257f4351c9622f477d2e57ebd6c9a02d57c20df8b7f014f0413db"
+    },
+    {
+      "run_id": "geant_d3_bursty_reactive_carbon",
+      "file": "runs/geant_d3_bursty_reactive_carbon.json",
+      "sha256": "f7e4e771426855235ee4855bbe392f1021474788fa2b356dd1fefb3c509fca98"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_gnn.json",
+      "sha256": "1f476dd645eca5fc1f32f789e43b6e1ee75ea57c66d8ae2fcdba7eb7ab161682"
+    },
+    {
+      "run_id": "geant_d3_bursty_service_first_gnn",
+      "file": "runs/geant_d3_bursty_service_first_gnn.json",
+      "sha256": "f7cb89502f3b17d2d607f18b4f2a6237f8dd5d51f7bf9bec0e51959aa345d4e3"
+    },
+    {
+      "run_id": "geant_d3_bursty_service_first_persistence",
+      "file": "runs/geant_d3_bursty_service_first_persistence.json",
+      "sha256": "550557435366f052aaf37d628668574ed76a419c661b0e530edcb5a67c80ba5c"
+    },
+    {
+      "run_id": "geant_d3_bursty_equal_split",
+      "file": "runs/geant_d3_bursty_equal_split.json",
+      "sha256": "32f77bdf11e1fd7a3af4427491f7037447a4e2db1493cde036c39a85c01f5726"
+    },
+    {
+      "run_id": "geant_d3_bursty_multipath_te_gnn",
+      "file": "runs/geant_d3_bursty_multipath_te_gnn.json",
+      "sha256": "fe0025798f136b3dbb74117c3c4889c093cb42f22f747f86d9da3a26664d3a37"
+    },
+    {
+      "run_id": "geant_d3_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d3_bursty_multipath_carbon_gnn.json",
+      "sha256": "34462e276ef09ec8f97cd8f6ae19108d2272e75913fbcb1310810956639ce2ba"
+    },
+    {
+      "run_id": "geant_d3_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d3_bursty_multipath_carbon_persistence.json",
+      "sha256": "dc12610298e4b055c126cdfb5ff883e0d50e4f8beb9f4fabd1f74c08e5b9c733"
+    },
+    {
+      "run_id": "geant_d3_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d3_bursty_multipath_carbon_reactive.json",
+      "sha256": "66e08eeed022e48a776fcc07466953c4f04bb54527ea15242b49e6a88db217cf"
+    },
+    {
+      "run_id": "geant_d3_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d3_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "b99dd08104080a84856e8dc3bdb2932b300b88dd8e12d783d681d98e11483305"
+    },
+    {
+      "run_id": "geant_d4_normal_shortest_path",
+      "file": "runs/geant_d4_normal_shortest_path.json",
+      "sha256": "468b3a74a78c8c4845db5bf7510b3cb98e3c2d4df4573f12e7bc5749936a4de7"
+    },
+    {
+      "run_id": "geant_d4_normal_reactive_carbon",
+      "file": "runs/geant_d4_normal_reactive_carbon.json",
+      "sha256": "c33d5aa75eba60d1ee3608983ee6c39989490a90d47a20cb4ac9042ec0956c02"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_gnn.json",
+      "sha256": "b89e9c3e1dc1b5e6e2a3ad15b8430901a3e2671d75ad0b32f8b638beb540ff7a"
+    },
+    {
+      "run_id": "geant_d4_normal_service_first_gnn",
+      "file": "runs/geant_d4_normal_service_first_gnn.json",
+      "sha256": "74f251872409f320b33cf27a8b02a7cdbf700e8128a35c1473c891cd690bf64b"
+    },
+    {
+      "run_id": "geant_d4_normal_service_first_persistence",
+      "file": "runs/geant_d4_normal_service_first_persistence.json",
+      "sha256": "a478cbfa8ef9fb5dda463239ccf29cd6bf614dcc2c7e12dc065d2d9c91e74931"
+    },
+    {
+      "run_id": "geant_d4_normal_equal_split",
+      "file": "runs/geant_d4_normal_equal_split.json",
+      "sha256": "8ca7f7d7c8c148d4e6a786d92503f060e6e35e9bc7d5aa0765057c3ca62c661c"
+    },
+    {
+      "run_id": "geant_d4_normal_multipath_te_gnn",
+      "file": "runs/geant_d4_normal_multipath_te_gnn.json",
+      "sha256": "04cbf27b9c175dddaf004857a102311d92f94e14c2ff8950b8ab691233fab0a8"
+    },
+    {
+      "run_id": "geant_d4_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d4_normal_multipath_carbon_gnn.json",
+      "sha256": "d418f8f66972d7672a1dbf10d207ce903401036bbd4fff1652b862ca4f13ca1c"
+    },
+    {
+      "run_id": "geant_d4_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d4_normal_multipath_carbon_persistence.json",
+      "sha256": "b2214386adb77509513ca8d7477d76f695859be87917f4293ded11c324f0e0d5"
+    },
+    {
+      "run_id": "geant_d4_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d4_normal_multipath_carbon_reactive.json",
+      "sha256": "7b5e712068982f4a0a2a2e359c1c65438fa9a6fdd0f473d544b7f0fa6b035450"
+    },
+    {
+      "run_id": "geant_d4_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d4_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "dd9e6b8c924c3b3ed0d6cc597a7aeb6ac5328a04c197a1a7df1fcb8b04918430"
+    },
+    {
+      "run_id": "geant_d4_congested_shortest_path",
+      "file": "runs/geant_d4_congested_shortest_path.json",
+      "sha256": "49a6fdf34ac919a427d9e931ff3eefebcc40319cbbbbe9b5d29b65f6c8a2aeca"
+    },
+    {
+      "run_id": "geant_d4_congested_reactive_carbon",
+      "file": "runs/geant_d4_congested_reactive_carbon.json",
+      "sha256": "e7e17699bdec1b1429e16f59303071e72077f06262f281080a29e4f097b7364c"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_gnn.json",
+      "sha256": "6a82166ae2bee97923b1c2010c9e3f87bbe1a6e27371cfba7c2d63e00cebde49"
+    },
+    {
+      "run_id": "geant_d4_congested_service_first_gnn",
+      "file": "runs/geant_d4_congested_service_first_gnn.json",
+      "sha256": "564b05f92d5ded3b93345b41ffe36fa150b0aa6b6c9eab59212d1a0f27cbc531"
+    },
+    {
+      "run_id": "geant_d4_congested_service_first_persistence",
+      "file": "runs/geant_d4_congested_service_first_persistence.json",
+      "sha256": "123c448343ed6e80cec1a108d2203b8a9f8b44c1e5eb18b8596d71e84d5eeb24"
+    },
+    {
+      "run_id": "geant_d4_congested_equal_split",
+      "file": "runs/geant_d4_congested_equal_split.json",
+      "sha256": "c70235496f3fedc170df4c144797ccb4fb5b9642c2f4bfcc3e4dedfc96a4a09b"
+    },
+    {
+      "run_id": "geant_d4_congested_multipath_te_gnn",
+      "file": "runs/geant_d4_congested_multipath_te_gnn.json",
+      "sha256": "47292beac0ab529bfd31923901ff092920d6c198ea3d53557e9377ca96807c2b"
+    },
+    {
+      "run_id": "geant_d4_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d4_congested_multipath_carbon_gnn.json",
+      "sha256": "c59aec8fb651aef41bf7e7f12312bb0c861e39795cf0a9d685db3fab34123a8e"
+    },
+    {
+      "run_id": "geant_d4_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d4_congested_multipath_carbon_persistence.json",
+      "sha256": "d16f4c4dc017bde5359f819def5a5dae90ad5e36eff162b23499b952c5b37d9e"
+    },
+    {
+      "run_id": "geant_d4_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d4_congested_multipath_carbon_reactive.json",
+      "sha256": "ab6ee5d1aa6b5d9c9681f52513639dd00d3391dc72687d2fa33409d72961bb0a"
+    },
+    {
+      "run_id": "geant_d4_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d4_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "d11a12c077fdd1c767131856bbb8ea4600a765a6f1408fec9b2cd15c309165b8"
+    },
+    {
+      "run_id": "geant_d4_bursty_shortest_path",
+      "file": "runs/geant_d4_bursty_shortest_path.json",
+      "sha256": "3c227ef1efd8a4556f9faaaf6b1e266c76f9d3954624ceba12cf83413128803f"
+    },
+    {
+      "run_id": "geant_d4_bursty_reactive_carbon",
+      "file": "runs/geant_d4_bursty_reactive_carbon.json",
+      "sha256": "8a9aa8b57d683cd76c9b30517d61be656476bc20aedea919e7b5d480208da918"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_gnn.json",
+      "sha256": "3958e321fa361f2a27844f1fa9ba4c65cad8ed3c9c951fd065da77303b53ee55"
+    },
+    {
+      "run_id": "geant_d4_bursty_service_first_gnn",
+      "file": "runs/geant_d4_bursty_service_first_gnn.json",
+      "sha256": "08c8a27251c8a7226302bb3baf56a89119421c8a97b5ec04cb7399e39d1c4b49"
+    },
+    {
+      "run_id": "geant_d4_bursty_service_first_persistence",
+      "file": "runs/geant_d4_bursty_service_first_persistence.json",
+      "sha256": "279b72ed769619ab26ddb872ab962bd09c3e1f4de8c7d136dae8c102fff1c8d6"
+    },
+    {
+      "run_id": "geant_d4_bursty_equal_split",
+      "file": "runs/geant_d4_bursty_equal_split.json",
+      "sha256": "676a65826ef16479aa6e3961a571e1c40b60a3ed2da9572ba8ced043fd61a507"
+    },
+    {
+      "run_id": "geant_d4_bursty_multipath_te_gnn",
+      "file": "runs/geant_d4_bursty_multipath_te_gnn.json",
+      "sha256": "c755f064aa9215278792e20c1f6c7b177313992edc369338e149c7790964e23c"
+    },
+    {
+      "run_id": "geant_d4_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d4_bursty_multipath_carbon_gnn.json",
+      "sha256": "1ea3d05c5502cd491598e9b0a6f220fc9c1f30cd77cd3b20788730d720eae36b"
+    },
+    {
+      "run_id": "geant_d4_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d4_bursty_multipath_carbon_persistence.json",
+      "sha256": "69a5883e6899b862a9a887a241e7f673aee22649ca50e6f43aa8772e051f1be6"
+    },
+    {
+      "run_id": "geant_d4_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d4_bursty_multipath_carbon_reactive.json",
+      "sha256": "7c962daf1ed2c6d087e159ac22edcc2046c4bffe316b661c46327600cf9b49c1"
+    },
+    {
+      "run_id": "geant_d4_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d4_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "dac46fcf5afcbd6a6109eb30a9d863bf3cfe760192c99640df804d178104646f"
+    },
+    {
+      "run_id": "geant_d5_normal_shortest_path",
+      "file": "runs/geant_d5_normal_shortest_path.json",
+      "sha256": "5f9e2cde41406e30c8f6d34c1de6e5d7a4afe6a20981f6749919c00122ca0a83"
+    },
+    {
+      "run_id": "geant_d5_normal_reactive_carbon",
+      "file": "runs/geant_d5_normal_reactive_carbon.json",
+      "sha256": "7cb41f1514b18a11c96b2b11f1c33a7d9366c72277f5acc0cc083898f3da8175"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_gnn.json",
+      "sha256": "207075a010ff4bc97ed4505c426b27689954004f90334e3116d54d8189f48ed4"
+    },
+    {
+      "run_id": "geant_d5_normal_service_first_gnn",
+      "file": "runs/geant_d5_normal_service_first_gnn.json",
+      "sha256": "b8d6137ab4a0f185a819e3c01b0d7bd406d1dfb842cf9e84ea461b3b0409bba3"
+    },
+    {
+      "run_id": "geant_d5_normal_service_first_persistence",
+      "file": "runs/geant_d5_normal_service_first_persistence.json",
+      "sha256": "b6217178240b557d945039a52d71f5e208c9db046ba4258069358fa7fc2e3a71"
+    },
+    {
+      "run_id": "geant_d5_normal_equal_split",
+      "file": "runs/geant_d5_normal_equal_split.json",
+      "sha256": "9115681eb1a49bad97ed872e1e880638c11ef66045a65eccd758ee6a369ef4d8"
+    },
+    {
+      "run_id": "geant_d5_normal_multipath_te_gnn",
+      "file": "runs/geant_d5_normal_multipath_te_gnn.json",
+      "sha256": "fe035ef69cc99cb08e1315bc1ff51635a26bf84156c97851b940cfbc8c9cdc9a"
+    },
+    {
+      "run_id": "geant_d5_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d5_normal_multipath_carbon_gnn.json",
+      "sha256": "fd43ef4dcbbf997cdb5aecfe95169e593c99e5b6f5eff784ae986244dd4ffcb5"
+    },
+    {
+      "run_id": "geant_d5_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d5_normal_multipath_carbon_persistence.json",
+      "sha256": "614fe401656ba661302c7fce8694f63592fbf86e7b7bdd815fa0e880cf0a829a"
+    },
+    {
+      "run_id": "geant_d5_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d5_normal_multipath_carbon_reactive.json",
+      "sha256": "06b486e33fc8a14ef38e3f2b3a4c45303d8f2d4f0bef9a2ed44d5ab6e7587c2d"
+    },
+    {
+      "run_id": "geant_d5_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d5_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "2cf34e4af96cba8ae701cd85a542fed1287f715d588537e51c1e859d66f29819"
+    },
+    {
+      "run_id": "geant_d5_congested_shortest_path",
+      "file": "runs/geant_d5_congested_shortest_path.json",
+      "sha256": "0b8479ad94328161772de21a981b277dc2cbc423ccf9aa692763eb84f4b7d964"
+    },
+    {
+      "run_id": "geant_d5_congested_reactive_carbon",
+      "file": "runs/geant_d5_congested_reactive_carbon.json",
+      "sha256": "dc2e062f895edab264b6c62e5c64eb4b3d4dc23e7756f84ea02899c835500409"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_gnn.json",
+      "sha256": "d693079376ffab6b2e77c44f3d50fcebc8cb318f9ae8751922831129a9222f8b"
+    },
+    {
+      "run_id": "geant_d5_congested_service_first_gnn",
+      "file": "runs/geant_d5_congested_service_first_gnn.json",
+      "sha256": "8d5443e6585cc80be6aa94bb48a653eb83d79bd64708ae901b5597982a8f1aa8"
+    },
+    {
+      "run_id": "geant_d5_congested_service_first_persistence",
+      "file": "runs/geant_d5_congested_service_first_persistence.json",
+      "sha256": "e85a1f746579d9fa53fc2f08f8ee3af83b29241b89e9a6de03b56f6cab4918f7"
+    },
+    {
+      "run_id": "geant_d5_congested_equal_split",
+      "file": "runs/geant_d5_congested_equal_split.json",
+      "sha256": "f310f57ca840140871eda4b19aadcdef045bc355413116689d82b0ab3e4d265e"
+    },
+    {
+      "run_id": "geant_d5_congested_multipath_te_gnn",
+      "file": "runs/geant_d5_congested_multipath_te_gnn.json",
+      "sha256": "5312255fd10a2df96378e8f39acaa518131d457d5371682ae20c1b4c9bfe5c14"
+    },
+    {
+      "run_id": "geant_d5_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d5_congested_multipath_carbon_gnn.json",
+      "sha256": "9f95e1f9dd0af8c1e344567ff85a5ac2fb394af2701754fc6c49ef67766a561e"
+    },
+    {
+      "run_id": "geant_d5_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d5_congested_multipath_carbon_persistence.json",
+      "sha256": "26aeda11efeb9c4c9a6c41c7da3a9530fca86c89c0b23bc4515ff3f629ec73e9"
+    },
+    {
+      "run_id": "geant_d5_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d5_congested_multipath_carbon_reactive.json",
+      "sha256": "129ed90b47a13f776773bdb4930cd929e84bbc6eb8df723c81f753ce745df156"
+    },
+    {
+      "run_id": "geant_d5_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d5_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "720650f6b2192f6e38c5f00649bbbfdac74a42dd14ae390cedbd7261e7adda89"
+    },
+    {
+      "run_id": "geant_d5_bursty_shortest_path",
+      "file": "runs/geant_d5_bursty_shortest_path.json",
+      "sha256": "1b12050d1c584c1aff0b19181ab0bc0bdcf531a98734b4573620c5b556540a3f"
+    },
+    {
+      "run_id": "geant_d5_bursty_reactive_carbon",
+      "file": "runs/geant_d5_bursty_reactive_carbon.json",
+      "sha256": "e021c4047300b3e0efac5780152de59fc45b3156661d0252536975cc790d9f9f"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_gnn.json",
+      "sha256": "b3e3ae4fa8445cf3ba6e0a39d9070e3ad646c6b7d578897c589f8fcecf87db5f"
+    },
+    {
+      "run_id": "geant_d5_bursty_service_first_gnn",
+      "file": "runs/geant_d5_bursty_service_first_gnn.json",
+      "sha256": "802a64a658922bdbf66c7651dd38a02bee94c97cba6cb53e820c7b73fe65f0ab"
+    },
+    {
+      "run_id": "geant_d5_bursty_service_first_persistence",
+      "file": "runs/geant_d5_bursty_service_first_persistence.json",
+      "sha256": "9195fc7af3d707c55cf6db25babae8cd00617c768a4e59d34dbf8402900be12c"
+    },
+    {
+      "run_id": "geant_d5_bursty_equal_split",
+      "file": "runs/geant_d5_bursty_equal_split.json",
+      "sha256": "f372ba5a7e713ba31735a9538247840478bcd4ed62a4045834b7419765e0b56f"
+    },
+    {
+      "run_id": "geant_d5_bursty_multipath_te_gnn",
+      "file": "runs/geant_d5_bursty_multipath_te_gnn.json",
+      "sha256": "970fa140c8dea10527b2729f38fe44537818db5d1e2932000f1ae7f9e7abda7f"
+    },
+    {
+      "run_id": "geant_d5_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d5_bursty_multipath_carbon_gnn.json",
+      "sha256": "cc8a969b4eed9d1c667d21f8f5adf8c1720ff7c9c09b90a28b093a645fa20c09"
+    },
+    {
+      "run_id": "geant_d5_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d5_bursty_multipath_carbon_persistence.json",
+      "sha256": "ea7c8e450adc91f043ac2c469c7367d5c7346eb4a2a9f734a9b42358449b3629"
+    },
+    {
+      "run_id": "geant_d5_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d5_bursty_multipath_carbon_reactive.json",
+      "sha256": "8d3ec80ea093450b2deeee32a3c07a02cbc2b8b6646f296062e3009e0b313761"
+    },
+    {
+      "run_id": "geant_d5_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d5_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "58bdec15b66b82bee3290b95b1caec939449f361034a88fad9d3dfc8e8db81c4"
+    },
+    {
+      "run_id": "geant_d6_normal_shortest_path",
+      "file": "runs/geant_d6_normal_shortest_path.json",
+      "sha256": "ef1ba6806af9c39de4c8256e61e4c2f86f0d216032bd27dba5136ed5b32bcb1e"
+    },
+    {
+      "run_id": "geant_d6_normal_reactive_carbon",
+      "file": "runs/geant_d6_normal_reactive_carbon.json",
+      "sha256": "37e80e1236f9e4a0304150b80a499e4fb4ad9c9dd4fb0a7e88729fbfbf7d5668"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_gnn.json",
+      "sha256": "517602efb5ae0ab755d6d0d73082dc8d72cec080686da4f949661b5aad54284e"
+    },
+    {
+      "run_id": "geant_d6_normal_service_first_gnn",
+      "file": "runs/geant_d6_normal_service_first_gnn.json",
+      "sha256": "772d7204eb3c2b5aaab14d4ec7f5e605df238bfc790791110c9fdf92caa94ba0"
+    },
+    {
+      "run_id": "geant_d6_normal_service_first_persistence",
+      "file": "runs/geant_d6_normal_service_first_persistence.json",
+      "sha256": "2983d9a770b3fe668b05b340d4a276a8adc12676f958f6d9e986d016ca29a6f5"
+    },
+    {
+      "run_id": "geant_d6_normal_equal_split",
+      "file": "runs/geant_d6_normal_equal_split.json",
+      "sha256": "74e5e6d576c7d13576fc2538a878d8e849ff820a944535cf852923b73a52f1fb"
+    },
+    {
+      "run_id": "geant_d6_normal_multipath_te_gnn",
+      "file": "runs/geant_d6_normal_multipath_te_gnn.json",
+      "sha256": "d6a1569576164b6dbee81d3a19b2d3b3f62662b9c5473808e0a7b392964a77a9"
+    },
+    {
+      "run_id": "geant_d6_normal_multipath_carbon_gnn",
+      "file": "runs/geant_d6_normal_multipath_carbon_gnn.json",
+      "sha256": "dd8295969e85412435390ccc0272069be3afacaf2634f4fbe86cbf95e185b5ee"
+    },
+    {
+      "run_id": "geant_d6_normal_multipath_carbon_persistence",
+      "file": "runs/geant_d6_normal_multipath_carbon_persistence.json",
+      "sha256": "f683b91ff79a9417086051896f1feec4b0a908d214c9a338ddd52a11b9f6a28d"
+    },
+    {
+      "run_id": "geant_d6_normal_multipath_carbon_reactive",
+      "file": "runs/geant_d6_normal_multipath_carbon_reactive.json",
+      "sha256": "233c253c8636760f3dc505b5b3d8fcad3f404e115172dfd47288b549569c214e"
+    },
+    {
+      "run_id": "geant_d6_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d6_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "96801c0ec474c5d6e1f5e0939326d604c80c41d4a8215748159bc41245f96039"
+    },
+    {
+      "run_id": "geant_d6_congested_shortest_path",
+      "file": "runs/geant_d6_congested_shortest_path.json",
+      "sha256": "23c7d69c8f3150fc7b919d9e3a1955729ae3605f338e2ce4e1af9d07b664e460"
+    },
+    {
+      "run_id": "geant_d6_congested_reactive_carbon",
+      "file": "runs/geant_d6_congested_reactive_carbon.json",
+      "sha256": "c34706441af0e608ff58db28486d7f45985fd3aee0e2d30d9359074b82c29637"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_gnn.json",
+      "sha256": "18ab42136775cb820cca0a8101df1d491a0113363ad1a727b249b7567751a2ba"
+    },
+    {
+      "run_id": "geant_d6_congested_service_first_gnn",
+      "file": "runs/geant_d6_congested_service_first_gnn.json",
+      "sha256": "e9bbc069a7a69577de85e5443f9abd8fddb119660cce7932b28a0777e8ca759c"
+    },
+    {
+      "run_id": "geant_d6_congested_service_first_persistence",
+      "file": "runs/geant_d6_congested_service_first_persistence.json",
+      "sha256": "9bd223d769c63729aa46414c6630af9416d2bd78e59c99145d87747a73376a2d"
+    },
+    {
+      "run_id": "geant_d6_congested_equal_split",
+      "file": "runs/geant_d6_congested_equal_split.json",
+      "sha256": "d0fa8bbee4fadc0300699bafb99e7b7a20594e0dd705e7f5b2ee713cc94c879e"
+    },
+    {
+      "run_id": "geant_d6_congested_multipath_te_gnn",
+      "file": "runs/geant_d6_congested_multipath_te_gnn.json",
+      "sha256": "4e983337eed1eb6dbcc8f869829c4bb8bb9d0841f3b42a19e7ccb443ffd47b3f"
+    },
+    {
+      "run_id": "geant_d6_congested_multipath_carbon_gnn",
+      "file": "runs/geant_d6_congested_multipath_carbon_gnn.json",
+      "sha256": "a3265bb952dc3183921e73a594942b871bd7dd2405ff0287b04d8806b3ca1050"
+    },
+    {
+      "run_id": "geant_d6_congested_multipath_carbon_persistence",
+      "file": "runs/geant_d6_congested_multipath_carbon_persistence.json",
+      "sha256": "4a9f1b70a1421212b499fe02219b3358f89e01693209406a9115b4146cc6b16a"
+    },
+    {
+      "run_id": "geant_d6_congested_multipath_carbon_reactive",
+      "file": "runs/geant_d6_congested_multipath_carbon_reactive.json",
+      "sha256": "071bce8bd14328d3614033d0c873d301cce915e2c7329d709ef6b8c785727505"
+    },
+    {
+      "run_id": "geant_d6_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d6_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "ee63e2c5a47ddce032e903411eaeea1e3a88553eae5e20c91f2c9ad480c83373"
+    },
+    {
+      "run_id": "geant_d6_bursty_shortest_path",
+      "file": "runs/geant_d6_bursty_shortest_path.json",
+      "sha256": "6bca5bd5227017db4eb89f888aec27d33a8234f1db4adaf089d7fa04b918f527"
+    },
+    {
+      "run_id": "geant_d6_bursty_reactive_carbon",
+      "file": "runs/geant_d6_bursty_reactive_carbon.json",
+      "sha256": "e3ff085e9baa4a7e8bf841f08b23681ca84ac1b2cde5fede7f0395ed602cab29"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_gnn.json",
+      "sha256": "29dbe8cc9a0f7a2a6ccd3638f9d48a68564af9cfda34ecd9cf39aedc5a02fb76"
+    },
+    {
+      "run_id": "geant_d6_bursty_service_first_gnn",
+      "file": "runs/geant_d6_bursty_service_first_gnn.json",
+      "sha256": "89778beff4fd830ff5407debd7dadb89031bd03fee45ccfcaa9235f42b480c1e"
+    },
+    {
+      "run_id": "geant_d6_bursty_service_first_persistence",
+      "file": "runs/geant_d6_bursty_service_first_persistence.json",
+      "sha256": "2e41942128b08a81b078dd71f369090752fda7ae563ef3e1551388aa582a78f5"
+    },
+    {
+      "run_id": "geant_d6_bursty_equal_split",
+      "file": "runs/geant_d6_bursty_equal_split.json",
+      "sha256": "487929132415d8cf1c95ab6a11508b82a8c12e0068b717d820e496a81fea8694"
+    },
+    {
+      "run_id": "geant_d6_bursty_multipath_te_gnn",
+      "file": "runs/geant_d6_bursty_multipath_te_gnn.json",
+      "sha256": "4a4d4b96ee65501ac9ba34f6ba9078cc76b682d151dc686460451071000a535c"
+    },
+    {
+      "run_id": "geant_d6_bursty_multipath_carbon_gnn",
+      "file": "runs/geant_d6_bursty_multipath_carbon_gnn.json",
+      "sha256": "f02177c9288d8c46e94a2e074a2f6bed987f50a8cae8e8baaaafbaacb83b522c"
+    },
+    {
+      "run_id": "geant_d6_bursty_multipath_carbon_persistence",
+      "file": "runs/geant_d6_bursty_multipath_carbon_persistence.json",
+      "sha256": "685a53008819a0679ff2b90793f11fb205349a043a3322a130e61747fa6e69b5"
+    },
+    {
+      "run_id": "geant_d6_bursty_multipath_carbon_reactive",
+      "file": "runs/geant_d6_bursty_multipath_carbon_reactive.json",
+      "sha256": "4c69eefe9f5788fbaaf6dc91226353e5abad998a73ee721d59d1dfbe890182e4"
+    },
+    {
+      "run_id": "geant_d6_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/geant_d6_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "6b8c75e6be6dd2dfdf2c3dbcdb88b14133cd5d1fad7c56b8d93baaf79e0c006c"
+    },
+    {
+      "run_id": "abilene_d0_normal_shortest_path",
+      "file": "runs/abilene_d0_normal_shortest_path.json",
+      "sha256": "101ebe489880fc90909d8967faf98758c2f856d6a7ff42948ca447ce0a92f299"
+    },
+    {
+      "run_id": "abilene_d0_normal_reactive_carbon",
+      "file": "runs/abilene_d0_normal_reactive_carbon.json",
+      "sha256": "036c049776708339389d5fac7bc51ab7a64b650bb6d0eaa14f5c4e55252851d1"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_gnn.json",
+      "sha256": "077aff15aaf3e465fd486ef488a96931b5596677e946335c94b15a42008d63b6"
+    },
+    {
+      "run_id": "abilene_d0_normal_service_first_gnn",
+      "file": "runs/abilene_d0_normal_service_first_gnn.json",
+      "sha256": "43d85abc2899aab9e8d9f3fb0d866c0b6bab0bdb21328b20ccf814b3849d063a"
+    },
+    {
+      "run_id": "abilene_d0_normal_service_first_persistence",
+      "file": "runs/abilene_d0_normal_service_first_persistence.json",
+      "sha256": "46a156b23f9a4e42ab8f78943ddd9ad954154f1a4551f47e5d6184ec7620f523"
+    },
+    {
+      "run_id": "abilene_d0_normal_equal_split",
+      "file": "runs/abilene_d0_normal_equal_split.json",
+      "sha256": "80f062c4a8a7c00b3fbf45be6d048418256c2dc9a473f6d0badd8d07c2991522"
+    },
+    {
+      "run_id": "abilene_d0_normal_multipath_te_gnn",
+      "file": "runs/abilene_d0_normal_multipath_te_gnn.json",
+      "sha256": "551a29101b034a82800f9239297d82491182ae514b8dd4832284eb572f682f73"
+    },
+    {
+      "run_id": "abilene_d0_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d0_normal_multipath_carbon_gnn.json",
+      "sha256": "7ddb419cb799d11344142893d4b4be675ed0f3eabedc245dc303dee54801ff99"
+    },
+    {
+      "run_id": "abilene_d0_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d0_normal_multipath_carbon_persistence.json",
+      "sha256": "5403415ea39b2875bb7d9285fd15c3248ddf9c8dd74e62649f4c6ec540aed4d5"
+    },
+    {
+      "run_id": "abilene_d0_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d0_normal_multipath_carbon_reactive.json",
+      "sha256": "f0fa458238cbf652df1ace6167f60cd5e7889f539aa7e7efa600d6648e953e34"
+    },
+    {
+      "run_id": "abilene_d0_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d0_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "c8045ac43a5031846b527815132870a563474cce3229f94d47c50fd4c6aa06de"
+    },
+    {
+      "run_id": "abilene_d0_congested_shortest_path",
+      "file": "runs/abilene_d0_congested_shortest_path.json",
+      "sha256": "2c361e84f2bd23a663a53956709ee7b45d16645df3d7c1731b56c98a08c97c37"
+    },
+    {
+      "run_id": "abilene_d0_congested_reactive_carbon",
+      "file": "runs/abilene_d0_congested_reactive_carbon.json",
+      "sha256": "d061dad2fd421f84e54955d2dff28ed29790f871a277cd8409d415c593930d1a"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_gnn.json",
+      "sha256": "2f3ba0b431fb5aee79da92df46664d1c671bbf10514b030c06142f61bd808f86"
+    },
+    {
+      "run_id": "abilene_d0_congested_service_first_gnn",
+      "file": "runs/abilene_d0_congested_service_first_gnn.json",
+      "sha256": "b7ed10a80d729fe6cbd7e24634bffc461e2d5ed4cb3297823c2312fe9bb9f4cf"
+    },
+    {
+      "run_id": "abilene_d0_congested_service_first_persistence",
+      "file": "runs/abilene_d0_congested_service_first_persistence.json",
+      "sha256": "dab893fd05a0168fbef8c1c3c1856a3b15f2ccb38a830fa7dcab6f069b267e8d"
+    },
+    {
+      "run_id": "abilene_d0_congested_equal_split",
+      "file": "runs/abilene_d0_congested_equal_split.json",
+      "sha256": "b32818738df1f99af3de43f6de34bb1425f8f86b4145c8a4627f87533b3d7783"
+    },
+    {
+      "run_id": "abilene_d0_congested_multipath_te_gnn",
+      "file": "runs/abilene_d0_congested_multipath_te_gnn.json",
+      "sha256": "e2a6bb51828b038aafdb2f5e76358dfc567b2ff78fa274d6266632278e9db12c"
+    },
+    {
+      "run_id": "abilene_d0_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d0_congested_multipath_carbon_gnn.json",
+      "sha256": "1663869906a88c3587e463699a93212eaf2d6c54b6ce434075e62c1afade0a64"
+    },
+    {
+      "run_id": "abilene_d0_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d0_congested_multipath_carbon_persistence.json",
+      "sha256": "02ccb1333e6cefe9e1020c36aadbf84865882a44b8e7c7c247ffa4621aa01264"
+    },
+    {
+      "run_id": "abilene_d0_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d0_congested_multipath_carbon_reactive.json",
+      "sha256": "2b487987394a756dc0b26e8e162811c0369da5be2c8e9430c44b09e0473b1db7"
+    },
+    {
+      "run_id": "abilene_d0_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d0_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "3331deb303830f83c6e1cd1394cf4b9310df102a024c52de21b7d5e70fb82021"
+    },
+    {
+      "run_id": "abilene_d0_bursty_shortest_path",
+      "file": "runs/abilene_d0_bursty_shortest_path.json",
+      "sha256": "6c482f47f0eb0c9bb6d43f0e568a33ba3efd5190d41c526d11546a0852025c76"
+    },
+    {
+      "run_id": "abilene_d0_bursty_reactive_carbon",
+      "file": "runs/abilene_d0_bursty_reactive_carbon.json",
+      "sha256": "ab66a917acc6891a930a79abf12f57be08f034d8fdf6d0bf5e2c363c9f4ca876"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_gnn.json",
+      "sha256": "67447887d03ad4c42a7c667d597c8333168e2291a2446079e3707e82ad74d8c3"
+    },
+    {
+      "run_id": "abilene_d0_bursty_service_first_gnn",
+      "file": "runs/abilene_d0_bursty_service_first_gnn.json",
+      "sha256": "f1a0b69e04ecc0c23f6bb477445fd67b24130706f9e601b174bcf5983039af54"
+    },
+    {
+      "run_id": "abilene_d0_bursty_service_first_persistence",
+      "file": "runs/abilene_d0_bursty_service_first_persistence.json",
+      "sha256": "9ff797b1b862dcf5800f9f67548fb9b57c77291e7b894117b67b86549be09466"
+    },
+    {
+      "run_id": "abilene_d0_bursty_equal_split",
+      "file": "runs/abilene_d0_bursty_equal_split.json",
+      "sha256": "7fe3402b9b65be27fb73caf86ead80cdba5cfbe13adb9d073a1a1892de9f5b8b"
+    },
+    {
+      "run_id": "abilene_d0_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d0_bursty_multipath_te_gnn.json",
+      "sha256": "d569bb05e09cf31810e83cff7183e98807dc290df8e62f86e2083dd092b46c1e"
+    },
+    {
+      "run_id": "abilene_d0_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d0_bursty_multipath_carbon_gnn.json",
+      "sha256": "c3532a95e51c5a58bdcd195293621c65bd6efaebc8c655d4b0006e9c934f9cc7"
+    },
+    {
+      "run_id": "abilene_d0_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d0_bursty_multipath_carbon_persistence.json",
+      "sha256": "67a04d57bf20369e16f78bcb3ff23f2f01aa58110ce3bde7194b122d8bdb8113"
+    },
+    {
+      "run_id": "abilene_d0_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d0_bursty_multipath_carbon_reactive.json",
+      "sha256": "6506256570e3532851b1e387a18369d6f24ab12295633f07a04d9ef7b567a798"
+    },
+    {
+      "run_id": "abilene_d0_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d0_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "699cf22f1d82c9860718b79829aaccd4a06f553b6f478157ccb0cd049a57bb78"
+    },
+    {
+      "run_id": "abilene_d1_normal_shortest_path",
+      "file": "runs/abilene_d1_normal_shortest_path.json",
+      "sha256": "e010b5273d10da02e64e7d33237b5baabe3fe1a06d8965bf0a9b3f6bc6ed55f1"
+    },
+    {
+      "run_id": "abilene_d1_normal_reactive_carbon",
+      "file": "runs/abilene_d1_normal_reactive_carbon.json",
+      "sha256": "e9db200e0e0e51365707f5cf7e0657e16eb56b6b15be34be88d0ede60147b94e"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_gnn.json",
+      "sha256": "dd362d993fc6abe3216e6d98cf72c44807506fd9a72c97a0e1c540bc11fb4b1d"
+    },
+    {
+      "run_id": "abilene_d1_normal_service_first_gnn",
+      "file": "runs/abilene_d1_normal_service_first_gnn.json",
+      "sha256": "886be76272864a5df6616ef6198a37e99b3f4aa423c0b8e9a944b6b818c31c3b"
+    },
+    {
+      "run_id": "abilene_d1_normal_service_first_persistence",
+      "file": "runs/abilene_d1_normal_service_first_persistence.json",
+      "sha256": "c113da59e359c83504f021059be4a4c72a0c7cffd425edc14264c2e20cd39516"
+    },
+    {
+      "run_id": "abilene_d1_normal_equal_split",
+      "file": "runs/abilene_d1_normal_equal_split.json",
+      "sha256": "f77f178b9619de1e113a2f242dde651d00d10641a4b01aa5b150cab85d419e03"
+    },
+    {
+      "run_id": "abilene_d1_normal_multipath_te_gnn",
+      "file": "runs/abilene_d1_normal_multipath_te_gnn.json",
+      "sha256": "2e2b318156d589ac9bf474481e4ca0fc716aed894519f3246ecf7073cabd70ec"
+    },
+    {
+      "run_id": "abilene_d1_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d1_normal_multipath_carbon_gnn.json",
+      "sha256": "2de0c2823b21e54c12775f6603fcd20dad7a88beea391df1b8e7b9f98cc4030b"
+    },
+    {
+      "run_id": "abilene_d1_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d1_normal_multipath_carbon_persistence.json",
+      "sha256": "d456b6807df1bb5d66ef9d6b584bf64129f5479646f70d100874142f45ef0211"
+    },
+    {
+      "run_id": "abilene_d1_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d1_normal_multipath_carbon_reactive.json",
+      "sha256": "1c0dd353ff567fff63eab1a0491efc038971938e3aa76f80a4f5379669b1ce34"
+    },
+    {
+      "run_id": "abilene_d1_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d1_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "57702e7c795cef9b4dd5d9f8fbd13c001891c4f9672eb90de302e7c65c8a3533"
+    },
+    {
+      "run_id": "abilene_d1_congested_shortest_path",
+      "file": "runs/abilene_d1_congested_shortest_path.json",
+      "sha256": "7895e17c67e0b12e4b8e3d8351358c4086621adf01cec1c567786d39f21f6218"
+    },
+    {
+      "run_id": "abilene_d1_congested_reactive_carbon",
+      "file": "runs/abilene_d1_congested_reactive_carbon.json",
+      "sha256": "bbf6fd968c2551c0d91a7752edfb48e8cac039e79eff668f25c95389b757d2a9"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_gnn.json",
+      "sha256": "9f80696ac962323f013d5e4dd7c83ac257a3d88c59ee69c0c5200c4403015ac7"
+    },
+    {
+      "run_id": "abilene_d1_congested_service_first_gnn",
+      "file": "runs/abilene_d1_congested_service_first_gnn.json",
+      "sha256": "9e65f4983839a8f974a5189bb99363da0a714c90d6c0c7f07518b19fe13210d2"
+    },
+    {
+      "run_id": "abilene_d1_congested_service_first_persistence",
+      "file": "runs/abilene_d1_congested_service_first_persistence.json",
+      "sha256": "3e55ef1b4016d6f06b3c4709c94192754f3434a9ea85776d0c812351f3173465"
+    },
+    {
+      "run_id": "abilene_d1_congested_equal_split",
+      "file": "runs/abilene_d1_congested_equal_split.json",
+      "sha256": "8806cc83c67080f94003a948a8729aa36318896a331a87c835440ee096059840"
+    },
+    {
+      "run_id": "abilene_d1_congested_multipath_te_gnn",
+      "file": "runs/abilene_d1_congested_multipath_te_gnn.json",
+      "sha256": "d2997c13eab55fb6915020760fcdd747cb8f2f14739f5c3fbf6973dbb22186df"
+    },
+    {
+      "run_id": "abilene_d1_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d1_congested_multipath_carbon_gnn.json",
+      "sha256": "6cea4ad48c0f776e5df147f020b901f7950f8242e163197838da95a5504222cc"
+    },
+    {
+      "run_id": "abilene_d1_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d1_congested_multipath_carbon_persistence.json",
+      "sha256": "a6de9c701aff8c85784cdbf7274048179ead19db3cfc19820aada568ced574f2"
+    },
+    {
+      "run_id": "abilene_d1_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d1_congested_multipath_carbon_reactive.json",
+      "sha256": "254d5b727338938be98b76e0dc07e06476fe26ee428c30a1e1eb3889e03ccc1d"
+    },
+    {
+      "run_id": "abilene_d1_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d1_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "3d7c329f13cb2de888a7155a0ecb0316d6c3504c13949067da0f2a50f6cbfaad"
+    },
+    {
+      "run_id": "abilene_d1_bursty_shortest_path",
+      "file": "runs/abilene_d1_bursty_shortest_path.json",
+      "sha256": "7f588fc172e8ef777479d2037d8705da70b8cf132b5e2f4ad29b1ca8d8ce5ab4"
+    },
+    {
+      "run_id": "abilene_d1_bursty_reactive_carbon",
+      "file": "runs/abilene_d1_bursty_reactive_carbon.json",
+      "sha256": "d3d9f9a45456f0cc4be18ca47fd73931d07a4cb45deda4046985c7bcfbcbf66a"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_gnn.json",
+      "sha256": "bb4e9278be35d587f5feee1d95a9a57c862d3fc9ee4feced4c60913f470f0559"
+    },
+    {
+      "run_id": "abilene_d1_bursty_service_first_gnn",
+      "file": "runs/abilene_d1_bursty_service_first_gnn.json",
+      "sha256": "ff207c6db75ae7bccf881ad9391ae41a6bcbed92359db8acd14dc0efc3d4e600"
+    },
+    {
+      "run_id": "abilene_d1_bursty_service_first_persistence",
+      "file": "runs/abilene_d1_bursty_service_first_persistence.json",
+      "sha256": "b3dbfba6eb5612c964ac6c05765789b2605a8bd0cee6cb2bb1b4ecd2e434aea3"
+    },
+    {
+      "run_id": "abilene_d1_bursty_equal_split",
+      "file": "runs/abilene_d1_bursty_equal_split.json",
+      "sha256": "1e173070740b0c1b2c8b37379eb0f820e743378ccb198df9667c54e7d66ce373"
+    },
+    {
+      "run_id": "abilene_d1_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d1_bursty_multipath_te_gnn.json",
+      "sha256": "041d97dc4de963889c9158867de2d2ba9f0b385a2c0d4cd8e3c5dd0e3b29b3fd"
+    },
+    {
+      "run_id": "abilene_d1_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d1_bursty_multipath_carbon_gnn.json",
+      "sha256": "aa91c3497f8eb4aeed445d89ff8c83164040e924323c5ba632ef4a653c17ed70"
+    },
+    {
+      "run_id": "abilene_d1_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d1_bursty_multipath_carbon_persistence.json",
+      "sha256": "bc87a39f59fb2a2d6d7e58ddeef63e1dca1ec8e9bcf50adae432185d188a667c"
+    },
+    {
+      "run_id": "abilene_d1_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d1_bursty_multipath_carbon_reactive.json",
+      "sha256": "4ddfbda05eff865297e482e600743c2f2a69e0c8a7abf10c9f1c8681ea81b8c5"
+    },
+    {
+      "run_id": "abilene_d1_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d1_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "58dd82c20191bf778345fce3834534b38dad8d0111a8aaf0faca5bde076d8255"
+    },
+    {
+      "run_id": "abilene_d2_normal_shortest_path",
+      "file": "runs/abilene_d2_normal_shortest_path.json",
+      "sha256": "dfcdcd2c130dbc22155e1434c4c1048a2749b625c02539cad0ceaa1f534f3140"
+    },
+    {
+      "run_id": "abilene_d2_normal_reactive_carbon",
+      "file": "runs/abilene_d2_normal_reactive_carbon.json",
+      "sha256": "ad7087ecf5230ee4f418a81e30f2663963922c6386aa2f6d95258faf68423b7a"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_gnn.json",
+      "sha256": "8352bdc478aad9c5f98fb9dbfaa9a5ef0295be69f73ff4f06e90309ce1897e80"
+    },
+    {
+      "run_id": "abilene_d2_normal_service_first_gnn",
+      "file": "runs/abilene_d2_normal_service_first_gnn.json",
+      "sha256": "b79b993d381365846bc44d021adda792f6c53af0275cb50b995eed60870fdeb5"
+    },
+    {
+      "run_id": "abilene_d2_normal_service_first_persistence",
+      "file": "runs/abilene_d2_normal_service_first_persistence.json",
+      "sha256": "597ddfdcbb7cea9728305e9c30e3291b4e00ad10a55113214910986a02a09d13"
+    },
+    {
+      "run_id": "abilene_d2_normal_equal_split",
+      "file": "runs/abilene_d2_normal_equal_split.json",
+      "sha256": "920b023eb96c3eae4de09fbb740466826858ab8af8d63f56ce53f02aa23a70ff"
+    },
+    {
+      "run_id": "abilene_d2_normal_multipath_te_gnn",
+      "file": "runs/abilene_d2_normal_multipath_te_gnn.json",
+      "sha256": "8b4b5488f7fd944468a14a9300ae4e0e96cd03f5fa3bb27ecb75176c99e18f9d"
+    },
+    {
+      "run_id": "abilene_d2_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d2_normal_multipath_carbon_gnn.json",
+      "sha256": "2a5b6642dd22cd522a01814fcdfa1a7ef8ae3d3e34464d339d27b6d1bfa4a56c"
+    },
+    {
+      "run_id": "abilene_d2_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d2_normal_multipath_carbon_persistence.json",
+      "sha256": "182ef77509b016792bfbb6adbde483b8256ec8bc32796918159d053c32f1b68b"
+    },
+    {
+      "run_id": "abilene_d2_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d2_normal_multipath_carbon_reactive.json",
+      "sha256": "a97ce3235ffe07b798f3d61eb69de0d04b593bdd6078161f2ed15153dda8f8b8"
+    },
+    {
+      "run_id": "abilene_d2_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d2_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "5b21e32045556ace670aeb686e406a28b3d61d720a0658a655e188212a208002"
+    },
+    {
+      "run_id": "abilene_d2_congested_shortest_path",
+      "file": "runs/abilene_d2_congested_shortest_path.json",
+      "sha256": "b90bf41edb4058a9e6977ac7fa93da8504eeb137e2fac779a64be079512cd116"
+    },
+    {
+      "run_id": "abilene_d2_congested_reactive_carbon",
+      "file": "runs/abilene_d2_congested_reactive_carbon.json",
+      "sha256": "9470356e005892a9fc89a6c7a70d0ba23fe987e5b126c75bc46b0145a457df6e"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_gnn.json",
+      "sha256": "ceb610ee74e11f586373dea1034a79637ec4983b3632055a40a1e055f49f8e32"
+    },
+    {
+      "run_id": "abilene_d2_congested_service_first_gnn",
+      "file": "runs/abilene_d2_congested_service_first_gnn.json",
+      "sha256": "85b350b5daa4894c66a9deea1eff8c40dcd6185c47075b3d7fd60660908670ea"
+    },
+    {
+      "run_id": "abilene_d2_congested_service_first_persistence",
+      "file": "runs/abilene_d2_congested_service_first_persistence.json",
+      "sha256": "96b9510a0ce249664fe6e3b99975a15d966ef191ab6cb804b0ca48dd8521a6f6"
+    },
+    {
+      "run_id": "abilene_d2_congested_equal_split",
+      "file": "runs/abilene_d2_congested_equal_split.json",
+      "sha256": "1a990f72f9e909a7bdcd7a6f5d60cdb96c3a55f5f36cb8ae8b9470b65efc41c8"
+    },
+    {
+      "run_id": "abilene_d2_congested_multipath_te_gnn",
+      "file": "runs/abilene_d2_congested_multipath_te_gnn.json",
+      "sha256": "1150c4c11491da41491174a7ceb69d55e8689600dcbedc822868faa40f8a55e0"
+    },
+    {
+      "run_id": "abilene_d2_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d2_congested_multipath_carbon_gnn.json",
+      "sha256": "8508cd4b87657e3b70a3d6a6f8ee091974d5404d81e87e9ffc75dd516a7a960d"
+    },
+    {
+      "run_id": "abilene_d2_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d2_congested_multipath_carbon_persistence.json",
+      "sha256": "6805669f0318419736d197f0163642ba9cd0cdd8721781c777068119be2b60dd"
+    },
+    {
+      "run_id": "abilene_d2_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d2_congested_multipath_carbon_reactive.json",
+      "sha256": "2fb3a8eb0fae1364f12b7b4872dad4b51796310536d1cc31b07f4abe87788fa2"
+    },
+    {
+      "run_id": "abilene_d2_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d2_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "4c659e17d0845022940664a8e0c85a8100f7c609973108410018a3e99f45be1a"
+    },
+    {
+      "run_id": "abilene_d2_bursty_shortest_path",
+      "file": "runs/abilene_d2_bursty_shortest_path.json",
+      "sha256": "b0d9a0da3e76ef8d2b1f4fe1cde7bbfd3f984cf3b6fe40eb7b32b3590daba2e5"
+    },
+    {
+      "run_id": "abilene_d2_bursty_reactive_carbon",
+      "file": "runs/abilene_d2_bursty_reactive_carbon.json",
+      "sha256": "c7a2c6e549df76ce1dbaa52787937637d4307d5426e747267e50f4207ce48bf1"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_gnn.json",
+      "sha256": "0762795d8494e06e4927474f04dde69de9c032a2531f4857514515b192026dd4"
+    },
+    {
+      "run_id": "abilene_d2_bursty_service_first_gnn",
+      "file": "runs/abilene_d2_bursty_service_first_gnn.json",
+      "sha256": "33418460d9536a7c32431c4eb4f557ff288d8356932886238f8a1974bd83e1e8"
+    },
+    {
+      "run_id": "abilene_d2_bursty_service_first_persistence",
+      "file": "runs/abilene_d2_bursty_service_first_persistence.json",
+      "sha256": "8814c06de8f92b433de078f103a531e6dae9c20bd1c5a6727a1e6a50c9176ca2"
+    },
+    {
+      "run_id": "abilene_d2_bursty_equal_split",
+      "file": "runs/abilene_d2_bursty_equal_split.json",
+      "sha256": "912f1da5a4d413f9e85ab40d4a13d431dd86607c26d18fbbdd9de8bbe404276c"
+    },
+    {
+      "run_id": "abilene_d2_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d2_bursty_multipath_te_gnn.json",
+      "sha256": "79b85da6aa85784dcb3bb0bf814de54fc1b901a3a7c946856b7fa342e65fe7d7"
+    },
+    {
+      "run_id": "abilene_d2_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d2_bursty_multipath_carbon_gnn.json",
+      "sha256": "88678b9bcf76a0ffa4658e4885e1bd5e41358f0a968e230ee70ebf55369e3a67"
+    },
+    {
+      "run_id": "abilene_d2_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d2_bursty_multipath_carbon_persistence.json",
+      "sha256": "736aaffc9a385bf2d537879e4b4f48fad36863ddd28e871f992abbc88cacff5f"
+    },
+    {
+      "run_id": "abilene_d2_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d2_bursty_multipath_carbon_reactive.json",
+      "sha256": "61af9387bbb2f64259912e664f9ccb11aff9a4a5095f20f68b8ad08fa76ec678"
+    },
+    {
+      "run_id": "abilene_d2_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d2_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "86f386522924368f229cc8f3c66d60238ca18e106404ff664bebfdb8a1efb31a"
+    },
+    {
+      "run_id": "abilene_d3_normal_shortest_path",
+      "file": "runs/abilene_d3_normal_shortest_path.json",
+      "sha256": "36486242f04a9071eff0d5e83c4e20b277b7b97264bf733e1f1699b2a618ad13"
+    },
+    {
+      "run_id": "abilene_d3_normal_reactive_carbon",
+      "file": "runs/abilene_d3_normal_reactive_carbon.json",
+      "sha256": "80e9c386c8a2a94de72fcb88c5fca4e668c1f0e0eb10a18c1f614cc919a2f3a7"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_gnn.json",
+      "sha256": "81d47339e8d5382343de37d2f50f0da9a2455d5ca7871ab5090c7aec80742a48"
+    },
+    {
+      "run_id": "abilene_d3_normal_service_first_gnn",
+      "file": "runs/abilene_d3_normal_service_first_gnn.json",
+      "sha256": "d79ee2df9eb6f25d2e68e114b38c8d838165893341dfce512b5bfe87e094c602"
+    },
+    {
+      "run_id": "abilene_d3_normal_service_first_persistence",
+      "file": "runs/abilene_d3_normal_service_first_persistence.json",
+      "sha256": "2387a7e6cd53c52a0d34c0d08e35e13db42202b63933416171ee69e09bb2a2a5"
+    },
+    {
+      "run_id": "abilene_d3_normal_equal_split",
+      "file": "runs/abilene_d3_normal_equal_split.json",
+      "sha256": "e32e86a5d88ea70192e0cd0005a484160861eba71abb19a1dbaf9044a9488393"
+    },
+    {
+      "run_id": "abilene_d3_normal_multipath_te_gnn",
+      "file": "runs/abilene_d3_normal_multipath_te_gnn.json",
+      "sha256": "65815c71d3cb3c2b0f67fd0e28c63204250982ed71dfbf3bc787e28c07c82015"
+    },
+    {
+      "run_id": "abilene_d3_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d3_normal_multipath_carbon_gnn.json",
+      "sha256": "495260452385416e17a1a44175aa9c9d4b143f50aa7552d76e7e79548930e8c1"
+    },
+    {
+      "run_id": "abilene_d3_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d3_normal_multipath_carbon_persistence.json",
+      "sha256": "db39f9e91be3fca9a8827bd7ec3da61a4a216c06122124f24bca23a34aad1e0f"
+    },
+    {
+      "run_id": "abilene_d3_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d3_normal_multipath_carbon_reactive.json",
+      "sha256": "81a4752757a9e08536ad31e46fb287b6edf8b1b70f3cd8800049812313f6976b"
+    },
+    {
+      "run_id": "abilene_d3_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d3_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "6446266293e6aaa486d5a3251288d9db5efa78818c9b0301e1845296f4ed0e97"
+    },
+    {
+      "run_id": "abilene_d3_congested_shortest_path",
+      "file": "runs/abilene_d3_congested_shortest_path.json",
+      "sha256": "ee3f4b1dcc5d6f6f8df7cdc89bd6547392b5e8d31b3eef08ba3294ad336e5300"
+    },
+    {
+      "run_id": "abilene_d3_congested_reactive_carbon",
+      "file": "runs/abilene_d3_congested_reactive_carbon.json",
+      "sha256": "b4061b6f650e1e3ff6cae66850a6c13bee2873151f3f312f4cc3cfc824de3edb"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_gnn.json",
+      "sha256": "92831c8d879ceafa188c80f53000df2c8f97ebe6ebd49c77182afd745ce57aa7"
+    },
+    {
+      "run_id": "abilene_d3_congested_service_first_gnn",
+      "file": "runs/abilene_d3_congested_service_first_gnn.json",
+      "sha256": "89ed92109977a2ddc3d3f538372e3fb9122c253e7f54f78d750385cc7ec785eb"
+    },
+    {
+      "run_id": "abilene_d3_congested_service_first_persistence",
+      "file": "runs/abilene_d3_congested_service_first_persistence.json",
+      "sha256": "551845814117d0b9fb22aac28ffa8fceeb6d3b30e37e7a64467bad3bd90ec42a"
+    },
+    {
+      "run_id": "abilene_d3_congested_equal_split",
+      "file": "runs/abilene_d3_congested_equal_split.json",
+      "sha256": "9d64e80a5aa7cff2ec360a21d8f89aa7e87ce1d617fa2c9a83c77ac146662f27"
+    },
+    {
+      "run_id": "abilene_d3_congested_multipath_te_gnn",
+      "file": "runs/abilene_d3_congested_multipath_te_gnn.json",
+      "sha256": "51909dcddd7124d2e18cbb9110244b1749e0e037c1da59b107973bf94a5f3e39"
+    },
+    {
+      "run_id": "abilene_d3_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d3_congested_multipath_carbon_gnn.json",
+      "sha256": "760e3439640a1fbb1dcdb4c2e57fc0ee5d4ecbbbfd3ec5e419020e61e00b6245"
+    },
+    {
+      "run_id": "abilene_d3_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d3_congested_multipath_carbon_persistence.json",
+      "sha256": "93dad4ed8c830fdd93e51867bc348087f0e0bcf8b0632cda5a59c19a71a5b58a"
+    },
+    {
+      "run_id": "abilene_d3_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d3_congested_multipath_carbon_reactive.json",
+      "sha256": "a9d50510d68c36ffae9c3ea51e2f8c448040439a40fafea82156168f4b38257d"
+    },
+    {
+      "run_id": "abilene_d3_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d3_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "297511b4b5533099f4d9744a8edd4c5de0a8ae16dd77662331624130c1c365fb"
+    },
+    {
+      "run_id": "abilene_d3_bursty_shortest_path",
+      "file": "runs/abilene_d3_bursty_shortest_path.json",
+      "sha256": "c05321cdbd69629aec6d8507428d0a95f80a8dcd2b1d660f17a67f82bf3f0864"
+    },
+    {
+      "run_id": "abilene_d3_bursty_reactive_carbon",
+      "file": "runs/abilene_d3_bursty_reactive_carbon.json",
+      "sha256": "f22a086e28a89b2cdbd99b086c7f071f0d1e0dd2c42bd6bc09accabd64934d8d"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_gnn.json",
+      "sha256": "bc13e75d325f6f917c96fb0ae14819384ec7449124aa88b905147da3e7bf9db4"
+    },
+    {
+      "run_id": "abilene_d3_bursty_service_first_gnn",
+      "file": "runs/abilene_d3_bursty_service_first_gnn.json",
+      "sha256": "037cfbdd851a7a08ceb9ac91a4f8a9c7d2f4a349a5adf93b1c518c4490bf9e89"
+    },
+    {
+      "run_id": "abilene_d3_bursty_service_first_persistence",
+      "file": "runs/abilene_d3_bursty_service_first_persistence.json",
+      "sha256": "5b408c213d24b81596d42a9f1f1e2dac755b3463cde519ddc485d6128d198ce0"
+    },
+    {
+      "run_id": "abilene_d3_bursty_equal_split",
+      "file": "runs/abilene_d3_bursty_equal_split.json",
+      "sha256": "6197e98178b60d29c2fa9d057914ade8ced4fc27e3d98d14b1e3c4fa70d56984"
+    },
+    {
+      "run_id": "abilene_d3_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d3_bursty_multipath_te_gnn.json",
+      "sha256": "18ea98ee30bb1a828178615db3dfd4389e3bdf9da84ee016722de58f536b50c4"
+    },
+    {
+      "run_id": "abilene_d3_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d3_bursty_multipath_carbon_gnn.json",
+      "sha256": "e2ee9aa24b247143aefb5e1881f6b1a3068540fd7e354615406d0014eca6e704"
+    },
+    {
+      "run_id": "abilene_d3_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d3_bursty_multipath_carbon_persistence.json",
+      "sha256": "586618e69666f17f4435a2596ceab351efce7a1c6178b13e243699224d0b12e8"
+    },
+    {
+      "run_id": "abilene_d3_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d3_bursty_multipath_carbon_reactive.json",
+      "sha256": "4f748662bc626090850534d16a57972739e0b78eba14e54122a7e636dc344c43"
+    },
+    {
+      "run_id": "abilene_d3_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d3_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "0e042cb4b52017192b553db1e0a435b04ba7539b72507f7005a6184f32ca9021"
+    },
+    {
+      "run_id": "abilene_d4_normal_shortest_path",
+      "file": "runs/abilene_d4_normal_shortest_path.json",
+      "sha256": "21711cd25ea1a0a23f491e5e85feeadb2cefcf2f3b5dd54aaca4f2d4343e6c69"
+    },
+    {
+      "run_id": "abilene_d4_normal_reactive_carbon",
+      "file": "runs/abilene_d4_normal_reactive_carbon.json",
+      "sha256": "88a3e5ea52689fd573f649f9e62951d6a197880a01e41420417132465511d8a8"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_gnn.json",
+      "sha256": "428089c78c1ce959e6d680ffdfdc742a3774c837e1e2ea77c4799ab782932dc6"
+    },
+    {
+      "run_id": "abilene_d4_normal_service_first_gnn",
+      "file": "runs/abilene_d4_normal_service_first_gnn.json",
+      "sha256": "96506eb31c884bc895fddde1321497bc7c49dc550dd0e3c30d288ab80085cf81"
+    },
+    {
+      "run_id": "abilene_d4_normal_service_first_persistence",
+      "file": "runs/abilene_d4_normal_service_first_persistence.json",
+      "sha256": "c28e9c4db42f880acde1c0eaef997be42e9884187850a99ccbceda368bd0bcdc"
+    },
+    {
+      "run_id": "abilene_d4_normal_equal_split",
+      "file": "runs/abilene_d4_normal_equal_split.json",
+      "sha256": "f1453c52b31d0712cc21f95533f3d51d65fdbac01914ea50695df729fc962521"
+    },
+    {
+      "run_id": "abilene_d4_normal_multipath_te_gnn",
+      "file": "runs/abilene_d4_normal_multipath_te_gnn.json",
+      "sha256": "97a32215e37c8a5d74dc5df5f5fcaedc0778e1ee295695a7368f241089238535"
+    },
+    {
+      "run_id": "abilene_d4_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d4_normal_multipath_carbon_gnn.json",
+      "sha256": "a2068a62890f714e9009fd8df2db9c3d1c46d7653e68524bbcaa22ab34700795"
+    },
+    {
+      "run_id": "abilene_d4_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d4_normal_multipath_carbon_persistence.json",
+      "sha256": "48e1e99235bb367c5d3a260e2820620f11f46b815dab61661234022a19313a0f"
+    },
+    {
+      "run_id": "abilene_d4_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d4_normal_multipath_carbon_reactive.json",
+      "sha256": "4288fc9dfb92ddc9b8666d01418b6b7a59bfd6ae6ea0b8b49e877335e08d39f4"
+    },
+    {
+      "run_id": "abilene_d4_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d4_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "972966ad0f2b064647120b0f17467202c47d40ea8a14aaa578e52c6951ccedc8"
+    },
+    {
+      "run_id": "abilene_d4_congested_shortest_path",
+      "file": "runs/abilene_d4_congested_shortest_path.json",
+      "sha256": "58965f264ba3db68251be55e7f774aeecd71a96d8b3520d7c3ca68e40c8a7259"
+    },
+    {
+      "run_id": "abilene_d4_congested_reactive_carbon",
+      "file": "runs/abilene_d4_congested_reactive_carbon.json",
+      "sha256": "718cf06ed6226fae845ae286e3f78cf6b5a7d1416e396ba6a2b5ca669638fe4b"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_gnn.json",
+      "sha256": "147623069e509619c99e8a484bf8961724c0389e9333490a7eba705f5cbb9f0f"
+    },
+    {
+      "run_id": "abilene_d4_congested_service_first_gnn",
+      "file": "runs/abilene_d4_congested_service_first_gnn.json",
+      "sha256": "b11ac52155714fde4814049752f11ef7a58f2628ae66183a56504d75a4269f1f"
+    },
+    {
+      "run_id": "abilene_d4_congested_service_first_persistence",
+      "file": "runs/abilene_d4_congested_service_first_persistence.json",
+      "sha256": "09dbb814419c0922f587474c6cd5b3f7ae47c4f6a8ea564dc7788cd4ac32257a"
+    },
+    {
+      "run_id": "abilene_d4_congested_equal_split",
+      "file": "runs/abilene_d4_congested_equal_split.json",
+      "sha256": "1a7f9ddd4546fd66ce71cc8e816d2e7aa390cc6f619372cbbf61a52078715d8d"
+    },
+    {
+      "run_id": "abilene_d4_congested_multipath_te_gnn",
+      "file": "runs/abilene_d4_congested_multipath_te_gnn.json",
+      "sha256": "017a7cf2825cb333e08879ba73943b168fc14e1c48dcaa7211c2131d9400968c"
+    },
+    {
+      "run_id": "abilene_d4_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d4_congested_multipath_carbon_gnn.json",
+      "sha256": "255c7add089764d6f5230c8d5be651c35789e161e9591332293a8d7b6f4c2d27"
+    },
+    {
+      "run_id": "abilene_d4_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d4_congested_multipath_carbon_persistence.json",
+      "sha256": "67f5eed19b6c7629e9b21102ca48d3d13606d37ba1d491b3d3e219f233998fb5"
+    },
+    {
+      "run_id": "abilene_d4_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d4_congested_multipath_carbon_reactive.json",
+      "sha256": "2246a1a0ae2ed356188d92ab5f4531446e41c4b571f71ee2c6454dc605d87f6d"
+    },
+    {
+      "run_id": "abilene_d4_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d4_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "705d5306cd8ea57673f2b5c43699b1cc23d8b65af984fabda8615f4648d468b0"
+    },
+    {
+      "run_id": "abilene_d4_bursty_shortest_path",
+      "file": "runs/abilene_d4_bursty_shortest_path.json",
+      "sha256": "b717bf667cfbf537ef312100099571b5d65ce3dc310f3501711cd21647cb8ba1"
+    },
+    {
+      "run_id": "abilene_d4_bursty_reactive_carbon",
+      "file": "runs/abilene_d4_bursty_reactive_carbon.json",
+      "sha256": "f9856d7fe111d316efd823a66719bd05ddadb43cd074a43018412a774eec3125"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_gnn.json",
+      "sha256": "b5747fe8254985faff2d42c84cb9086fc9e55d4fc477716b752322aea2387aca"
+    },
+    {
+      "run_id": "abilene_d4_bursty_service_first_gnn",
+      "file": "runs/abilene_d4_bursty_service_first_gnn.json",
+      "sha256": "5e23d289a02af966d634dc1ec3df826e54dc2aa549559a7a914db1067728bd08"
+    },
+    {
+      "run_id": "abilene_d4_bursty_service_first_persistence",
+      "file": "runs/abilene_d4_bursty_service_first_persistence.json",
+      "sha256": "1ce57af4d5941a9e936676e0dd791ea703d319abeb9796eb5546bc2a84dd2e3d"
+    },
+    {
+      "run_id": "abilene_d4_bursty_equal_split",
+      "file": "runs/abilene_d4_bursty_equal_split.json",
+      "sha256": "7c221da9ea47c6a4e05ad58a55cda41755e582cb7558b4042ee4a5db139a6d73"
+    },
+    {
+      "run_id": "abilene_d4_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d4_bursty_multipath_te_gnn.json",
+      "sha256": "f24cb70befc7a9109c715d7fd75f13cdaf96a187926a74f52d885cab8d947fbf"
+    },
+    {
+      "run_id": "abilene_d4_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d4_bursty_multipath_carbon_gnn.json",
+      "sha256": "3f26d75fe9839f86351d41419b97d9c3e8d05fc5cf9b35d0d7fd37ee6772e023"
+    },
+    {
+      "run_id": "abilene_d4_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d4_bursty_multipath_carbon_persistence.json",
+      "sha256": "a7b58166cc8491cdc847dbf553914c139b3f742d3ef46d0061519134e868f0f5"
+    },
+    {
+      "run_id": "abilene_d4_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d4_bursty_multipath_carbon_reactive.json",
+      "sha256": "111bffd939629c3862e319aab0cb9000dc2ddb04bc51d1ed74066bda78e34578"
+    },
+    {
+      "run_id": "abilene_d4_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d4_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "b134a77976f16c2b9c8bb9cd52bfba85c271a68715511ea93bb4a4dfdfb08b96"
+    },
+    {
+      "run_id": "abilene_d5_normal_shortest_path",
+      "file": "runs/abilene_d5_normal_shortest_path.json",
+      "sha256": "a24d6d904185f491eaf8ce546453ca7c7c75e36c5f10c1130c37ab1f9379faed"
+    },
+    {
+      "run_id": "abilene_d5_normal_reactive_carbon",
+      "file": "runs/abilene_d5_normal_reactive_carbon.json",
+      "sha256": "fbf998efbf916fe5fc29ab94c5ac1cd6db0a079d8a2777410640a90743e76195"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_gnn.json",
+      "sha256": "13691ab706098c07f2de2f1f94a616cffd83c4057e59a9f23a2d24434db84e84"
+    },
+    {
+      "run_id": "abilene_d5_normal_service_first_gnn",
+      "file": "runs/abilene_d5_normal_service_first_gnn.json",
+      "sha256": "6698d8c42ce67cc2e11bc5d046e7ec62334f87df73ee0fa4a341e87ba4eb9886"
+    },
+    {
+      "run_id": "abilene_d5_normal_service_first_persistence",
+      "file": "runs/abilene_d5_normal_service_first_persistence.json",
+      "sha256": "4014c136e46b2b0b4ae562ac79ed094c02a16090cb07583891ce2abf4b96129e"
+    },
+    {
+      "run_id": "abilene_d5_normal_equal_split",
+      "file": "runs/abilene_d5_normal_equal_split.json",
+      "sha256": "5eb8a9a369555123fa539800a4d70852223116b57798c38387fa147a639cc713"
+    },
+    {
+      "run_id": "abilene_d5_normal_multipath_te_gnn",
+      "file": "runs/abilene_d5_normal_multipath_te_gnn.json",
+      "sha256": "4116fdb2ae0792a8842931bbdda6a4be27f836b938841ae87efdf33638eb085b"
+    },
+    {
+      "run_id": "abilene_d5_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d5_normal_multipath_carbon_gnn.json",
+      "sha256": "571d15b408653d636d5c23b2816b0aac2a63b81b07fa10d64df226875b2c49ec"
+    },
+    {
+      "run_id": "abilene_d5_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d5_normal_multipath_carbon_persistence.json",
+      "sha256": "41f87606d1797467035ec25e2483b9f9153f2fba706ec8bbd6f2903cb3a1ffe6"
+    },
+    {
+      "run_id": "abilene_d5_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d5_normal_multipath_carbon_reactive.json",
+      "sha256": "8ddbc154c22a48d8a1d437262a047d440019dd20402672f74c8205c5dbdd8bf3"
+    },
+    {
+      "run_id": "abilene_d5_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d5_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "e74164b5d6280321ade8e9556171d866be9921f4166d226e43cf20ed1f2a0e02"
+    },
+    {
+      "run_id": "abilene_d5_congested_shortest_path",
+      "file": "runs/abilene_d5_congested_shortest_path.json",
+      "sha256": "a982c1278c05b549518d994b5af4daa9dfa2641444a4641efd91247a14159058"
+    },
+    {
+      "run_id": "abilene_d5_congested_reactive_carbon",
+      "file": "runs/abilene_d5_congested_reactive_carbon.json",
+      "sha256": "81d0e4b031adcc2817d1a964015b6f869aba2c8f3a63984654d5b8acf44df64f"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_gnn.json",
+      "sha256": "5b744e8ccfd8a615f81ddd541c23e3307fc6b44a1ac8c3eb8306b25a9db5726e"
+    },
+    {
+      "run_id": "abilene_d5_congested_service_first_gnn",
+      "file": "runs/abilene_d5_congested_service_first_gnn.json",
+      "sha256": "23bd570105050e0696bb4ddaad43f5f57d27f06e716d5ec750d1f21be626f917"
+    },
+    {
+      "run_id": "abilene_d5_congested_service_first_persistence",
+      "file": "runs/abilene_d5_congested_service_first_persistence.json",
+      "sha256": "a37d62b49b1a2ea026cb6a3f9b60a36002c8e74fe093830d4974069fa9ec9049"
+    },
+    {
+      "run_id": "abilene_d5_congested_equal_split",
+      "file": "runs/abilene_d5_congested_equal_split.json",
+      "sha256": "b2f24fafb62abc003f4bb6c0c927aba9c247e54c9a3367a4f5fab3e761312afc"
+    },
+    {
+      "run_id": "abilene_d5_congested_multipath_te_gnn",
+      "file": "runs/abilene_d5_congested_multipath_te_gnn.json",
+      "sha256": "de71d66b7fd15af1c4e2758f466590cc7e6438a8b45aa08e3aac571e6c3ac95a"
+    },
+    {
+      "run_id": "abilene_d5_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d5_congested_multipath_carbon_gnn.json",
+      "sha256": "849dfbdb31b9f7bb65859993d33c5b4b736bc821d1953d3fb4a4a91525542932"
+    },
+    {
+      "run_id": "abilene_d5_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d5_congested_multipath_carbon_persistence.json",
+      "sha256": "a1baf61ee794fa2c34e7fccece71a20e233aeca79c9091f5a04c93eab05cae09"
+    },
+    {
+      "run_id": "abilene_d5_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d5_congested_multipath_carbon_reactive.json",
+      "sha256": "c08d4ed7cc0688e65374436d18a4e55815fa9028252870c6380a446bf3fab5d2"
+    },
+    {
+      "run_id": "abilene_d5_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d5_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "b475052891117bc6050cf4aa4f33512c8b6ba28e03abb361941a01fc8a9a2f81"
+    },
+    {
+      "run_id": "abilene_d5_bursty_shortest_path",
+      "file": "runs/abilene_d5_bursty_shortest_path.json",
+      "sha256": "24dcfa87279266d6d4e969e5d5f2f918bcf56387948072f67506274b54f3cabb"
+    },
+    {
+      "run_id": "abilene_d5_bursty_reactive_carbon",
+      "file": "runs/abilene_d5_bursty_reactive_carbon.json",
+      "sha256": "04ca2faed230a584fb71bcdb8ed9fd36b004acbeab3d4fdf77ca1f29d9c6f436"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_gnn.json",
+      "sha256": "0e18d45d27643ab2671856d6ed97cee50cb74359ba5b679bab284eecb7344564"
+    },
+    {
+      "run_id": "abilene_d5_bursty_service_first_gnn",
+      "file": "runs/abilene_d5_bursty_service_first_gnn.json",
+      "sha256": "a18aa7abaa21ded049782740996db71f330ba12b9e8056b1b35414ee140e536e"
+    },
+    {
+      "run_id": "abilene_d5_bursty_service_first_persistence",
+      "file": "runs/abilene_d5_bursty_service_first_persistence.json",
+      "sha256": "37a1579492d6820d8244e3db32f2af504525bea79ba3e7cb0ac18d7373487349"
+    },
+    {
+      "run_id": "abilene_d5_bursty_equal_split",
+      "file": "runs/abilene_d5_bursty_equal_split.json",
+      "sha256": "771dfa6d2ab7bd6516e3c348f17e02305cf62eac0be386ebfd034d8d862f273b"
+    },
+    {
+      "run_id": "abilene_d5_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d5_bursty_multipath_te_gnn.json",
+      "sha256": "1267b4b2042d83782c8979c59d921cdb093099c7dbfbefeb789e0f278656e952"
+    },
+    {
+      "run_id": "abilene_d5_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d5_bursty_multipath_carbon_gnn.json",
+      "sha256": "6e2056062f844ca07cb5b22fc18160707c5c9fbd705e2e99638ddbd0dbe31ce0"
+    },
+    {
+      "run_id": "abilene_d5_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d5_bursty_multipath_carbon_persistence.json",
+      "sha256": "0ece8b1288512a57511e54f53c3fef277b5fccfcb0a2ff67b782f535bdc51a50"
+    },
+    {
+      "run_id": "abilene_d5_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d5_bursty_multipath_carbon_reactive.json",
+      "sha256": "21031123cf9be62a935340fd0be73dd9b499cf72d1d5673b96e61c9b032077ca"
+    },
+    {
+      "run_id": "abilene_d5_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d5_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "e44b76055139256bfbeca497bfb783f2b16ddb1f796722a3657002f6b5a87e81"
+    },
+    {
+      "run_id": "abilene_d6_normal_shortest_path",
+      "file": "runs/abilene_d6_normal_shortest_path.json",
+      "sha256": "6e3b41eeceb4f4eb935deee6912668b29dcd9e421b0914e74635618bb0769c24"
+    },
+    {
+      "run_id": "abilene_d6_normal_reactive_carbon",
+      "file": "runs/abilene_d6_normal_reactive_carbon.json",
+      "sha256": "7d94e29172b957e284faa1df60ee26a536ced32ecfff90c152003754e6106a49"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_gnn.json",
+      "sha256": "6a8e216bf989bdab56c77d7d78c16e3ea7f425c224fec2bf0daf48f66f7dbded"
+    },
+    {
+      "run_id": "abilene_d6_normal_service_first_gnn",
+      "file": "runs/abilene_d6_normal_service_first_gnn.json",
+      "sha256": "2ad3ed0539f5d9ebb54bfc31a31a953d2dca3488abf528ecb7da252ba684a529"
+    },
+    {
+      "run_id": "abilene_d6_normal_service_first_persistence",
+      "file": "runs/abilene_d6_normal_service_first_persistence.json",
+      "sha256": "d374c6b22340764b6981b935b9276544cc27f41e7d3fc5a4966a65d383de7db9"
+    },
+    {
+      "run_id": "abilene_d6_normal_equal_split",
+      "file": "runs/abilene_d6_normal_equal_split.json",
+      "sha256": "881fb81731753907eef044ad8b84c48308ff46c38935396c5681398a7161d92d"
+    },
+    {
+      "run_id": "abilene_d6_normal_multipath_te_gnn",
+      "file": "runs/abilene_d6_normal_multipath_te_gnn.json",
+      "sha256": "3ed090d6b050228f357a726eac41b81798dff495ea64a4792eca4bc0f7a7b25e"
+    },
+    {
+      "run_id": "abilene_d6_normal_multipath_carbon_gnn",
+      "file": "runs/abilene_d6_normal_multipath_carbon_gnn.json",
+      "sha256": "d30e0f070c1a5a9b997c995dca1dae672feb55926c916c9c229e3816cfa2c928"
+    },
+    {
+      "run_id": "abilene_d6_normal_multipath_carbon_persistence",
+      "file": "runs/abilene_d6_normal_multipath_carbon_persistence.json",
+      "sha256": "87a7ec848f2bcb633f72fe2fd5c31a1d1db38709c984226212b5966e7360a09a"
+    },
+    {
+      "run_id": "abilene_d6_normal_multipath_carbon_reactive",
+      "file": "runs/abilene_d6_normal_multipath_carbon_reactive.json",
+      "sha256": "850e01359bddc83f259d083edf51e0fa4caa93983e3b75ca2be44b9911305eb8"
+    },
+    {
+      "run_id": "abilene_d6_normal_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d6_normal_multipath_carbon_gnn_quantized.json",
+      "sha256": "df3d5db331b0efe1895a077083d8897bdf1b5aa8f53a165e814db22183e30860"
+    },
+    {
+      "run_id": "abilene_d6_congested_shortest_path",
+      "file": "runs/abilene_d6_congested_shortest_path.json",
+      "sha256": "52346f59e541e193aeb402dd64699d773459f2963c37460473fc2b9d674ee48d"
+    },
+    {
+      "run_id": "abilene_d6_congested_reactive_carbon",
+      "file": "runs/abilene_d6_congested_reactive_carbon.json",
+      "sha256": "fdb2d80be654c2139385d31ea4ee8c33a947191d3a7ed88aa87111b9fa7322b5"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_gnn.json",
+      "sha256": "06a9ea04146acb30e95bff72f9eacf20ae34bd53aac5cee8b08eaaa02ebeeae0"
+    },
+    {
+      "run_id": "abilene_d6_congested_service_first_gnn",
+      "file": "runs/abilene_d6_congested_service_first_gnn.json",
+      "sha256": "4e5dd879be7f47f1a2c32182a13d35589ff4702af98f06fd2c800a386e6fb2af"
+    },
+    {
+      "run_id": "abilene_d6_congested_service_first_persistence",
+      "file": "runs/abilene_d6_congested_service_first_persistence.json",
+      "sha256": "82cab7b61659e9abfd24a768f845759e3c47b68b4897a61c3c9723e7a8c60ab2"
+    },
+    {
+      "run_id": "abilene_d6_congested_equal_split",
+      "file": "runs/abilene_d6_congested_equal_split.json",
+      "sha256": "b77d61de11a93599a8e9e7dafe6333faf45a014a7ae34e1f2bca64edad7d8e92"
+    },
+    {
+      "run_id": "abilene_d6_congested_multipath_te_gnn",
+      "file": "runs/abilene_d6_congested_multipath_te_gnn.json",
+      "sha256": "0c5e5f3694482c22699f2821b03aed4f203450267c0ddd1b274d4dc78c61c064"
+    },
+    {
+      "run_id": "abilene_d6_congested_multipath_carbon_gnn",
+      "file": "runs/abilene_d6_congested_multipath_carbon_gnn.json",
+      "sha256": "a8677598e80f441cd55c4a950ab64986122e96872b54fa3bb9e7c72f7593a046"
+    },
+    {
+      "run_id": "abilene_d6_congested_multipath_carbon_persistence",
+      "file": "runs/abilene_d6_congested_multipath_carbon_persistence.json",
+      "sha256": "ccd543fa8b188c4e8eacccf4db99989abff94e6b42550ae69727e91781dfc6f1"
+    },
+    {
+      "run_id": "abilene_d6_congested_multipath_carbon_reactive",
+      "file": "runs/abilene_d6_congested_multipath_carbon_reactive.json",
+      "sha256": "bfacca67e8156c7c2f73b65d0ed439149599fa3b1b904f4e7e1c1c7784547155"
+    },
+    {
+      "run_id": "abilene_d6_congested_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d6_congested_multipath_carbon_gnn_quantized.json",
+      "sha256": "d024bab7c473a19c9ac2f7a5efa91b398aceeaa3af0e7e44d2505e1113b2c98c"
+    },
+    {
+      "run_id": "abilene_d6_bursty_shortest_path",
+      "file": "runs/abilene_d6_bursty_shortest_path.json",
+      "sha256": "e98659e21443450d0119aaa5bb8ad1bf125c9c02620db946238314b455dedfe5"
+    },
+    {
+      "run_id": "abilene_d6_bursty_reactive_carbon",
+      "file": "runs/abilene_d6_bursty_reactive_carbon.json",
+      "sha256": "1b3eead2ba2cb1305982b58b547dc0ec0be7d89fe89ee443a69afdbaa87403e5"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_gnn.json",
+      "sha256": "33d11d30cfe947b70a91a492cd096a167d3ff74df85135ba24bf1ec82d67529b"
+    },
+    {
+      "run_id": "abilene_d6_bursty_service_first_gnn",
+      "file": "runs/abilene_d6_bursty_service_first_gnn.json",
+      "sha256": "226a9032d2d62537d6fae3fbe8ea37549f636fd0cd4589cf9eac31d076f6257d"
+    },
+    {
+      "run_id": "abilene_d6_bursty_service_first_persistence",
+      "file": "runs/abilene_d6_bursty_service_first_persistence.json",
+      "sha256": "b92d31b92d2af04113fdfd2493260f71f8106496d11b62ebeee8d4c2aefec93b"
+    },
+    {
+      "run_id": "abilene_d6_bursty_equal_split",
+      "file": "runs/abilene_d6_bursty_equal_split.json",
+      "sha256": "631980b8c4a189433a3706f31558c3b66a4200b4aec07de9ddfa009472bb1815"
+    },
+    {
+      "run_id": "abilene_d6_bursty_multipath_te_gnn",
+      "file": "runs/abilene_d6_bursty_multipath_te_gnn.json",
+      "sha256": "c2ea7d9f0087387e9fe5a346f480f56ab76e9843b7fb34af2ba3a08f31fc9a90"
+    },
+    {
+      "run_id": "abilene_d6_bursty_multipath_carbon_gnn",
+      "file": "runs/abilene_d6_bursty_multipath_carbon_gnn.json",
+      "sha256": "53f72f8b2bde9393433e2011213345f65892022cf5cbc5104021056adc42e55d"
+    },
+    {
+      "run_id": "abilene_d6_bursty_multipath_carbon_persistence",
+      "file": "runs/abilene_d6_bursty_multipath_carbon_persistence.json",
+      "sha256": "b92208b2c8ef744722794aa534bbd50205e5642bb4c277e144564d361c730cab"
+    },
+    {
+      "run_id": "abilene_d6_bursty_multipath_carbon_reactive",
+      "file": "runs/abilene_d6_bursty_multipath_carbon_reactive.json",
+      "sha256": "f256ea1811b910a1e1f33a95e6da07675127ea5547b86b1ca6ad6b2070c4dac2"
+    },
+    {
+      "run_id": "abilene_d6_bursty_multipath_carbon_gnn_quantized",
+      "file": "runs/abilene_d6_bursty_multipath_carbon_gnn_quantized.json",
+      "sha256": "26d6dac410f2b7e85bb79b646429ecb3835d7bab26411286f5b0a32db3f14e8a"
+    }
+  ],
+  "summary_sha256": "32b49c27ecc718b788d59976b672848d232c939354f2ba3c709598c278ff57ee",
+  "paired_differences_sha256": "1faaba00bc8e84e33be4ddcbd1c75f5150984e59a453b0c7cba4b8fd137967c5",
+  "day_cluster_intervals_sha256": "d78da15bf3007d1db5f7e62010ac0fdf4288170289299d4a4ba06954381048b5"
+}

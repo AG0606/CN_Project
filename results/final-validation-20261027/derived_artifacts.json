@@ -1,0 +1,11 @@
+{
+  "FINDINGS.md": "e8251dd78fbca42a18a28c5c785a51a6a0d4f893d6cd4494a07da051feb82d20",
+  "seed_forecast_summary.csv": "1fee5d2666aa5e072ea04d60105448836a2b5ccc908336769a867ac4795a4beb",
+  "perfect_forecast_comparisons.csv": "042ac14852c9a5d0164f4d91ff7e138cc9463aca2c17af659c658628b15a9b85",
+  "figures\\capacity_sensitivity.pdf": "351fdff4d10c4cdf81970ae61c71304adbbc857044e3b26a5bb04fbce2608982",
+  "figures\\capacity_sensitivity.png": "cce4d44b01ecf433ce0d2a5f5afeebb6862a7e85f0d580112dc966f75557d70d",
+  "figures\\carbon_service_tradeoffs.pdf": "93ea9130557f177dbd67de8eb598694379b1f96a2f735db9ed7e337b31a10cc6",
+  "figures\\carbon_service_tradeoffs.png": "956e9b8e4416f47eab6c498ecc9e9970b800187a7b35922d0e4f5e93eb1d1f09",
+  "figures\\seed_forecast_error.pdf": "0942c44b33cc06fe43089ef4cfc211df3b068781ff4fe1937b38df391a0ff279",
+  "figures\\seed_forecast_error.png": "4bec8ee444801d26b2227c33d10aebb853e21565a71a7fd2be38eb81d5a6e555"
+}

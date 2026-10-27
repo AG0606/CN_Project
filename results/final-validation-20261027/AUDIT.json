@@ -1,0 +1,9 @@
+{
+  "runs": 2058,
+  "bins": 395136,
+  "new_checkpoints": 12,
+  "explicit_future_demand_runs": 378,
+  "causal_runs": 1680,
+  "checks": "Frozen model/source lineage, validation-only training, declared seeds/regimes, exact shared inputs, causal vs future-aware labels, per-OD fairness, conservation, capacity, carbon and metric accounting",
+  "summary_sha256": "46a6494c475bf22aff19ec4d635abe50b52b8a26472591e97e8b7b3cd65b5336"
+}

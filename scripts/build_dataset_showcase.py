@@ -106,8 +106,29 @@ def main() -> None:
         filename = f"X{week:02}.gz"
         add(raw / "abilene" / filename, f"originals/abilene/{filename}",
             abilene_sources[filename])
+    followup_abilene = prepared / "followup/abilene/manifest.json"
+    if followup_abilene.exists():
+        later = json.loads(followup_abilene.read_text(encoding="utf-8"))
+        later_sources = {key.replace("\\", "/"): value for key, value in later["sources"].items()}
+        for week in range(5, 8):
+            filename = f"X{week:02}.gz"
+            source = raw / "abilene" / filename
+            add(source, f"originals/abilene/{filename}",
+                {"sha256": later_sources[source.relative_to(ROOT).as_posix()],
+                 "url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/" + filename})
     add(raw / "AbileneTM-all.tar", "originals/abilene/AbileneTM-all.tar",
         {"url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/AbileneTM-all.tar"})
+    for week in range(8, 12):
+        filename = f"X{week:02}.gz"
+        for study in ("service-first-20261027", "multipath-20261027-v2", "final-validation-20261027"):
+            plan = ROOT / "results" / study / "evaluation_plan.json"
+            if not plan.exists():
+                continue
+            members = json.loads(plan.read_text(encoding="utf-8"))["networks"]["abilene"]["source"]["members"]
+            if filename in members:
+                add(raw / "abilene" / filename, f"originals/abilene/{filename}",
+                    {"sha256": members[filename], "url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/"+filename})
+                break
     for filename in ("egrid_historical_files_1996-2016.zip", "eGRID2004_aggregation.xls"):
         add(raw / filename, f"originals/epa/{filename}", abilene_sources[filename])
     add(raw / "eGRID2004_TechnicalSupportDocument.pdf",
@@ -117,6 +138,13 @@ def main() -> None:
         add(folder / "traffic.npz", f"processed/{study}/traffic.npz",
             {"sha256": manifest["traffic_sha256"]})
         add(folder / "manifest.json", f"processed/{study}/manifest.json")
+    for study in ("geant", "abilene"):
+        folder = prepared / "followup" / study
+        if (folder / "manifest.json").exists():
+            meta = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+            add(folder / "traffic.npz", f"processed/followup/{study}/traffic.npz",
+                {"sha256": meta["traffic_sha256"]})
+            add(folder / "manifest.json", f"processed/followup/{study}/manifest.json")
 
     previews = DEST / "previews"
     traffic_preview(prepared / "traffic.npz", geant_manifest, 96,

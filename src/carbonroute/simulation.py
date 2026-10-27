@@ -11,7 +11,14 @@ import numpy as np
 from .common import finite_nonnegative
 from .data import Prepared
 from .prediction import Predictor
-from .routing import JOINT_POLICIES, BudgetPlanner, Planner
+from .routing import (
+    JOINT_POLICIES,
+    TRADEOFF_POLICIES,
+    BudgetPlanner,
+    CurrentBinOracle,
+    Planner,
+    TradeoffPlanner,
+)
 from .service import forwarding_score, power_model_grams, progressive_fill
 
 
@@ -23,7 +30,8 @@ class ReplayResult:
 
 def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.ndarray,
            start: int, stop: int, policy: str, predictor: Predictor,
-           observation_delay: int = 1, carbon_budget_fraction: float = 0.0) -> ReplayResult:
+           observation_delay: int = 1, carbon_budget_fraction: float = 0.0,
+           congestion_weight: float = 1.0, change_penalty: float = 0.005) -> ReplayResult:
     """Rates may contain the full realization; only the driver can index target rows.
 
     delay=1: history ends at k-1. delay=0: everyone gets D[k], with GNN predicting
@@ -44,9 +52,18 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
     if not np.all(np.diff(data.times[start-lookback:stop]) ==
                   np.timedelta64(cfg["bin_seconds"], "s")):
         raise ValueError("Replay must not cross missing timestamps")
-    joint = policy in JOINT_POLICIES
-    planner = (BudgetPlanner(data.network, data.pairs, cfg, carbon_budget_fraction) if joint
-               else Planner(data.network, data.pairs, cfg, policy))
+    joint = policy in JOINT_POLICIES or policy in TRADEOFF_POLICIES
+    oracle = policy == "oracle_current_bin"
+    planner: Planner | BudgetPlanner
+    if oracle:
+        planner = CurrentBinOracle(data.network, data.pairs, cfg)
+    elif policy in TRADEOFF_POLICIES:
+        planner = TradeoffPlanner(data.network, data.pairs, cfg, carbon_budget_fraction,
+                                 congestion_weight, change_penalty)
+    elif joint:
+        planner = BudgetPlanner(data.network, data.pairs, cfg, carbon_budget_fraction)
+    else:
+        planner = Planner(data.network, data.pairs, cfg, policy)
     records: list[dict[str, Any]] = []
     source_nodes = np.array([a for a, b in data.network.arcs])
     for k in range(start, stop):
@@ -55,7 +72,7 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
         history = rates[observed_stop-lookback:observed_stop].copy()
         history.setflags(write=False)
         reactive_forecast = np.repeat(history[-1:], horizon, axis=0)
-        if policy in ("shortest_path", "reactive_carbon"):
+        if policy in ("shortest_path", "reactive_carbon", "tradeoff_reactive") or oracle:
             forecast = reactive_forecast
         else:
             forecast = predictor.predict(history)
@@ -64,7 +81,11 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
             if observation_delay == 0:
                 forecast = np.concatenate((history[-1:], forecast[:horizon-1]), axis=0)
         ci = carbon[k-start].copy()
-        if isinstance(planner, BudgetPlanner):
+        if isinstance(planner, CurrentBinOracle):
+            # This diagnostic intentionally sees the current target matrix.
+            # It is never included among causal/deployable policies.
+            decision = planner.decide_actual(rates[k], ci)
+        elif isinstance(planner, BudgetPlanner):
             decision = planner.decide(forecast, ci, k-start, reactive_forecast)
         else:
             decision = planner.decide(forecast, ci, k-start)
@@ -87,8 +108,11 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
                             "carbon_budget_met": decision.carbon_budget_met,
                             "joint_assignments_evaluated": decision.joint_assignments_evaluated}
                            if joint else {})
+        if policy in TRADEOFF_POLICIES:
+            budget_evidence.update({"projected_peak_limit": decision.projected_peak_limit,
+                                    "projected_reference_peak": decision.projected_reference_peak})
         records.append({"step": k-start, "traffic_time": str(data.times[k]),
-                        "observed_through": str(data.times[observed_stop-1]),
+                        "observed_through": str(data.times[k] if oracle else data.times[observed_stop-1]),
                         "offered_mbps": offered.tolist(), "served_mbps": served.tolist(),
                         "link_utilization": utilization.tolist(), "carbon": ci.tolist(),
                         "routes": [list(p) for p in routes], "changes": decision.changes,
@@ -124,4 +148,10 @@ def replay(data: Prepared, cfg: dict[str, Any], rates: np.ndarray, carbon: np.nd
     if joint:
         summary["carbon_budget_violations"] = sum(not r["carbon_budget_met"] for r in records)
         summary["joint_assignments_evaluated"] = records[0]["joint_assignments_evaluated"]
+    if policy in TRADEOFF_POLICIES:
+        summary["predicted_peak_guard_violations"] = sum(
+            r["projected_max_utilization"] > r["projected_peak_limit"] + 1e-9 for r in records)
+    if oracle:
+        summary["clairvoyant_current_bin"] = True
+        summary["joint_assignments_evaluated"] = decision.joint_assignments_evaluated
     return ReplayResult(summary, records)

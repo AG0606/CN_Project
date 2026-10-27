@@ -1,0 +1,19 @@
+{
+  "summary_sha256": "46a6494c475bf22aff19ec4d635abe50b52b8a26472591e97e8b7b3cd65b5336",
+  "audited_runs": 2058,
+  "source": "docs/PAPER_DRAFT.md",
+  "format": "IEEEtran conference, letter, two columns",
+  "bibliography_style": "IEEEtran",
+  "reference_count": 14,
+  "table_count": 5,
+  "figure_count": 3,
+  "sha256": {
+    "docs\\PAPER_DRAFT.md": "6ebdd4164da19ca361f69f3144e817faf3e03c337aecd8ca45c843b38403aebb",
+    "docs\\REFERENCES.bib": "4bbbdf0107623fe3bffeb96f8b6e4461673d50d81c00d194015e3aee0d52f4e2",
+    "docs\\paper\\main.tex": "163dfd67dc889f6382a7b4b7aca60510985850246868cb2b6bf9ff76ec80cc12",
+    "docs\\paper\\references.bib": "4bbbdf0107623fe3bffeb96f8b6e4461673d50d81c00d194015e3aee0d52f4e2",
+    "docs\\paper\\images\\capacity_sensitivity.pdf": "e3beca9bb93b8680e1d25a12e8a1a93feb09f55f2d4378818f6b15d48d926d7d",
+    "docs\\paper\\images\\carbon_service_tradeoffs.pdf": "53f6819d55d76400b1859786e95db878cd89697f3dfe6c93498e82e68da6cee5",
+    "docs\\paper\\images\\seed_forecast_error.pdf": "1481814e519d7c853d87dcd8b474e307acf8ebebe5de32fa81097a10ef9e71cb"
+  }
+}

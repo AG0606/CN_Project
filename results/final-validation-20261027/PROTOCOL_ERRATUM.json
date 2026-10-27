@@ -1,0 +1,5 @@
+{
+  "field": "training",
+  "correction": "The narrative phrase original 40-epoch/8-patience settings applies to GEANT only. Abilene uses its original 25-epoch/6-patience settings. The implementation always used the original per-network configuration; evaluation_plan.json and training_summary.json record the actual settings.",
+  "effect": "Reporting clarification only; no code, checkpoint, selection, capacity, date or outcome changed."
+}

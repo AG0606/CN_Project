@@ -1,0 +1,1808 @@
+{
+  "status": "complete",
+  "evaluation_plan_sha256": "b02dc880d7b75136f80aad12b29a90892688245accba3afbafbb0f5bcd8d08e3",
+  "networks": {
+    "geant": {
+      "config": {
+        "seed": 42,
+        "traffic_days": 42,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 40,
+        "patience": 8,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 1.5,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 900,
+        "carbon_years": [
+          2022,
+          2023,
+          2024
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "days": [
+        "2005-07-14",
+        "2005-07-15",
+        "2005-07-16",
+        "2005-07-17",
+        "2005-07-18",
+        "2005-07-19",
+        "2005-07-20"
+      ],
+      "source": {
+        "traffic_sha256": "92d72a808d6de9d26be66844c098d3f32d5b9bb6c69af170e82b73118faef0df",
+        "empty_native_sections": [],
+        "availability_rule": "Require all native DEMANDS sections in each replay day and its lookback to be nonempty; missing sections are unknown and never imputed. Do not replace days on seeing outcomes."
+      },
+      "graph_hash": "458dc720a65c29da6b8cc35fca62bf5fc291fad72748b70e47a25c78b7878c8e",
+      "carbon_sha256": "6f62a712f0eddcffc587a63c5a28ffd27b26e73f9c51da4de7a3696efe600923",
+      "prepared_rates_sha256": "1e11770115077c216755fd8e26ebb2db0ec46b322151086489b32ccef9964700",
+      "predictor_sha256": {
+        "gnn.pt": "d06acb154c1052f9c5a99c83094c8ddbfa3a5772b82d3cc3f5c5a6cb67d04291",
+        "gnn.json": "0ad6c2f1616616da0521838aafe13ff5fcfd3c55701e6afcb9cb525f70026003",
+        "persistence.json": "06bc867fffb810acaf319556535f16ad537ede5e3c291bb916cebc561313743d"
+      }
+    },
+    "abilene": {
+      "config": {
+        "seed": 42,
+        "traffic_weeks": 4,
+        "active_pairs": 6,
+        "capacity_mbps": 10.0,
+        "fiber_stretch": 1.3,
+        "router_delay_ms": 0.15,
+        "train_utilization_p95": 0.7,
+        "lookback": 12,
+        "horizon": 3,
+        "hidden_size": 32,
+        "epochs": 25,
+        "patience": 6,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "cpu_threads": 2,
+        "margin_quantile": 0.9,
+        "candidate_paths": 3,
+        "delay_stretch": 2.0,
+        "utilization_limit": 0.8,
+        "min_improvement": 0.05,
+        "hold_bins": 2,
+        "bin_seconds": 300,
+        "carbon_years": [
+          2004
+        ],
+        "normal_multiplier": 1.0,
+        "congested_multiplier": 1.6,
+        "burst_multiplier": 2.5,
+        "burst_probability": 0.08,
+        "burst_bins": 3
+      },
+      "days": [
+        "2004-05-16",
+        "2004-05-17",
+        "2004-05-18",
+        "2004-05-19",
+        "2004-05-20",
+        "2004-05-21",
+        "2004-05-22"
+      ],
+      "source": {
+        "traffic_sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
+        "members": {
+          "X08.gz": "5474cc2944c42cb826c6a0aa53da4d382e38bd7d07a5d21342bafcc85d6003b4",
+          "X09.gz": "005511d8b64c1fef598472026d23f7b454db19e5595955b3fbd9e0fe55a4dbbe"
+        }
+      },
+      "graph_hash": "1b352cd6adc3b343971f429a87a86f21ac4d67fa912a8a28eca5b78ec971e7bb",
+      "carbon_sha256": "48c3a413a1f5eb54e1604713efd1d523fd0dc94a23fb2582f9c0cb86d51a7104",
+      "prepared_rates_sha256": "7cb3d05a756da50dc19194ac829f208eaad6a582852a742a3ed9dc20334bbbe8",
+      "predictor_sha256": {
+        "gnn.pt": "2811bf80ba9899ce2a61143c0d0f499c56eebe3340e3f01b46a1f832d0d3c580",
+        "gnn.json": "0d41037716808326dc62a77d3c086a6e0c5d350a96791266dbc8a0b3a5c66e1d",
+        "persistence.json": "05651f646cf0851e49f316e857a2e9bc4e23a084f545e5d60e5e7d0ca43219f7"
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_id": "geant_d0_normal_shortest_path",
+      "file": "runs/geant_d0_normal_shortest_path.json",
+      "sha256": "d0104f7f5b41177c02c7e3c02e621275f070488dd2717d05317c1368a6f43268"
+    },
+    {
+      "run_id": "geant_d0_normal_reactive_carbon",
+      "file": "runs/geant_d0_normal_reactive_carbon.json",
+      "sha256": "c1d452e9b709512176679b8af2da224109eb684ee6d408ace096bfd79c825fa8"
+    },
+    {
+      "run_id": "geant_d0_normal_predictive_te",
+      "file": "runs/geant_d0_normal_predictive_te.json",
+      "sha256": "a60ab21b1ed93010adb6060018be6e0235b922d4c1e6e205db8074b0bbffd24b"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_gnn",
+      "file": "runs/geant_d0_normal_tradeoff_gnn.json",
+      "sha256": "cc29a1bd5eb88bd1d927dcffb2c35cdd6266ebfb694f41ba3fc6734179060b98"
+    },
+    {
+      "run_id": "geant_d0_normal_tradeoff_persistence",
+      "file": "runs/geant_d0_normal_tradeoff_persistence.json",
+      "sha256": "e9b47d238f45f9ffd04fbbdcdd56b13384fc75d02bbbeb8dec4c745fb9bbd08b"
+    },
+    {
+      "run_id": "geant_d0_normal_service_first_gnn",
+      "file": "runs/geant_d0_normal_service_first_gnn.json",
+      "sha256": "0c358bc6e63f16006e750880e21e1d3d2017fa55c63d35165bc0fe9b2fb2527a"
+    },
+    {
+      "run_id": "geant_d0_normal_service_first_persistence",
+      "file": "runs/geant_d0_normal_service_first_persistence.json",
+      "sha256": "18d8d19b8be5b9c7211fe7fe8d0561dd89ccb816918b6f9e81d7f7e25fc66220"
+    },
+    {
+      "run_id": "geant_d0_normal_oracle_current_bin",
+      "file": "runs/geant_d0_normal_oracle_current_bin.json",
+      "sha256": "e0aee2de55b9f1cb27ff4535a36d09d68d1b7cd3ba480484b43133503282453d"
+    },
+    {
+      "run_id": "geant_d0_congested_shortest_path",
+      "file": "runs/geant_d0_congested_shortest_path.json",
+      "sha256": "01759089d69fc4137a9d116aee2b14ebe463e977e0561d96ff073657d9517a2b"
+    },
+    {
+      "run_id": "geant_d0_congested_reactive_carbon",
+      "file": "runs/geant_d0_congested_reactive_carbon.json",
+      "sha256": "8d62ac647ca3210808a6a7fe2f05cf821c15537d669566cf7121e6b5cae6b903"
+    },
+    {
+      "run_id": "geant_d0_congested_predictive_te",
+      "file": "runs/geant_d0_congested_predictive_te.json",
+      "sha256": "656b5d3d6e6969b15af8bb2684209588b99a1558e1041408796891ccb3ea73d3"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_gnn",
+      "file": "runs/geant_d0_congested_tradeoff_gnn.json",
+      "sha256": "64b29b2e04c840c1855f3d0f9ee91f9bd48de3f0afec9a8f121f82a47fbf3b36"
+    },
+    {
+      "run_id": "geant_d0_congested_tradeoff_persistence",
+      "file": "runs/geant_d0_congested_tradeoff_persistence.json",
+      "sha256": "0bacd9bd556791a50f872b5bdb0b65a1e18a97237b874faf8277f2720b488d97"
+    },
+    {
+      "run_id": "geant_d0_congested_service_first_gnn",
+      "file": "runs/geant_d0_congested_service_first_gnn.json",
+      "sha256": "8d4b59e8c9a978fa9a353db1d1e027e8e5c978b60926ed56782bf9c6e14e6298"
+    },
+    {
+      "run_id": "geant_d0_congested_service_first_persistence",
+      "file": "runs/geant_d0_congested_service_first_persistence.json",
+      "sha256": "628aaad3e124f24bd7d01038e7451ba9823232669f9a501659f17c7154cad0f8"
+    },
+    {
+      "run_id": "geant_d0_congested_oracle_current_bin",
+      "file": "runs/geant_d0_congested_oracle_current_bin.json",
+      "sha256": "a40f29fabe9ba49993516bb082dfd597ad0ec0d588d3d5aa421d5e9ae31c001c"
+    },
+    {
+      "run_id": "geant_d0_bursty_shortest_path",
+      "file": "runs/geant_d0_bursty_shortest_path.json",
+      "sha256": "51d90bbc68699a79788c3913f1b790bbccbdd47590a0074348a886ceac1d66f2"
+    },
+    {
+      "run_id": "geant_d0_bursty_reactive_carbon",
+      "file": "runs/geant_d0_bursty_reactive_carbon.json",
+      "sha256": "5bd9ef54bd5f21b7c521aaeb9c83bf6921d96a354cc34a446c989b76bd9f1726"
+    },
+    {
+      "run_id": "geant_d0_bursty_predictive_te",
+      "file": "runs/geant_d0_bursty_predictive_te.json",
+      "sha256": "a5bcd5fcf75ee583c26adfb85677da1a557570d544bfed90772aee350c9db84c"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_gnn",
+      "file": "runs/geant_d0_bursty_tradeoff_gnn.json",
+      "sha256": "fe3098e3bf8ddf703e871291858034121e27540411f85410785462296ee3ba7d"
+    },
+    {
+      "run_id": "geant_d0_bursty_tradeoff_persistence",
+      "file": "runs/geant_d0_bursty_tradeoff_persistence.json",
+      "sha256": "13f3034aa34ce1a6c9b717b7385cc57896fcc0310cebe76a28f3468eef24799e"
+    },
+    {
+      "run_id": "geant_d0_bursty_service_first_gnn",
+      "file": "runs/geant_d0_bursty_service_first_gnn.json",
+      "sha256": "c1cfe046fb696438a6df941a46a75d65b10bb425087540a3aacffc8361982c30"
+    },
+    {
+      "run_id": "geant_d0_bursty_service_first_persistence",
+      "file": "runs/geant_d0_bursty_service_first_persistence.json",
+      "sha256": "b422352fc4bd9f655d3db5bdc32491d0541d782e5634bbc16618002775a50203"
+    },
+    {
+      "run_id": "geant_d0_bursty_oracle_current_bin",
+      "file": "runs/geant_d0_bursty_oracle_current_bin.json",
+      "sha256": "b90e6e65bcfa5c7871f8cf6894142e1e1d4299584dcac95e21d0568c99236f28"
+    },
+    {
+      "run_id": "geant_d1_normal_shortest_path",
+      "file": "runs/geant_d1_normal_shortest_path.json",
+      "sha256": "9dad057da383201489ea024de31a47419e62fccee1c2d0dfeff16961ec39474f"
+    },
+    {
+      "run_id": "geant_d1_normal_reactive_carbon",
+      "file": "runs/geant_d1_normal_reactive_carbon.json",
+      "sha256": "007efd67ee4486a9c01dc0599da39e4f8ebef8b98425565be24af00f5a543d82"
+    },
+    {
+      "run_id": "geant_d1_normal_predictive_te",
+      "file": "runs/geant_d1_normal_predictive_te.json",
+      "sha256": "04a89f58fa9d4a5db1712d28d188c392ae034275a1f95027b3cd4eccc08d9645"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_gnn",
+      "file": "runs/geant_d1_normal_tradeoff_gnn.json",
+      "sha256": "395185e9ca808bd06d95766ad34bb2c8f34c3c465d16929e4852b7b509f83341"
+    },
+    {
+      "run_id": "geant_d1_normal_tradeoff_persistence",
+      "file": "runs/geant_d1_normal_tradeoff_persistence.json",
+      "sha256": "4097ef58d248133d0c7894fcd5d1dd8046681d03647f89f913f208cebcff6d41"
+    },
+    {
+      "run_id": "geant_d1_normal_service_first_gnn",
+      "file": "runs/geant_d1_normal_service_first_gnn.json",
+      "sha256": "c89884a821290b5d5c976b3845449f510dab2caab7ffe663d12ca60e11f8cc5c"
+    },
+    {
+      "run_id": "geant_d1_normal_service_first_persistence",
+      "file": "runs/geant_d1_normal_service_first_persistence.json",
+      "sha256": "beeb1ae5819d3f95cf0d46774811aa7813f2d4b602dc5eceb97c4224127eafa5"
+    },
+    {
+      "run_id": "geant_d1_normal_oracle_current_bin",
+      "file": "runs/geant_d1_normal_oracle_current_bin.json",
+      "sha256": "9b0d8ee4d5715445f29b5ed7378238a89e10d3bf9555728f39cc8d4bd88f540a"
+    },
+    {
+      "run_id": "geant_d1_congested_shortest_path",
+      "file": "runs/geant_d1_congested_shortest_path.json",
+      "sha256": "5719291a200c7a1fe690a1b6c35a878e1e911368492787bffd8213aa21ff8d81"
+    },
+    {
+      "run_id": "geant_d1_congested_reactive_carbon",
+      "file": "runs/geant_d1_congested_reactive_carbon.json",
+      "sha256": "2f2505f7efa27db84f7f80320535d16c02ae981ee24df15b13d2355ae14aa764"
+    },
+    {
+      "run_id": "geant_d1_congested_predictive_te",
+      "file": "runs/geant_d1_congested_predictive_te.json",
+      "sha256": "16eb5694c1f0151306e6684eb6e6b450ccca7a6a460c76beca56bcb37f653df3"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_gnn",
+      "file": "runs/geant_d1_congested_tradeoff_gnn.json",
+      "sha256": "955515ec33c5bcc49e9eb09e5fd03a999aec1065f0692f0d0430e497c231fdeb"
+    },
+    {
+      "run_id": "geant_d1_congested_tradeoff_persistence",
+      "file": "runs/geant_d1_congested_tradeoff_persistence.json",
+      "sha256": "10c574b59494fabd5da0235385c1e089781c3a17c5ceb32f971a4dcf5cff09a2"
+    },
+    {
+      "run_id": "geant_d1_congested_service_first_gnn",
+      "file": "runs/geant_d1_congested_service_first_gnn.json",
+      "sha256": "592f40b4ea47bf8b5636e896af6daae112941d9a8b337a94dc5ccd1e80b49178"
+    },
+    {
+      "run_id": "geant_d1_congested_service_first_persistence",
+      "file": "runs/geant_d1_congested_service_first_persistence.json",
+      "sha256": "23f90ba4bc485b15e4c7eb71a893fd7e98b66cd9ac57a4100e405d9381968809"
+    },
+    {
+      "run_id": "geant_d1_congested_oracle_current_bin",
+      "file": "runs/geant_d1_congested_oracle_current_bin.json",
+      "sha256": "881920c8843518344c26d58a09bae64bb1f7e5f2370312a4db2c340688cbae04"
+    },
+    {
+      "run_id": "geant_d1_bursty_shortest_path",
+      "file": "runs/geant_d1_bursty_shortest_path.json",
+      "sha256": "27c5f63df64b85c4b4d24aeb08afed4b6144a23554ba6e15212cf072393418cd"
+    },
+    {
+      "run_id": "geant_d1_bursty_reactive_carbon",
+      "file": "runs/geant_d1_bursty_reactive_carbon.json",
+      "sha256": "f8abb5fc58652e8d19e9f61a375b22d73b0d647c4759e5ebf0b489b28d6ccf7d"
+    },
+    {
+      "run_id": "geant_d1_bursty_predictive_te",
+      "file": "runs/geant_d1_bursty_predictive_te.json",
+      "sha256": "99b5ce60082c244da687bd835bd98d55dc612e93f57b9222ffecca77987d1419"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_gnn",
+      "file": "runs/geant_d1_bursty_tradeoff_gnn.json",
+      "sha256": "65450287f50aa487bdede318323d641f8e1d5855bf12e8dc52cf447ab502552b"
+    },
+    {
+      "run_id": "geant_d1_bursty_tradeoff_persistence",
+      "file": "runs/geant_d1_bursty_tradeoff_persistence.json",
+      "sha256": "060978a2668558d2e6ee0996d39812788c922cce5357cea307e4e1f3be2f2e6b"
+    },
+    {
+      "run_id": "geant_d1_bursty_service_first_gnn",
+      "file": "runs/geant_d1_bursty_service_first_gnn.json",
+      "sha256": "df4292a836ce029c4659214103d3774957d2711a22def3eed544e4ed98518aa7"
+    },
+    {
+      "run_id": "geant_d1_bursty_service_first_persistence",
+      "file": "runs/geant_d1_bursty_service_first_persistence.json",
+      "sha256": "18d655d7917ce39a44bbe50fc7e4a0113502b0a9bd0f11ba615fb2e5760f59ea"
+    },
+    {
+      "run_id": "geant_d1_bursty_oracle_current_bin",
+      "file": "runs/geant_d1_bursty_oracle_current_bin.json",
+      "sha256": "311dc1f06bf3beb8ddc0afaff6930b485cbf4e45efed6b831e54e64d79565920"
+    },
+    {
+      "run_id": "geant_d2_normal_shortest_path",
+      "file": "runs/geant_d2_normal_shortest_path.json",
+      "sha256": "0d42631b314ad6ef63c6a6231e1101c93c07d1701827059a4f52ae5a59fbfb63"
+    },
+    {
+      "run_id": "geant_d2_normal_reactive_carbon",
+      "file": "runs/geant_d2_normal_reactive_carbon.json",
+      "sha256": "5be1e80be1b4bb658ed276f300ac54db110f53f1a27d1e70008e2939cc7a5027"
+    },
+    {
+      "run_id": "geant_d2_normal_predictive_te",
+      "file": "runs/geant_d2_normal_predictive_te.json",
+      "sha256": "58102458ba29b31c274760197e1222a57ce3334cf75836c3f71ed4cdc19d4a86"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_gnn",
+      "file": "runs/geant_d2_normal_tradeoff_gnn.json",
+      "sha256": "75687733b219cb22274e3bfe2c310d00573a5f2797f02d170b6e49d0b0ca5800"
+    },
+    {
+      "run_id": "geant_d2_normal_tradeoff_persistence",
+      "file": "runs/geant_d2_normal_tradeoff_persistence.json",
+      "sha256": "08c1e57907a67351141f73f1da3ea7e35b71ad1da9758ece3fafda0b02fe42ce"
+    },
+    {
+      "run_id": "geant_d2_normal_service_first_gnn",
+      "file": "runs/geant_d2_normal_service_first_gnn.json",
+      "sha256": "b1a787baefe8529bf3f35aa8b0a008b9bee34f362795d532a6a2affb4b40a5ca"
+    },
+    {
+      "run_id": "geant_d2_normal_service_first_persistence",
+      "file": "runs/geant_d2_normal_service_first_persistence.json",
+      "sha256": "9cbba9b6eedc3f1ad07b989dd2f45b7acdfee6409888b99842a6bf225fe8d401"
+    },
+    {
+      "run_id": "geant_d2_normal_oracle_current_bin",
+      "file": "runs/geant_d2_normal_oracle_current_bin.json",
+      "sha256": "bf98599708cb3c6b32bbf9b143ad06425b8227e423266ff2c6e1db90b9d0abcc"
+    },
+    {
+      "run_id": "geant_d2_congested_shortest_path",
+      "file": "runs/geant_d2_congested_shortest_path.json",
+      "sha256": "706f7802c22a3f5fbeff87c5c58c5400fbb62e9205d23f04faabdf64a2ce0f44"
+    },
+    {
+      "run_id": "geant_d2_congested_reactive_carbon",
+      "file": "runs/geant_d2_congested_reactive_carbon.json",
+      "sha256": "1a49411c58bfcf689c72b20f73be5c288bda4f7c994837fe8dbf4b1530abd42f"
+    },
+    {
+      "run_id": "geant_d2_congested_predictive_te",
+      "file": "runs/geant_d2_congested_predictive_te.json",
+      "sha256": "4d32c3c022a6a8f2ff9b50e862b59d2f419a06164d3bde23739564f98ad0c50f"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_gnn",
+      "file": "runs/geant_d2_congested_tradeoff_gnn.json",
+      "sha256": "5891723338c436bb3f11c11ba16e52e6c0524928ac2340aa9df7b7f0bde80bb5"
+    },
+    {
+      "run_id": "geant_d2_congested_tradeoff_persistence",
+      "file": "runs/geant_d2_congested_tradeoff_persistence.json",
+      "sha256": "e44164357d41f904c7547c29ace411b5e98012223d51cbcc96ef26135569e9c7"
+    },
+    {
+      "run_id": "geant_d2_congested_service_first_gnn",
+      "file": "runs/geant_d2_congested_service_first_gnn.json",
+      "sha256": "12f38a317f0014f86908556519b3e618899e1fa473a3c5855c30a05b26378f44"
+    },
+    {
+      "run_id": "geant_d2_congested_service_first_persistence",
+      "file": "runs/geant_d2_congested_service_first_persistence.json",
+      "sha256": "957f6babc0fe5c04029fd72d5170cfe9ca615a0c55e38162407594ae1e6a86c6"
+    },
+    {
+      "run_id": "geant_d2_congested_oracle_current_bin",
+      "file": "runs/geant_d2_congested_oracle_current_bin.json",
+      "sha256": "507b08468fa9f9934379ae9414fc968fd36d0160e13d4fc1fd1a0cc3a005a32a"
+    },
+    {
+      "run_id": "geant_d2_bursty_shortest_path",
+      "file": "runs/geant_d2_bursty_shortest_path.json",
+      "sha256": "5e9d92a2435a7bb55889c583a3292b50780c5932f4fa93e7874efdc855a500f9"
+    },
+    {
+      "run_id": "geant_d2_bursty_reactive_carbon",
+      "file": "runs/geant_d2_bursty_reactive_carbon.json",
+      "sha256": "3f5c8df7b4a7d8ac8862bc5589369b64a0f92ae7032a5121b6dd57f59d6f2f08"
+    },
+    {
+      "run_id": "geant_d2_bursty_predictive_te",
+      "file": "runs/geant_d2_bursty_predictive_te.json",
+      "sha256": "0f839ce4bdbbda9392ccdd38590bebac5139bbc98eff0168e7aaaafd7b2e8149"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_gnn",
+      "file": "runs/geant_d2_bursty_tradeoff_gnn.json",
+      "sha256": "7e483b1b6d01e3d4e717277f7ba067b6cd6ab5a0f61283f6dda002458931cd2e"
+    },
+    {
+      "run_id": "geant_d2_bursty_tradeoff_persistence",
+      "file": "runs/geant_d2_bursty_tradeoff_persistence.json",
+      "sha256": "7f21957dbf03654b52c3d8bf9475cd15722696e3d419f5637e0eb02b1ed42870"
+    },
+    {
+      "run_id": "geant_d2_bursty_service_first_gnn",
+      "file": "runs/geant_d2_bursty_service_first_gnn.json",
+      "sha256": "902ec7ba84a9dbf961b946ccd6f12efff135ff39a83cd36470399fb05405c120"
+    },
+    {
+      "run_id": "geant_d2_bursty_service_first_persistence",
+      "file": "runs/geant_d2_bursty_service_first_persistence.json",
+      "sha256": "bd91fb53c4ea08a5133d5ccebfad21421f14968f3ff10b8d1b9111a733003c6f"
+    },
+    {
+      "run_id": "geant_d2_bursty_oracle_current_bin",
+      "file": "runs/geant_d2_bursty_oracle_current_bin.json",
+      "sha256": "abcf89a134ce8e3d29b08feee1be2628d01000fcb28253f39724ca0e8f1074ad"
+    },
+    {
+      "run_id": "geant_d3_normal_shortest_path",
+      "file": "runs/geant_d3_normal_shortest_path.json",
+      "sha256": "e6c35ef510d9227e0cc800033dfb21b4f6515aa25abb95897e5778ccf8e01b45"
+    },
+    {
+      "run_id": "geant_d3_normal_reactive_carbon",
+      "file": "runs/geant_d3_normal_reactive_carbon.json",
+      "sha256": "1617a47ef1d282ea537d42ed81d129e7e57d85e0194ec6c78eae7f4658e81ea6"
+    },
+    {
+      "run_id": "geant_d3_normal_predictive_te",
+      "file": "runs/geant_d3_normal_predictive_te.json",
+      "sha256": "a178b9d8f7e9baaed6d701bf36248fc9d307d9e3fab0454f527b81ab9984e654"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_gnn",
+      "file": "runs/geant_d3_normal_tradeoff_gnn.json",
+      "sha256": "cc91685e2225aeb888a6c1791e25778dcd83483ce1d14ee70bbdc8ee77b0b843"
+    },
+    {
+      "run_id": "geant_d3_normal_tradeoff_persistence",
+      "file": "runs/geant_d3_normal_tradeoff_persistence.json",
+      "sha256": "1df523a3d27faadfccbf897bc4a272bd14a45a0f96969e9b85a766582fa2bd1a"
+    },
+    {
+      "run_id": "geant_d3_normal_service_first_gnn",
+      "file": "runs/geant_d3_normal_service_first_gnn.json",
+      "sha256": "79d0dd6122735e037fd5719374aaba47608466b934451aa28607eaa49440a6bb"
+    },
+    {
+      "run_id": "geant_d3_normal_service_first_persistence",
+      "file": "runs/geant_d3_normal_service_first_persistence.json",
+      "sha256": "5f35f1ce084efee0e5a5e8c19aa88e8d0e540b5d0ac7ad60437c3e806851e6c8"
+    },
+    {
+      "run_id": "geant_d3_normal_oracle_current_bin",
+      "file": "runs/geant_d3_normal_oracle_current_bin.json",
+      "sha256": "db903761dab23991a712881caa63a79bb0309753ffd793aeb89f69d37553eced"
+    },
+    {
+      "run_id": "geant_d3_congested_shortest_path",
+      "file": "runs/geant_d3_congested_shortest_path.json",
+      "sha256": "747b15669d5f4e1a178cda77cb8fa985c4404180492683e7d300c416f949fb09"
+    },
+    {
+      "run_id": "geant_d3_congested_reactive_carbon",
+      "file": "runs/geant_d3_congested_reactive_carbon.json",
+      "sha256": "382615612b013c1732177ccf8c460040acb21d8c2af560298fae02b0a83222fe"
+    },
+    {
+      "run_id": "geant_d3_congested_predictive_te",
+      "file": "runs/geant_d3_congested_predictive_te.json",
+      "sha256": "f23224447c8840c69e693eeca6130db9a97cec50d72ab6f58773223055187708"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_gnn",
+      "file": "runs/geant_d3_congested_tradeoff_gnn.json",
+      "sha256": "2f067b6d3887546cd765714219980a2405a03452b195f374eadaab3296388124"
+    },
+    {
+      "run_id": "geant_d3_congested_tradeoff_persistence",
+      "file": "runs/geant_d3_congested_tradeoff_persistence.json",
+      "sha256": "b633021b12055bf6b60b5508c7309b6a82daeb4d6cd21b52d9dd4584ac24f685"
+    },
+    {
+      "run_id": "geant_d3_congested_service_first_gnn",
+      "file": "runs/geant_d3_congested_service_first_gnn.json",
+      "sha256": "33e0d4552a429e510aa52f630ed09df3d2b9aeb42285f69a03e230b3ed760869"
+    },
+    {
+      "run_id": "geant_d3_congested_service_first_persistence",
+      "file": "runs/geant_d3_congested_service_first_persistence.json",
+      "sha256": "d6ebc93f4afa38dce7ec973ac9aa20a2717246d29391d2f2f35d04f899fefeea"
+    },
+    {
+      "run_id": "geant_d3_congested_oracle_current_bin",
+      "file": "runs/geant_d3_congested_oracle_current_bin.json",
+      "sha256": "00ca3c913aca84f6eb42fdc34ddc7026d93746e075e078c6c441bf14b41dffe6"
+    },
+    {
+      "run_id": "geant_d3_bursty_shortest_path",
+      "file": "runs/geant_d3_bursty_shortest_path.json",
+      "sha256": "f3467eb6f7f298f0f00cd647d71eec0b34e6e399d671cc9df892fa22c76f32c7"
+    },
+    {
+      "run_id": "geant_d3_bursty_reactive_carbon",
+      "file": "runs/geant_d3_bursty_reactive_carbon.json",
+      "sha256": "2b2eec985917e7c86978dca2fc93f19fac3fda0efc26ac36afba7f2445d12e6a"
+    },
+    {
+      "run_id": "geant_d3_bursty_predictive_te",
+      "file": "runs/geant_d3_bursty_predictive_te.json",
+      "sha256": "c021ff24ab37f3710c6b6d0fedf9da1aa20f6b05ed1fd2a3e5405fae5d802c55"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_gnn",
+      "file": "runs/geant_d3_bursty_tradeoff_gnn.json",
+      "sha256": "1f9a40280894353506e60cdebc285db688d3462c46a19aaebc14bdec1e6ef0ff"
+    },
+    {
+      "run_id": "geant_d3_bursty_tradeoff_persistence",
+      "file": "runs/geant_d3_bursty_tradeoff_persistence.json",
+      "sha256": "8897893055ca9eaa617d8c5637b3c2d13dba858560caea831da14c5cbca6e331"
+    },
+    {
+      "run_id": "geant_d3_bursty_service_first_gnn",
+      "file": "runs/geant_d3_bursty_service_first_gnn.json",
+      "sha256": "ecf5af114154464a8fbc6a992c8a43fbadfd38908920e1b5a9593f6478233784"
+    },
+    {
+      "run_id": "geant_d3_bursty_service_first_persistence",
+      "file": "runs/geant_d3_bursty_service_first_persistence.json",
+      "sha256": "42c31ef469c9b153edbbd97c93fa1724db6baf6a19c5ab5f0978e9bf9e793e87"
+    },
+    {
+      "run_id": "geant_d3_bursty_oracle_current_bin",
+      "file": "runs/geant_d3_bursty_oracle_current_bin.json",
+      "sha256": "ee081e7a6768ddf531f883c0ce51f3d0ba78c5e1514708aa02406ada78bc442e"
+    },
+    {
+      "run_id": "geant_d4_normal_shortest_path",
+      "file": "runs/geant_d4_normal_shortest_path.json",
+      "sha256": "1a2e184679de3d187138df6c755efdf339c65d64ca94ac9d81dadcb0fe77873f"
+    },
+    {
+      "run_id": "geant_d4_normal_reactive_carbon",
+      "file": "runs/geant_d4_normal_reactive_carbon.json",
+      "sha256": "135ff8267a015a0d8760ee6f984191063ee1fcbb205a7b5d46f907ade8427068"
+    },
+    {
+      "run_id": "geant_d4_normal_predictive_te",
+      "file": "runs/geant_d4_normal_predictive_te.json",
+      "sha256": "a575e3e9bb67231dc6bde5755f1c4bdd8885d930f96a309fef18cb5d1a9cd8c0"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_gnn",
+      "file": "runs/geant_d4_normal_tradeoff_gnn.json",
+      "sha256": "ab09273d10427957dd8adcda15a3c0cc0032e2b7547ecd8cf0f1f89ba3f37168"
+    },
+    {
+      "run_id": "geant_d4_normal_tradeoff_persistence",
+      "file": "runs/geant_d4_normal_tradeoff_persistence.json",
+      "sha256": "e2c0c7d134fd79bab3a7b578e05248011a6cc78ddc0b49b935d2d3592086c150"
+    },
+    {
+      "run_id": "geant_d4_normal_service_first_gnn",
+      "file": "runs/geant_d4_normal_service_first_gnn.json",
+      "sha256": "a36e28ae43be4df7b23e90fc5555bb63c5d807e40c6c9ab9677005e0edad9040"
+    },
+    {
+      "run_id": "geant_d4_normal_service_first_persistence",
+      "file": "runs/geant_d4_normal_service_first_persistence.json",
+      "sha256": "1e1bc7d63b4152eba1b4c8fdc31e5f034cf53fc5eaf12ae7557e1f9b41a5a6f5"
+    },
+    {
+      "run_id": "geant_d4_normal_oracle_current_bin",
+      "file": "runs/geant_d4_normal_oracle_current_bin.json",
+      "sha256": "4d6aec473105e6a7d199999f4a1af7277da6c9275e12f758c179a4e05890f291"
+    },
+    {
+      "run_id": "geant_d4_congested_shortest_path",
+      "file": "runs/geant_d4_congested_shortest_path.json",
+      "sha256": "24a70b9bb6913a2cfeb19b93123ad97dd2365a75f3f3a06ccca5476e55ac9614"
+    },
+    {
+      "run_id": "geant_d4_congested_reactive_carbon",
+      "file": "runs/geant_d4_congested_reactive_carbon.json",
+      "sha256": "b6b4903c2af6543d3be3b404cdf163c7efe38dffb85f2d1cc4c89767802695c0"
+    },
+    {
+      "run_id": "geant_d4_congested_predictive_te",
+      "file": "runs/geant_d4_congested_predictive_te.json",
+      "sha256": "e03846307d9caf1c730a38fbea625508e9114f1a6a9a52a46bc5b1d96c3dc176"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_gnn",
+      "file": "runs/geant_d4_congested_tradeoff_gnn.json",
+      "sha256": "da407f1341b0859311afc16a07c45d77d4dfcbd0b555a74cf1190274919f9cdf"
+    },
+    {
+      "run_id": "geant_d4_congested_tradeoff_persistence",
+      "file": "runs/geant_d4_congested_tradeoff_persistence.json",
+      "sha256": "2256c67b169c503ce263a880f50995e962de62adf6f63487a6fa3e3e2e36bb0d"
+    },
+    {
+      "run_id": "geant_d4_congested_service_first_gnn",
+      "file": "runs/geant_d4_congested_service_first_gnn.json",
+      "sha256": "8e5a6acf0cb7680914507a48da41519f3503ac0317a32534f19a63377c2d3762"
+    },
+    {
+      "run_id": "geant_d4_congested_service_first_persistence",
+      "file": "runs/geant_d4_congested_service_first_persistence.json",
+      "sha256": "3971c846a9a00bab99bb65cf2ba5fa1cfcf74b45c8f986dae8261f4a54cd2793"
+    },
+    {
+      "run_id": "geant_d4_congested_oracle_current_bin",
+      "file": "runs/geant_d4_congested_oracle_current_bin.json",
+      "sha256": "d82f553b603e7747fd8ddba2af9b9892e09dc3e562691fedfa94b60ff21669e3"
+    },
+    {
+      "run_id": "geant_d4_bursty_shortest_path",
+      "file": "runs/geant_d4_bursty_shortest_path.json",
+      "sha256": "2f21474cc9a5f2d7f26614185a5424bd059ef31d7049c9ea1601ea02616152a9"
+    },
+    {
+      "run_id": "geant_d4_bursty_reactive_carbon",
+      "file": "runs/geant_d4_bursty_reactive_carbon.json",
+      "sha256": "ad879674d4203375795db07f417f316d6f18ea9eaa81bf00527cd367297bb314"
+    },
+    {
+      "run_id": "geant_d4_bursty_predictive_te",
+      "file": "runs/geant_d4_bursty_predictive_te.json",
+      "sha256": "b111da385defc32f782cadc543eb2fb6b045a3228274fd10b0032ef210eb5f66"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_gnn",
+      "file": "runs/geant_d4_bursty_tradeoff_gnn.json",
+      "sha256": "38a0df335a57d36cbc22795a8e38e752afa9908d7465ea997ecf0d8721d84993"
+    },
+    {
+      "run_id": "geant_d4_bursty_tradeoff_persistence",
+      "file": "runs/geant_d4_bursty_tradeoff_persistence.json",
+      "sha256": "0e28e744ed09ad1bd38684fe8bf23cc0a4924bee2cc08527fd36af641991e035"
+    },
+    {
+      "run_id": "geant_d4_bursty_service_first_gnn",
+      "file": "runs/geant_d4_bursty_service_first_gnn.json",
+      "sha256": "f251743fe5511b6074778bf4fa508a5a47322d0fec98d1ede755838b2ff3a7a4"
+    },
+    {
+      "run_id": "geant_d4_bursty_service_first_persistence",
+      "file": "runs/geant_d4_bursty_service_first_persistence.json",
+      "sha256": "42e874e32121986f651e1afa5ad169a7b1c4ad83908e1b582e943f8375fe4306"
+    },
+    {
+      "run_id": "geant_d4_bursty_oracle_current_bin",
+      "file": "runs/geant_d4_bursty_oracle_current_bin.json",
+      "sha256": "f6aae3bd8c3adfdeb5e331779f842f068825415ac78b334693f231633926ccf9"
+    },
+    {
+      "run_id": "geant_d5_normal_shortest_path",
+      "file": "runs/geant_d5_normal_shortest_path.json",
+      "sha256": "b860ae0a7a7963c4d1e1537a06dec91b2e28b3541f962a07ff05813db00b0682"
+    },
+    {
+      "run_id": "geant_d5_normal_reactive_carbon",
+      "file": "runs/geant_d5_normal_reactive_carbon.json",
+      "sha256": "75b5aa3b79f7bfb4b8df185c06d276256c9e7b61b37edbedfdb320e3daf727e5"
+    },
+    {
+      "run_id": "geant_d5_normal_predictive_te",
+      "file": "runs/geant_d5_normal_predictive_te.json",
+      "sha256": "2a72bef38345a19012f9b5515b87f7b32931b65171237331b5685ab92283c71f"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_gnn",
+      "file": "runs/geant_d5_normal_tradeoff_gnn.json",
+      "sha256": "617e05cf3af35d25f2a3b282bdc5e415838680ba091b6b3c618550feff063e42"
+    },
+    {
+      "run_id": "geant_d5_normal_tradeoff_persistence",
+      "file": "runs/geant_d5_normal_tradeoff_persistence.json",
+      "sha256": "d6210928a67c4dab33d4494a6dd7d95e0c942824f69c9265ad80e1e2592e4e78"
+    },
+    {
+      "run_id": "geant_d5_normal_service_first_gnn",
+      "file": "runs/geant_d5_normal_service_first_gnn.json",
+      "sha256": "afc5ce54bf336f28cace371b0927deb12c9163897eacc5292316fbe381e3a933"
+    },
+    {
+      "run_id": "geant_d5_normal_service_first_persistence",
+      "file": "runs/geant_d5_normal_service_first_persistence.json",
+      "sha256": "bf92c9e03205a23b24cb50d962ae22b424229b58079c8c4cfcf5b9324d768311"
+    },
+    {
+      "run_id": "geant_d5_normal_oracle_current_bin",
+      "file": "runs/geant_d5_normal_oracle_current_bin.json",
+      "sha256": "7af1f3eb88d57c02d2bc0870d8c736519ac1eb18d2adddede7cf455e2494e38f"
+    },
+    {
+      "run_id": "geant_d5_congested_shortest_path",
+      "file": "runs/geant_d5_congested_shortest_path.json",
+      "sha256": "e263b41cc09b8633a4ace8cb0828445ec8c38fde7a68ee37de7f22b1b60fc29e"
+    },
+    {
+      "run_id": "geant_d5_congested_reactive_carbon",
+      "file": "runs/geant_d5_congested_reactive_carbon.json",
+      "sha256": "dcc17a715c4fc128a7072e594eddfb2796ecd6e5d520c4e7338ca881af1638c3"
+    },
+    {
+      "run_id": "geant_d5_congested_predictive_te",
+      "file": "runs/geant_d5_congested_predictive_te.json",
+      "sha256": "d61ed2faac4bee422c69fd7a4559fb09f42508fcd6fa2febf8f142376a742cd8"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_gnn",
+      "file": "runs/geant_d5_congested_tradeoff_gnn.json",
+      "sha256": "8a3d903b82d9d6df3553241eb9dbf9ff58cf1547b637a61dd2ddacf3b9a231f4"
+    },
+    {
+      "run_id": "geant_d5_congested_tradeoff_persistence",
+      "file": "runs/geant_d5_congested_tradeoff_persistence.json",
+      "sha256": "a3e5e8271d05906eb85f85b487d22de167676ad4bd3aaeba7014b9907eef3224"
+    },
+    {
+      "run_id": "geant_d5_congested_service_first_gnn",
+      "file": "runs/geant_d5_congested_service_first_gnn.json",
+      "sha256": "e8c48febe2aeb2219298c3c609c7758eefb3d34303340b606b26089f52f97f65"
+    },
+    {
+      "run_id": "geant_d5_congested_service_first_persistence",
+      "file": "runs/geant_d5_congested_service_first_persistence.json",
+      "sha256": "b5a11693138284416c70695ea771d4854ba10135267e21ed810543155326ee33"
+    },
+    {
+      "run_id": "geant_d5_congested_oracle_current_bin",
+      "file": "runs/geant_d5_congested_oracle_current_bin.json",
+      "sha256": "9f97299759d23604933173fd16abe2dbf270abd81fb4970bffb60a7652f5c5cc"
+    },
+    {
+      "run_id": "geant_d5_bursty_shortest_path",
+      "file": "runs/geant_d5_bursty_shortest_path.json",
+      "sha256": "5cea7aea8fdfff2a7790e8ff43e5135b439a88fef7ce0410da20df9df33b9833"
+    },
+    {
+      "run_id": "geant_d5_bursty_reactive_carbon",
+      "file": "runs/geant_d5_bursty_reactive_carbon.json",
+      "sha256": "1ded30cfc16b3b8287021b163870ff0deaf8324a8f1c792f6a1b617c9e8de287"
+    },
+    {
+      "run_id": "geant_d5_bursty_predictive_te",
+      "file": "runs/geant_d5_bursty_predictive_te.json",
+      "sha256": "cc49b62ec73d23f31e9bc00b979410ad9429ed79c82f63d01c9abbc15dbfbe01"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_gnn",
+      "file": "runs/geant_d5_bursty_tradeoff_gnn.json",
+      "sha256": "234c617c970f6eae27f4ea39dd6ca75d7823d17f3d55ff3d2f7fdc0609cafe17"
+    },
+    {
+      "run_id": "geant_d5_bursty_tradeoff_persistence",
+      "file": "runs/geant_d5_bursty_tradeoff_persistence.json",
+      "sha256": "2e41abe38f976dcf58012cdbece0e76f034258f67939f47657116583674a353b"
+    },
+    {
+      "run_id": "geant_d5_bursty_service_first_gnn",
+      "file": "runs/geant_d5_bursty_service_first_gnn.json",
+      "sha256": "3c0d61cdb90bdc08d30deda998f869ad95a08577e0b610395f6eebc177d6f0fc"
+    },
+    {
+      "run_id": "geant_d5_bursty_service_first_persistence",
+      "file": "runs/geant_d5_bursty_service_first_persistence.json",
+      "sha256": "d6dac0cf66593f8d391eb04fb3e319c8552ecfc329b6ea89decfa321e6dfba74"
+    },
+    {
+      "run_id": "geant_d5_bursty_oracle_current_bin",
+      "file": "runs/geant_d5_bursty_oracle_current_bin.json",
+      "sha256": "a13a2d6def7c816f96e3a336e6637b4fe8c2dc4e6ba8a2f50e10cf2666924dbe"
+    },
+    {
+      "run_id": "geant_d6_normal_shortest_path",
+      "file": "runs/geant_d6_normal_shortest_path.json",
+      "sha256": "35f0276eef5ff241107d180cfe3f838129ebd766d3a84cce0032b545829a27ef"
+    },
+    {
+      "run_id": "geant_d6_normal_reactive_carbon",
+      "file": "runs/geant_d6_normal_reactive_carbon.json",
+      "sha256": "0119d7fdb3a3767a7b5fda0f97b50e3e2c9bd2bfc2a8ae15a1f5b0693cee692c"
+    },
+    {
+      "run_id": "geant_d6_normal_predictive_te",
+      "file": "runs/geant_d6_normal_predictive_te.json",
+      "sha256": "72f7565dc0a2dab97e270b06d6536dccd190344cd6ed59473af264d949178f2f"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_gnn",
+      "file": "runs/geant_d6_normal_tradeoff_gnn.json",
+      "sha256": "13a302e8343c24ca7b75ccdf3501249158af2ab6adbe4366aa74cfc6d801f4fa"
+    },
+    {
+      "run_id": "geant_d6_normal_tradeoff_persistence",
+      "file": "runs/geant_d6_normal_tradeoff_persistence.json",
+      "sha256": "86add6c7d85a9890a3b14392b4fd9bc44fe79b2637a22da9086b91f7bb1b8f1e"
+    },
+    {
+      "run_id": "geant_d6_normal_service_first_gnn",
+      "file": "runs/geant_d6_normal_service_first_gnn.json",
+      "sha256": "ab76adab62caf217ca790910f5a43151d755563c1333dfe99e90c8259e7fa31d"
+    },
+    {
+      "run_id": "geant_d6_normal_service_first_persistence",
+      "file": "runs/geant_d6_normal_service_first_persistence.json",
+      "sha256": "a6f89907375cdc26f3c15a5e094da8870b11869a11919726b0e8d6608ef28825"
+    },
+    {
+      "run_id": "geant_d6_normal_oracle_current_bin",
+      "file": "runs/geant_d6_normal_oracle_current_bin.json",
+      "sha256": "d1cce3c179c6414439e3b2808e2f14c68bf5de489163d6792a5266f2d4e7ccae"
+    },
+    {
+      "run_id": "geant_d6_congested_shortest_path",
+      "file": "runs/geant_d6_congested_shortest_path.json",
+      "sha256": "4ba1ff9a23da8c81341deb1fb0d50b8aef9208581704512651cab66916c97a92"
+    },
+    {
+      "run_id": "geant_d6_congested_reactive_carbon",
+      "file": "runs/geant_d6_congested_reactive_carbon.json",
+      "sha256": "d93b2edcf9b460374d6100d136f5e64c79bfa1da18fdb8067b4f29b093b7554e"
+    },
+    {
+      "run_id": "geant_d6_congested_predictive_te",
+      "file": "runs/geant_d6_congested_predictive_te.json",
+      "sha256": "1ed1bdeca1382bf1a219aaa150c5fd15b59530835eee2b37ad847d7860e09f5d"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_gnn",
+      "file": "runs/geant_d6_congested_tradeoff_gnn.json",
+      "sha256": "acfbf3934eef542a41fbcf70ba163e477c24fa0664504b16c3dc4564b949a3b1"
+    },
+    {
+      "run_id": "geant_d6_congested_tradeoff_persistence",
+      "file": "runs/geant_d6_congested_tradeoff_persistence.json",
+      "sha256": "5459249e0e57abd7a2bdf668acbac329a041471129030715c4ddf29fce57a156"
+    },
+    {
+      "run_id": "geant_d6_congested_service_first_gnn",
+      "file": "runs/geant_d6_congested_service_first_gnn.json",
+      "sha256": "396543999e7a488a1095805272ca979f01702f019652b2dcf7588a985b79de12"
+    },
+    {
+      "run_id": "geant_d6_congested_service_first_persistence",
+      "file": "runs/geant_d6_congested_service_first_persistence.json",
+      "sha256": "65b3f5b9f49daca27aa207420a9aed0a3a17213f9fcaac6514d2286b3ccd56fa"
+    },
+    {
+      "run_id": "geant_d6_congested_oracle_current_bin",
+      "file": "runs/geant_d6_congested_oracle_current_bin.json",
+      "sha256": "77649aff0d3172b8e73d7e8c0fb3c6a1da43702ef3548ca243889682fa9fe401"
+    },
+    {
+      "run_id": "geant_d6_bursty_shortest_path",
+      "file": "runs/geant_d6_bursty_shortest_path.json",
+      "sha256": "8e8f566d89f10c7aa48183bbc2038fa7abcaac365547238b5a010b95b628d01f"
+    },
+    {
+      "run_id": "geant_d6_bursty_reactive_carbon",
+      "file": "runs/geant_d6_bursty_reactive_carbon.json",
+      "sha256": "24e4cfde0d21727770ccb3eef5487c59c2728d9afc26f733c5a03809a93683fc"
+    },
+    {
+      "run_id": "geant_d6_bursty_predictive_te",
+      "file": "runs/geant_d6_bursty_predictive_te.json",
+      "sha256": "59770163dfcf99e2f81f3754539a85f5c1e860841d367b6cda8560e936e08250"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_gnn",
+      "file": "runs/geant_d6_bursty_tradeoff_gnn.json",
+      "sha256": "21de06ae1343c8fccad6043b407fbc09e8015dcec29bf65cf319aa50355f785e"
+    },
+    {
+      "run_id": "geant_d6_bursty_tradeoff_persistence",
+      "file": "runs/geant_d6_bursty_tradeoff_persistence.json",
+      "sha256": "b3fa006733c9018121ad77e68f80e408fa025758578d3cd73f1103c8d8569d3c"
+    },
+    {
+      "run_id": "geant_d6_bursty_service_first_gnn",
+      "file": "runs/geant_d6_bursty_service_first_gnn.json",
+      "sha256": "5053a07ea4154c766388191de80a7e296ebb2feda2e687a55a7e94b73804e4bb"
+    },
+    {
+      "run_id": "geant_d6_bursty_service_first_persistence",
+      "file": "runs/geant_d6_bursty_service_first_persistence.json",
+      "sha256": "be674d7ea70d7f9fd6042b4cfff749eeb0f92d45bced4cb7a745ab71979bbd48"
+    },
+    {
+      "run_id": "geant_d6_bursty_oracle_current_bin",
+      "file": "runs/geant_d6_bursty_oracle_current_bin.json",
+      "sha256": "717c8ff2b4b4e665653f104daa64a935e21c5e8f86cedd45d1581dd70b0e5ff4"
+    },
+    {
+      "run_id": "abilene_d0_normal_shortest_path",
+      "file": "runs/abilene_d0_normal_shortest_path.json",
+      "sha256": "56f10c4152ed768f182bac93b991d9deb34740de92a142bb198519c7f6975887"
+    },
+    {
+      "run_id": "abilene_d0_normal_reactive_carbon",
+      "file": "runs/abilene_d0_normal_reactive_carbon.json",
+      "sha256": "649f56d2d59bce9525b84e54be6add32d0733248b5e05596dbd2dc7ff725b639"
+    },
+    {
+      "run_id": "abilene_d0_normal_predictive_te",
+      "file": "runs/abilene_d0_normal_predictive_te.json",
+      "sha256": "5767a9caa75a79672de3604840cdaa2da70667be182fa01dfa5cdf40cc9ad7d7"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_gnn",
+      "file": "runs/abilene_d0_normal_tradeoff_gnn.json",
+      "sha256": "1c566df2e9a9c1ad1ae18b27747f9a25f2fcdaf6245eb151cda13aaddc94d6bc"
+    },
+    {
+      "run_id": "abilene_d0_normal_tradeoff_persistence",
+      "file": "runs/abilene_d0_normal_tradeoff_persistence.json",
+      "sha256": "22705a5bdab7b64542754c44a9560d2b142c7c085e206d8b88fb35785c32f929"
+    },
+    {
+      "run_id": "abilene_d0_normal_service_first_gnn",
+      "file": "runs/abilene_d0_normal_service_first_gnn.json",
+      "sha256": "c20ccd374467c1f977eb4e0ca294002282f45e320ea57b36c9dea7a7053b7ccd"
+    },
+    {
+      "run_id": "abilene_d0_normal_service_first_persistence",
+      "file": "runs/abilene_d0_normal_service_first_persistence.json",
+      "sha256": "7b20f14b8117a2672f3e754d33d4ad943f65a86dd6b0e4fc733985547d1d6d1b"
+    },
+    {
+      "run_id": "abilene_d0_normal_oracle_current_bin",
+      "file": "runs/abilene_d0_normal_oracle_current_bin.json",
+      "sha256": "1861f86b90b78eca6d750df298517ed6d54a9c77a27a4ee76f284ec22dd07103"
+    },
+    {
+      "run_id": "abilene_d0_congested_shortest_path",
+      "file": "runs/abilene_d0_congested_shortest_path.json",
+      "sha256": "6fe608d74b18c0aaa44725effe3fc2742d648ea3adb9adf9fd28e624f0620b48"
+    },
+    {
+      "run_id": "abilene_d0_congested_reactive_carbon",
+      "file": "runs/abilene_d0_congested_reactive_carbon.json",
+      "sha256": "0174f7608663450742c8ea79aae5a29167f716832ef3356787f3404118d95a17"
+    },
+    {
+      "run_id": "abilene_d0_congested_predictive_te",
+      "file": "runs/abilene_d0_congested_predictive_te.json",
+      "sha256": "8eb1aa9f88bf51d56be2a1b2f0a50ed0ac2ab440fb2d6460cc6a9763d43b5f58"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_gnn",
+      "file": "runs/abilene_d0_congested_tradeoff_gnn.json",
+      "sha256": "a616e2c2ceea68007629e83d7b9548d1412d94c72a1de51629f15d690d9d2d29"
+    },
+    {
+      "run_id": "abilene_d0_congested_tradeoff_persistence",
+      "file": "runs/abilene_d0_congested_tradeoff_persistence.json",
+      "sha256": "9ffc94487ad7137f9253a300a503345b4cd996552a2698c19aa6947202694aaf"
+    },
+    {
+      "run_id": "abilene_d0_congested_service_first_gnn",
+      "file": "runs/abilene_d0_congested_service_first_gnn.json",
+      "sha256": "f5c40978422c4292da1fd9d3bc437eb66d7d106004267120cfc8d403402bb9f5"
+    },
+    {
+      "run_id": "abilene_d0_congested_service_first_persistence",
+      "file": "runs/abilene_d0_congested_service_first_persistence.json",
+      "sha256": "23e860d6693a8627a48b1518a993086f60b36445f25712857ebab1a7fa97eba4"
+    },
+    {
+      "run_id": "abilene_d0_congested_oracle_current_bin",
+      "file": "runs/abilene_d0_congested_oracle_current_bin.json",
+      "sha256": "3455dc5c5b28d8fcb2c25210e76da3ad7efc9a76a6620d322ee848bb13e75740"
+    },
+    {
+      "run_id": "abilene_d0_bursty_shortest_path",
+      "file": "runs/abilene_d0_bursty_shortest_path.json",
+      "sha256": "4a4f5e7ac90381c70b659205f66dfd0571e51c97b8d17d10d5add82877700746"
+    },
+    {
+      "run_id": "abilene_d0_bursty_reactive_carbon",
+      "file": "runs/abilene_d0_bursty_reactive_carbon.json",
+      "sha256": "2c60025ff1ebb937f37794e293fb38a5927cc7955ca22591ea479e65f29da34b"
+    },
+    {
+      "run_id": "abilene_d0_bursty_predictive_te",
+      "file": "runs/abilene_d0_bursty_predictive_te.json",
+      "sha256": "aeae4466d2e3961ee6751f999ef956e4dd5b32fa65a621005a7f77d5dc403411"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d0_bursty_tradeoff_gnn.json",
+      "sha256": "ec5576a353bcb4122cf16c6f72e4e0d52ab27241e727f419efb66a95df3a6ae7"
+    },
+    {
+      "run_id": "abilene_d0_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d0_bursty_tradeoff_persistence.json",
+      "sha256": "5a7d827506ed40ce95b8d36f3bf26c31e0079cb69058493ba9e6b71faec319da"
+    },
+    {
+      "run_id": "abilene_d0_bursty_service_first_gnn",
+      "file": "runs/abilene_d0_bursty_service_first_gnn.json",
+      "sha256": "02a18b188ca1442ed93de706ef8e9629093b94bd362f631723a82220c65ce7ea"
+    },
+    {
+      "run_id": "abilene_d0_bursty_service_first_persistence",
+      "file": "runs/abilene_d0_bursty_service_first_persistence.json",
+      "sha256": "3a12c2f73253cc003acd4af705b94a6fdbe6df5fe200809017a46c6a475f8b07"
+    },
+    {
+      "run_id": "abilene_d0_bursty_oracle_current_bin",
+      "file": "runs/abilene_d0_bursty_oracle_current_bin.json",
+      "sha256": "bc7420bebe7549fa6ec90678d0a6330a7121529d69ba8b30c277ecf96379fd59"
+    },
+    {
+      "run_id": "abilene_d1_normal_shortest_path",
+      "file": "runs/abilene_d1_normal_shortest_path.json",
+      "sha256": "285ed021791665e64d2087d1daa713c1149905f23384f56a317445e59ac23f39"
+    },
+    {
+      "run_id": "abilene_d1_normal_reactive_carbon",
+      "file": "runs/abilene_d1_normal_reactive_carbon.json",
+      "sha256": "79a64e4e09b6d2fb6ecd311397a3da1d4726a0ee91db474fecdb48531a10dc75"
+    },
+    {
+      "run_id": "abilene_d1_normal_predictive_te",
+      "file": "runs/abilene_d1_normal_predictive_te.json",
+      "sha256": "8a0e6ce6b9b14997fe3241205f27aa3efedb251ca8e723612e7033307f067518"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_gnn",
+      "file": "runs/abilene_d1_normal_tradeoff_gnn.json",
+      "sha256": "c8fcb485e7c4fe156568941634108fd6c780936e25eafca7295518cad81c72f6"
+    },
+    {
+      "run_id": "abilene_d1_normal_tradeoff_persistence",
+      "file": "runs/abilene_d1_normal_tradeoff_persistence.json",
+      "sha256": "3089c27944fe41e6e5ffe137e5beff8d0b85300cbf4789a261f1f7244d347478"
+    },
+    {
+      "run_id": "abilene_d1_normal_service_first_gnn",
+      "file": "runs/abilene_d1_normal_service_first_gnn.json",
+      "sha256": "f9279d357dfdd675f94f8f3bca11f24fcf62998a9a0a9d868fcd8c450ea95209"
+    },
+    {
+      "run_id": "abilene_d1_normal_service_first_persistence",
+      "file": "runs/abilene_d1_normal_service_first_persistence.json",
+      "sha256": "87600d1349119167cde1948fb535496a9c567f74a7f7cbce0e8ea28c681be26c"
+    },
+    {
+      "run_id": "abilene_d1_normal_oracle_current_bin",
+      "file": "runs/abilene_d1_normal_oracle_current_bin.json",
+      "sha256": "14bb2cb1cb47931d63961147551b4b8426ea32a12ac9ab1f8c1cb3395c089336"
+    },
+    {
+      "run_id": "abilene_d1_congested_shortest_path",
+      "file": "runs/abilene_d1_congested_shortest_path.json",
+      "sha256": "1c7428fe3c6b287f4d995e62c24923835faa350e92a633c48a096396369a2bf6"
+    },
+    {
+      "run_id": "abilene_d1_congested_reactive_carbon",
+      "file": "runs/abilene_d1_congested_reactive_carbon.json",
+      "sha256": "0bacea840131ff62d78e21b7c52d962a5f09a2251d49cba6bdb89f09fee75d93"
+    },
+    {
+      "run_id": "abilene_d1_congested_predictive_te",
+      "file": "runs/abilene_d1_congested_predictive_te.json",
+      "sha256": "d1a1389d02c61b433fa7f490dea3d119c4616690acc03a3d31871f37e1c273da"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_gnn",
+      "file": "runs/abilene_d1_congested_tradeoff_gnn.json",
+      "sha256": "fcf6a450b10bf49dcbe56bac5ee5431ee4904215539c0becd6819606ab5aa5ca"
+    },
+    {
+      "run_id": "abilene_d1_congested_tradeoff_persistence",
+      "file": "runs/abilene_d1_congested_tradeoff_persistence.json",
+      "sha256": "354a5caa7a7b4d1327ede676dfbf92eb9c06cf1497a81c197f24396fbd8f6e4b"
+    },
+    {
+      "run_id": "abilene_d1_congested_service_first_gnn",
+      "file": "runs/abilene_d1_congested_service_first_gnn.json",
+      "sha256": "259a55137e4ac3f7a92c9ddeb87be442e649af7134fbe7bfc9595537cf38d67b"
+    },
+    {
+      "run_id": "abilene_d1_congested_service_first_persistence",
+      "file": "runs/abilene_d1_congested_service_first_persistence.json",
+      "sha256": "21af1307d6fee97c454c7386937637ea46f05c60cb6ade6b0f0b9e8834524f3a"
+    },
+    {
+      "run_id": "abilene_d1_congested_oracle_current_bin",
+      "file": "runs/abilene_d1_congested_oracle_current_bin.json",
+      "sha256": "3d081cad7ffbb3ac20f6767c04d80f1360f29d13c4db2c1e41a1cf4e89e88c71"
+    },
+    {
+      "run_id": "abilene_d1_bursty_shortest_path",
+      "file": "runs/abilene_d1_bursty_shortest_path.json",
+      "sha256": "51f09c2aee53cdb98ceef2fa19398057fc17f034335cfe46d19ed47bbaf92b59"
+    },
+    {
+      "run_id": "abilene_d1_bursty_reactive_carbon",
+      "file": "runs/abilene_d1_bursty_reactive_carbon.json",
+      "sha256": "909d40e59455c2d5b2fcffb013a251966303a4e7806095369a518232886f7875"
+    },
+    {
+      "run_id": "abilene_d1_bursty_predictive_te",
+      "file": "runs/abilene_d1_bursty_predictive_te.json",
+      "sha256": "90c6bf7cff28fc0e1526dea3471060410b8cb12dad63897de14e23f2e159519e"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d1_bursty_tradeoff_gnn.json",
+      "sha256": "bbf664600bc386f98f6c0f8fb9001cb10746ffd22154893ba9363a4ca2e96e75"
+    },
+    {
+      "run_id": "abilene_d1_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d1_bursty_tradeoff_persistence.json",
+      "sha256": "e620b61b6d3e4e0c5b16f54a76f832dfcd79abdf79ade343055a68f18c48f6ad"
+    },
+    {
+      "run_id": "abilene_d1_bursty_service_first_gnn",
+      "file": "runs/abilene_d1_bursty_service_first_gnn.json",
+      "sha256": "b660a087e36cd509bced487ec58801aeb3b17e896c9a8e384b5bfeeb649eb0dd"
+    },
+    {
+      "run_id": "abilene_d1_bursty_service_first_persistence",
+      "file": "runs/abilene_d1_bursty_service_first_persistence.json",
+      "sha256": "1bf50a564b76e56c1a34f3c20067434459fe44eb033e62a9cfb96783eca091dd"
+    },
+    {
+      "run_id": "abilene_d1_bursty_oracle_current_bin",
+      "file": "runs/abilene_d1_bursty_oracle_current_bin.json",
+      "sha256": "352f5d98274c7ad110cb092fdaf5c533b578c286067d22df59235085cdca8a8f"
+    },
+    {
+      "run_id": "abilene_d2_normal_shortest_path",
+      "file": "runs/abilene_d2_normal_shortest_path.json",
+      "sha256": "f45e1a04abf5ca21fe1d0cdea0ed27f870339641fa6e9bd706875ffd90dda112"
+    },
+    {
+      "run_id": "abilene_d2_normal_reactive_carbon",
+      "file": "runs/abilene_d2_normal_reactive_carbon.json",
+      "sha256": "e323d5a034e52814eccbc58f53a00d8c51a7c0c55d8bc40f0420f5839cc0baba"
+    },
+    {
+      "run_id": "abilene_d2_normal_predictive_te",
+      "file": "runs/abilene_d2_normal_predictive_te.json",
+      "sha256": "fd98ed2cb5b4835326345b7a94eb55e7c2891d23fa5468700ddf3fa3dedca1b1"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_gnn",
+      "file": "runs/abilene_d2_normal_tradeoff_gnn.json",
+      "sha256": "c838163891e52febf9f4e65f69527d166258e73555081350ff016a8476bfab6f"
+    },
+    {
+      "run_id": "abilene_d2_normal_tradeoff_persistence",
+      "file": "runs/abilene_d2_normal_tradeoff_persistence.json",
+      "sha256": "af44a09a0a2e85d64b9def253038fb16b03325715883c25b6789313bbbd6ac66"
+    },
+    {
+      "run_id": "abilene_d2_normal_service_first_gnn",
+      "file": "runs/abilene_d2_normal_service_first_gnn.json",
+      "sha256": "a5817babe0688c13a797cee6e15ad28d574b95126a7146bd56760ab6a9536b8e"
+    },
+    {
+      "run_id": "abilene_d2_normal_service_first_persistence",
+      "file": "runs/abilene_d2_normal_service_first_persistence.json",
+      "sha256": "7c03e0ae4f0058a89e9c8b8fa742f3bd8e925afaaadcaa158bd0fb494f430a77"
+    },
+    {
+      "run_id": "abilene_d2_normal_oracle_current_bin",
+      "file": "runs/abilene_d2_normal_oracle_current_bin.json",
+      "sha256": "516f5c8659ca1adaee6a7717750707240c1ded9f6b6f610525f3f56c19bce751"
+    },
+    {
+      "run_id": "abilene_d2_congested_shortest_path",
+      "file": "runs/abilene_d2_congested_shortest_path.json",
+      "sha256": "33b61d747d72e0e77daef454fd5bbeca9348bc09a9c748bf0bbd3474ea9c16bd"
+    },
+    {
+      "run_id": "abilene_d2_congested_reactive_carbon",
+      "file": "runs/abilene_d2_congested_reactive_carbon.json",
+      "sha256": "5691da51575d7c2a8ee93df9f8abb7396323a267d17b12d7953f87eaf3fcc9f2"
+    },
+    {
+      "run_id": "abilene_d2_congested_predictive_te",
+      "file": "runs/abilene_d2_congested_predictive_te.json",
+      "sha256": "dfc95905f9f36271680816078ddaab7c1d52a2dc0296637ad2c15bb5e352a8bb"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_gnn",
+      "file": "runs/abilene_d2_congested_tradeoff_gnn.json",
+      "sha256": "a9562863b11f6c829ba26921e0fa0342061abd9f160fc6d65d986120e556d45b"
+    },
+    {
+      "run_id": "abilene_d2_congested_tradeoff_persistence",
+      "file": "runs/abilene_d2_congested_tradeoff_persistence.json",
+      "sha256": "e49819938a3e46ad8c26bce01e7a933b38f22e8902b9004a73f5d7ef00529cca"
+    },
+    {
+      "run_id": "abilene_d2_congested_service_first_gnn",
+      "file": "runs/abilene_d2_congested_service_first_gnn.json",
+      "sha256": "f244362c3c6eec02fa41c478565152560d78bf163d2ead1f0169558bc9010830"
+    },
+    {
+      "run_id": "abilene_d2_congested_service_first_persistence",
+      "file": "runs/abilene_d2_congested_service_first_persistence.json",
+      "sha256": "2aef68c03549e2fb87c74c7fd84e01cab6faf0a20236aa8c825bb636f71a1efc"
+    },
+    {
+      "run_id": "abilene_d2_congested_oracle_current_bin",
+      "file": "runs/abilene_d2_congested_oracle_current_bin.json",
+      "sha256": "9bbd45727244cf60463a024c062a94db76a7c855cfb985655c4217367b9a4a47"
+    },
+    {
+      "run_id": "abilene_d2_bursty_shortest_path",
+      "file": "runs/abilene_d2_bursty_shortest_path.json",
+      "sha256": "a86272fe9d059c145f6364c84d99d0193431e38b59aad36e7b9433d5ab7ef58d"
+    },
+    {
+      "run_id": "abilene_d2_bursty_reactive_carbon",
+      "file": "runs/abilene_d2_bursty_reactive_carbon.json",
+      "sha256": "60009544c7bf4a311e10599ff9e9e9860951717c535218cf1b49a65d1ed038e3"
+    },
+    {
+      "run_id": "abilene_d2_bursty_predictive_te",
+      "file": "runs/abilene_d2_bursty_predictive_te.json",
+      "sha256": "0804a41ce3d0564747be0dacf83a975be3d15f84477a85c37aa90f27334680f0"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d2_bursty_tradeoff_gnn.json",
+      "sha256": "5c6d5be2cb641342dd9c59e43ad0cebe39c558a626758d014812898178aea510"
+    },
+    {
+      "run_id": "abilene_d2_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d2_bursty_tradeoff_persistence.json",
+      "sha256": "d9af37fba5b8e155740da60b80102def66d5248fbdc0f9203a3dac1d6c025db0"
+    },
+    {
+      "run_id": "abilene_d2_bursty_service_first_gnn",
+      "file": "runs/abilene_d2_bursty_service_first_gnn.json",
+      "sha256": "0dd54dc90742ed4032cc7e095c779ce23194c1862fcbedd6d498499e9ed09878"
+    },
+    {
+      "run_id": "abilene_d2_bursty_service_first_persistence",
+      "file": "runs/abilene_d2_bursty_service_first_persistence.json",
+      "sha256": "a4f5a012f27509c7aa252a21cc8a26a65689bffe57cd79131330c8b2fe68f029"
+    },
+    {
+      "run_id": "abilene_d2_bursty_oracle_current_bin",
+      "file": "runs/abilene_d2_bursty_oracle_current_bin.json",
+      "sha256": "f16ce02fa6b811a057f8d21a3c8fbb5d6ae805a12490b502b78dd914c6656b2e"
+    },
+    {
+      "run_id": "abilene_d3_normal_shortest_path",
+      "file": "runs/abilene_d3_normal_shortest_path.json",
+      "sha256": "0fa4fa9e23e3d809419fa9e03d5202f63852f14be5bf941d1edc27ccc94fdc1d"
+    },
+    {
+      "run_id": "abilene_d3_normal_reactive_carbon",
+      "file": "runs/abilene_d3_normal_reactive_carbon.json",
+      "sha256": "1a536cc96363b27fadc193580891e02f0b8932da654067bc19e83480f9878078"
+    },
+    {
+      "run_id": "abilene_d3_normal_predictive_te",
+      "file": "runs/abilene_d3_normal_predictive_te.json",
+      "sha256": "78eab81fc6c3958a01e4824a45a0c0118c5a7c3ace10ba59b83ddc113fdec586"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_gnn",
+      "file": "runs/abilene_d3_normal_tradeoff_gnn.json",
+      "sha256": "e9697d6a93da70b176e0fc6c12f3dd937824181c40957b5dbad07a56ca16ac72"
+    },
+    {
+      "run_id": "abilene_d3_normal_tradeoff_persistence",
+      "file": "runs/abilene_d3_normal_tradeoff_persistence.json",
+      "sha256": "4369ca0e43bad125f5831fc016185a8e77e9e5ed1449793dfea356fe455afd4d"
+    },
+    {
+      "run_id": "abilene_d3_normal_service_first_gnn",
+      "file": "runs/abilene_d3_normal_service_first_gnn.json",
+      "sha256": "d002198c0dddc937beae9651452e279cd89470d9b3b66b3abf493f76d501abc6"
+    },
+    {
+      "run_id": "abilene_d3_normal_service_first_persistence",
+      "file": "runs/abilene_d3_normal_service_first_persistence.json",
+      "sha256": "b9440862222b658f17c421428dd87c5a7dc37fc96f5b5313608729d65346db5a"
+    },
+    {
+      "run_id": "abilene_d3_normal_oracle_current_bin",
+      "file": "runs/abilene_d3_normal_oracle_current_bin.json",
+      "sha256": "7690ce092f08033ae3a65aa6f417362f3f0a6f92fb78f6c536bf0a516faf7f9d"
+    },
+    {
+      "run_id": "abilene_d3_congested_shortest_path",
+      "file": "runs/abilene_d3_congested_shortest_path.json",
+      "sha256": "b09b359042ddfa3fac73cc85e9808f0d689d34063bcbfd334d83a2b7df16a7a8"
+    },
+    {
+      "run_id": "abilene_d3_congested_reactive_carbon",
+      "file": "runs/abilene_d3_congested_reactive_carbon.json",
+      "sha256": "803a18769a6398733593cf8955c115b692ce99f63a51a5b16c15070e06e7b7b3"
+    },
+    {
+      "run_id": "abilene_d3_congested_predictive_te",
+      "file": "runs/abilene_d3_congested_predictive_te.json",
+      "sha256": "54ad88e845ef6b797ccf4e2af34b18c9729156810ef2e9a33faec86847a1d1d2"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_gnn",
+      "file": "runs/abilene_d3_congested_tradeoff_gnn.json",
+      "sha256": "0775e0c507c7fc17c5ed235ba718d99f082872bf3a1d332d0cfba1c4e4340b9f"
+    },
+    {
+      "run_id": "abilene_d3_congested_tradeoff_persistence",
+      "file": "runs/abilene_d3_congested_tradeoff_persistence.json",
+      "sha256": "ca5b3e11f73f9ad4cef9b7202f7300d862dff9825c3971f7e21ae712a45b04b5"
+    },
+    {
+      "run_id": "abilene_d3_congested_service_first_gnn",
+      "file": "runs/abilene_d3_congested_service_first_gnn.json",
+      "sha256": "bb065a843173e5b19f28bb9567c66d84107fb6dd5756aae1d214f0f3387d76a2"
+    },
+    {
+      "run_id": "abilene_d3_congested_service_first_persistence",
+      "file": "runs/abilene_d3_congested_service_first_persistence.json",
+      "sha256": "a34365584d402ad398978ef3f4696500fcc1da934ef6874f8fd5fd0cf911d4de"
+    },
+    {
+      "run_id": "abilene_d3_congested_oracle_current_bin",
+      "file": "runs/abilene_d3_congested_oracle_current_bin.json",
+      "sha256": "4b54d719217eeaee70740ec8d34323773496e689cc8390959558d8262b58da6f"
+    },
+    {
+      "run_id": "abilene_d3_bursty_shortest_path",
+      "file": "runs/abilene_d3_bursty_shortest_path.json",
+      "sha256": "36e81f03e0a68831d5f84eb13ddaf5fb1ea5007697a30e3ce6700ba1e02a158b"
+    },
+    {
+      "run_id": "abilene_d3_bursty_reactive_carbon",
+      "file": "runs/abilene_d3_bursty_reactive_carbon.json",
+      "sha256": "2ae00603781de1e2a83c2f60ae70d364ce40baada6770ae71b021c95b0b2d055"
+    },
+    {
+      "run_id": "abilene_d3_bursty_predictive_te",
+      "file": "runs/abilene_d3_bursty_predictive_te.json",
+      "sha256": "b108eb43fd61ea7655759a457ee2929be755195096a532f90608df98d40c48b6"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d3_bursty_tradeoff_gnn.json",
+      "sha256": "6575a49c86beeb9c5d1909877b2ee0fa3143462594155f5a2bb2e873010f22f0"
+    },
+    {
+      "run_id": "abilene_d3_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d3_bursty_tradeoff_persistence.json",
+      "sha256": "54a5d1598f9a9d0ca406957ada9011d1df188741b9dc6b4f8710ac23584cce58"
+    },
+    {
+      "run_id": "abilene_d3_bursty_service_first_gnn",
+      "file": "runs/abilene_d3_bursty_service_first_gnn.json",
+      "sha256": "f58aea62bed4c0ac93459c1c7cb03ca230603a691eb7297244df56b7e3e679d2"
+    },
+    {
+      "run_id": "abilene_d3_bursty_service_first_persistence",
+      "file": "runs/abilene_d3_bursty_service_first_persistence.json",
+      "sha256": "9b6097535ffaf32f46d7af28d02d242bb8151dea9de58833e4be252e2928d76d"
+    },
+    {
+      "run_id": "abilene_d3_bursty_oracle_current_bin",
+      "file": "runs/abilene_d3_bursty_oracle_current_bin.json",
+      "sha256": "b23e84dea7dc5508067b80e98414a856136f2ba7bcb149ef61d5e2c3fd28b98a"
+    },
+    {
+      "run_id": "abilene_d4_normal_shortest_path",
+      "file": "runs/abilene_d4_normal_shortest_path.json",
+      "sha256": "89e7fcfca52ef79f4dd8f2adad691e880b2303b3ca6fe4764c0c3858f87f737c"
+    },
+    {
+      "run_id": "abilene_d4_normal_reactive_carbon",
+      "file": "runs/abilene_d4_normal_reactive_carbon.json",
+      "sha256": "6df0068cb89880ba524002c45b1e5dd2d1a8961dea2628cc402327b992d1b22c"
+    },
+    {
+      "run_id": "abilene_d4_normal_predictive_te",
+      "file": "runs/abilene_d4_normal_predictive_te.json",
+      "sha256": "3ea0303dfd35c1106dd8146269f5a7111db27471eea0141047aa74d6acb76779"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_gnn",
+      "file": "runs/abilene_d4_normal_tradeoff_gnn.json",
+      "sha256": "7f6e9bda1f48d4a6be50749c46c82cab10ec718e9b4536bee210c7b2398824c1"
+    },
+    {
+      "run_id": "abilene_d4_normal_tradeoff_persistence",
+      "file": "runs/abilene_d4_normal_tradeoff_persistence.json",
+      "sha256": "1c9f150f5554461dd9ff8eef5979199b247c3e56dd1bdaa4cc9be3bbff03dec2"
+    },
+    {
+      "run_id": "abilene_d4_normal_service_first_gnn",
+      "file": "runs/abilene_d4_normal_service_first_gnn.json",
+      "sha256": "dcadd6306606ce3f552b12fefb98ad1218e215fef8d23a65c5322dec5d04500a"
+    },
+    {
+      "run_id": "abilene_d4_normal_service_first_persistence",
+      "file": "runs/abilene_d4_normal_service_first_persistence.json",
+      "sha256": "85d3d6fe830607f89c31e768e11be713a96227495339b3c12111f337e3d44514"
+    },
+    {
+      "run_id": "abilene_d4_normal_oracle_current_bin",
+      "file": "runs/abilene_d4_normal_oracle_current_bin.json",
+      "sha256": "13f935290328a1eac5ee773fb0afdd2a3ce4c20908ebf91552b4ad10b59f926e"
+    },
+    {
+      "run_id": "abilene_d4_congested_shortest_path",
+      "file": "runs/abilene_d4_congested_shortest_path.json",
+      "sha256": "90d8444cddb1a72680eb7fe39d1417eeb3025765bb6219e8e25ccc490fc840a2"
+    },
+    {
+      "run_id": "abilene_d4_congested_reactive_carbon",
+      "file": "runs/abilene_d4_congested_reactive_carbon.json",
+      "sha256": "25cc69c6045d34e565c6ff4f671a630b81bee1a19e0cb628b02762d14d0c7477"
+    },
+    {
+      "run_id": "abilene_d4_congested_predictive_te",
+      "file": "runs/abilene_d4_congested_predictive_te.json",
+      "sha256": "cadcdece92fe86ecfa546afb1a5c372789c4cfea603287c68f8904bf2e36ce36"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_gnn",
+      "file": "runs/abilene_d4_congested_tradeoff_gnn.json",
+      "sha256": "a717ec4e75becb16e1b9f4629e36af25caa5b9701c825b4450256555c6d4b705"
+    },
+    {
+      "run_id": "abilene_d4_congested_tradeoff_persistence",
+      "file": "runs/abilene_d4_congested_tradeoff_persistence.json",
+      "sha256": "1d10a2f8566b90f52100dd1d5da21b302a38ee55548418481e175f46328dcc9d"
+    },
+    {
+      "run_id": "abilene_d4_congested_service_first_gnn",
+      "file": "runs/abilene_d4_congested_service_first_gnn.json",
+      "sha256": "c3f1593bfafed138e8c699f66a8f720eb66a580de68d43b2b19149b330d97f6d"
+    },
+    {
+      "run_id": "abilene_d4_congested_service_first_persistence",
+      "file": "runs/abilene_d4_congested_service_first_persistence.json",
+      "sha256": "5f6bf3dea2f802637cc779416f4d7cb40780fc80f83833f5eb90f2ef37a1dbb2"
+    },
+    {
+      "run_id": "abilene_d4_congested_oracle_current_bin",
+      "file": "runs/abilene_d4_congested_oracle_current_bin.json",
+      "sha256": "5cd785a847716db2da8b9dd9e97b4f01969df4c5b83ed2533100e90be865ff9c"
+    },
+    {
+      "run_id": "abilene_d4_bursty_shortest_path",
+      "file": "runs/abilene_d4_bursty_shortest_path.json",
+      "sha256": "1caa9851f52c3d575086157d7eb8573c9953b1b8740118cc141490b26c3c35bf"
+    },
+    {
+      "run_id": "abilene_d4_bursty_reactive_carbon",
+      "file": "runs/abilene_d4_bursty_reactive_carbon.json",
+      "sha256": "344cb30ea2c97a462fa3ef13f1e952f6bbe6eac0ceca66b4431609e54fdcebca"
+    },
+    {
+      "run_id": "abilene_d4_bursty_predictive_te",
+      "file": "runs/abilene_d4_bursty_predictive_te.json",
+      "sha256": "5845f8863fca05bdda340f5cd32acc4ff64b2ed0045faad15a70682ec1c90f07"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d4_bursty_tradeoff_gnn.json",
+      "sha256": "1ad8de7bae1179f201db2c40e705a22a498abd93b6f6f1bb16c92922c797007e"
+    },
+    {
+      "run_id": "abilene_d4_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d4_bursty_tradeoff_persistence.json",
+      "sha256": "4209039f114e3fa7bc75389a8f095f3306634bb2d22f538d14e558d0583c9f97"
+    },
+    {
+      "run_id": "abilene_d4_bursty_service_first_gnn",
+      "file": "runs/abilene_d4_bursty_service_first_gnn.json",
+      "sha256": "b4b1c1611b9575f4b12abba1f183550ae9b23ca78a8c27c537522f5e5b226532"
+    },
+    {
+      "run_id": "abilene_d4_bursty_service_first_persistence",
+      "file": "runs/abilene_d4_bursty_service_first_persistence.json",
+      "sha256": "644a1a8adbb2d460a2fc7119218666f4c7b11af8645d3e4da242a043c4aef371"
+    },
+    {
+      "run_id": "abilene_d4_bursty_oracle_current_bin",
+      "file": "runs/abilene_d4_bursty_oracle_current_bin.json",
+      "sha256": "99c09d14a5bcdf4d0ca40a3bc57923258c3fd49ba5bd614c1a139ea8daaf619b"
+    },
+    {
+      "run_id": "abilene_d5_normal_shortest_path",
+      "file": "runs/abilene_d5_normal_shortest_path.json",
+      "sha256": "e1154f22db1b3f5b8dd909f83dadedf44a139ced0222db0d322a33b4ea6bf9f2"
+    },
+    {
+      "run_id": "abilene_d5_normal_reactive_carbon",
+      "file": "runs/abilene_d5_normal_reactive_carbon.json",
+      "sha256": "4f6f2488b644990a2936cafda48b4f349e288975d826ba6b892679cc4bd199f3"
+    },
+    {
+      "run_id": "abilene_d5_normal_predictive_te",
+      "file": "runs/abilene_d5_normal_predictive_te.json",
+      "sha256": "3651acf17620659b741440720c3d185000c6db05beff60fec415413fd8e48cdd"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_gnn",
+      "file": "runs/abilene_d5_normal_tradeoff_gnn.json",
+      "sha256": "c976481e12a402335ec9d6dde8950a071a038b65a5aac9a6cb62abc7af2c9c55"
+    },
+    {
+      "run_id": "abilene_d5_normal_tradeoff_persistence",
+      "file": "runs/abilene_d5_normal_tradeoff_persistence.json",
+      "sha256": "86c5dc7685b5616d574813b04a5dadbfddef223da0d7893a83f04b79dec1c064"
+    },
+    {
+      "run_id": "abilene_d5_normal_service_first_gnn",
+      "file": "runs/abilene_d5_normal_service_first_gnn.json",
+      "sha256": "05711725aafdec90a82008a16f1533edd2072d46d5a2e58c8591fb9e5f0ace5b"
+    },
+    {
+      "run_id": "abilene_d5_normal_service_first_persistence",
+      "file": "runs/abilene_d5_normal_service_first_persistence.json",
+      "sha256": "a8b75d908a4c5bcde1ffbb31514485cd62f6cfdde75b630c1376251c34697177"
+    },
+    {
+      "run_id": "abilene_d5_normal_oracle_current_bin",
+      "file": "runs/abilene_d5_normal_oracle_current_bin.json",
+      "sha256": "b98d67b05916e5a0d18ab1d9658e7f5148edceb4673223dad6b1f07d78a6784b"
+    },
+    {
+      "run_id": "abilene_d5_congested_shortest_path",
+      "file": "runs/abilene_d5_congested_shortest_path.json",
+      "sha256": "7002852c2a77ec0d078a17f6234c442fc1a7a26185bc7a18efb6d499eb503b63"
+    },
+    {
+      "run_id": "abilene_d5_congested_reactive_carbon",
+      "file": "runs/abilene_d5_congested_reactive_carbon.json",
+      "sha256": "dbc95c66886bf17699bfd0a204a995fc17e40a38bf574148b03bf7c02b448d71"
+    },
+    {
+      "run_id": "abilene_d5_congested_predictive_te",
+      "file": "runs/abilene_d5_congested_predictive_te.json",
+      "sha256": "79a28670436ac1d813335b3d7b6bf3c229f15a91eb4194aa99f1223d97dd2b16"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_gnn",
+      "file": "runs/abilene_d5_congested_tradeoff_gnn.json",
+      "sha256": "91d9bd9519935935ab98fb0c072476532a77273045ca6c15c1a15b37cb1e31f3"
+    },
+    {
+      "run_id": "abilene_d5_congested_tradeoff_persistence",
+      "file": "runs/abilene_d5_congested_tradeoff_persistence.json",
+      "sha256": "b2b66ced9ea3fcac1be7b5f43ed4c4f5ecf8b9df4d9e1ebbb45aa64a9555c5d4"
+    },
+    {
+      "run_id": "abilene_d5_congested_service_first_gnn",
+      "file": "runs/abilene_d5_congested_service_first_gnn.json",
+      "sha256": "7498e6673c2a2b84283f8fba115186922578329399adecbb1fdb92d6cf73fa4c"
+    },
+    {
+      "run_id": "abilene_d5_congested_service_first_persistence",
+      "file": "runs/abilene_d5_congested_service_first_persistence.json",
+      "sha256": "bf0dc25c70f0eda7559772cc1915b249f2edba856f719e8c2625e91036f0c71c"
+    },
+    {
+      "run_id": "abilene_d5_congested_oracle_current_bin",
+      "file": "runs/abilene_d5_congested_oracle_current_bin.json",
+      "sha256": "65f08677d23b4b4632b26b456c2af96c19c8fbc2db64269a65c11906579caced"
+    },
+    {
+      "run_id": "abilene_d5_bursty_shortest_path",
+      "file": "runs/abilene_d5_bursty_shortest_path.json",
+      "sha256": "ccf19430042554f470d23e33c5a8624f8a2e738feb0e30416eea149d5b88a12d"
+    },
+    {
+      "run_id": "abilene_d5_bursty_reactive_carbon",
+      "file": "runs/abilene_d5_bursty_reactive_carbon.json",
+      "sha256": "4a5cff1516c8a5c162810483e66bdb6192e4f1f6ed1383994e969a0255ed5dcd"
+    },
+    {
+      "run_id": "abilene_d5_bursty_predictive_te",
+      "file": "runs/abilene_d5_bursty_predictive_te.json",
+      "sha256": "89cfa6d3ef33b9d557aded9181c9b6d94b4c100f401c16b5badf95d977661f82"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d5_bursty_tradeoff_gnn.json",
+      "sha256": "7d1a189d2859331d465544bed5b00739ea428c680dc478db038f2b86082495ba"
+    },
+    {
+      "run_id": "abilene_d5_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d5_bursty_tradeoff_persistence.json",
+      "sha256": "9ff50c87a6b4ea63eac4b1005f19146359c2ce883c12e170bf4c8c359954959b"
+    },
+    {
+      "run_id": "abilene_d5_bursty_service_first_gnn",
+      "file": "runs/abilene_d5_bursty_service_first_gnn.json",
+      "sha256": "b113d856208e2005c9232f982cc6d66c0d8bd856190551b46d3949030e9767ee"
+    },
+    {
+      "run_id": "abilene_d5_bursty_service_first_persistence",
+      "file": "runs/abilene_d5_bursty_service_first_persistence.json",
+      "sha256": "a6c7583163e9b48ffc7e121896c0ed5efb151458cd112b48c937da184c89d7c5"
+    },
+    {
+      "run_id": "abilene_d5_bursty_oracle_current_bin",
+      "file": "runs/abilene_d5_bursty_oracle_current_bin.json",
+      "sha256": "ee24866eb57e10f2b651f8dee610389af750536dd84e9e546e6695f4c80b9a8f"
+    },
+    {
+      "run_id": "abilene_d6_normal_shortest_path",
+      "file": "runs/abilene_d6_normal_shortest_path.json",
+      "sha256": "aec1e450c91e7befe70b70c331d5d2960ce710ba3b94cfad9001d776665f3ab3"
+    },
+    {
+      "run_id": "abilene_d6_normal_reactive_carbon",
+      "file": "runs/abilene_d6_normal_reactive_carbon.json",
+      "sha256": "1ac9ad56617d6313f9eb5ea4983e3d013493a353c1f876fce6dc4dfd608178a3"
+    },
+    {
+      "run_id": "abilene_d6_normal_predictive_te",
+      "file": "runs/abilene_d6_normal_predictive_te.json",
+      "sha256": "9311b899de842a148e26e9cdb9b79d4627dbf46ec8b17319ce52e27f1b614386"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_gnn",
+      "file": "runs/abilene_d6_normal_tradeoff_gnn.json",
+      "sha256": "09ca87168b5cb3f280c0a250f42b9b234adbdbd4ca6a321524e5e342af7c9871"
+    },
+    {
+      "run_id": "abilene_d6_normal_tradeoff_persistence",
+      "file": "runs/abilene_d6_normal_tradeoff_persistence.json",
+      "sha256": "2b6af0034b66862dbe8b1c5d3da6e44d8a327c5c56eaecf16d77b34696fd748b"
+    },
+    {
+      "run_id": "abilene_d6_normal_service_first_gnn",
+      "file": "runs/abilene_d6_normal_service_first_gnn.json",
+      "sha256": "3894eb9ab360b5d6e66aa0dcc627e5e4440164f40a68febc36cb3ac20b9bae7c"
+    },
+    {
+      "run_id": "abilene_d6_normal_service_first_persistence",
+      "file": "runs/abilene_d6_normal_service_first_persistence.json",
+      "sha256": "4e7b096a141ff07baa1e1322bcbd2478008502139d94d6c93ba40fcfdb026865"
+    },
+    {
+      "run_id": "abilene_d6_normal_oracle_current_bin",
+      "file": "runs/abilene_d6_normal_oracle_current_bin.json",
+      "sha256": "dbbd3401a007492e4153cc5f0095f332fa05fc3a8fcb520cb931eca5166752df"
+    },
+    {
+      "run_id": "abilene_d6_congested_shortest_path",
+      "file": "runs/abilene_d6_congested_shortest_path.json",
+      "sha256": "9e91b2cdfe1e22aab2f92759a8c457c1db10381144917584f8fd82f3207c2f66"
+    },
+    {
+      "run_id": "abilene_d6_congested_reactive_carbon",
+      "file": "runs/abilene_d6_congested_reactive_carbon.json",
+      "sha256": "8e638a9f7aa6984cd13ff07900c9d8dd59700d3b7a751ec7dd1d7fd709641336"
+    },
+    {
+      "run_id": "abilene_d6_congested_predictive_te",
+      "file": "runs/abilene_d6_congested_predictive_te.json",
+      "sha256": "e1f3d19ebef263275694bef4f856a6b5a73d831df845a1fee6c801a3465867bb"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_gnn",
+      "file": "runs/abilene_d6_congested_tradeoff_gnn.json",
+      "sha256": "bff28f50085de2ac48ed6ac9715fdfd48d5a4b549eeeb844736122a5a27eaacc"
+    },
+    {
+      "run_id": "abilene_d6_congested_tradeoff_persistence",
+      "file": "runs/abilene_d6_congested_tradeoff_persistence.json",
+      "sha256": "8889adde77289609babb204ed5da030b676235d8f3a65242121f283af5773186"
+    },
+    {
+      "run_id": "abilene_d6_congested_service_first_gnn",
+      "file": "runs/abilene_d6_congested_service_first_gnn.json",
+      "sha256": "fb135e61b11459ad884387e85d3637041a40c47d6c94f614bd13008e7df9ed9a"
+    },
+    {
+      "run_id": "abilene_d6_congested_service_first_persistence",
+      "file": "runs/abilene_d6_congested_service_first_persistence.json",
+      "sha256": "8f1e07dc123ae35efa1e6d36ea3ab201cccb1ba76856a9a0d63d7c3528ef25c5"
+    },
+    {
+      "run_id": "abilene_d6_congested_oracle_current_bin",
+      "file": "runs/abilene_d6_congested_oracle_current_bin.json",
+      "sha256": "1d6b878126276aaf34ad1926b401c3ab5c29b2cb9c0cd41b65e360a00aa21df8"
+    },
+    {
+      "run_id": "abilene_d6_bursty_shortest_path",
+      "file": "runs/abilene_d6_bursty_shortest_path.json",
+      "sha256": "aee661fd8fa8edadfd2dbc4fbca65a37157c7994e9942a1a8731ecfb892a5624"
+    },
+    {
+      "run_id": "abilene_d6_bursty_reactive_carbon",
+      "file": "runs/abilene_d6_bursty_reactive_carbon.json",
+      "sha256": "2da7b2621f8f663427dae1a5e951dc78a15e626a48900941c1247c0cc2929067"
+    },
+    {
+      "run_id": "abilene_d6_bursty_predictive_te",
+      "file": "runs/abilene_d6_bursty_predictive_te.json",
+      "sha256": "23b83be4579ddbadf02f0312432c04c6d9a56b875e88ca14231706a3df2d2f21"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_gnn",
+      "file": "runs/abilene_d6_bursty_tradeoff_gnn.json",
+      "sha256": "54de430732b380ed92ecfa00feecd4641335fb7c35a51be8c36d90d3a27e2d60"
+    },
+    {
+      "run_id": "abilene_d6_bursty_tradeoff_persistence",
+      "file": "runs/abilene_d6_bursty_tradeoff_persistence.json",
+      "sha256": "89e87a41de8ef557979d386ef6de9c3d8e88077a1625c560d175413aefdd6bc2"
+    },
+    {
+      "run_id": "abilene_d6_bursty_service_first_gnn",
+      "file": "runs/abilene_d6_bursty_service_first_gnn.json",
+      "sha256": "7cca03b3a28b2b90d514b9986ec27fa654376ff585da2df2fe65c329311bf5f4"
+    },
+    {
+      "run_id": "abilene_d6_bursty_service_first_persistence",
+      "file": "runs/abilene_d6_bursty_service_first_persistence.json",
+      "sha256": "c7114bdf1291476b2a3e7946948ce6df6556e24758370783e8c41630a56d00b7"
+    },
+    {
+      "run_id": "abilene_d6_bursty_oracle_current_bin",
+      "file": "runs/abilene_d6_bursty_oracle_current_bin.json",
+      "sha256": "68540ed4af88af8955e73834c4c654df0b4064f078b0ced3469c49b17fdfef85"
+    }
+  ],
+  "protocol_sha256": "af355b7f787ea1cc956cf70fe8a12251bae980f213c577841adcd3e897ed66d5",
+  "summary_sha256": "1be40f8884cdea5de2b52dd60a3fff41dbd5a39829d22fab7a0f104ed3bfbdb3",
+  "paired_differences_sha256": "e9a3b9902b1953f78298a7af0a49dc04c2eec5b5808adb674f31f89320a9c035",
+  "day_cluster_intervals_sha256": "3b4b87e8896d624f134c2aee80922033fac50c1e02ce95f833c0267cba9fa2b1"
+}

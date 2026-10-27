@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-26T18:28:03.126634+00:00",
+  "created_utc": "2026-10-27T05:23:39.792297+00:00",
   "purpose": "Local presentation index. Original files remain in inputs/raw for the code.",
   "files": [
     {
@@ -83,12 +83,68 @@
       "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X04.gz"
     },
     {
+      "path": "originals/abilene/X05.gz",
+      "source_cache": "inputs/raw/abilene/X05.gz",
+      "bytes": 7349588,
+      "sha256": "e1cf3f3a79345ffde4e03a77a9c8017fe72fbc9584cb86f8428023efe8203f24",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X05.gz"
+    },
+    {
+      "path": "originals/abilene/X06.gz",
+      "source_cache": "inputs/raw/abilene/X06.gz",
+      "bytes": 7496632,
+      "sha256": "770a8b0cb3468e212128954fc56d1cad365f3675a9e34da1e15f4d1ace9b43ff",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X06.gz"
+    },
+    {
+      "path": "originals/abilene/X07.gz",
+      "source_cache": "inputs/raw/abilene/X07.gz",
+      "bytes": 7493819,
+      "sha256": "4b8a88af6b358562f356472ff1ae76d1b482333d4cde91666da0237a5c5ae56d",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X07.gz"
+    },
+    {
       "path": "originals/abilene/AbileneTM-all.tar",
       "source_cache": "inputs/raw/AbileneTM-all.tar",
       "bytes": 177886208,
       "sha256": "c522a6b91f70e0bf83b8763ed62cd7ceb8e203da8fd13bc5a3b0e60da0e4730a",
       "local_method": "existing verified",
       "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/AbileneTM-all.tar"
+    },
+    {
+      "path": "originals/abilene/X08.gz",
+      "source_cache": "inputs/raw/abilene/X08.gz",
+      "bytes": 7478898,
+      "sha256": "5474cc2944c42cb826c6a0aa53da4d382e38bd7d07a5d21342bafcc85d6003b4",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X08.gz"
+    },
+    {
+      "path": "originals/abilene/X09.gz",
+      "source_cache": "inputs/raw/abilene/X09.gz",
+      "bytes": 7331758,
+      "sha256": "005511d8b64c1fef598472026d23f7b454db19e5595955b3fbd9e0fe55a4dbbe",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X09.gz"
+    },
+    {
+      "path": "originals/abilene/X10.gz",
+      "source_cache": "inputs/raw/abilene/X10.gz",
+      "bytes": 7333278,
+      "sha256": "c3517f34552a42e809f233a6352f9f04b9128ea98fdc319ede3672774967ecda",
+      "local_method": "existing verified",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X10.gz"
+    },
+    {
+      "path": "originals/abilene/X11.gz",
+      "source_cache": "inputs/raw/abilene/X11.gz",
+      "bytes": 7327763,
+      "sha256": "cb382563cd2df8c05ce90ca18abf425862eb4260c614a64d32ff232dccd446f1",
+      "local_method": "hard link",
+      "source_url": "https://www.cs.utexas.edu/~yzhang/research/AbileneTM/X11.gz"
     },
     {
       "path": "originals/epa/egrid_historical_files_1996-2016.zip",
@@ -139,6 +195,34 @@
       "source_cache": "inputs/processed/abilene/manifest.json",
       "bytes": 10051,
       "sha256": "ad099ec1b72808ff2404db259d0de7080bbee278fc1cdf9beec3976b3860ce62",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/followup/geant/traffic.npz",
+      "source_cache": "inputs/processed/followup/geant/traffic.npz",
+      "bytes": 206499,
+      "sha256": "334c78f345388cec9393a4cf91ec393b34b7b99f670c8f54978e5916b5e1fb01",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/followup/geant/manifest.json",
+      "source_cache": "inputs/processed/followup/geant/manifest.json",
+      "bytes": 4580,
+      "sha256": "26ba9baaa061f851208d77791def0af8719bfad4fd9b5bfcba6108b00d7cb759",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/followup/abilene/traffic.npz",
+      "source_cache": "inputs/processed/followup/abilene/traffic.npz",
+      "bytes": 482307,
+      "sha256": "87a6df5be8e90370d42568142b781d169cb24705e9d9a23c303fbf1d33bd4adf",
+      "local_method": "existing verified"
+    },
+    {
+      "path": "processed/followup/abilene/manifest.json",
+      "source_cache": "inputs/processed/followup/abilene/manifest.json",
+      "bytes": 6514,
+      "sha256": "19b0aac8f628c592f29b7b580ad13ad16a1355c4fae90b2ebbabbe18248bb772",
       "local_method": "existing verified"
     },
     {

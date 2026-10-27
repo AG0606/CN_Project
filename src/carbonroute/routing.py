@@ -15,6 +15,7 @@ from .network import Network, Pair, Route
 POLICIES = ("shortest_path", "reactive_carbon", "predictive_te", "predictive_carbon",
             "persistence_carbon", "no_margin", "no_hysteresis")
 JOINT_POLICIES = ("joint_gnn", "joint_gru", "joint_persistence")
+TRADEOFF_POLICIES = ("tradeoff_gnn", "tradeoff_gru", "tradeoff_persistence", "tradeoff_reactive")
 
 
 @dataclass(frozen=True)
@@ -28,6 +29,8 @@ class Decision:
     reactive_carbon_budget: float | None = None
     carbon_budget_met: bool | None = None
     joint_assignments_evaluated: int | None = None
+    projected_peak_limit: float | None = None
+    projected_reference_peak: float | None = None
 
 
 class Planner:
@@ -196,3 +199,94 @@ class BudgetPlanner:
                         int(changed.sum()), infeasible, float(peaks[chosen]), tuple(reasons),
                         float(carbon_costs[chosen]), budget,
                         bool(carbon_costs[chosen] <= budget + 1e-9), len(self.assignments))
+
+
+class TradeoffPlanner(BudgetPlanner):
+    """Joint carbon budget with an explicit congestion and route-change penalty.
+
+    Scores are dimensionless: predicted carbon/reference carbon, plus the
+    excess of predicted peak utilization above the guard, plus a penalty for
+    each changed flow. Eligible assignments must also stay below the larger
+    of the utilization guard and the reference's predicted peak. The reference
+    receives only the same observed history.
+    """
+
+    def __init__(self, network: Network, pairs: list[Pair], cfg: dict[str, Any],
+                 budget_fraction: float = 0.0, congestion_weight: float = 1.0,
+                 change_penalty: float = 0.005):
+        super().__init__(network, pairs, cfg, budget_fraction)
+        if congestion_weight < 0 or change_penalty < 0:
+            raise ValueError("Tradeoff penalties must be nonnegative")
+        self.congestion_weight = congestion_weight
+        self.change_penalty = change_penalty
+
+    def decide(self, forecast: np.ndarray, current_carbon: np.ndarray, step: int,
+               reactive_forecast: np.ndarray) -> Decision:
+        n, horizon = self.network.node_count, self.cfg["horizon"]
+        if (forecast.shape != (horizon, n, n) or reactive_forecast.shape != forecast.shape
+                or current_carbon.shape != (n,)):
+            raise ValueError("Tradeoff forecast/carbon shape mismatch")
+        finite_nonnegative(forecast, "tradeoff forecast")
+        finite_nonnegative(reactive_forecast, "reactive forecast")
+        finite_nonnegative(current_carbon, "carbon")
+        ref = self.reference.decide(reactive_forecast, current_carbon, step)
+        demand = forecast[:, [a for a, _ in self.pairs], [b for _, b in self.pairs]]
+        loads = np.einsum("hf,alf->ahl", demand, self.incidence)
+        util = loads / self.network.capacities
+        peaks = util.max(axis=(1, 2))
+        costs = np.einsum("afi,i->af", self.sender_counts, current_carbon) @ demand.mean(axis=0)
+        reference_index = self.lookup[ref.routes]
+        reference_cost = float(costs[reference_index])
+        reference_peak = float(peaks[reference_index])
+        peak_limit = max(float(self.cfg["utilization_limit"]), reference_peak)
+        budget = reference_cost * (1 + self.budget_fraction)
+        changes = np.count_nonzero(self.choices != self.choices[self.current], axis=1)
+        objective = (costs / max(reference_cost, 1e-9)
+                     + self.congestion_weight * np.maximum(peaks - self.cfg["utilization_limit"], 0)
+                     + self.change_penalty * changes)
+        pool = np.flatnonzero((costs <= budget + 1e-9) & (peaks <= peak_limit + 1e-9))
+        if not len(pool):
+            raise AssertionError("Reactive assignment must satisfy the predicted carbon and peak guards")
+        chosen = int(min(pool, key=lambda i: (objective[i], peaks[i], costs[i], changes[i], i)))
+        changed = self.choices[chosen] != self.choices[self.current]
+        self.current = chosen
+        reasons = tuple("tradeoff-objective" if changed[i] else "kept" for i in range(len(self.pairs)))
+        infeasible = sum(bool(util[chosen, :, self.incidence[chosen, :, f] > 0].max()
+                              > self.cfg["utilization_limit"] + 1e-9)
+                         for f in range(len(self.pairs)))
+        return Decision(self.assignments[chosen], int(changed.sum()), infeasible,
+                        float(peaks[chosen]), reasons, float(costs[chosen]), budget,
+                        bool(costs[chosen] <= budget + 1e-9), len(self.assignments),
+                        peak_limit, reference_peak)
+
+
+class CurrentBinOracle(BudgetPlanner):
+    """Clairvoyant, per-bin diagnostic; never a deployable routing policy.
+
+    Minimize offered-demand-weighted carbon among assignments with no offered
+    link above capacity. If none exists, minimize the peak first. No switching
+    penalty or future bins enter this idealized reference.
+    """
+
+    def decide_actual(self, actual: np.ndarray, carbon: np.ndarray) -> Decision:
+        n = self.network.node_count
+        if actual.shape != (n, n) or carbon.shape != (n,):
+            raise ValueError("Oracle actual demand/carbon shape mismatch")
+        finite_nonnegative(actual, "oracle demand")
+        finite_nonnegative(carbon, "oracle carbon")
+        demand = actual[[a for a, _ in self.pairs], [b for _, b in self.pairs]]
+        utilization = np.einsum("f,alf->al", demand, self.incidence) / self.network.capacities
+        peaks = utilization.max(axis=1)
+        costs = np.einsum("afi,i->af", self.sender_counts, carbon) @ demand
+        feasible = np.flatnonzero(peaks <= 1 + 1e-9)
+        if len(feasible):
+            chosen = int(min(feasible, key=lambda i: (costs[i], peaks[i], i)))
+        else:
+            chosen = int(min(range(len(peaks)), key=lambda i: (peaks[i], costs[i], i)))
+        changed = self.choices[chosen] != self.choices[self.current]
+        self.current = chosen
+        infeasible = sum(bool(utilization[chosen, self.incidence[chosen, :, f] > 0].max() > 1 + 1e-9)
+                         for f in range(len(self.pairs)))
+        return Decision(self.assignments[chosen], int(changed.sum()), infeasible,
+                        float(peaks[chosen]), tuple("oracle-actual-demand" for _ in self.pairs),
+                        joint_assignments_evaluated=len(self.assignments))
