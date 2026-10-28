@@ -91,6 +91,7 @@ Thumbs.db
 !/results/final-validation-20261027/*.json
 !/results/final-validation-20261027/*.csv
 !/results/final-validation-20261027/FINDINGS.md
+!/results/final-validation-20261027/dashboard.html
 !/results/final-validation-20261027/figures/
 !/results/final-validation-20261027/figures/**
 /results/final-validation-20261027/runs/
